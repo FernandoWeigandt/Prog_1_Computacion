@@ -1,3 +1,5 @@
+#!/bin/bash
+
 activate=$(find . -type f -name activate | grep .)
 
 if [ $? -eq "0" ] ; then
