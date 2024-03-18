@@ -20,5 +20,5 @@ cd backend && ./install.sh
 To execute flask, you should create a .env file following the .env-example file. Replace the 'Port' with the port you want to use. Then if you want to run (located in the root directory of the proyect):
 
 ```bash
-cd 
+cd backend && ./boot.sh
 ```
