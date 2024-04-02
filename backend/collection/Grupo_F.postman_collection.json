@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "fa8451f6-7eab-42b2-a979-89dff970c807",
+		"_postman_id": "b5355469-0d8d-4935-ad70-bf518c8439e3",
 		"name": "Grupo F",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "33978147"
+		"_exporter_id": "34016016"
 	},
 	"item": [
 		{
@@ -467,6 +467,19 @@
 								"config"
 							]
 						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Signin",
+			"item": [
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": []
 					},
 					"response": []
 				}

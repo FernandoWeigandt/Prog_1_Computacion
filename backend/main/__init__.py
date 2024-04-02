@@ -20,6 +20,8 @@ def create_app():
     api.add_resource(resources.RentResources, '/rent/<id>')
     #Config
     api.add_resource(resources.ConfigResources, '/config')
-    
+    #Signin
+    api.add_resource(resources.SigninResources, '/signin')
+
     api.init_app(app)
     return app
