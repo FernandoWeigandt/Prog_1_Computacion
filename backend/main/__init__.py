@@ -15,5 +15,8 @@ def create_app():
     #Book
     api.add_resource(resources.BooksResources, '/books')
     api.add_resource(resources.BookResources, '/book/<id>')
+    #Rent
+    api.add_resource(resources.RentsResources, '/rents')
+    api.add_resource(resources.RentResources, '/rent/<id>')
     api.init_app(app)
     return app

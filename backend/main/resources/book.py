@@ -24,9 +24,9 @@ class Book(Resource):
     
     def put(self, id):
         if int(id) in BOOKS:
-            user = BOOKS[int(id)]
+            book = BOOKS[int(id)]
             data = request.get_json()
-            user.update(data)
+            book.update(data)
             return '', 201
         return 'Id not found', 404
     
@@ -35,7 +35,7 @@ class Books(Resource):
         return BOOKS
     
     def post(self):
-        user = request.get_json()
+        book = request.get_json()
         id = int(max(BOOKS.keys())) + 1
-        BOOKS[id] = user
+        BOOKS[id] = book
         return BOOKS[id], 201
