@@ -18,5 +18,8 @@ def create_app():
     #Rent
     api.add_resource(resources.RentsResources, '/rents')
     api.add_resource(resources.RentResources, '/rent/<id>')
+    #Config
+    api.add_resource(resources.ConfigResources, '/config')
+    
     api.init_app(app)
     return app
