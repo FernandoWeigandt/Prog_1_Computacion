@@ -1,5 +1,8 @@
 from flask_restful import Resource
-from flask import request
+from flask import request, jsonify
+from main.models import RentModel
+from .. import db
+from datetime import datetime
 
 # Test JSON Data
 
@@ -12,30 +15,34 @@ RENTS = {
 
 class Rent(Resource):
     def get(self, id):
-        if int(id) in RENTS:
-            return RENTS[int(id)]
-        return 'Id not found', 404
+        rents = db.session.query(RentModel).get_or_404(id)
+        return rents.to_json()
     
     def delete(self, id):
-        if int(id) in RENTS:
-            del RENTS[int(id)]
-            return '', 204
-        return 'Id not found', 404
+        rent = db.session.query(RentModel).get_or_404(id)
+        db.session.delete(rent)
+        db.session.commit()
+        return rent.to_json(), 204
     
     def put(self, id):
-        if int(id) in RENTS:
-            rent = RENTS[int(id)]
-            data = request.get_json()
-            rent.update(data)
-            return '', 201
-        return 'Id not found', 404
+        rent = db.session.query(RentModel).get_or_404(id)
+        data = request.get_json().items()
+        for key, value in data:
+            if key != 'id':
+                value = datetime.strptime(value, '%Y-%m-%d')
+            setattr(rent, key, value)
+            print(type(value))
+        db.session.add(rent)
+        db.session.commit()
+        return rent.to_json() , 201 
     
 class Rents(Resource):
     def get(self):
-        return RENTS
+        rents = db.session.query(RentModel).all()
+        return jsonify([rent.to_json() for rent in rents])
     
     def post(self):
-        rent = request.get_json()
-        id = int(max(RENTS.keys())) + 1
-        RENTS[id] = rent
-        return RENTS[id], 201
+        rent = RentModel.from_json(request.get_json())
+        db.session.add(rent)
+        db.session.commit()
+        return rent.to_json(), 201

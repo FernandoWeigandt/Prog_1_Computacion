@@ -1,5 +1,7 @@
 from flask_restful import Resource
-from flask import request
+from flask import request, jsonify
+from main.models import BookModel
+from .. import db
 
 # Test JSON Data
 
@@ -12,30 +14,31 @@ BOOKS = {
 
 class Book(Resource):
     def get(self, id):
-        if int(id) in BOOKS:
-            return BOOKS[int(id)]
-        return 'Id not found', 404
+        book = db.session.query(BookModel).get_or_404(id)
+        return book.to_json()
     
     def delete(self, id):
-        if int(id) in BOOKS:
-            del BOOKS[int(id)]
-            return '', 204
-        return 'Id not found', 404
+        book = db.session.query(BookModel).get_or_404(id)
+        db.session.delete(book)
+        db.session.commit()
+        return book.to_json(), 204
     
     def put(self, id):
-        if int(id) in BOOKS:
-            book = BOOKS[int(id)]
-            data = request.get_json()
-            book.update(data)
-            return '', 201
-        return 'Id not found', 404
+        book = db.session.query(BookModel).get_or_404(id)
+        data = request.get_json().items()
+        for key, value in data:
+            setattr(book, key, value)
+        db.session.add(book)
+        db.session.commit()
+        return book.to_json() , 201
     
 class Books(Resource):
     def get(self):
-        return BOOKS
+        books = db.session.query(BookModel).all()
+        return jsonify([book.to_json() for book in books])
     
     def post(self):
-        book = request.get_json()
-        id = int(max(BOOKS.keys())) + 1
-        BOOKS[id] = book
-        return BOOKS[id], 201
+        book = BookModel.from_json(request.get_json())
+        db.session.add(book)
+        db.session.commit()
+        return book.to_json(), 201

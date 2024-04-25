@@ -1,4 +1,4 @@
 backend/env*
-*.env
-notas
+*env
+*notas*
 *__pycache__*

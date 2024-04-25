@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "b5355469-0d8d-4935-ad70-bf518c8439e3",
+		"_postman_id": "fa8451f6-7eab-42b2-a979-89dff970c807",
 		"name": "Grupo F",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "34016016"
+		"_exporter_id": "33978147"
 	},
 	"item": [
 		{
@@ -38,7 +38,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"new-user\",\n    \"rol\": \"user\"\n}",
+							"raw": "{\n        \"name\": \"john\",\n        \"lastname\": \"doe\",\n        \"mail\": \"j.doe@mail.com\",\n        \"phone\": \"123456789\",\n        \"rol\": \"Librarian\",\n        \"alias\": \"johndoe\",\n        \"passwd\": \"pass-example\"\n    }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -91,7 +91,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:25565/user/5",
+							"raw": "http://127.0.0.1:25565/user/1",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -102,7 +102,7 @@
 							"port": "25565",
 							"path": [
 								"user",
-								"5"
+								"1"
 							]
 						}
 					},
@@ -115,7 +115,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\":\"update-name-test\",\n    \"rol\":\"update-role-test\"\n}",
+							"raw": "{\n        \"name\": \"Lorem\",\n        \"lastname\": \"Ipsum\",\n        \"mail\": \"l.ipsum@mail.com\",\n        \"phone\": \"123456789\",\n        \"rol\": \"Librarian\",\n        \"alias\": \"lipsum\",\n        \"passwd\": \"pass-example2\"\n    }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -134,6 +134,142 @@
 							"port": "25565",
 							"path": [
 								"user",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Author",
+			"item": [
+				{
+					"name": "Read Authors",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:25565/users",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "25565",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Author",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"name\": \"author john\",\n        \"lastname\": \"author doe\"\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:25565/authors",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "25565",
+							"path": [
+								"authors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read Author",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:25565/author/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "25565",
+							"path": [
+								"author",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Author",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:25565/author/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "25565",
+							"path": [
+								"author",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Author",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"name\": \"Lorem\",\n        \"lastname\": \"Ipsum\"\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:25565/author/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "25565",
+							"path": [
+								"author",
 								"1"
 							]
 						}
@@ -174,7 +310,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"new-book\",\n    \"category\": \"test\"\n}",
+							"raw": "{   \n    \"title\": \"Book-example\",\n    \"author\": \"Author-example\",\n    \"gender\": \"gender-example\",\n    \"publisher\": \"publisher-example\",\n    \"status\": \"available\",\n    \"quantity\": 1\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -227,7 +363,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:25565/book/5",
+							"raw": "http://127.0.0.1:25565/book/1",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -238,7 +374,7 @@
 							"port": "25565",
 							"path": [
 								"book",
-								"5"
+								"1"
 							]
 						}
 					},
@@ -251,7 +387,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\":\"name-update-test\",\n    \"category\":\"category-update-test\"\n}",
+							"raw": "{   \n    \"title\": \"Book-example2\",\n    \"author\": \"Author-example2\",\n    \"gender\": \"gender-example2\",\n    \"publisher\": \"publisher-example2\",\n    \"status\": \"available\",\n    \"quantity\": 12\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -310,7 +446,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"book_rented\":\"new-rent\", \n    \"time\":5\n}",
+							"raw": "{\n    \"init_date\": \"2024/04/25\",\n    \"expiration\": \"2024/05/25\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -363,7 +499,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:25565/rent/5",
+							"raw": "http://127.0.0.1:25565/rent/1",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -374,7 +510,7 @@
 							"port": "25565",
 							"path": [
 								"rent",
-								"5"
+								"1"
 							]
 						}
 					},
@@ -387,7 +523,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"book_rented\":\"update-rent\", \n    \"time\":100\n}",
+							"raw": "{\n    \"init_date\": \"2024/04/23\",\n    \"expiration\": \"2024/05/27\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -473,13 +609,94 @@
 			]
 		},
 		{
-			"name": "Signin",
+			"name": "Valoration",
+			"item": [
+				{
+					"name": "Read Valorations",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:25565/valorations",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "25565",
+							"path": [
+								"valorations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Valoration",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"valoration\": 3,\n    \"comment\": \"Comment-example\",\n    \"date\": \"2024/01/2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:25565/valorations",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "25565",
+							"path": [
+								"valorations"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Notification",
 			"item": [
 				{
 					"name": "New Request",
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"msg\": \"test-msg\",\n   \"date\": \"2023/03/02\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:25565/notifications",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "25565",
+							"path": [
+								"notifications"
+							]
+						}
 					},
 					"response": []
 				}
