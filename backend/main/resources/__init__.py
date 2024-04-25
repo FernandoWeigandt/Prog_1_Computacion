@@ -16,4 +16,6 @@ from .author import Author as AuthorResources
 from .author import Authors as AuthorsResources
 
 from .notifications import Notification as NotificationResources
-from .valorations import Valoration as ValorationResources
+
+from .valoration import Valoration as ValorationResources
+from .valoration import Valorations as ValorationsResources

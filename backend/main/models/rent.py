@@ -2,10 +2,10 @@ from .. import db
 from datetime import datetime
 
 class Rent(db.Model):
+    __tablename__ = "rents"
     id = db.Column(db.Integer, primary_key=True)
-    init_date = db.Column(db.String(20), nullable=False)
-    expiration = db.Column(db.String(20), nullable=False)
-    
+    init_date = db.Column(db.DateTime, nullable=False)
+    expiration = db.Column(db.DateTime, nullable=False)
     
     def __repr__(self):
         return '<Rent> id:%r' % (self.id)
@@ -26,8 +26,8 @@ class Rent(db.Model):
 
     @staticmethod
     def from_json(rent_json):
-        id = rent_json.get('id'),
-        init_date = datetime.strptime(rent_json.get('init_date'), '%Y-%m-%d'),
+        id = rent_json.get('id')
+        init_date = datetime.strptime(rent_json.get('init_date'), '%Y-%m-%d')
         expiration = datetime.strptime(rent_json.get('expiration'), '%Y-%m-%d')
 
 

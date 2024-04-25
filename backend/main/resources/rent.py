@@ -2,6 +2,7 @@ from flask_restful import Resource
 from flask import request, jsonify
 from main.models import RentModel
 from .. import db
+from datetime import datetime
 
 # Test JSON Data
 
@@ -27,7 +28,10 @@ class Rent(Resource):
         rent = db.session.query(RentModel).get_or_404(id)
         data = request.get_json().items()
         for key, value in data:
+            if key != 'id':
+                value = datetime.strptime(value, '%Y-%m-%d')
             setattr(rent, key, value)
+            print(type(value))
         db.session.add(rent)
         db.session.commit()
         return rent.to_json() , 201 

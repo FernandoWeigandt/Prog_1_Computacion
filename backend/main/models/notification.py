@@ -2,6 +2,7 @@ from .. import db
 from datetime import datetime
 
 class Notification(db.Model):
+    __tablename__ = "notifications"
     id = db.Column(db.Integer, primary_key=True)
     date = db.Column(db.String(20), nullable=False)
     msg = db.Column(db.String(250), nullable=False)

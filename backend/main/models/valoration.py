@@ -2,6 +2,7 @@ from .. import db
 from datetime import datetime
 
 class Valoration(db.Model):
+    __tablename__ = "valorations"
     id = db.Column(db.Integer, primary_key = True)
     comment = db.Column(db.String(250), nullable = True)
     valoration = db.Column(db.Integer, nullable = False)
