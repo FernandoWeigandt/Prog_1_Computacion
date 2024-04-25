@@ -4,7 +4,7 @@ from datetime import datetime
 class Notification(db.Model):
     __tablename__ = "notifications"
     id = db.Column(db.Integer, primary_key=True)
-    date = db.Column(db.String(20), nullable=False)
+    date = db.Column(db.DateTime, nullable=False)
     msg = db.Column(db.String(250), nullable=False)
     
     def __repr__(self):
@@ -13,7 +13,7 @@ class Notification(db.Model):
     def to_json(self):
         notification_json = {
             'id': self.id,
-            'date': str(self.date.strftime("%d-%m-%Y")),
+            'date': str(self.date.strftime("%Y-%m-%d")),
             'msg': str(self.msg)
         }
         return notification_json
@@ -27,7 +27,7 @@ class Notification(db.Model):
     @staticmethod
     def from_json(notification_json):
         id = notification_json.get('id')
-        date = datetime.strptime(notification_json.get('date'), "%d-%m-%Y")
+        date = datetime.strptime(notification_json.get('date'), "%Y-%m-%d")
         msg = notification_json.get('msg')
 
         return Notification(id=id,

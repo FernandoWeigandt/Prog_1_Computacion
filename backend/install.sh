@@ -14,3 +14,7 @@ echo '[+] Activando entorno virtual'
 source $activate
 echo '[+] Instalando dependencias'
 pip3 install -r requirements.txt  &>/dev/null 
+
+if [ $? -ne "0" ] ; then
+    echo '[!] Han ocurrido errores, pueden no haberse instalado las dependencias...'
+fi
