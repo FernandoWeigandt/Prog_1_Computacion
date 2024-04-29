@@ -6,21 +6,27 @@ from .. import db
 class Valoration(Resource):
     def get(self,id):   
         valoration = db.session.query(ValorationModel).get_or_404(id)
-        return valoration.to_json()
+        return valoration.to_json_complete()
     
     def put(self, id):
         valoration = db.session.query(ValorationModel).get_or_404(id)
         data = request.get_json().items()
         for key, value in data:
             setattr(valoration, key, value)
-        db.session.add(valoration)
-        db.session.commit()
+        try:
+            db.session.add(valoration)
+            db.session.commit()
+        except:
+            return 'Incorrect data format', 400
         return valoration.to_json() , 201 
         
     def delete(self, id):
         valoration = db.session.query(ValorationModel).get_or_404(id)
-        db.session.delete(valoration)
-        db.session.commit()
+        try:
+            db.session.delete(valoration)
+            db.session.commit()
+        except:
+            return 'Incorrect data format', 400
         return valoration.to_json(), 204
 
 class Valorations(Resource):
@@ -30,6 +36,9 @@ class Valorations(Resource):
     
     def post(self):
         valoration = ValorationModel.from_json(request.get_json())
-        db.session.add(valoration)
-        db.session.commit()
+        try:
+            db.session.add(valoration)
+            db.session.commit()
+        except:
+            return 'Incorrect data format', 400
         return valoration.to_json(), 201

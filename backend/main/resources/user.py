@@ -15,12 +15,15 @@ USERS = {
 class User(Resource):
     def get(self, id):
         user = db.session.query(UserModel).get_or_404(id)
-        return user.to_json()
+        return user.to_json_complete()
     
     def delete(self, id):
         user = db.session.query(UserModel).get_or_404(id)
-        db.session.delete(user)
-        db.session.commit()
+        try:
+            db.session.delete(user)
+            db.session.commit()
+        except:
+            return 'Incorrect data format', 400
         return user.to_json(), 204
     
     def put(self, id):
@@ -28,8 +31,11 @@ class User(Resource):
         data = request.get_json().items()
         for key, value in data:
             setattr(user, key, value)
-        db.session.add(user)
-        db.session.commit()
+        try:
+            db.session.add(user)
+            db.session.commit()
+        except:
+            return 'Incorrect data format', 400
         return user.to_json() , 201 
 
 class Users(Resource):
@@ -39,6 +45,9 @@ class Users(Resource):
     
     def post(self):
         user = UserModel.from_json(request.get_json())
-        db.session.add(user)
-        db.session.commit()
+        try:
+            db.session.add(user)
+            db.session.commit()
+        except:
+            return 'Incorrect data format', 400
         return user.to_json(), 201
