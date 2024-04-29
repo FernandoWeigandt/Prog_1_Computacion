@@ -446,7 +446,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"init_date\": \"2024/04/25\",\n    \"expiration\": \"2024/05/25\"\n}",
+							"raw": "{\n    \"init_date\": \"2024-04-25\",\n    \"expiration\": \"2024-05-25\",\n    \"user_id\": 1\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -523,7 +523,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"init_date\": \"2024/04/23\",\n    \"expiration\": \"2024/05/27\"\n}",
+							"raw": "{\n    \"init_date\": \"2024-04-05\",\n    \"expiration\": \"2024-05-27\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -640,7 +640,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"valoration\": 3,\n    \"comment\": \"Comment-example\",\n    \"date\": \"2024/01/2\"\n}",
+							"raw": "{\n    \"valoration\": 3,\n    \"comment\": \"Comment-example\",\n    \"date\": \"2024-01-02\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -676,7 +676,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n   \"msg\": \"test-msg\",\n   \"date\": \"2023/03/02\"\n}",
+							"raw": "{\n   \"msg\": \"test-msg\",\n   \"date\": \"2023-03-02\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"

@@ -1,13 +1,21 @@
 from .. import db
 
+books_rents = db.Table(
+    'books_rents',
+    db.Column('book_id',db.Integer, db.ForeignKey('books.id'), primary_key=True),
+    db.Column('rent_id',db.Integer, db.ForeignKey('rents.id'), primary_key=True),
+    )
+
 class Book(db.Model):
-    __tablename__ = "books"
+    __tablename__ = 'books'
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
     gender = db.Column(db.String(100), nullable=False)
     publisher = db.Column(db.String(100), nullable=False)
     status = db.Column(db.String(100), nullable=False)
     quantity = db.Column(db.Integer)
+    valorations = db.relationship('Valoration',back_populates='book',cascade='all, delete-orphan')
+    rents = db.relationship('Rent',secondary=books_rents,backref=db.backref('books', lazy='dynamic'))
     
     def __repr__(self):
         return '<Book> title:%r' % (self.title)
@@ -19,7 +27,24 @@ class Book(db.Model):
             'gender': str(self.gender),
             'publisher': str(self.publisher),
             'status': self.status,
-            'quantity': self.quantity
+            'quantity': self.quantity,
+        }
+        return book_json
+
+    def to_json_complete(self):
+        authors = [author.to_json() for author in self.authors]
+        valorations = [valoration.to_json() for valoration in self.valorations]
+        rents = [rent.to_json() for rent in self.rents]
+        book_json = {
+            'id': self.id,
+            'title': str(self.title),
+            'gender': str(self.gender),
+            'publisher': str(self.publisher),
+            'status': self.status,
+            'quantity': self.quantity,
+            'authors': authors,
+            'valorations': valorations,
+            'rents': rents
         }
         return book_json
 
@@ -38,10 +63,14 @@ class Book(db.Model):
         gender = book_json.get('gender')
         publisher = book_json.get('publisher')
         status = book_json.get('status')
+        quantity = book_json.get('quantity')
 
-        return Book(id=id,
-                    title = title,
-                    gender = gender,
-                    publisher = publisher,
-                    status = status
-                    )
+        return Book(
+            id = id,
+            title = title,
+            gender = gender,
+            publisher = publisher,
+            status = status,
+            quantity = quantity
+        )
+

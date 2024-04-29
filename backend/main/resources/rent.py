@@ -1,39 +1,35 @@
 from flask_restful import Resource
 from flask import request, jsonify
-from main.models import RentModel
+from main.models import RentModel, BookModel
 from .. import db
 from datetime import datetime
-
-# Test JSON Data
-
-RENTS = {
-    1:{'book_rented':'book1', 'time':1},
-    2:{'book_rented':'book2', 'time':2},
-    3:{'book_rented':'book3', 'time':0},
-    4:{'book_rented':'book4', 'time':0},
-}
 
 class Rent(Resource):
     def get(self, id):
         rents = db.session.query(RentModel).get_or_404(id)
-        return rents.to_json()
+        return rents.to_json_complete()
     
     def delete(self, id):
         rent = db.session.query(RentModel).get_or_404(id)
-        db.session.delete(rent)
-        db.session.commit()
+        try:
+            db.session.delete(rent)
+            db.session.commit()
+        except:
+            return 'Incorrect data format', 400
         return rent.to_json(), 204
     
     def put(self, id):
         rent = db.session.query(RentModel).get_or_404(id)
-        data = request.get_json().items()
+        data = RentModel.from_json_attr(request.get_json()).items()
         for key, value in data:
             if key != 'id':
                 value = datetime.strptime(value, '%Y-%m-%d')
             setattr(rent, key, value)
-            print(type(value))
-        db.session.add(rent)
-        db.session.commit()
+        try:
+            db.session.add(rent)
+            db.session.commit()
+        except:
+            return 'Incorrect data format', 400
         return rent.to_json() , 201 
     
 class Rents(Resource):
@@ -42,7 +38,11 @@ class Rents(Resource):
         return jsonify([rent.to_json() for rent in rents])
     
     def post(self):
+        books_id = request.get_json().get('books')
         rent = RentModel.from_json(request.get_json())
-        db.session.add(rent)
-        db.session.commit()
+        try:
+            db.session.add(rent)
+            db.session.commit()
+        except:
+            return 'Incorrect data format', 400
         return rent.to_json(), 201
