@@ -10,8 +10,10 @@ class User(db.Model):
     rol = db.Column(db.String(100),nullable = False)
     alias = db.Column(db.String,nullable = False)
     passwd = db.Column(db.String,nullable = False)
+    # Relation 1:1 (1 user : 1 valoration), User is Parent
+    valoration = db.relationship('Valoration', uselist=False, back_populates='user', cascade='all, delete-orphan')
+
     rents = db.relationship('Rent', back_populates='user', cascade='all, delete-orphan')
-    valorations = db.relationship('Valoration', back_populates='user', cascade='all, delete-orphan')
     notifications = db.relationship('Notification', back_populates='user', cascade='all, delete-orphan')
 
     def __repr__(self):

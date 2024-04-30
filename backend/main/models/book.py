@@ -4,7 +4,7 @@ books_rents = db.Table(
     'books_rents',
     db.Column('book_id',db.Integer, db.ForeignKey('books.id'), primary_key=True),
     db.Column('rent_id',db.Integer, db.ForeignKey('rents.id'), primary_key=True),
-    )
+)
 
 class Book(db.Model):
     __tablename__ = 'books'
@@ -14,7 +14,9 @@ class Book(db.Model):
     publisher = db.Column(db.String(100), nullable=False)
     status = db.Column(db.String(100), nullable=False)
     quantity = db.Column(db.Integer)
-    valorations = db.relationship('Valoration',back_populates='book',cascade='all, delete-orphan')
+    # Relation 1:N (1 book : N valorations), Book is parent
+    valorations = db.relationship('Valoration', back_populates='book', cascade='all, delete-orphan')
+
     rents = db.relationship('Rent',secondary=books_rents,backref=db.backref('books', lazy='dynamic'))
     
     def __repr__(self):

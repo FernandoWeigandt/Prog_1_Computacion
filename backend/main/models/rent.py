@@ -7,6 +7,7 @@ class Rent(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     init_date = db.Column(db.DateTime, nullable=False)
     expiration = db.Column(db.DateTime, nullable=False)
+    # Check relation (idk if the table is very well)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     user = db.relationship('User', back_populates='rents', uselist=False, single_parent=True)
 
