@@ -7,6 +7,7 @@ class Notification(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     date = db.Column(db.DateTime, nullable=False)
     msg = db.Column(db.String(250), nullable=False)
+    # Relation 1:N (1 user : N notifications), User is parent
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     user = db.relationship('User', back_populates='notifications', uselist=False, single_parent=True)
     

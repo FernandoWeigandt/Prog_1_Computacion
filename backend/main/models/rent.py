@@ -10,6 +10,8 @@ class Rent(db.Model):
     # Relation 1:1 (1 user : 1 rent), User is Parent
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     user = db.relationship('User', back_populates='rent', uselist=False, single_parent=True)
+    # Relation N:M (N books : M rents), Medium table books_rents
+    # No need to define the relation as it was backref in book
 
     def __repr__(self):
         return '<Rent> id:%r' % (self.id)

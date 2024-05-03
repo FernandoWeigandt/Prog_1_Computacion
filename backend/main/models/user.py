@@ -14,7 +14,7 @@ class User(db.Model):
     valoration = db.relationship('Valoration', uselist=False, back_populates='user', cascade='all, delete-orphan')
     # Relation 1:1 (1 user : 1 rent), User is Parent
     rent = db.relationship('Rent', uselist=False, back_populates='user', cascade='all, delete-orphan')
-
+    # Relation 1:N (1 user : N notifications), User is parent
     notifications = db.relationship('Notification', back_populates='user', cascade='all, delete-orphan')
 
     def __repr__(self):

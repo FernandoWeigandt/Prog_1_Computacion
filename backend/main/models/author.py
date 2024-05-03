@@ -11,6 +11,7 @@ class Author(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
     lastname = db.Column(db.String(100), nullable=False)
+    # Relation N:M (N authors : M books), Medium table books_authors
     books = db.relationship('Book', secondary=books_authors, backref=db.backref('authors', lazy = 'dynamic'))
     
     def __repr__(self):
