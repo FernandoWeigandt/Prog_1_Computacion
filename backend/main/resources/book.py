@@ -31,6 +31,76 @@ class Book(Resource):
     
 class Books(Resource):
     def get(self):
+        # Default start page
+        page = 1
+        # Default pages quantity
+        per_page = 10
+        
+        books = db.session.query(BookModel)
+        if request.args.get('page'):
+            page = int(request.args.get('page'))
+        if request.args.get('per_page'):
+            per_page = int(request.args.get('per_page'))
+
+        # Filters #
+
+        if request.args.get('id'):
+            books=books.filter(BookModel.id.like('%'+request.args.get('id')+'%'))
+
+        if request.args.get('title'):
+            books=books.filter(BookModel.id.like('%'+request.args.get('title')+'%'))
+
+        if request.args.get('gender'):
+            books=books.filter(BookModel.id.like('%'+request.args.get('gender')+'%'))
+
+        if request.args.get('publisher'):
+            books=books.filter(BookModel.id.like('%'+request.args.get('publisher')+'%'))
+
+        if request.args.get('status'):
+            books=books.filter(BookModel.id.like('%'+request.args.get('status')+'%'))
+
+        if request.args.get('quantity'):
+            books=books.filter(BookModel.id.like('%'+request.args.get('quantity')+'%'))
+        
+        if request.args.get('valoration'):
+            books=books.filter(BookModel.id.like('%'+request.args.get('valoration')+'%'))
+
+        # Sort by #
+
+        if request.args.get('sortby_title'):
+            if request.args.get('sortby_title') == "asc":
+                books=books.order_by(asc(BookModel.name))
+            if request.args.get('sortby_title') == "desc":
+                books=books.order_by(desc(BookModel.name))
+
+        if request.args.get('sortby_gender'):
+            if request.args.get('sortby_gender') == "asc":
+                books=books.order_by(asc(BookModel.lastname))
+            if request.args.get('sortby_gender') == "desc":
+                books=books.order_by(desc(BookModel.lastname))
+
+        if request.args.get('sortby_nrValorations'):
+            if request.args.get('sortby_nrValorations') == "asc":
+                books=books.outerjoin(BookModel.valorations).group_by(BookModel.id).order_by(func.count(RentModel.id).asc())
+            if request.args.get('sortby_nrValorations') == "desc":
+                books=books.outerjoin(BookModel.valorations).group_by(BookModel.id).order_by(func.count(RentModel.id).desc())
+
+        if request.args.get('sortby_nrRents'):
+            if request.args.get('sortby_nrRents') == "asc":
+                books=books.outerjoin(BookModel.rents).group_by(BookModel.id).order_by(func.count(RentModel.id).asc())
+            if request.args.get('sortby_nrRents') == "desc":
+                books=books.outerjoin(BookModel.rents).group_by(BookModel.id).order_by(func.count(RentModel.id).desc())
+
+
+        books = books.paginate(page=page, per_page=per_page, error_out=True)
+
+        return jsonify({
+            'books': [user.to_json() for user in books],
+            'total': books.total,
+            'pages': books.pages,
+            'page': page            
+        })
+
         books = db.session.query(BookModel).all()
         return jsonify([book.to_json() for book in books])
     
