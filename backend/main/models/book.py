@@ -16,7 +16,7 @@ class Book(db.Model):
     quantity = db.Column(db.Integer)
     # Relation 1:N (1 book : N valorations), Book is parent
     valorations = db.relationship('Valoration', back_populates='book', cascade='all, delete-orphan')
-
+    # Relation 1:N (1 book : N rents), Book is parent
     rents = db.relationship('Rent',secondary=books_rents,backref=db.backref('books', lazy='dynamic'))
     
     def __repr__(self):
