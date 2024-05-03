@@ -25,4 +25,4 @@ cd backend && ./boot.sh
 
 ### Database diagram
 
-![database](./backend/DB/database.png)
+![database](./backend/DB/database(dark).png)
