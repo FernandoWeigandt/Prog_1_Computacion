@@ -22,3 +22,7 @@ To execute flask, you should create a .env file following the .env-example file.
 ```bash
 cd backend && ./boot.sh
 ```
+
+### Database diagram
+
+![database](./backend/DB/database.png)
