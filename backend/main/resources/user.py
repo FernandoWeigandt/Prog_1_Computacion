@@ -40,8 +40,74 @@ class User(Resource):
 
 class Users(Resource):
     def get(self):
-        users = db.session.query(UserModel).all()
-        return jsonify([user.to_json() for user in users])
+        # Default start page
+        page = 1
+        # Default pages quantity
+        per_page = 10
+        
+        users = db.session.query(UserModel)
+        if request.args.get('page'):
+            page = int(request.args.get('page'))
+        if request.args.get('per_page'):
+            per_page = int(request.args.get('per_page'))
+
+        # Filters #
+
+        if request.args.get('id'):
+            users=users.filter(UserModel.id.like('%'+request.args.get('id')+'%'))
+
+        if request.args.get('name'):
+            users=users.filter(UserModel.id.like('%'+request.args.get('name')+'%'))
+
+        if request.args.get('lastname'):
+            users=users.filter(UserModel.id.like('%'+request.args.get('lastname')+'%'))
+
+        if request.args.get('mail'):
+            users=users.filter(UserModel.id.like('%'+request.args.get('mail')+'%'))
+
+        if request.args.get('phone'):
+            users=users.filter(UserModel.id.like('%'+request.args.get('phone')+'%'))
+
+        if request.args.get('rol'):
+            users=users.filter(UserModel.id.like('%'+request.args.get('rol')+'%'))
+
+        if request.args.get('alias'):
+            users=users.filter(UserModel.id.like('%'+request.args.get('alias')+'%'))
+
+        if request.args.get('rent'):
+            users=users.filter(UserModel.id.like('%'+request.args.get('rent')+'%'))
+        
+        if request.args.get('valoration'):
+            users=users.filter(UserModel.id.like('%'+request.args.get('valoration')+'%'))
+
+        # Sort by #
+
+        if request.args.get('sortby_name'):
+            if request.args.get('sortby_name') == "asc":
+                users=users.order_by(asc(UserModel.name))
+            if request.args.get('sortby_name') == "desc":
+                users=users.order_by(desc(UserModel.name))
+
+        if request.args.get('sortby_lastname'):
+            if request.args.get('sortby_lastname') == "asc":
+                users=users.order_by(asc(UserModel.lastname))
+            if request.args.get('sortby_lastname') == "desc":
+                users=users.order_by(desc(UserModel.lastname))
+
+        if request.args.get('sortby_valoration'):
+            if request.args.get('sortby_valoration') == "asc":
+                users=users.order_by(asc(UserModel.valoration))
+            if request.args.get('sortby_valoration') == "desc":
+                users=users.order_by(desc(UserModel.valoration))
+
+        users = users.paginate(page=page, per_page=per_page, error_out=True)
+
+        return jsonify({
+            'users': [user.to_json() for user in users],
+            'total': users.total,
+            'pages': users.pages,
+            'page': page            
+        })
     
     def post(self):
         user = UserModel.from_json(request.get_json())

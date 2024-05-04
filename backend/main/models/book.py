@@ -2,20 +2,26 @@ from .. import db
 
 books_rents = db.Table(
     'books_rents',
-    db.Column('book_id',db.Integer, db.ForeignKey('books.id'), primary_key=True),
-    db.Column('rent_id',db.Integer, db.ForeignKey('rents.id'), primary_key=True),
-    )
+    db.Column('id', db.Integer, primary_key=True, unique=True, autoincrement=True),
+    db.Column('book_id',db.Integer, db.ForeignKey('books.id')),
+    db.Column('rent_id',db.Integer, db.ForeignKey('rents.id')),
+)
 
 class Book(db.Model):
     __tablename__ = 'books'
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True, unique=True, autoincrement=True)
     title = db.Column(db.String(100), nullable=False)
     gender = db.Column(db.String(100), nullable=False)
     publisher = db.Column(db.String(100), nullable=False)
     status = db.Column(db.String(100), nullable=False)
     quantity = db.Column(db.Integer)
-    valorations = db.relationship('Valoration',back_populates='book',cascade='all, delete-orphan')
-    rents = db.relationship('Rent',secondary=books_rents,backref=db.backref('books', lazy='dynamic'))
+    # Relation 1:N (1 book : N valorations), Book is parent
+    valorations = db.relationship('Valoration', back_populates='book', cascade='all, delete-orphan')
+    # Relation N:M (N books : M rents), Medium table books_rents
+    rents = db.relationship('Rent', secondary=books_rents, backref=db.backref('books', lazy='dynamic'))
+    # Relation N:M (N authors : M books), Medium table books_authors
+    # No need to define the relation as it was backref in authors
+
     
     def __repr__(self):
         return '<Book> title:%r' % (self.title)

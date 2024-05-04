@@ -4,11 +4,14 @@ from datetime import datetime
 
 class Rent(db.Model):
     __tablename__ = 'rents'
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True, unique=True, autoincrement=True)
     init_date = db.Column(db.DateTime, nullable=False)
     expiration = db.Column(db.DateTime, nullable=False)
+    # Relation 1:1 (1 user : 1 rent), User is Parent
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    user = db.relationship('User', back_populates='rents', uselist=False, single_parent=True)
+    user = db.relationship('User', back_populates='rent', uselist=False, single_parent=True)
+    # Relation N:M (N books : M rents), Medium table books_rents
+    # No need to define the relation as it was backref in book
 
     def __repr__(self):
         return '<Rent> id:%r' % (self.id)
