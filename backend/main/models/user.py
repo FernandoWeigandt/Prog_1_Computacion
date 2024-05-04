@@ -2,14 +2,14 @@ from .. import db
 
 class User(db.Model):
     __tablename__ = 'users'
-    id = db.Column(db.Integer, primary_key = True)
+    id = db.Column(db.Integer, primary_key = True, unique=True, autoincrement=True)
     name = db.Column(db.String(100), nullable = False)
-    lastname = db.Column(db.String(100), nullable = False)
+    lastname = db.Column(db.String(100))
     mail = db.Column(db.String(100), nullable = False)
-    phone = db.Column(db.Integer,nullable = False)
-    rol = db.Column(db.String(100),nullable = False)
-    alias = db.Column(db.String,nullable = False)
-    passwd = db.Column(db.String,nullable = False)
+    phone = db.Column(db.Integer)
+    rol = db.Column(db.String(100), nullable = False)
+    alias = db.Column(db.String)
+    passwd = db.Column(db.String, nullable = False)
     # Relation 1:1 (1 user : 1 valoration), User is Parent
     valoration = db.relationship('Valoration', uselist=False, back_populates='user', cascade='all, delete-orphan')
     # Relation 1:1 (1 user : 1 rent), User is Parent
@@ -34,8 +34,8 @@ class User(db.Model):
         return user_json
 
     def to_json_complete(self):
-        rents=[rents.to_json() for rent in self.rents]
-        valorations=[valorations.to_json() for valoration in self.valorations]
+        rent=self.rent
+        valoration=self.valoration
         notifications=[notifications.to_json() for notification in self.notifications]
         user_json = {
             'id': self.id,
@@ -46,8 +46,8 @@ class User(db.Model):
             'rol': str(self.rol),
             'alias': str(self.alias),
             'passwd': str(self.passwd),
-            'rents': rents,
-            'valorations': valorations,
+            'rent': rent,
+            'valoration': valoration,
             'notifications': notifications
         }
         return user_json

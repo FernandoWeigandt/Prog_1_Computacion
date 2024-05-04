@@ -2,13 +2,14 @@ from .. import db
 
 books_authors = db.Table(
     'books_authors',
-    db.Column('book_id',db.Integer,db.ForeignKey('books.id'),primary_key=True),
-    db.Column('author_id',db.Integer,db.ForeignKey('authors.id'),primary_key=True)
+    db.Column('id', db.Integer, primary_key=True, unique=True, autoincrement=True),
+    db.Column('book_id',db.Integer,db.ForeignKey('books.id')),
+    db.Column('author_id',db.Integer,db.ForeignKey('authors.id'))
 )
 
 class Author(db.Model):
     __tablename__ = 'authors'
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True, unique=True, autoincrement=True)
     name = db.Column(db.String(100), nullable=False)
     lastname = db.Column(db.String(100), nullable=False)
     # Relation N:M (N authors : M books), Medium table books_authors

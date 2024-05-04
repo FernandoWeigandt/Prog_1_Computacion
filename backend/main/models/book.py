@@ -2,13 +2,14 @@ from .. import db
 
 books_rents = db.Table(
     'books_rents',
-    db.Column('book_id',db.Integer, db.ForeignKey('books.id'), primary_key=True),
-    db.Column('rent_id',db.Integer, db.ForeignKey('rents.id'), primary_key=True),
+    db.Column('id', db.Integer, primary_key=True, unique=True, autoincrement=True),
+    db.Column('book_id',db.Integer, db.ForeignKey('books.id')),
+    db.Column('rent_id',db.Integer, db.ForeignKey('rents.id')),
 )
 
 class Book(db.Model):
     __tablename__ = 'books'
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True, unique=True, autoincrement=True)
     title = db.Column(db.String(100), nullable=False)
     gender = db.Column(db.String(100), nullable=False)
     publisher = db.Column(db.String(100), nullable=False)

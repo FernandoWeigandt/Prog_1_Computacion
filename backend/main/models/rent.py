@@ -4,7 +4,7 @@ from datetime import datetime
 
 class Rent(db.Model):
     __tablename__ = 'rents'
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True, unique=True, autoincrement=True)
     init_date = db.Column(db.DateTime, nullable=False)
     expiration = db.Column(db.DateTime, nullable=False)
     # Relation 1:1 (1 user : 1 rent), User is Parent

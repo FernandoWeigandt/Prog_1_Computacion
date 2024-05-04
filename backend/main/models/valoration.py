@@ -4,7 +4,7 @@ from datetime import datetime
 
 class Valoration(db.Model):
     __tablename__ = 'valorations'
-    id = db.Column(db.Integer, primary_key = True)
+    id = db.Column(db.Integer, primary_key = True, unique=True, autoincrement=True)
     comment = db.Column(db.String(250), nullable = True)
     valoration = db.Column(db.Integer, nullable = False)
     date = db.Column(db.DateTime, nullable = False)
