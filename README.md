@@ -25,4 +25,5 @@ cd backend && ./boot.sh
 
 ### Database diagram
 
-![database](./backend/DB/database(dark).png)
+![Light Theme](./backend/DB/database(light).png#gh-light-mode-only)
+![Dark Theme](./backend/DB/database(dark).png#gh-dark-mode-only)
