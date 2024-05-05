@@ -1,0 +1,431 @@
+[
+    {
+        "name": "Juan",
+        "lastname": "Garcia",
+        "mail": "juan.garcia@mail.example",
+        "phone": 588895040,
+        "rol": "user",
+        "passwd": "aB03lmk4"
+    },
+    {
+        "name": "Maria",
+        "lastname": "Martinez",
+        "mail": "maria.martinez@mail.example",
+        "phone": 303428991,
+        "rol": "user",
+        "alias": "maria",
+        "passwd": "c6PcuPwE"
+    },
+    {
+        "name": "Carlos",
+        "lastname": "Lopez",
+        "mail": "carlos.lopez@mail.example",
+        "phone": 829264978,
+        "rol": "user",
+        "alias": "carlos",
+        "passwd": "D7fni98F"
+    },
+    {
+        "name": "Laura",
+        "lastname": "Gonzalez",
+        "mail": "laura.gonzalez@mail.example",
+        "phone": 517035853,
+        "rol": "user",
+        "passwd": "GQozcnMt"
+    },
+    {
+        "name": "Jose",
+        "lastname": "Rodriguez",
+        "mail": "jose.rodriguez@mail.example",
+        "phone": 817919936,
+        "rol": "user",
+        "alias": "jose",
+        "passwd": "yL2gXZVt"
+    },
+    {
+        "name": "Ana",
+        "lastname": "Fernandez",
+        "mail": "ana.fernandez@mail.example",
+        "phone": 384225796,
+        "rol": "user",
+        "alias": "ana",
+        "passwd": "J0HC9dgg"
+    },
+    {
+        "name": "David",
+        "lastname": "Perez",
+        "mail": "david.perez@mail.example",
+        "phone": 116536419,
+        "rol": "user",
+        "alias": "david",
+        "passwd": "UiGD4Cyz"
+    },
+    {
+        "name": "Sofia",
+        "lastname": "Gomez",
+        "mail": "sofia.gomez@mail.example",
+        "phone": 734224599,
+        "rol": "user",
+        "alias": "sofia",
+        "passwd": "DoOs1zJe"
+    },
+    {
+        "name": "Pablo",
+        "lastname": "Diaz",
+        "mail": "pablo.diaz@mail.example",
+        "phone": 522137169,
+        "rol": "user",
+        "alias": "pablo",
+        "passwd": "Pve0Fg9L"
+    },
+    {
+        "name": "Elena",
+        "lastname": "Hernandez",
+        "mail": "elena.hernandez@mail.example",
+        "phone": 162195379,
+        "rol": "user",
+        "passwd": "AeazruBt"
+    },
+    {
+        "name": "Alejandro",
+        "lastname": "Sanchez",
+        "mail": "alejandro.sanchez@mail.example",
+        "phone": 960514977,
+        "rol": "user",
+        "alias": "alejandro",
+        "passwd": "MVnhroZn"
+    },
+    {
+        "name": "Lucia",
+        "lastname": "Martin",
+        "mail": "lucia.martin@mail.example",
+        "phone": 685521187,
+        "rol": "user",
+        "alias": "lucia",
+        "passwd": "VHrUeet5"
+    },
+    {
+        "name": "Miguel",
+        "lastname": "Lopez",
+        "mail": "miguel.lopez@mail.example",
+        "phone": 504150502,
+        "rol": "user",
+        "alias": "miguel",
+        "passwd": "NSgWFkUJ"
+    },
+    {
+        "name": "Paula",
+        "lastname": "Garcia",
+        "mail": "paula.garcia@mail.example",
+        "phone": 574520518,
+        "rol": "user",
+        "alias": "paula",
+        "passwd": "cE5izkw4"
+    },
+    {
+        "name": "Javier",
+        "lastname": "Ruiz",
+        "mail": "javier.ruiz@mail.example",
+        "phone": 588388939,
+        "rol": "user",
+        "alias": "javier",
+        "passwd": "2YRb9vo4"
+    },
+    {
+        "name": "Marina",
+        "lastname": "Torres",
+        "mail": "marina.torres@mail.example",
+        "phone": 467349650,
+        "rol": "user",
+        "passwd": "HlQDyM1W"
+    },
+    {
+        "name": "Adrian",
+        "lastname": "Jimenez",
+        "mail": "adrian.jimenez@mail.example",
+        "phone": 658984844,
+        "rol": "admin",
+        "alias": "adrian",
+        "passwd": "jK5x1Cfm"
+    },
+    {
+        "name": "Carmen",
+        "lastname": "Moreno",
+        "mail": "carmen.moreno@mail.example",
+        "phone": 762734773,
+        "rol": "user",
+        "alias": "carmen",
+        "passwd": "MwnBh6Lb"
+    },
+    {
+        "name": "Diego",
+        "lastname": "Alvarez",
+        "mail": "diego.alvarez@mail.example",
+        "phone": 286831997,
+        "rol": "user",
+        "passwd": "kEepTCdI"
+    },
+    {
+        "name": "Isabel",
+        "lastname": "Romero",
+        "mail": "isabel.romero@mail.example",
+        "phone": 132128588,
+        "rol": "user",
+        "alias": "isabel",
+        "passwd": "pQdLffFo"
+    },
+    {
+        "name": "Jorge",
+        "lastname": "Navarro",
+        "mail": "jorge.navarro@mail.example",
+        "phone": 139786489,
+        "rol": "user",
+        "alias": "jorge",
+        "passwd": "tt9YyUHB"
+    },
+    {
+        "name": "Natalia",
+        "lastname": "Ramos",
+        "mail": "natalia.ramos@mail.example",
+        "phone": 731833585,
+        "rol": "user",
+        "alias": "natalia",
+        "passwd": "RyYH85kH"
+    },
+    {
+        "name": "Roberto",
+        "lastname": "Iglesias",
+        "mail": "roberto.iglesias@mail.example",
+        "phone": 792492789,
+        "rol": "user",
+        "alias": "roberto",
+        "passwd": "d8eQxFjg"
+    },
+    {
+        "name": "Eva",
+        "lastname": "Ortega",
+        "mail": "eva.ortega@mail.example",
+        "phone": 498932293,
+        "rol": "user",
+        "alias": "eva",
+        "passwd": "qxqKTzG5"
+    },
+    {
+        "name": "Ruben",
+        "lastname": "Marin",
+        "mail": "ruben.marin@mail.example",
+        "phone": 634831570,
+        "rol": "admin",
+        "alias": "ruben",
+        "passwd": "NvmT7RW4"
+    },
+    {
+        "name": "Sara",
+        "lastname": "Silva",
+        "mail": "sara.silva@mail.example",
+        "phone": 454169384,
+        "rol": "user",
+        "alias": "sara",
+        "passwd": "Cddvb0SQ"
+    },
+    {
+        "name": "Victor",
+        "lastname": "Medina",
+        "mail": "victor.medina@mail.example",
+        "phone": 314349364,
+        "rol": "user",
+        "alias": "victor",
+        "passwd": "Zjd2DVbi"
+    },
+    {
+        "name": "Alba",
+        "lastname": "Garrido",
+        "mail": "alba.garrido@mail.example",
+        "phone": 114202367,
+        "rol": "user",
+        "alias": "alba",
+        "passwd": "KECJ6Nj5"
+    },
+    {
+        "name": "Antonio",
+        "lastname": "Vega",
+        "mail": "antonio.vega@mail.example",
+        "phone": 294849990,
+        "rol": "admin",
+        "alias": "antonio",
+        "passwd": "KrkQXjFm"
+    },
+    {
+        "name": "Beatriz",
+        "lastname": "Fuentes",
+        "mail": "beatriz.fuentes@mail.example",
+        "phone": 578394583,
+        "rol": "user",
+        "passwd": "yEHbl8lR"
+    },
+    {
+        "name": "Fernando",
+        "lastname": "Cruz",
+        "mail": "fernando.cruz@mail.example",
+        "phone": 292946156,
+        "rol": "user",
+        "passwd": "dkzNaRH5"
+    },
+    {
+        "name": "Raquel",
+        "lastname": "Reyes",
+        "mail": "raquel.reyes@mail.example",
+        "phone": 432261950,
+        "rol": "user",
+        "alias": "raquel",
+        "passwd": "eJMBsuGG"
+    },
+    {
+        "name": "Gloria",
+        "lastname": "Blanco",
+        "mail": "gloria.blanco@mail.example",
+        "phone": 324782723,
+        "rol": "user",
+        "alias": "gloria",
+        "passwd": "9V2nyy7d"
+    },
+    {
+        "name": "Ivan",
+        "lastname": "Morales",
+        "mail": "ivan.morales@mail.example",
+        "phone": 567379528,
+        "rol": "user",
+        "alias": "ivan",
+        "passwd": "jb4av7c5"
+    },
+    {
+        "name": "Silvia",
+        "lastname": "Santos",
+        "mail": "silvia.santos@mail.example",
+        "phone": 517357277,
+        "rol": "user",
+        "alias": "silvia",
+        "passwd": "wo6rQwef"
+    },
+    {
+        "name": "Alicia",
+        "lastname": "Castro",
+        "mail": "alicia.castro@mail.example",
+        "phone": 387814224,
+        "rol": "user",
+        "passwd": "DQECQw6L"
+    },
+    {
+        "name": "Daniel",
+        "lastname": "Gimenez",
+        "mail": "daniel.gimenez@mail.example",
+        "phone": 825783849,
+        "rol": "user",
+        "passwd": "86Oq7iKQ"
+    },
+    {
+        "name": "Marta",
+        "lastname": "Ortiz",
+        "mail": "marta.ortiz@mail.example",
+        "phone": 401303190,
+        "rol": "user",
+        "alias": "marta",
+        "passwd": "aU19tHH0"
+    },
+    {
+        "name": "Pedro",
+        "lastname": "Esteban",
+        "mail": "pedro.esteban@mail.example",
+        "phone": 669614397,
+        "rol": "user",
+        "alias": "pedro",
+        "passwd": "qaGXrU2b"
+    },
+    {
+        "name": "Rosa",
+        "lastname": "Vidal",
+        "mail": "rosa.vidal@mail.example",
+        "phone": 825087793,
+        "rol": "user",
+        "alias": "rosa",
+        "passwd": "VHjV9huS"
+    },
+    {
+        "name": "Tomas",
+        "lastname": "Pascual",
+        "mail": "tomas.pascual@mail.example",
+        "phone": 835039240,
+        "rol": "user",
+        "passwd": "9Z2gdLQJ"
+    },
+    {
+        "name": "Angela",
+        "lastname": "Molina",
+        "mail": "angela.molina@mail.example",
+        "phone": 685453202,
+        "rol": "user",
+        "alias": "angela",
+        "passwd": "KuvJgyUm"
+    },
+    {
+        "name": "Cristian",
+        "lastname": "Santiago",
+        "mail": "cristian.santiago@mail.example",
+        "phone": 723464769,
+        "rol": "user",
+        "alias": "cristian",
+        "passwd": "IZmTlgMe"
+    },
+    {
+        "name": "Luisa",
+        "lastname": "Delgado",
+        "mail": "luisa.delgado@mail.example",
+        "phone": 171302703,
+        "rol": "user",
+        "alias": "luisa",
+        "passwd": "XfUqESSa"
+    },
+    {
+        "name": "Mario",
+        "lastname": "Lorenzo",
+        "mail": "mario.lorenzo@mail.example",
+        "phone": 631108858,
+        "rol": "user",
+        "alias": "mario",
+        "passwd": "YskubjUc"
+    },
+    {
+        "name": "Olivia",
+        "lastname": "Rojas",
+        "mail": "olivia.rojas@mail.example",
+        "phone": 774570045,
+        "rol": "user",
+        "passwd": "XkRCslL5"
+    },
+    {
+        "name": "Andres",
+        "lastname": "Herrero",
+        "mail": "andres.herrero@mail.example",
+        "phone": 429677571,
+        "rol": "user",
+        "alias": "andres",
+        "passwd": "zpqAaAmz"
+    },
+    {
+        "name": "Claudia",
+        "lastname": "Cabrera",
+        "mail": "claudia.cabrera@mail.example",
+        "phone": 548986831,
+        "rol": "admin",
+        "passwd": "r0FIoHKZ"
+    },
+    {
+        "name": "Francisco",
+        "lastname": "Campos",
+        "mail": "francisco.campos@mail.example",
+        "phone": 150835497,
+        "rol": "user",
+        "alias": "francisco",
+        "passwd": "whW7CDkl"
+    }
+]

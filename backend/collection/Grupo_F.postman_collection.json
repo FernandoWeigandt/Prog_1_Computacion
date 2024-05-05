@@ -15,7 +15,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:25565/users",
+							"raw": "http://127.0.0.1:25565/users?page=1",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -26,6 +26,12 @@
 							"port": "25565",
 							"path": [
 								"users"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								}
 							]
 						}
 					},
@@ -38,7 +44,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n        \"name\": \"john\",\n        \"lastname\": \"doe\",\n        \"mail\": \"j.doe@mail.com\",\n        \"phone\": \"123456789\",\n        \"rol\": \"Librarian\",\n        \"alias\": \"johndoe\",\n        \"passwd\": \"pass-example\"\n    }",
+							"raw": "{\n    \"name\": \"john\",\n    \"lastname\": \"doe\",\n    \"mail\": \"j.doe@mail.com\",\n    \"phone\": \"123456789\",\n    \"rol\": \"Librarian\",\n    \"alias\": \"johndoe\",\n    \"passwd\": \"pass-example\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -115,7 +121,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n        \"name\": \"Lorem\",\n        \"lastname\": \"Ipsum\",\n        \"mail\": \"l.ipsum@mail.com\",\n        \"phone\": \"123456789\",\n        \"rol\": \"Librarian\",\n        \"alias\": \"lipsum\",\n        \"passwd\": \"pass-example2\"\n    }",
+							"raw": "{\n    \"name\": \"Lorem\",\n    \"lastname\": \"Ipsum\",\n    \"mail\": \"l.ipsum@mail.com\",\n    \"phone\": \"123456789\",\n    \"rol\": \"Librarian\",\n    \"alias\": \"lipsum\",\n    \"passwd\": \"pass-example2\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -151,7 +157,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:25565/users",
+							"raw": "http://127.0.0.1:25565/authors",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -161,7 +167,7 @@
 							],
 							"port": "25565",
 							"path": [
-								"users"
+								"authors"
 							]
 						}
 					},
@@ -174,7 +180,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n        \"name\": \"author john\",\n        \"lastname\": \"author doe\"\n    }",
+							"raw": "{\n    \"name\": \"author john\",\n    \"lastname\": \"author doe\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -251,7 +257,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n        \"name\": \"Lorem\",\n        \"lastname\": \"Ipsum\"\n    }",
+							"raw": "{\n    \"name\": \"Lorem\",\n    \"lastname\": \"Ipsum\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -387,7 +393,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{   \n    \"title\": \"Book-example2\",\n    \"author\": \"Author-example2\",\n    \"gender\": \"gender-example2\",\n    \"publisher\": \"publisher-example2\",\n    \"status\": \"available\",\n    \"quantity\": 12\n}",
+							"raw": "{   \n    \"title\": \"Book-example2\",\n    \"author\": \"Author-example2\",\n    \"gendea\": \"gender-example2\",\n    \"publisher\": \"publisher-example2\",\n    \"status\": \"available\",\n    \"quantity\": 12\n}",
 							"options": {
 								"raw": {
 									"language": "json"

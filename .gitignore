@@ -3,3 +3,4 @@ backend/env*
 *notas*
 *__pycache__*
 *.db
+*test.py
