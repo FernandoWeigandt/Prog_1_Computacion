@@ -1,6 +1,6 @@
 from flask_restful import Resource
 from flask import request, jsonify
-from main.models import BookModel
+from main.models import BookModel, AuthorModel
 from .. import db
 
 class Book(Resource):
@@ -95,17 +95,20 @@ class Books(Resource):
         books = books.paginate(page=page, per_page=per_page, error_out=True)
 
         return jsonify({
-            'books': [user.to_json() for user in books],
+            'books': [book.to_json_complete() for book in books],
             'total': books.total,
             'pages': books.pages,
             'page': page            
         })
-
-        books = db.session.query(BookModel).all()
-        return jsonify([book.to_json() for book in books])
     
     def post(self):
+        authors_id = request.get_json().get('authors')
         book = BookModel.from_json(request.get_json())
+        if authors_id:
+            authors = AuthorModel.query.filter(AuthorModel.id.in_(authors_id)).all()
+            book.authors.extend(authors)
+        else:
+            return 'Incorrect data format', 400
         try:
             db.session.add(book)
             db.session.commit()
