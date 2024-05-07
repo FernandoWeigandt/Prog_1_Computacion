@@ -48,5 +48,7 @@ class Valoration(db.Model):
             id = id,
             valoration = valoration,
             comment = comment,
-            date = date
+            date = date,
+            user_id = user_id,
+            book_id = book_id
         )

@@ -39,6 +39,7 @@ class Valorations(Resource):
         try:
             db.session.add(valoration)
             db.session.commit()
-        except:
-            return 'Incorrect data format', 400
+        except Exception as e:
+            db.session.rollback()
+            return f'Incorrect data format - {str(e)}', 400
         return valoration.to_json(), 201

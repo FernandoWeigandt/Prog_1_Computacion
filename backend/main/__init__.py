@@ -39,8 +39,8 @@ def create_app():
     #Notifications
     api.add_resource(resources.NotificationResources, '/notifications')
     #Valorations
-    api.add_resource(resources.ValorationResources, '/valoration')
     api.add_resource(resources.ValorationsResources, '/valorations')
+    api.add_resource(resources.ValorationResources, '/valoration/<id>')
     #Authors
     api.add_resource(resources.AuthorsResources, '/authors')
     api.add_resource(resources.AuthorResources, '/author/<id>')

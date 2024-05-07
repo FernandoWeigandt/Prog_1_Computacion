@@ -12,6 +12,7 @@ fill_database() {
     USERS_JSON="./DB/test-data/users.json"
     BOOKS_JSON="./DB/test-data/books.json"
     AUTHORS_JSON="./DB/test-data/authors.json"
+    VALORATIONS_JSON="./DB/test-data/valorations.json"
 
     API_PORT=$(grep PORT .env | awk '{ print $NF }' | sed "s/'//g")
 
@@ -25,6 +26,9 @@ fill_database() {
     make_post "$AUTHORS_JSON" "$URL_API/authors"
     # Fill books table
     make_post "$BOOKS_JSON" "$URL_API/books"
+    # Fill valorations table
+    make_post "$VALORATIONS_JSON" "$URL_API/valorations"
+
 }
 
 yes_no_validate() {
@@ -60,9 +64,9 @@ start_app() {
 }
 
 echo "[+] Iniciando..."
-find . -type f -name database.db | grep .
+database=$(find . -type f -name database.db | grep .)
 if [ $? -eq "0" ] ; then
-    echo "[+] Se ha encontrado una base de datos! ¿Desea llenarla con datos de prueba?"
+    echo "[+] Se ha encontrado una base de datos en \"$database\" - ¿Desea llenarla con datos de prueba?"
 else
     echo "[+] No se ha encontrado base de datos ¿Desea crear una y llenarla con datos de prueba?"
 fi
