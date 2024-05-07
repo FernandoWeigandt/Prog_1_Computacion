@@ -21,10 +21,10 @@ fill_database() {
     
     # Fill users table
     make_post "$USERS_JSON" "$URL_API/users"
-    # Fill books table
-    make_post "$BOOKS_JSON" "$URL_API/books"
     # Fill author table
     make_post "$AUTHORS_JSON" "$URL_API/authors"
+    # Fill books table
+    make_post "$BOOKS_JSON" "$URL_API/books"
 }
 
 yes_no_validate() {

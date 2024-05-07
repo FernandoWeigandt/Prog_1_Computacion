@@ -107,8 +107,6 @@ class Books(Resource):
         if authors_id:
             authors = AuthorModel.query.filter(AuthorModel.id.in_(authors_id)).all()
             book.authors.extend(authors)
-        else:
-            return 'Incorrect data format', 400
         try:
             db.session.add(book)
             db.session.commit()
