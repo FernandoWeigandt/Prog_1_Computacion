@@ -51,19 +51,19 @@ class Books(Resource):
             books=books.filter(BookModel.title.like('%'+request.args.get('title')+'%'))
 
         if request.args.get('gender'):
-            books=books.filter(BookModel.id.like('%'+request.args.get('gender')+'%'))
+            books=books.filter(BookModel.gender.like('%'+request.args.get('gender')+'%'))
 
         if request.args.get('publisher'):
-            books=books.filter(BookModel.id.like('%'+request.args.get('publisher')+'%'))
+            books=books.filter(BookModel.publisher.like('%'+request.args.get('publisher')+'%'))
 
         if request.args.get('status'):
-            books=books.filter(BookModel.id.like('%'+request.args.get('status')+'%'))
+            books=books.filter(BookModel.status.like('%'+request.args.get('status')+'%'))
 
         if request.args.get('quantity'):
-            books=books.filter(BookModel.id.like('%'+request.args.get('quantity')+'%'))
+            books=books.filter(BookModel.quantity.like('%'+request.args.get('quantity')+'%'))
         
         if request.args.get('valoration'):
-            books=books.filter(BookModel.id.like('%'+request.args.get('valoration')+'%'))
+            books=books.filter(BookModel.valoration.like('%'+request.args.get('valoration')+'%'))
 
         # Sort by #
 
