@@ -19,3 +19,4 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Known Issues
 
 - Must correct the filtering column in user, book and valoration files
+- Change the to_json_complete when the request is get in book resource
