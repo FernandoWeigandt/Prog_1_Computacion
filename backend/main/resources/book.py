@@ -1,6 +1,6 @@
 from flask_restful import Resource
 from flask import request, jsonify
-from main.models import BookModel
+from main.models import BookModel, AuthorModel
 from .. import db
 
 class Book(Resource):
@@ -48,22 +48,22 @@ class Books(Resource):
             books=books.filter(BookModel.id.like('%'+request.args.get('id')+'%'))
 
         if request.args.get('title'):
-            books=books.filter(BookModel.id.like('%'+request.args.get('title')+'%'))
+            books=books.filter(BookModel.title.like('%'+request.args.get('title')+'%'))
 
         if request.args.get('gender'):
-            books=books.filter(BookModel.id.like('%'+request.args.get('gender')+'%'))
+            books=books.filter(BookModel.gender.like('%'+request.args.get('gender')+'%'))
 
         if request.args.get('publisher'):
-            books=books.filter(BookModel.id.like('%'+request.args.get('publisher')+'%'))
+            books=books.filter(BookModel.publisher.like('%'+request.args.get('publisher')+'%'))
 
         if request.args.get('status'):
-            books=books.filter(BookModel.id.like('%'+request.args.get('status')+'%'))
+            books=books.filter(BookModel.status.like('%'+request.args.get('status')+'%'))
 
         if request.args.get('quantity'):
-            books=books.filter(BookModel.id.like('%'+request.args.get('quantity')+'%'))
+            books=books.filter(BookModel.quantity.like('%'+request.args.get('quantity')+'%'))
         
         if request.args.get('valoration'):
-            books=books.filter(BookModel.id.like('%'+request.args.get('valoration')+'%'))
+            books=books.filter(BookModel.valoration.like('%'+request.args.get('valoration')+'%'))
 
         # Sort by #
 
@@ -95,17 +95,18 @@ class Books(Resource):
         books = books.paginate(page=page, per_page=per_page, error_out=True)
 
         return jsonify({
-            'books': [user.to_json() for user in books],
+            'books': [book.to_json_complete() for book in books],
             'total': books.total,
             'pages': books.pages,
             'page': page            
         })
-
-        books = db.session.query(BookModel).all()
-        return jsonify([book.to_json() for book in books])
     
     def post(self):
+        authors_id = request.get_json().get('authors')
         book = BookModel.from_json(request.get_json())
+        if authors_id:
+            authors = AuthorModel.query.filter(AuthorModel.id.in_(authors_id)).all()
+            book.authors.extend(authors)
         try:
             db.session.add(book)
             db.session.commit()

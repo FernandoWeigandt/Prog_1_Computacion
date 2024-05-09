@@ -57,28 +57,28 @@ class Users(Resource):
             users=users.filter(UserModel.id.like('%'+request.args.get('id')+'%'))
 
         if request.args.get('name'):
-            users=users.filter(UserModel.id.like('%'+request.args.get('name')+'%'))
+            users=users.filter(UserModel.name.like('%'+request.args.get('name')+'%'))
 
         if request.args.get('lastname'):
-            users=users.filter(UserModel.id.like('%'+request.args.get('lastname')+'%'))
+            users=users.filter(UserModel.lastname.like('%'+request.args.get('lastname')+'%'))
 
         if request.args.get('mail'):
-            users=users.filter(UserModel.id.like('%'+request.args.get('mail')+'%'))
+            users=users.filter(UserModel.mail.like('%'+request.args.get('mail')+'%'))
 
         if request.args.get('phone'):
-            users=users.filter(UserModel.id.like('%'+request.args.get('phone')+'%'))
+            users=users.filter(UserModel.phone.like('%'+request.args.get('phone')+'%'))
 
         if request.args.get('rol'):
-            users=users.filter(UserModel.id.like('%'+request.args.get('rol')+'%'))
+            users=users.filter(UserModel.rol.like('%'+request.args.get('rol')+'%'))
 
         if request.args.get('alias'):
-            users=users.filter(UserModel.id.like('%'+request.args.get('alias')+'%'))
+            users=users.filter(UserModel.alias.like('%'+request.args.get('alias')+'%'))
 
         if request.args.get('rent'):
-            users=users.filter(UserModel.id.like('%'+request.args.get('rent')+'%'))
+            users=users.filter(UserModel.rent.like('%'+request.args.get('rent')+'%'))
         
         if request.args.get('valoration'):
-            users=users.filter(UserModel.id.like('%'+request.args.get('valoration')+'%'))
+            users=users.filter(UserModel.valoration.like('%'+request.args.get('valoration')+'%'))
 
         # Sort by #
 
