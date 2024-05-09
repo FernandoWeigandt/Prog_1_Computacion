@@ -1,6 +1,6 @@
 from flask_restful import Resource
 from flask import request, jsonify
-from main.models import RentModel, BookModel
+from main.models import RentModel, BookModel 
 from .. import db
 from datetime import datetime
 

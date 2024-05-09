@@ -57,10 +57,10 @@ class Users(Resource):
             users=users.filter(UserModel.id.like('%'+request.args.get('id')+'%'))
 
         if request.args.get('name'):
-            users=users.filter(UserModel.id.like('%'+request.args.get('name')+'%'))
+            users=users.filter(UserModel.name.like('%'+request.args.get('name')+'%'))
 
         if request.args.get('lastname'):
-            users=users.filter(UserModel.id.like('%'+request.args.get('lastname')+'%'))
+            users=users.filter(UserModel.lastname.like('%'+request.args.get('lastname')+'%'))
 
         if request.args.get('mail'):
             users=users.filter(UserModel.id.like('%'+request.args.get('mail')+'%'))

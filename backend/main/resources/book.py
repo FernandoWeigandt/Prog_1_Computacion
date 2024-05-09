@@ -48,7 +48,7 @@ class Books(Resource):
             books=books.filter(BookModel.id.like('%'+request.args.get('id')+'%'))
 
         if request.args.get('title'):
-            books=books.filter(BookModel.id.like('%'+request.args.get('title')+'%'))
+            books=books.filter(BookModel.title.like('%'+request.args.get('title')+'%'))
 
         if request.args.get('gender'):
             books=books.filter(BookModel.id.like('%'+request.args.get('gender')+'%'))

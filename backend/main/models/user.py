@@ -34,8 +34,8 @@ class User(db.Model):
         return user_json
 
     def to_json_complete(self):
-        rent=self.rent
-        valoration=self.valoration
+        rent=self.rent.to_json()
+        valoration=self.valoration.to_json()
         notifications=[notifications.to_json() for notification in self.notifications]
         user_json = {
             'id': self.id,
