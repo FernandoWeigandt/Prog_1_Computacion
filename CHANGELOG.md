@@ -8,6 +8,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [0.0.2] - 2024-05-09
 
+### Added
+
+- Necesary requirements for password encryption
+- env variables
+
 ### Changed
 
 - Add a to_json_no_book in book model, to return just the necesary information when make a get request.
@@ -24,6 +29,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - Refator the book-rent-user relationship in the database. It doesn't make sense that the book has a field quantity and is very complicated to sync the rents with the field and the users.
 - When make get filtering by valoration, in book resource, it doesn't sort it, just return it normally.
+- Correct all answers (return) in case of failure. Must return a json.
 
 ## [0.0.1] - 2024-05-09
 

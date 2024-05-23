@@ -2,6 +2,8 @@ from flask_restful import Resource
 from flask import request, jsonify
 from main.models import UserModel
 from .. import db
+from flask_jwt_extended import jwt_required, get_jwt_identity
+from main.auth.decorators import role_required
 
 # Test JSON Data
 
@@ -13,19 +15,28 @@ USERS = {
 }
 
 class User(Resource):
+    @jwt_required(optional=True)
     def get(self, id):
         user = db.session.query(UserModel).get_or_404(id)
         return user.to_json_complete()
+
+        current_identity = get_jwt_identity()
+        if current_identity:
+            return user.to_json_complete()
+        else:
+            return user.to_json_short()
     
+    @role_required(roles=['admin', 'user'])
     def delete(self, id):
         user = db.session.query(UserModel).get_or_404(id)
         try:
             db.session.delete(user)
             db.session.commit()
         except:
-            return 'Incorrect data format', 400
+            return {'message':'Incorrect data format'}, 400
         return user.to_json(), 204
     
+    @jwt_required()
     def put(self, id):
         user = db.session.query(UserModel).get_or_404(id)
         data = request.get_json().items()
@@ -35,10 +46,11 @@ class User(Resource):
             db.session.add(user)
             db.session.commit()
         except:
-            return 'Incorrect data format', 400
+            return {'message':'Incorrect data format'}, 400
         return user.to_json() , 201 
 
 class Users(Resource):
+    @role_required(roles=['admin'])
     def get(self):
         # Default start page
         page = 1

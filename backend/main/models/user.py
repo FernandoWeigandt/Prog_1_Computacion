@@ -1,4 +1,5 @@
 from .. import db
+from werkzeug.security import generate_password_hash, check_password_hash
 
 class User(db.Model):
     __tablename__ = 'users'
@@ -19,6 +20,17 @@ class User(db.Model):
 
     def __repr__(self):
         return '<User> id:%r, name:%r, lastname:%r' % (self.id, self.name, self.lastname)
+
+    @property
+    def plain_passwd(self):
+        raise AttributeError('Password can\'t be read')
+    
+    @plain_passwd.setter
+    def plain_passwd(self, passwd):
+        self.passwd = generate_password_hash(passwd)
+
+    def validate_passwd(self, passwd):
+        return check_password_hash(self.passwd, passwd)
 
     def to_json(self):
         user_json = {
@@ -79,5 +91,5 @@ class User(db.Model):
             phone = phone,
             rol = rol,
             alias = alias,
-            passwd = passwd  
+            plain_passwd = passwd
         )
