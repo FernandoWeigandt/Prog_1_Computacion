@@ -5,7 +5,7 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key = True, unique=True, autoincrement=True)
     name = db.Column(db.String(100), nullable = False)
     lastname = db.Column(db.String(100))
-    mail = db.Column(db.String(100), nullable = False)
+    mail = db.Column(db.String(100), nullable = False, unique=True)
     phone = db.Column(db.String(16))
     rol = db.Column(db.String(100), nullable = False)
     alias = db.Column(db.String)
@@ -57,8 +57,6 @@ class User(db.Model):
             'id': self.id,
             'name': str(self.name),
             'lastname': str(self.lastname),
-            'alias': str(self.alias),
-            'passwd': str(self.passwd),
         }
         return user_json
 

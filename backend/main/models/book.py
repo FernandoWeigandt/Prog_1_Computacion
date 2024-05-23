@@ -39,7 +39,7 @@ class Book(db.Model):
 
     def to_json_complete(self):
         authors = [author.to_json() for author in self.authors]
-        valorations = [valoration.to_json() for valoration in self.valorations]
+        valorations = [valoration.to_json_no_book() for valoration in self.valorations]
         rents = [rent.to_json() for rent in self.rents]
         book_json = {
             'id': self.id,

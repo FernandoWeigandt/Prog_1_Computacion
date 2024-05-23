@@ -31,6 +31,16 @@ class Valoration(db.Model):
         }
         return valoration_json
 
+    def to_json_no_book(self):
+        valoration_json = {
+            'id': self.id,
+            'comment': str(self.comment),
+            'valoration': self.valoration,
+            'date': str(self.date.strftime('%Y-%m-%d')),
+            'user': self.user.to_json_short()
+        }
+        return valoration_json
+
     def to_json_short(self):
         valoration_json = {'id': self.id}
         return valoration_json

@@ -1,6 +1,7 @@
 from flask_restful import Resource
 from flask import request, jsonify
 from main.models import BookModel, AuthorModel
+from sqlalchemy import func, desc, asc
 from .. import db
 
 class Book(Resource):
@@ -57,33 +58,17 @@ class Books(Resource):
             books=books.filter(BookModel.publisher.like('%'+request.args.get('publisher')+'%'))
 
         if request.args.get('status'):
-            books=books.filter(BookModel.status.like('%'+request.args.get('status')+'%'))
-
-        if request.args.get('quantity'):
-            books=books.filter(BookModel.quantity.like('%'+request.args.get('quantity')+'%'))
-        
-        if request.args.get('valoration'):
-            books=books.filter(BookModel.valoration.like('%'+request.args.get('valoration')+'%'))
+            books=books.filter(BookModel.status == request.args.get('status'))
 
         # Sort by #
 
-        if request.args.get('sortby_title'):
-            if request.args.get('sortby_title') == "asc":
-                books=books.order_by(asc(BookModel.name))
-            if request.args.get('sortby_title') == "desc":
-                books=books.order_by(desc(BookModel.name))
-
-        if request.args.get('sortby_gender'):
-            if request.args.get('sortby_gender') == "asc":
-                books=books.order_by(asc(BookModel.lastname))
-            if request.args.get('sortby_gender') == "desc":
-                books=books.order_by(desc(BookModel.lastname))
-
-        if request.args.get('sortby_nrValorations'):
-            if request.args.get('sortby_nrValorations') == "asc":
-                books=books.outerjoin(BookModel.valorations).group_by(BookModel.id).order_by(func.count(RentModel.id).asc())
-            if request.args.get('sortby_nrValorations') == "desc":
-                books=books.outerjoin(BookModel.valorations).group_by(BookModel.id).order_by(func.count(RentModel.id).desc())
+        if request.args.get('valorations'):
+            if request.args.get('valorations') == "asc":
+                books=books.outerjoin(BookModel.valorations).group_by(BookModel.id).order_by(func.count(ValorationModel.valoration).asc())
+            elif request.args.get('valorations') == "desc":
+                books=books.outerjoin(BookModel.valorations).group_by(BookModel.id).order_by(func.count(ValorationModel.valoration).desc())
+            else:
+                return {"message": "Invalid sort order"}, 400
 
         if request.args.get('sortby_nrRents'):
             if request.args.get('sortby_nrRents') == "asc":
