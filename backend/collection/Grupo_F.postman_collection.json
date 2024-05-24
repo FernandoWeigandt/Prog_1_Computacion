@@ -12,10 +12,20 @@
 				{
 					"name": "Read Users",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcxNjUxNzg2OSwianRpIjoiNTdjMDIzY2QtZjM2NC00OTM0LTkzOGQtZmE0MjQ1ODM3YjBlIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNzE2NTE3ODY5LCJjc3JmIjoiYTlmNDI1NmMtMmRmNi00YWNhLTkxNTMtN2YzNzkwZTI2ZTQ1IiwiZXhwIjoxNzE2NTIxNDY5LCJyb2wiOiJhZG1pbiIsImlkIjoxLCJtYWlsIjoiai5kb2UwMUBtYWlsLmNvbSJ9.2yecruIYza4BMGn2QC0MF7xPyunQ0LFsSncNhed6pL0",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:25565/users?page=1",
+							"raw": "http://127.0.0.1:25565/users",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -30,7 +40,18 @@
 							"query": [
 								{
 									"key": "page",
-									"value": "1"
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "id",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "John",
+									"disabled": true
 								}
 							]
 						}
@@ -71,10 +92,20 @@
 				{
 					"name": "Read User",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcxNjUxNzg2OSwianRpIjoiNTdjMDIzY2QtZjM2NC00OTM0LTkzOGQtZmE0MjQ1ODM3YjBlIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNzE2NTE3ODY5LCJjc3JmIjoiYTlmNDI1NmMtMmRmNi00YWNhLTkxNTMtN2YzNzkwZTI2ZTQ1IiwiZXhwIjoxNzE2NTIxNDY5LCJyb2wiOiJhZG1pbiIsImlkIjoxLCJtYWlsIjoiai5kb2UwMUBtYWlsLmNvbSJ9.2yecruIYza4BMGn2QC0MF7xPyunQ0LFsSncNhed6pL0",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:25565/user/1",
+							"raw": "http://127.0.0.1:25565/user/2",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -85,7 +116,7 @@
 							"port": "25565",
 							"path": [
 								"user",
-								"1"
+								"2"
 							]
 						}
 					},
@@ -94,6 +125,16 @@
 				{
 					"name": "Delete User",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcxNjUxNzg2OSwianRpIjoiNTdjMDIzY2QtZjM2NC00OTM0LTkzOGQtZmE0MjQ1ODM3YjBlIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNzE2NTE3ODY5LCJjc3JmIjoiYTlmNDI1NmMtMmRmNi00YWNhLTkxNTMtN2YzNzkwZTI2ZTQ1IiwiZXhwIjoxNzE2NTIxNDY5LCJyb2wiOiJhZG1pbiIsImlkIjoxLCJtYWlsIjoiai5kb2UwMUBtYWlsLmNvbSJ9.2yecruIYza4BMGn2QC0MF7xPyunQ0LFsSncNhed6pL0",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [],
 						"url": {
@@ -117,11 +158,21 @@
 				{
 					"name": "Update User",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcxNjUxNzg2OSwianRpIjoiNTdjMDIzY2QtZjM2NC00OTM0LTkzOGQtZmE0MjQ1ODM3YjBlIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNzE2NTE3ODY5LCJjc3JmIjoiYTlmNDI1NmMtMmRmNi00YWNhLTkxNTMtN2YzNzkwZTI2ZTQ1IiwiZXhwIjoxNzE2NTIxNDY5LCJyb2wiOiJhZG1pbiIsImlkIjoxLCJtYWlsIjoiai5kb2UwMUBtYWlsLmNvbSJ9.2yecruIYza4BMGn2QC0MF7xPyunQ0LFsSncNhed6pL0",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"Lorem\",\n    \"lastname\": \"Ipsum\",\n    \"mail\": \"l.ipsum@mail.com\",\n    \"phone\": \"123456789\",\n    \"rol\": \"Librarian\",\n    \"alias\": \"lipsum\",\n    \"passwd\": \"pass-example2\"\n}",
+							"raw": "{\n    \"name\": \"Lorem\",\n    \"lastname\": \"Ipsum\",\n    \"mail\": \"l.ipsum@mail.com\",\n    \"phone\": \"123456789\",\n    \"rol\": \"user\",\n    \"alias\": \"lipsum\",\n    \"passwd\": \"pass-example2\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -141,6 +192,75 @@
 							"path": [
 								"user",
 								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"john\",\n    \"lastname\": \"doe\",\n    \"mail\": \"j.doe01@mail.com\",\n    \"phone\": \"123456789\",\n    \"rol\": \"admin\",\n    \"alias\": \"johndoe\",\n    \"passwd\": \"pass-example\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:25565/auth/register",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "25565",
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"mail\": \"j.doe01@mail.com\",\n    \"passwd\": \"pass-example\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:25565/auth/login",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "25565",
+							"path": [
+								"auth",
+								"login"
 							]
 						}
 					},
@@ -304,6 +424,38 @@
 							"port": "25565",
 							"path": [
 								"books"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "title",
+									"value": "The Book of Secrets",
+									"disabled": true
+								},
+								{
+									"key": "gender",
+									"value": "Mystery",
+									"disabled": true
+								},
+								{
+									"key": "publisher",
+									"value": "Westholme Publishing",
+									"disabled": true
+								},
+								{
+									"key": "status",
+									"value": "available",
+									"disabled": true
+								},
+								{
+									"key": "valorations",
+									"value": "asc",
+									"disabled": true
+								}
 							]
 						}
 					},
@@ -316,7 +468,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{   \n    \"title\": \"Book-example\",\n    \"author\": \"Author-example\",\n    \"gender\": \"gender-example\",\n    \"publisher\": \"publisher-example\",\n    \"status\": \"available\",\n    \"quantity\": 1\n}",
+							"raw": "{   \n    \"title\": \"Book-example\",\n    \"author\": \"Author-example\",\n    \"gender\": \"gender-example\",\n    \"publisher\": \"publisher-example\",\n    \"status\": \"available\",\n    \"quantity\": 1,\n    \"authors\":[1,2]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -346,7 +498,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:25565/book/1",
+							"raw": "http://127.0.0.1:25565/book/2?valorations=asc",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -357,7 +509,13 @@
 							"port": "25565",
 							"path": [
 								"book",
-								"1"
+								"2"
+							],
+							"query": [
+								{
+									"key": "valorations",
+									"value": "asc"
+								}
 							]
 						}
 					},
@@ -452,7 +610,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"init_date\": \"2024-04-25\",\n    \"expiration\": \"2024-05-25\",\n    \"user_id\": 1\n}",
+							"raw": "{\n    \"init_date\": \"2024-04-25\",\n    \"expiration\": \"2024-05-25\",\n    \"user_id\": 3\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -646,7 +804,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"valoration\": 3,\n    \"comment\": \"Comment-example\",\n    \"date\": \"2024-01-02\"\n}",
+							"raw": "{\n    \"comment\": \"Me encantó este libro, muy recomendado.\",\n    \"valoration\": 5,\n    \"date\": \"2024-05-07\",\n    \"user_id\": 1,\n    \"book_id\": 1\n}",
 							"options": {
 								"raw": {
 									"language": "json"
