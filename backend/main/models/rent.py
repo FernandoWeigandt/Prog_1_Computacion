@@ -21,8 +21,7 @@ class Rent(db.Model):
         rent_json = {
             'id': self.id,
             'init_date': str(self.init_date.strftime('%Y-%m-%d')),
-            'expiration': str(self.expiration.strftime('%Y-%m-%d')),
-            'user': self.user.to_json()
+            'expiration': str(self.expiration.strftime('%Y-%m-%d'))
         }
         return rent_json
 

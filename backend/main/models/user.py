@@ -8,7 +8,7 @@ class User(db.Model):
     lastname = db.Column(db.String(100))
     mail = db.Column(db.String(100), nullable = False, unique=True)
     phone = db.Column(db.String(16))
-    rol = db.Column(db.String(100), nullable = False)
+    rol = db.Column(db.String(100), nullable = False, server_default='pending')
     alias = db.Column(db.String)
     passwd = db.Column(db.String, nullable = False)
     # Relation 1:1 (1 user : 1 valoration), User is Parent
@@ -40,15 +40,23 @@ class User(db.Model):
             'mail': str(self.mail),
             'phone': self.phone,
             'rol': str(self.rol),
-            'alias': str(self.alias),
-            'passwd': str(self.passwd)
+            'alias': str(self.alias)
         }
         return user_json
 
     def to_json_complete(self):
-        rent=self.rent.to_json()
-        valoration=self.valoration.to_json()
-        notifications=[notifications.to_json() for notification in self.notifications]
+        try:
+            rent=self.rent.to_json()
+        except:
+            rent=''
+        try:
+            valoration=self.valoration.to_json_no_user()
+        except:
+            valoration=''
+        try:
+            notifications=[notifications.to_json() for notification in self.notifications]
+        except:
+            notifications=''
         user_json = {
             'id': self.id,
             'name': str(self.name),

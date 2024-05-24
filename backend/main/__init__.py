@@ -37,9 +37,6 @@ def create_app():
     api.add_resource(resources.RentResources, '/rent/<id>')
     #Config
     api.add_resource(resources.ConfigResources, '/config')
-    #Signin/Login
-    api.add_resource(resources.SigninResources, '/signin')
-    api.add_resource(resources.LoginResources, '/login')
     #Notifications
     api.add_resource(resources.NotificationResources, '/notifications')
     #Valorations

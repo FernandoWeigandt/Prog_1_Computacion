@@ -5,15 +5,6 @@ from .. import db
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from main.auth.decorators import role_required
 
-# Test JSON Data
-
-USERS = {
-    1:{'name':'user1', 'rol':'user'},
-    2:{'name':'user2', 'rol':'user'},
-    3:{'name':'user3', 'rol':'user'},
-    4:{'name':'admin', 'rol':'admin'},
-}
-
 class User(Resource):
     @jwt_required(optional=True)
     def get(self, id):
@@ -33,7 +24,7 @@ class User(Resource):
             db.session.delete(user)
             db.session.commit()
         except:
-            return {'message':'Incorrect data format'}, 400
+            return {'error':'Incorrect data format'}, 400
         return user.to_json(), 204
     
     @jwt_required()
@@ -46,7 +37,7 @@ class User(Resource):
             db.session.add(user)
             db.session.commit()
         except:
-            return {'message':'Incorrect data format'}, 400
+            return {'error':'Incorrect data format'}, 400
         return user.to_json() , 201 
 
 class Users(Resource):
@@ -64,9 +55,6 @@ class Users(Resource):
             per_page = int(request.args.get('per_page'))
 
         # Filters #
-
-        if request.args.get('id'):
-            users=users.filter(UserModel.id.like('%'+request.args.get('id')+'%'))
 
         if request.args.get('name'):
             users=users.filter(UserModel.name.like('%'+request.args.get('name')+'%'))
@@ -89,9 +77,6 @@ class Users(Resource):
         if request.args.get('rent'):
             users=users.filter(UserModel.rent.like('%'+request.args.get('rent')+'%'))
         
-        if request.args.get('valoration'):
-            users=users.filter(UserModel.valoration.like('%'+request.args.get('valoration')+'%'))
-
         # Sort by #
 
         if request.args.get('sortby_name'):
@@ -121,11 +106,12 @@ class Users(Resource):
             'page': page            
         })
     
-    def post(self):
-        user = UserModel.from_json(request.get_json())
-        try:
-            db.session.add(user)
-            db.session.commit()
-        except:
-            return 'Incorrect data format', 400
-        return user.to_json(), 201
+    # This shouldn't be uncommented
+    # def post(self):
+    #     user = UserModel.from_json(request.get_json())
+    #     try:
+    #         db.session.add(user)
+    #         db.session.commit()
+    #     except:
+    #         return {'error':'Incorrect data format'}, 400
+    #     return user.to_json(), 201
