@@ -7,9 +7,6 @@ from .book import Books as BooksResources
 from .rent import Rent as RentResources
 from .rent import Rents as RentsResources
 
-from .signin import Signin as SigninResources
-from .login import Login as LoginResources
-
 from .configuration import Configuration as ConfigResources
 
 from .author import Author as AuthorResources

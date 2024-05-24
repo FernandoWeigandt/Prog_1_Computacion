@@ -21,7 +21,7 @@ fill_database() {
     sleep 8
     
     # Fill users table
-    make_post "$USERS_JSON" "$URL_API/users"
+    make_post "$USERS_JSON" "$URL_API/auth/register"
     # Fill author table
     make_post "$AUTHORS_JSON" "$URL_API/authors"
     # Fill books table

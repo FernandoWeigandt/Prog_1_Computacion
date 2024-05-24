@@ -1,13 +1,14 @@
 from .. import db
+from werkzeug.security import generate_password_hash, check_password_hash
 
 class User(db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key = True, unique=True, autoincrement=True)
     name = db.Column(db.String(100), nullable = False)
     lastname = db.Column(db.String(100))
-    mail = db.Column(db.String(100), nullable = False)
+    mail = db.Column(db.String(100), nullable = False, unique=True)
     phone = db.Column(db.String(16))
-    rol = db.Column(db.String(100), nullable = False)
+    rol = db.Column(db.String(100), nullable = False, server_default='pending')
     alias = db.Column(db.String)
     passwd = db.Column(db.String, nullable = False)
     # Relation 1:1 (1 user : 1 valoration), User is Parent
@@ -20,6 +21,17 @@ class User(db.Model):
     def __repr__(self):
         return '<User> id:%r, name:%r, lastname:%r' % (self.id, self.name, self.lastname)
 
+    @property
+    def plain_passwd(self):
+        raise AttributeError('Password can\'t be read')
+    
+    @plain_passwd.setter
+    def plain_passwd(self, passwd):
+        self.passwd = generate_password_hash(passwd)
+
+    def validate_passwd(self, passwd):
+        return check_password_hash(self.passwd, passwd)
+
     def to_json(self):
         user_json = {
             'id': self.id,
@@ -28,15 +40,23 @@ class User(db.Model):
             'mail': str(self.mail),
             'phone': self.phone,
             'rol': str(self.rol),
-            'alias': str(self.alias),
-            'passwd': str(self.passwd)
+            'alias': str(self.alias)
         }
         return user_json
 
     def to_json_complete(self):
-        rent=self.rent.to_json()
-        valoration=self.valoration.to_json()
-        notifications=[notifications.to_json() for notification in self.notifications]
+        try:
+            rent=self.rent.to_json()
+        except:
+            rent=''
+        try:
+            valoration=self.valoration.to_json_no_user()
+        except:
+            valoration=''
+        try:
+            notifications=[notifications.to_json() for notification in self.notifications]
+        except:
+            notifications=''
         user_json = {
             'id': self.id,
             'name': str(self.name),
@@ -57,8 +77,6 @@ class User(db.Model):
             'id': self.id,
             'name': str(self.name),
             'lastname': str(self.lastname),
-            'alias': str(self.alias),
-            'passwd': str(self.passwd),
         }
         return user_json
 
@@ -81,5 +99,5 @@ class User(db.Model):
             phone = phone,
             rol = rol,
             alias = alias,
-            passwd = passwd  
+            plain_passwd = passwd
         )

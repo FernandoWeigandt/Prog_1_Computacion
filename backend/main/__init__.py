@@ -1,15 +1,16 @@
 from flask import Flask
 from dotenv import load_dotenv
 from flask_restful import Api
-import os
 from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
+from flask_jwt_extended import JWTManager
+import os
 
 api = Api()
 db = SQLAlchemy()
-
-import main.resources as resources 
-
 api = Api()
+migrate = Migrate()
+jwt = JWTManager()
 
 def create_app():
     app=Flask(__name__)
@@ -21,6 +22,9 @@ def create_app():
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////'+os.getenv('DATABASE_PATH')+os.getenv('DATABASE_NAME')
     db.init_app(app)
+    migrate.init_app(app,db)
+
+    import main.resources as resources
 
     #User
     api.add_resource(resources.UsersResources, '/users')
@@ -33,9 +37,6 @@ def create_app():
     api.add_resource(resources.RentResources, '/rent/<id>')
     #Config
     api.add_resource(resources.ConfigResources, '/config')
-    #Signin/Login
-    api.add_resource(resources.SigninResources, '/signin')
-    api.add_resource(resources.LoginResources, '/login')
     #Notifications
     api.add_resource(resources.NotificationResources, '/notifications')
     #Valorations
@@ -46,4 +47,14 @@ def create_app():
     api.add_resource(resources.AuthorResources, '/author/<id>')
 
     api.init_app(app)
+
+    # Load secret key
+
+    app.config['JWT_SECRET_KEY'] = os.getenv('JWT_SECRET_KEY')
+    app.config['JWT_ACCESS_TOKEN_EXPIRES'] = int(os.getenv('JWT_ACCESS_TOKEN_EXPIRES'))
+    jwt.init_app(app)
+
+    from main.auth import routes
+    app.register_blueprint(routes.auth)
+    
     return app
