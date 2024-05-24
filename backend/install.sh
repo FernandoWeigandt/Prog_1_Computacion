@@ -17,4 +17,5 @@ pip3 install -r requirements.txt  &>/dev/null
 
 if [ $? -ne "0" ] ; then
     echo '[!] Han ocurrido errores, pueden no haberse instalado las dependencias...'
+    exit 1
 fi
