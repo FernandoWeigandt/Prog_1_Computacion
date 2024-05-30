@@ -17,7 +17,8 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcxNzA3NTczMSwianRpIjoiYTU3MjZhOWYtNmRhNi00M2Y4LTljY2ItMzU2NGIxOTRkZjNkIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6NTAsIm5iZiI6MTcxNzA3NTczMSwiY3NyZiI6IjEyZDA5MDJiLTVjNWYtNGVmMy1iZTYzLTYxMWZkMjUyYzgwYSIsInJvbCI6ImFkbWluIiwiaWQiOjUwLCJtYWlsIjoiai5kb2UwMUBtYWlsLmNvbSJ9.x-AfOneS-OGsubVJVGX0xkxKfnF84QZF_aQp8DcCX7k",
+
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcxNjUxNzg2OSwianRpIjoiNTdjMDIzY2QtZjM2NC00OTM0LTkzOGQtZmE0MjQ1ODM3YjBlIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNzE2NTE3ODY5LCJjc3JmIjoiYTlmNDI1NmMtMmRmNi00YWNhLTkxNTMtN2YzNzkwZTI2ZTQ1IiwiZXhwIjoxNzE2NTIxNDY5LCJyb2wiOiJhZG1pbiIsImlkIjoxLCJtYWlsIjoiai5kb2UwMUBtYWlsLmNvbSJ9.2yecruIYza4BMGn2QC0MF7xPyunQ0LFsSncNhed6pL0",
 									"type": "string"
 								}
 							]
@@ -50,7 +51,18 @@
 								},
 								{
 									"key": "page",
-									"value": "6",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "id",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "John",
+
 									"disabled": true
 								}
 							]
@@ -97,7 +109,8 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcxNzA3NTczMSwianRpIjoiYTU3MjZhOWYtNmRhNi00M2Y4LTljY2ItMzU2NGIxOTRkZjNkIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6NTAsIm5iZiI6MTcxNzA3NTczMSwiY3NyZiI6IjEyZDA5MDJiLTVjNWYtNGVmMy1iZTYzLTYxMWZkMjUyYzgwYSIsInJvbCI6ImFkbWluIiwiaWQiOjUwLCJtYWlsIjoiai5kb2UwMUBtYWlsLmNvbSJ9.x-AfOneS-OGsubVJVGX0xkxKfnF84QZF_aQp8DcCX7k",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcxNjUxNzg2OSwianRpIjoiNTdjMDIzY2QtZjM2NC00OTM0LTkzOGQtZmE0MjQ1ODM3YjBlIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNzE2NTE3ODY5LCJjc3JmIjoiYTlmNDI1NmMtMmRmNi00YWNhLTkxNTMtN2YzNzkwZTI2ZTQ1IiwiZXhwIjoxNzE2NTIxNDY5LCJyb2wiOiJhZG1pbiIsImlkIjoxLCJtYWlsIjoiai5kb2UwMUBtYWlsLmNvbSJ9.2yecruIYza4BMGn2QC0MF7xPyunQ0LFsSncNhed6pL0",
+
 									"type": "string"
 								}
 							]
@@ -130,7 +143,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcxNzA3NTczMSwianRpIjoiYTU3MjZhOWYtNmRhNi00M2Y4LTljY2ItMzU2NGIxOTRkZjNkIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6NTAsIm5iZiI6MTcxNzA3NTczMSwiY3NyZiI6IjEyZDA5MDJiLTVjNWYtNGVmMy1iZTYzLTYxMWZkMjUyYzgwYSIsInJvbCI6ImFkbWluIiwiaWQiOjUwLCJtYWlsIjoiai5kb2UwMUBtYWlsLmNvbSJ9.x-AfOneS-OGsubVJVGX0xkxKfnF84QZF_aQp8DcCX7k",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcxNjUxNzg2OSwianRpIjoiNTdjMDIzY2QtZjM2NC00OTM0LTkzOGQtZmE0MjQ1ODM3YjBlIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNzE2NTE3ODY5LCJjc3JmIjoiYTlmNDI1NmMtMmRmNi00YWNhLTkxNTMtN2YzNzkwZTI2ZTQ1IiwiZXhwIjoxNzE2NTIxNDY5LCJyb2wiOiJhZG1pbiIsImlkIjoxLCJtYWlsIjoiai5kb2UwMUBtYWlsLmNvbSJ9.2yecruIYza4BMGn2QC0MF7xPyunQ0LFsSncNhed6pL0",
 									"type": "string"
 								}
 							]
@@ -209,7 +222,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"elio\",\n    \"lastname\": \"anci\",\n    \"mail\": \"e.anci@alumno.um.edu.ar\",\n    \"phone\": \"123456789\",\n    \"rol\": \"admin\",\n    \"alias\": \"johndoe\",\n    \"passwd\": \"pass-example\"\n}",
+							"raw": "{\n    \"name\": \"john\",\n    \"lastname\": \"doe\",\n    \"mail\": \"j.doe01@mail.com\",\n    \"phone\": \"123456789\",\n    \"rol\": \"admin\",\n    \"alias\": \"johndoe\",\n    \"passwd\": \"pass-example\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
