@@ -1,0 +1,7 @@
+Bienvenido {{user.name}} {{user.lastname}}!
+
+Gracias por registrarte en nuestro sistema.
+
+Con nuestro servicio podras:
+
+- Completar con servicios
