@@ -17,11 +17,21 @@ cd backend && ./install.sh
 ```
 ### Execution
 
-To execute flask, you should create a .env file following the .env-example file. Replace the 'Port' with the port you want to use. Then if you want to run (located in the root directory of the proyect):
+To execute flask, you should create a .env file following the .env-example file. 
 
 ```bash
-cd backend && ./boot.sh
+cd backend
+cp .env-example .env
 ```
+
+Then if you want to run (located in the backend folder of the proyect):
+
+```bash
+./boot.sh
+```
+
+> [IMPORTANT]
+> The PORT variable in the .env file should be in the first line for the correct working of the boot script.
 
 ### Other notes
 

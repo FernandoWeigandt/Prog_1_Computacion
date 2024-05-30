@@ -4,7 +4,7 @@ make_post() {
     JSON=$1
     URL=$2
     cat "$JSON" | jq -c '.[]' | while read object; do
-        curl -X POST --location "$URL" -H 'Content-Type: application/json' -d "$object"
+        curl -X POST --location "$URL" -H 'Content-Type: application/json' -d "$object" 0&>/dev/null
     done
 }
 
@@ -14,10 +14,11 @@ fill_database() {
     AUTHORS_JSON="./DB/test-data/authors.json"
     VALORATIONS_JSON="./DB/test-data/valorations.json"
 
-    API_PORT=$(grep PORT .env | awk '{ print $NF }' | sed "s/'//g")
+    API_PORT=$(head -n 1 .env | awk '{ print $4 }' | sed "s/'//g")
 
     URL_API="http://127.0.0.1:$API_PORT"
     
+    echo "[+] Espera 8 segundos para la carga de datos mientras inicia el server..."
     sleep 8
     
     # Fill users table
@@ -72,8 +73,7 @@ else
 fi
 if [ $(yes_no_validate "[!] Cuidado, va a cargar datos falsos en la base de datos! [S/n]: " "s") == "s" ]; then
     echo "[+] Iniciando la app y llenando la base de datos..."
-    (fill_database &>/dev/null) &
-    echo "[+] Espera 8 segundos para la carga de datos mientras inicia el server..."
+    (fill_database) &
     start_app
 else
     echo "[+] Iniciando la app..."
