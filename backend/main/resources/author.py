@@ -17,7 +17,7 @@ class Author(Resource):
             db.session.add(author)
             db.session.commit()
         except:
-            return 'Incorrect data format', 400
+            return {'error':'Incorrect data format'}, 400
         return author.to_json() , 201
 
     def delete(self,id):
@@ -26,7 +26,7 @@ class Author(Resource):
             db.session.delete(author)
             db.session.commit()
         except:
-            return 'Incorrect data format', 400
+            return {'error':'Incorrect data format'}, 400
 
 class Authors(Resource):
     def get(self):
@@ -39,6 +39,6 @@ class Authors(Resource):
             db.session.add(author)
             db.session.commit()
         except:
-            return 'Incorrect data format', 400
+            return {'error':'Incorrect data format'}, 400
         return author.to_json(), 201
         return author.to_json(), 204

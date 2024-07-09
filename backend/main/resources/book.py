@@ -1,6 +1,6 @@
 from flask_restful import Resource
 from flask import request, jsonify
-from main.models import BookModel, AuthorModel
+from main.models import BookModel, AuthorModel, ValorationModel
 from sqlalchemy import func, desc, asc
 from .. import db
 
@@ -15,7 +15,7 @@ class Book(Resource):
             db.session.delete(book)
             db.session.commit()
         except:
-            return 'Incorrect data format', 400
+            return {'error':'Incorrect data format'}, 400
         return book.to_json(), 204
     
     def put(self, id):
@@ -27,7 +27,7 @@ class Book(Resource):
             db.session.add(book)
             db.session.commit()
         except:
-            return 'Incorrect data format', 400
+            return {'error':'Incorrect data format'}, 400
         return book.to_json() , 201
     
 class Books(Resource):
@@ -57,24 +57,21 @@ class Books(Resource):
         if request.args.get('publisher'):
             books=books.filter(BookModel.publisher.like('%'+request.args.get('publisher')+'%'))
 
-        if request.args.get('status'):
-            books=books.filter(BookModel.status == request.args.get('status'))
-
         # Sort by #
 
         if request.args.get('valorations'):
-            if request.args.get('valorations') == "asc":
-                books=books.outerjoin(BookModel.valorations).group_by(BookModel.id).order_by(func.count(ValorationModel.valoration).asc())
-            elif request.args.get('valorations') == "desc":
+            if request.args.get('valorations') == "desc":
                 books=books.outerjoin(BookModel.valorations).group_by(BookModel.id).order_by(func.count(ValorationModel.valoration).desc())
             else:
-                return {"message": "Invalid sort order"}, 400
+                books=books.outerjoin(BookModel.valorations).group_by(BookModel.id).order_by(func.count(ValorationModel.valoration).asc())
 
-        if request.args.get('sortby_nrRents'):
-            if request.args.get('sortby_nrRents') == "asc":
-                books=books.outerjoin(BookModel.rents).group_by(BookModel.id).order_by(func.count(RentModel.id).asc())
-            if request.args.get('sortby_nrRents') == "desc":
+
+        # what does this????
+        if request.args.get('sortby_rents'):
+            if request.args.get('sortby_rents') == "desc":
                 books=books.outerjoin(BookModel.rents).group_by(BookModel.id).order_by(func.count(RentModel.id).desc())
+            else:
+                books=books.outerjoin(BookModel.rents).group_by(BookModel.id).order_by(func.count(RentModel.id).asc())
 
 
         books = books.paginate(page=page, per_page=per_page, error_out=True)
@@ -96,5 +93,5 @@ class Books(Resource):
             db.session.add(book)
             db.session.commit()
         except:
-            return 'Incorrect data format', 400
+            return {'error':'Incorrect data format'}, 400
         return book.to_json(), 201
