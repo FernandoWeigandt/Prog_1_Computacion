@@ -1,4 +1,6 @@
 backend/env*
 *.env
-notas
+*venv*
+notas*
+database.db
 *__pycache__*

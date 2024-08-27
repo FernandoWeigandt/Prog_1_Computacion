@@ -22,3 +22,7 @@ To execute flask, you should create a .env file following the .env-example file.
 ```bash
 cd backend && ./boot.sh
 ```
+
+### Frontend design
+
+The prototype was made in figma. To see it click [here](https://www.figma.com/design/cISJEx3uRimDIfdLR5N5YQ/Librer%C3%ADa?node-id=0-1&t=orSXJa2clBBefjAs-1) 
