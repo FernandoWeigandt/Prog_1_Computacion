@@ -1,0 +1,54 @@
+<app-contextbar title="Cuenta"></app-contextbar>
+<main style="margin-top: 120px; margin-bottom: 120px;">
+  <!-- Unregistered user settings -->
+  <div class="container my-4 bd-gutter" id="unregistered">
+    <div class="user-settings my-3 mx-4">
+      <p style="color: #e8d2bc;">Iniciar sesión</p>
+    </div>
+    <div class="row">
+      <!-- Iniciar sesión -->
+      <app-button class="col-md-4" link="login" label="Iniciar sesión" icon="bi bi-box-arrow-in-right"></app-button>
+      <!-- Register -->
+      <app-button class="col-md-4" link="register" label="Registrarse" icon="bi bi-person-plus-fill"></app-button>
+    </div>
+  </div>
+  <!-- Personal Account settings -->
+  <div class="container my-4 bd-gutter">
+    <div class="user-settings my-3 mx-4">
+      <p style="color: #e8d2bc;">Cuenta Personal</p>
+    </div>
+    <div class="row">
+      <!-- settings -->
+      <app-button class="col-md-4" link="settings" label="Configuración" icon="bi bi-gear-fill"></app-button>
+      <!-- Rent -->
+      <app-button class="col-md-4" link="rents" label="Prestamos" icon="bi bi-receipt"></app-button>
+      <!-- Notification -->
+      <app-button class="col-md-4" link="notifications" label="Notificaciones" icon="bi bi-bell-fill"></app-button>
+    </div>
+  </div>
+  <!-- Librarian settings -->
+  <div class="container my-4 bd-gutter">
+    <div class="librarian-settings my-3 mx-4">
+      <p style="color: #e8d2bc;">Opciones de Bibliotecario</p>
+    </div>
+    <div class="row">
+      <!-- manage & notify users -->
+      <app-button class="col-md-4" link="select-users" label="Gestionar y Notificar" icon="bi bi-exclamation-octagon-fill"></app-button>
+      <!-- Manage Users Rents -->
+      <app-button class="col-md-4" link="manage-rents" label="Gestionar Prestamos" icon="bi bi-calendar-week-fill"></app-button>
+      <!-- Manage Books -->
+      <app-button class="col-md-4" link="home" label="Gestionar Libros" icon="bi bi-book-fill"></app-button>
+    </div>
+  </div>
+  <!-- Admin settings -->
+  <div class="container my-4 bd-gutter">
+    <div class="librarian-settings my-3 mx-4">
+      <p style="color: #e8d2bc;">Opciones de Administrador</p>
+    </div>
+    <div class="row">
+      <!-- administrate users -->
+      <app-button class="col-md-4" link="select-users" label="Administrar usuarios" icon="bi bi-person-vcard-fill"></app-button>
+    </div>
+  </div>
+</main>
+<app-navbar></app-navbar>

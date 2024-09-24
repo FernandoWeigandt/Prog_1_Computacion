@@ -1,0 +1,27 @@
+<header>
+    <app-contextbar title="Explorar"></app-contextbar>
+    <app-search></app-search>
+</header>
+<main style="margin-top: 120px; margin-bottom: 180px;">
+  <!-- Books -->
+  <div class="container my-4 bd-gutter">
+    <div class="row">
+      @for (book of books; track book.id) {
+        <app-book class="col-12 col-sm-6"
+          title="{{ book.title }}" 
+          gender="{{ book.gender }}" 
+          author="{{ book.author }}"
+          [quantity]="book.quantity"
+        > 
+        </app-book>
+      }
+      <app-paginate></app-paginate>
+    </div>
+  </div>
+</main>
+<div class="container fixed-bottom text-end" style="margin-bottom: 120px;" id="add-book">
+  <button class="btn btn-my-primary btn-lg shadow-lg" type="button" style="--bs-btn-bg: #7e5d44;">
+    <i class="bi bi-plus-circle-fill" style="font-size: 32px"></i>
+  </button>
+</div>
+<app-navbar></app-navbar>
