@@ -8,6 +8,9 @@ import { MyNotificationsComponent } from './pages/my-notifications/my-notificati
 import { SelectUsersComponent } from './pages/select-users/select-users.component';
 import { ManageRentsComponent } from './pages/manage-rents/manage-rents.component';
 import { NotifyComponent } from './pages/notify/notify.component';
+import { LoginComponent } from './pages/login/login.component';
+import { RegisterComponent } from './pages/register/register.component';
+import { RestorePasswordComponent } from './pages/restore-password/restore-password.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -19,6 +22,9 @@ export const routes: Routes = [
     { path: 'select-users', component: SelectUsersComponent },
     { path: 'manage-rents', component: ManageRentsComponent },
     { path: 'notify', component: NotifyComponent },
+    { path: 'login', component: LoginComponent},
+    { path: 'register', component: RegisterComponent },
+    { path: 'restore-password', component: RestorePasswordComponent },
     { path: '**', redirectTo: 'error' },
     { path: 'error', component: ErrorComponent },
 ];
