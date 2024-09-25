@@ -7,9 +7,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './loan.component.html',
-  styles: `.text-good {
-    color: #85c1e9;
-  }`
+  styles: ``
 })
 export class LoanComponent {
   @Input() title: string = '';

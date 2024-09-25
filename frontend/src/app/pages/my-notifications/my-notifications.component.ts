@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PaginateComponent } from '../../components/paginate/paginate.component';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
@@ -28,7 +28,7 @@ export class MyNotificationsComponent {
       date: new Date(2024, 8, 8),
       message: 'El prestamo de "Título 2" fue extendido 7 días. La nueva fecha de entrega es 25-09-2024.',
       note: 'Renovación de fecha de expiración.',
-      type: 'success'
+      type: 'good'
     },
     {
       id : 2,

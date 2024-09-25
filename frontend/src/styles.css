@@ -67,3 +67,9 @@ body {
 .book-rounded-corner {
   border-radius: 19px;
 }
+.text-good {
+  color: #9FE2BF;
+}
+.text-bad {
+  color: #FF6666;
+}

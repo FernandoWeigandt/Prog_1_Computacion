@@ -1,0 +1,54 @@
+<component-contextbar title="Gestionar Prestamos"></component-contextbar>
+
+<div style="margin-top: 120px; margin-bottom: 120px;">
+  <!-- Pantalla de Gestión de Préstamos -->
+  <div class="container my-5">
+
+    <!-- Barra de búsqueda de usuarios -->
+    <div class="input-group my-3">
+      <input type="text" class="form-control" id="searchUser" placeholder="Buscar usuario por nombre o ID">
+      <button class="btn btn-my-primary btn-block" onclick="searchLoans()">Buscar</button>
+    </div>
+
+    <!-- Tabla de Préstamos -->
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped">
+        <thead class="bg-my-secondary text-my-color">
+          <tr>
+            <th>ID Préstamo</th>
+            <th>Usuario</th>
+            <th>Libro</th>
+            <th>Fecha Préstamo</th>
+            <th>Fecha Devolución</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="loansTable">
+          <!-- Aquí irían las filas de préstamos -->
+          <tr>
+            <td>#1</td>
+            <td>Nombre de Usuario 1</td>
+            <td>Título de Libro 1</td>
+            <td>01/09/2024</td>
+            <td>15/09/2024</td>
+            <td><span class="badge bg-warning text-dark">Pendiente</span></td>
+            <td>
+              <div class="btn-group-vertical">
+                <button class="btn btn-success rounded btn-sm m-2">Devuelto</button>
+                <button class="btn btn-warning rounded btn-sm m-2">Extender</button>
+              </div>
+            </td>
+          </tr>
+          <!-- Agrega más filas según los préstamos disponibles -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Información adicional -->
+    <div class="alert alert-info mt-4">
+      Los préstamos pendientes deben ser devueltos a tiempo. Usa "Extender préstamo" para cambiar la fecha de devolución.
+    </div>
+  </div>
+</div>
+<component-navbar [searchActive]="false" [settingsActive]="false" [returnActive]="true"></component-navbar>
