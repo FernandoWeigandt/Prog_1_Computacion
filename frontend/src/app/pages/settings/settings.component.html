@@ -1,4 +1,4 @@
-<app-contextbar title="Cuenta"></app-contextbar>
+<component-contextbar title="Cuenta"></component-contextbar>
 <main style="margin-top: 120px; margin-bottom: 120px;">
   <!-- Unregistered user settings -->
   <div class="container my-4 bd-gutter" id="unregistered">
@@ -7,9 +7,9 @@
     </div>
     <div class="row">
       <!-- Iniciar sesión -->
-      <app-button class="col-md-4" link="login" label="Iniciar sesión" icon="bi bi-box-arrow-in-right"></app-button>
+      <component-button class="col-md-4" link="login" label="Iniciar sesión" icon="bi bi-box-arrow-in-right"></component-button>
       <!-- Register -->
-      <app-button class="col-md-4" link="register" label="Registrarse" icon="bi bi-person-plus-fill"></app-button>
+      <component-button class="col-md-4" link="register" label="Registrarse" icon="bi bi-person-plus-fill"></component-button>
     </div>
   </div>
   <!-- Personal Account settings -->
@@ -19,11 +19,11 @@
     </div>
     <div class="row">
       <!-- settings -->
-      <app-button class="col-md-4" link="settings" label="Configuración" icon="bi bi-gear-fill"></app-button>
+      <component-button class="col-md-4" link="settings/my-account" label="Configuración" icon="bi bi-gear-fill"></component-button>
       <!-- Rent -->
-      <app-button class="col-md-4" link="rents" label="Prestamos" icon="bi bi-receipt"></app-button>
+      <component-button class="col-md-4" link="my-rents" label="Prestamos" icon="bi bi-receipt"></component-button>
       <!-- Notification -->
-      <app-button class="col-md-4" link="notifications" label="Notificaciones" icon="bi bi-bell-fill"></app-button>
+      <component-button class="col-md-4" link="my-notifications" label="Notificaciones" icon="bi bi-bell-fill"></component-button>
     </div>
   </div>
   <!-- Librarian settings -->
@@ -33,11 +33,11 @@
     </div>
     <div class="row">
       <!-- manage & notify users -->
-      <app-button class="col-md-4" link="select-users" label="Gestionar y Notificar" icon="bi bi-exclamation-octagon-fill"></app-button>
+      <component-button class="col-md-4" link="select-users" label="Gestionar y Notificar" icon="bi bi-exclamation-octagon-fill"></component-button>
       <!-- Manage Users Rents -->
-      <app-button class="col-md-4" link="manage-rents" label="Gestionar Prestamos" icon="bi bi-calendar-week-fill"></app-button>
+      <component-button class="col-md-4" link="manage-rents" label="Gestionar Prestamos" icon="bi bi-calendar-week-fill"></component-button>
       <!-- Manage Books -->
-      <app-button class="col-md-4" link="home" label="Gestionar Libros" icon="bi bi-book-fill"></app-button>
+      <component-button class="col-md-4" link="home" label="Gestionar Libros" icon="bi bi-book-fill"></component-button>
     </div>
   </div>
   <!-- Admin settings -->
@@ -47,8 +47,8 @@
     </div>
     <div class="row">
       <!-- administrate users -->
-      <app-button class="col-md-4" link="select-users" label="Administrar usuarios" icon="bi bi-person-vcard-fill"></app-button>
+      <component-button class="col-md-4" link="select-users" label="Administrar usuarios" icon="bi bi-person-vcard-fill"></component-button>
     </div>
   </div>
 </main>
-<app-navbar></app-navbar>
+<component-navbar [searchActive]="false" [settingsActive]="false" [returnActive]="true"></component-navbar>

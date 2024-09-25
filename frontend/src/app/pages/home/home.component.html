@@ -1,21 +1,21 @@
 <header>
-    <app-contextbar title="Explorar"></app-contextbar>
-    <app-search></app-search>
+    <component-contextbar title="Explorar"></component-contextbar>
+    <component-search></component-search>
 </header>
 <main style="margin-top: 120px; margin-bottom: 180px;">
   <!-- Books -->
   <div class="container my-4 bd-gutter">
     <div class="row">
       @for (book of books; track book.id) {
-        <app-book class="col-12 col-sm-6"
+        <component-book class="col-12 col-sm-6"
           title="{{ book.title }}" 
           gender="{{ book.gender }}" 
           author="{{ book.author }}"
           [quantity]="book.quantity"
         > 
-        </app-book>
+        </component-book>
       }
-      <app-paginate></app-paginate>
+      <component-paginate></component-paginate>
     </div>
   </div>
 </main>
@@ -24,4 +24,4 @@
     <i class="bi bi-plus-circle-fill" style="font-size: 32px"></i>
   </button>
 </div>
-<app-navbar></app-navbar>
+<component-navbar></component-navbar>

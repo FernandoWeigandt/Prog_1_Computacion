@@ -1,0 +1,19 @@
+
+import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+@Component({
+  selector: 'component-loan',
+  standalone: true,
+  imports: [CommonModule],
+  templateUrl: './loan.component.html',
+  styles: `.text-good {
+    color: #85c1e9;
+  }`
+})
+export class LoanComponent {
+  @Input() title: string = '';
+  @Input() initdate: Date = new Date(2024, 0, 1);
+  @Input() expirationdate: Date = new Date(2024, 1, 1);
+  @Input() state: string = '';
+}

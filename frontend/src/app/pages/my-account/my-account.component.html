@@ -1,0 +1,85 @@
+<component-contextbar title="Configuración de Cuenta"></component-contextbar>
+<main style="margin-top: 120px; margin-bottom: 120px;">
+  <div class="container my-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <!-- Información Personal -->
+        <div class="card mb-4">
+          <div class="card-header bg-my-secondary text-my-color">
+            Información Personal
+          </div>
+          <div class="card-body bg-book">
+            <form>
+              <div class="mb-3">
+                <label for="username" class="form-label">Nombre de usuario</label>
+                <input type="text" class="form-control" id="username" placeholder="Nombre de usuario">
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">Correo Electrónico</label>
+                <input type="email" class="form-control" id="email" placeholder="correo@ejemplo.com">
+              </div>
+              <div class="mb-3">
+                <label for="phone" class="form-label">Número de Teléfono</label>
+                <input type="tel" class="form-control" id="phone" placeholder="+1 123 456 7890">
+              </div>
+              <button type="submit" class="btn btn-my-primary">Guardar Cambios</button>
+            </form>
+          </div>
+        </div>
+        <!-- Seguridad -->
+        <div class="card mb-4">
+          <div class="card-header bg-my-secondary text-my-color">
+            Seguridad
+          </div>
+          <div class="card-body bg-book">
+            <form>
+              <div class="mb-3">
+                <label for="password" class="form-label">Contraseña Actual</label>
+                <input type="password" class="form-control" id="password" placeholder="Contraseña Actual">
+              </div>
+              <div class="mb-3">
+                <label for="newPassword" class="form-label">Nueva Contraseña</label>
+                <input type="password" class="form-control" id="newPassword" placeholder="Nueva Contraseña">
+              </div>
+              <div class="mb-3">
+                <label for="confirmPassword" class="form-label">Confirmar Nueva Contraseña</label>
+                <input type="password" class="form-control" id="confirmPassword" placeholder="Confirmar Nueva Contraseña">
+              </div>
+              <button type="submit" class="btn btn-my-primary">Actualizar Contraseña</button>
+            </form>
+          </div>
+        </div>
+        <!-- Preferencias -->
+        <div class="card mb-4">
+          <div class="card-header bg-my-secondary text-my-color">
+            Preferencias
+          </div>
+          <div class="card-body bg-book">
+            <form>
+              <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" id="notifications">
+                <label class="form-check-label" for="notifications">
+                  Recibir notificaciones por correo electrónico
+                </label>
+              </div>
+              <button type="submit" class="btn btn-my-primary">Guardar Preferencias</button>
+            </form>
+          </div>
+        </div>
+        <!-- Account Deletion Section -->
+        <div class="card mb-4">
+          <div class="card-body bg-book">
+            <h5 class="card-title text-danger">Eliminar Cuenta</h5>
+            <p class="text-muted">Una vez eliminada, toda su información será borrada permanentemente. Esta acción no podrá deshacerse.</p>
+            <form>
+              <div class="form-group">
+                <button type="button" class="btn btn-danger">Eliminar Cuenta</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+<component-navbar link="settings" [searchActive]="false" [settingsActive]="false" [returnActive]="true"></component-navbar>

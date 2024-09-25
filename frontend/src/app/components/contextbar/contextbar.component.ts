@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-contextbar',
+  selector: 'component-contextbar',
   standalone: true,
   imports: [],
   templateUrl: './contextbar.component.html',
