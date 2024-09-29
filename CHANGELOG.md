@@ -12,6 +12,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - Create all frontend views using bootstrap (draft)
 
+## [0.0.4] - 2024-07-09
+
+### Fixed
+
+- Correct all answers (return) in case of failure. Must return a json (object) to easly being managed in the front end.
+
+### Known Issues
+
+- Refator the book-rent-user relationship in the database. It doesn't make sense that the book has a field quantity and is very complicated to sync the rents with the field and the users.
+- When make get filtering by valoration, in book resource, it doesn't sort it, just return it normally.
+- ~~Correct all answers (return) in case of failure. Must return a json (object) to easly being managed in the front end.~~
+- In the register (auth/register) field, it shouldn't be possible to self assign the role. So it take the default value and then is chaged by some admin or administrator role user.
+- Admin and users can read the password (hashed) of any user. This is very bad :v
+- A deleted user can still make requests with the token, which doesn't make any sense.
+
 ## [0.0.3] - 2024-05-30
 
 ### Added

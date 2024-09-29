@@ -15,7 +15,7 @@ class Rent(Resource):
             db.session.delete(rent)
             db.session.commit()
         except:
-            return 'Incorrect data format', 400
+            return {'error':'Incorrect data format'}, 400
         return rent.to_json(), 204
     
     def put(self, id):
@@ -29,7 +29,7 @@ class Rent(Resource):
             db.session.add(rent)
             db.session.commit()
         except:
-            return 'Incorrect data format', 400
+            return {'error':'Incorrect data format'}, 400
         return rent.to_json() , 201 
     
 class Rents(Resource):
@@ -44,5 +44,5 @@ class Rents(Resource):
             db.session.add(rent)
             db.session.commit()
         except:
-            return 'Incorrect data format', 400
+            return {'error':'Incorrect data format'}, 400
         return rent.to_json(), 201

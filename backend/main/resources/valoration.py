@@ -17,7 +17,7 @@ class Valoration(Resource):
             db.session.add(valoration)
             db.session.commit()
         except:
-            return 'Incorrect data format', 400
+            return {'error':'Incorrect data format'}, 400
         return valoration.to_json() , 201 
         
     def delete(self, id):
@@ -26,7 +26,7 @@ class Valoration(Resource):
             db.session.delete(valoration)
             db.session.commit()
         except:
-            return 'Incorrect data format', 400
+            return {'error':'Incorrect data format'}, 400
         return valoration.to_json(), 204
 
 class Valorations(Resource):
@@ -39,7 +39,7 @@ class Valorations(Resource):
         try:
             db.session.add(valoration)
             db.session.commit()
-        except Exception as e:
+        except:
             db.session.rollback()
-            return f'Incorrect data format - {str(e)}', 400
+            return {'error':'Incorrect data format'}, 400
         return valoration.to_json(), 201

@@ -3,88 +3,66 @@
         "title": "The Book of Secrets",
         "gender": "Mystery",
         "publisher": "Penguin Random House",
-        "status": "available",
-        "quantity": 11,
         "authors": [1]
     },
     {
         "title": "The Unexpected Abigail Adams: A Woman Not Apt to Be Intimidated",
         "gender": "Thriller",
         "publisher": "Westholme Publishing",
-        "status": "unavailable",
-        "quantity": 0,
         "authors": [1,11]
     },
     {
         "title": "The Lost Key",
         "gender": "Thriller",
         "publisher": "HarperCollins",
-        "status": "available",
-        "quantity": 3,
         "authors": [2]
     },
     {
         "title": "Echoes of Silence",
         "gender": "Romance",
         "publisher": "Simon & Schuster",
-        "status": "available",
-        "quantity": 11,
         "authors": [3]
     },
     {
         "title": "Shadow of the Past",
         "gender": "Mystery",
         "publisher": "Penguin Random House",
-        "status": "available",
-        "quantity": 4,
         "authors": [4]
     },
     {
         "title": "The Last Enigma",
         "gender": "Thriller",
         "publisher": "HarperCollins",
-        "status": "unavailable",
-        "quantity": 0,
         "authors": [5]
     },
     {
         "title": "Whispers in the Dark",
         "gender": "Horror",
         "publisher": "Simon & Schuster",
-        "status": "available",
-        "quantity": 1,
         "authors": [6]
     },
     {
         "title": "Deadly Whispers",
         "gender": "Mystery",
         "publisher": "Penguin Random House",
-        "status": "available",
-        "quantity": 12,
         "authors": [7]
     },
     {
         "title": "Dancing with Shadows",
         "gender": "Romance",
         "publisher": "HarperCollins",
-        "status": "available",
-        "quantity": 2,
         "authors": [8,7]
     },
     {
         "title": "The Hidden Truth",
         "gender": "Thriller",
         "publisher": "Simon & Schuster",
-        "status": "available",
-        "quantity": 14,
         "authors": [8]
     },
     {
         "title": "Echoes of Destiny",
         "gender": "Romance",
         "publisher": "Penguin Random House",
-        "status": "available",
-        "quantity": 5,
         "authors": [8,9,10]
     }
 ]

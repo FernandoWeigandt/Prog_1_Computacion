@@ -17,8 +17,7 @@
 							"bearer": [
 								{
 									"key": "token",
-
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcxNjUxNzg2OSwianRpIjoiNTdjMDIzY2QtZjM2NC00OTM0LTkzOGQtZmE0MjQ1ODM3YjBlIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNzE2NTE3ODY5LCJjc3JmIjoiYTlmNDI1NmMtMmRmNi00YWNhLTkxNTMtN2YzNzkwZTI2ZTQ1IiwiZXhwIjoxNzE2NTIxNDY5LCJyb2wiOiJhZG1pbiIsImlkIjoxLCJtYWlsIjoiai5kb2UwMUBtYWlsLmNvbSJ9.2yecruIYza4BMGn2QC0MF7xPyunQ0LFsSncNhed6pL0",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcxNzY3NTAwOCwianRpIjoiYTc3YTMyMGYtODBhYy00ZTE2LWI0YmYtNDYzZDQ1MDI0YWVkIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MTcsIm5iZiI6MTcxNzY3NTAwOCwiY3NyZiI6IjY3YTM5ZDA3LWM2N2YtNDZiOC1iZGYzLTU2ZDg3MGFjMmFhNSIsInJvbCI6ImFkbWluIiwiaWQiOjE3LCJtYWlsIjoiYWRyaWFuLmppbWVuZXpAbWFpbC5leGFtcGxlIn0.A2nMyVTdniRThRClEnSoLdrQ-pu8RUe_3dPnUyViZr8",
 									"type": "string"
 								}
 							]
@@ -26,7 +25,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:25565/users",
+							"raw": "http://127.0.0.1:25565/users?sortby_name=asc",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -40,18 +39,8 @@
 							],
 							"query": [
 								{
-									"key": "id",
-									"value": "2",
-									"disabled": true
-								},
-								{
-									"key": "name",
-									"value": "John",
-									"disabled": true
-								},
-								{
 									"key": "page",
-									"value": "2",
+									"value": "1",
 									"disabled": true
 								},
 								{
@@ -62,7 +51,35 @@
 								{
 									"key": "name",
 									"value": "John",
-
+									"disabled": true
+								},
+								{
+									"key": "lastname",
+									"value": "Doe",
+									"disabled": true
+								},
+								{
+									"key": "mail",
+									"value": "j.doe01@mail.com",
+									"disabled": true
+								},
+								{
+									"key": "phone",
+									"value": "123456789",
+									"disabled": true
+								},
+								{
+									"key": "alias",
+									"value": "johndoe",
+									"disabled": true
+								},
+								{
+									"key": "sortby_name",
+									"value": "asc"
+								},
+								{
+									"key": "sortby_lastname",
+									"value": "asc",
 									"disabled": true
 								}
 							]
@@ -77,7 +94,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"john\",\n    \"lastname\": \"doe\",\n    \"mail\": \"j.doe@mail.com\",\n    \"phone\": \"123456789\",\n    \"rol\": \"Librarian\",\n    \"alias\": \"johndoe\",\n    \"passwd\": \"pass-example\"\n}",
+							"raw": "{\n    \"name\": \"John\",\n    \"lastname\": \"Doe\",\n    \"mail\": \"j.doe@mail.com\",\n    \"phone\": \"123456789\",\n    \"rol\": \"Librarian\",\n    \"alias\": \"johndoe\",\n    \"passwd\": \"pass-example\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -109,8 +126,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcxNjUxNzg2OSwianRpIjoiNTdjMDIzY2QtZjM2NC00OTM0LTkzOGQtZmE0MjQ1ODM3YjBlIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNzE2NTE3ODY5LCJjc3JmIjoiYTlmNDI1NmMtMmRmNi00YWNhLTkxNTMtN2YzNzkwZTI2ZTQ1IiwiZXhwIjoxNzE2NTIxNDY5LCJyb2wiOiJhZG1pbiIsImlkIjoxLCJtYWlsIjoiai5kb2UwMUBtYWlsLmNvbSJ9.2yecruIYza4BMGn2QC0MF7xPyunQ0LFsSncNhed6pL0",
-
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcxNzY3NDgyNCwianRpIjoiZDdiYjNhN2MtNTg1MC00ZTZiLTgzOTQtZjcwNTBjMmJjODEyIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNzE3Njc0ODI0LCJjc3JmIjoiZDAwMjBhOWUtN2NiMC00NjRlLTk1ODMtZWQxYTJkODExZGUyIiwicm9sIjoidXNlciIsImlkIjoxLCJtYWlsIjoianVhbi5nYXJjaWFAbWFpbC5leGFtcGxlIn0.DzCiaW7prOIgBrBL7eZBUEgHggButvE4yqa5p7rbz6o",
 									"type": "string"
 								}
 							]
@@ -143,7 +159,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcxNjUxNzg2OSwianRpIjoiNTdjMDIzY2QtZjM2NC00OTM0LTkzOGQtZmE0MjQ1ODM3YjBlIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNzE2NTE3ODY5LCJjc3JmIjoiYTlmNDI1NmMtMmRmNi00YWNhLTkxNTMtN2YzNzkwZTI2ZTQ1IiwiZXhwIjoxNzE2NTIxNDY5LCJyb2wiOiJhZG1pbiIsImlkIjoxLCJtYWlsIjoiai5kb2UwMUBtYWlsLmNvbSJ9.2yecruIYza4BMGn2QC0MF7xPyunQ0LFsSncNhed6pL0",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcxNzA3NTczMSwianRpIjoiYTU3MjZhOWYtNmRhNi00M2Y4LTljY2ItMzU2NGIxOTRkZjNkIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6NTAsIm5iZiI6MTcxNzA3NTczMSwiY3NyZiI6IjEyZDA5MDJiLTVjNWYtNGVmMy1iZTYzLTYxMWZkMjUyYzgwYSIsInJvbCI6ImFkbWluIiwiaWQiOjUwLCJtYWlsIjoiai5kb2UwMUBtYWlsLmNvbSJ9.x-AfOneS-OGsubVJVGX0xkxKfnF84QZF_aQp8DcCX7k",
 									"type": "string"
 								}
 							]
@@ -151,7 +167,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:25565/user/52",
+							"raw": "http://127.0.0.1:25565/user/51",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -162,7 +178,7 @@
 							"port": "25565",
 							"path": [
 								"user",
-								"52"
+								"51"
 							]
 						}
 					},
@@ -222,7 +238,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"john\",\n    \"lastname\": \"doe\",\n    \"mail\": \"j.doe01@mail.com\",\n    \"phone\": \"123456789\",\n    \"rol\": \"admin\",\n    \"alias\": \"johndoe\",\n    \"passwd\": \"pass-example\"\n}",
+							"raw": "{\n    \"name\": \"elio\",\n    \"lastname\": \"anci\",\n    \"mail\": \"rodrigo.bartolome@um.edu.ar\",\n    \"phone\": \"123456789\",\n    \"rol\": \"admin\",\n    \"alias\": \"johndoe\",\n    \"passwd\": \"pass-example\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -254,7 +270,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"mail\": \"j.doe01@mail.com\",\n    \"passwd\": \"pass-example\"\n}",
+							"raw": "{\n    \"mail\": \"adrian.jimenez@mail.example\",\n    \"passwd\": \"jK5x1Cfm\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -426,7 +442,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:25565/books",
+							"raw": "http://127.0.0.1:25565/books?valorations=asc",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -460,14 +476,8 @@
 									"disabled": true
 								},
 								{
-									"key": "status",
-									"value": "available",
-									"disabled": true
-								},
-								{
 									"key": "valorations",
-									"value": "asc",
-									"disabled": true
+									"value": "asc"
 								}
 							]
 						}

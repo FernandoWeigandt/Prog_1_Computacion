@@ -1,6 +1,7 @@
 from flask_restful import Resource
 from flask import request, jsonify
 from main.models import UserModel
+from sqlalchemy import asc, desc
 from .. import db
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from main.auth.decorators import role_required
@@ -56,6 +57,9 @@ class Users(Resource):
 
         # Filters #
 
+        if request.args.get('id'):
+            users=users.filter(UserModel.id == request.args.get('id'))
+
         if request.args.get('name'):
             users=users.filter(UserModel.name.like('%'+request.args.get('name')+'%'))
 
@@ -80,22 +84,16 @@ class Users(Resource):
         # Sort by #
 
         if request.args.get('sortby_name'):
-            if request.args.get('sortby_name') == "asc":
-                users=users.order_by(asc(UserModel.name))
             if request.args.get('sortby_name') == "desc":
                 users=users.order_by(desc(UserModel.name))
+            else:
+                users=users.order_by(asc(UserModel.name))
 
         if request.args.get('sortby_lastname'):
-            if request.args.get('sortby_lastname') == "asc":
-                users=users.order_by(asc(UserModel.lastname))
             if request.args.get('sortby_lastname') == "desc":
                 users=users.order_by(desc(UserModel.lastname))
-
-        if request.args.get('sortby_valoration'):
-            if request.args.get('sortby_valoration') == "asc":
-                users=users.order_by(asc(UserModel.valoration))
-            if request.args.get('sortby_valoration') == "desc":
-                users=users.order_by(desc(UserModel.valoration))
+            else:
+                users=users.order_by(asc(UserModel.lastname))
 
         users = users.paginate(page=page, per_page=per_page, error_out=True)
 
