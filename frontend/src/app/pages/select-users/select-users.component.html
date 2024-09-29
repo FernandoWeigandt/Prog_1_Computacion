@@ -1,0 +1,60 @@
+<component-contextbar title="Seleccionar usuarios"></component-contextbar>
+<div style="margin-top: 120px; margin-bottom: 120px;">
+  <div class="container select-users-section">
+  
+    <!-- Input to filter users -->
+    <div class="input-group my-3">
+      <input type="text" class="form-control" aria-label="Text input with segmented dropdown button">
+      <button type="button" class="btn btn-my-outline">Buscar por nombre o ID</button>
+    </div>
+  
+    <!-- User list with checkboxes -->
+    <div class="list-group user-list">
+      @for (user of users; track user.id) {
+        <div class="list-group-item bg-my-secondary text-my-color d-flex justify-content-between align-items-center">
+          <div>
+            <input type="checkbox" class="form-check-input me-2" id="{{ user.id }}">
+            <label for="{{ user.id }}" class="form-check-label text-{{ state2text(user.state) }}">{{ user.name }} (ID: {{ user.id }})</label>
+          </div>
+        </div>
+      }
+  
+    <!-- Buttons for actions -->
+    <div class="d-flex flex-column align-items-center mt-4">
+      <!-- Button to confirm selected users -->
+      <button class="btn btn-my-outline bg-mdy-secondary text-my-color mb-2 w-100" style="max-width: 420px;" id="notify-selected">
+        <a class="text-my-color" href="notify" style="text-decoration: none;">
+          Notificar Seleccionados
+        </a>
+      </button>
+      <!-- Button to notify all users -->
+      <button class="btn btn-secondary bg-my-secondary text-my-color mb-2 w-100" style="max-width: 420px;" id="notify-all">
+        <a class="text-my-color" href="notify" style="text-decoration: none;">
+          Mensaje de Difusión
+        </a>
+      </button>
+      <!-- Button to suspend selected users -->
+      <button class="btn btn-warning bg-my-secondary text-my-color w-100" style="max-width: 420px;" id="notify-all">Suspendeder Seleccionados</button>
+      <!-- Delete account  -->
+      <button class="btn btn-danger bg-my-secondary text-my-color mt-2 w-100" style="max-width: 420px;" id="notify-all">Borrar Seleccionado</button>
+    </div>
+  </div>
+  
+  <!-- Information -->
+  <div class="container mt-4 text-my-color text-center">
+    <p class="mb-2"><strong>Información:</strong></p>
+
+    <p class="mb-0">
+      <strong class="text-warning">Amarillo:</strong> Usuarios con deudas.
+    </p>
+    <p class="mb-0">
+      <strong>Normal:</strong> Usuarios libre de deudas.
+    </p>
+    <p class="mb-0">
+      <strong class="text-danger">Rojo:</strong> Usuarios suspendidos.
+    </p>
+  </div>
+  <!-- Nota a borrar cuando se aplique typescript -->
+  <p class="text-my-color text-center mt-4">Nota de borrador: La opción de Eliminar usuario aparecerá únicamente si el usuario que accede al panel es administrador. El administrador puede borrar cualquier usuario, incluso bibliotecarios y administradores.</p>
+</div>
+<component-navbar link="settings" [searchActive]="false" [settingsActive]="false" [returnActive]="true"></component-navbar>

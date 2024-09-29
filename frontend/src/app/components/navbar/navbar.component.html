@@ -1,0 +1,33 @@
+<!-- Navbar -->
+<nav class="navbar bg-my-secondary bd-navbar fixed-bottom p-4 shadow-lg">
+  <div class="container-sm" style="max-width: 492px;">
+    <!-- HOME BTN -->
+    <a href="home" id="home_btn">
+      <button class="btn btn-my-primary btn-lg" type="button">
+        <i class="bi bi-house-fill" style="font-size: 32px"></i>
+      </button>
+    </a>
+    <!-- SEARCH BTN -->
+    @if (searchActive) {
+      <button id="search_btn" class="btn btn-my-primary btn-lg" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="bi bi-search" style="font-size: 32px"></i>
+      </button>
+    } 
+    <!-- ACCOUNT BTN -->
+    @if (settingsActive) {
+      <a href="settings" id="account_btn">
+        <button class="btn btn-my-primary btn-lg" type="button" href="settings">
+          <i class="bi bi-person-fill" style="font-size: 32px"></i>
+        </button>
+      </a>
+    }
+    <!-- RETURN BTN -->
+    @if (returnActive) {
+      <a href="{{ returnUrl }}" id="return_btn">
+        <button class="btn btn-my-primary btn-lg" type="button">
+          <i class="bi bi-arrow-return-left" style="font-size: 32px"></i>
+        </button>
+      </a>
+    }
+  </div>
+</nav>
