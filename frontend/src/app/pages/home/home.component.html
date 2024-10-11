@@ -7,21 +7,24 @@
   <div class="container my-4 bd-gutter">
     <div class="row">
       @for (book of books; track book.id) {
-        <component-book class="col-12 col-sm-6"
-          title="{{ book.title }}" 
-          gender="{{ book.gender }}" 
-          author="{{ book.author }}"
-          [quantity]="book.quantity"
-        > 
-        </component-book>
+        <div class="col-12 col-sm-6" (click)="gotoBookDetails(book.id)">
+          <component-book
+            title="{{ book.title }}" 
+            gender="{{ book.gender }}" 
+            author="{{ book.author }}"
+            [quantity]="book.quantity"
+            [image]="book.image || 'media/default-book-cover.jpg'"
+          > 
+          </component-book>
+        </div>
       }
       <component-paginate></component-paginate>
     </div>
   </div>
 </main>
 <div class="container fixed-bottom text-end" style="margin-bottom: 120px;" id="add-book">
-  <button class="btn btn-my-primary btn-lg shadow-lg" type="button" style="--bs-btn-bg: #7e5d44;">
-    <i class="bi bi-plus-circle-fill" style="font-size: 32px"></i>
+  <button class="btn bg-my-secondary shadow" type="button">
+    <i class="bi bi-plus-circle-fill" style="font-size: 32px;"></i>
   </button>
 </div>
 <component-navbar></component-navbar>

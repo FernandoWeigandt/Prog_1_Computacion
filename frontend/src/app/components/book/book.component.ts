@@ -16,5 +16,5 @@ export class BookComponent {
   @Input() author:string = 'Default author';
   @Input() gender:string = 'Default gender';
   @Input() quantity:number = 1;
-  @Input() image:string = 'https://picsum.photos/200/300';
+  @Input() image:string = 'media/default-book-cover.jpg';
 }

@@ -29,6 +29,7 @@ describe('HomeComponent', () => {
       gender: 'Gender 1',
       author: 'Author 1',
       quantity: 1,
+      image: 'https://picsum.photos/200/300'
     });
   });
 

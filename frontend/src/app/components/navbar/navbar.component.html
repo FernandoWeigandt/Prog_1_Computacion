@@ -1,8 +1,8 @@
 <!-- Navbar -->
-<nav class="navbar bg-my-secondary bd-navbar fixed-bottom p-4 shadow-lg">
+<nav class="container top-rounded-div navbar bg-my-secondary bd-navbar fixed-bottom p-4 shadow-lg">
   <div class="container-sm" style="max-width: 492px;">
     <!-- HOME BTN -->
-    <a href="home" id="home_btn">
+    <a href="home" id="home_btn" style="color: inherit;">
       <button class="btn btn-my-primary btn-lg" type="button">
         <i class="bi bi-house-fill" style="font-size: 32px"></i>
       </button>
@@ -15,7 +15,7 @@
     } 
     <!-- ACCOUNT BTN -->
     @if (settingsActive) {
-      <a href="settings" id="account_btn">
+      <a href="settings" id="account_btn" style="color: inherit;">
         <button class="btn btn-my-primary btn-lg" type="button" href="settings">
           <i class="bi bi-person-fill" style="font-size: 32px"></i>
         </button>
@@ -23,7 +23,7 @@
     }
     <!-- RETURN BTN -->
     @if (returnActive) {
-      <a href="{{ returnUrl }}" id="return_btn">
+      <a href="{{ returnUrl }}" id="return_btn" style="color: inherit;">
         <button class="btn btn-my-primary btn-lg" type="button">
           <i class="bi bi-arrow-return-left" style="font-size: 32px"></i>
         </button>

@@ -1,4 +1,6 @@
+import { ApplicationConfig } from "@angular/core";
 import { Routes } from '@angular/router';
+import { provideRouter } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { SettingsComponent } from './pages/settings/settings.component';
 import { ErrorComponent } from './pages/error/error.component';
@@ -11,6 +13,7 @@ import { NotifyComponent } from './pages/notify/notify.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { RestorePasswordComponent } from './pages/restore-password/restore-password.component';
+import { BookDetailsComponent } from './pages/book-details/book-details.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -25,6 +28,11 @@ export const routes: Routes = [
     { path: 'login', component: LoginComponent},
     { path: 'register', component: RegisterComponent },
     { path: 'restore-password', component: RestorePasswordComponent },
+    { path: 'book/:id', component: BookDetailsComponent },
     { path: '**', redirectTo: 'error' },
     { path: 'error', component: ErrorComponent },
 ];
+
+export const appConfig: ApplicationConfig = {
+    providers: [provideRouter(routes)],
+  };

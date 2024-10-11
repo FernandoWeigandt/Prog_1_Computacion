@@ -22,7 +22,7 @@
                 <label for="phone" class="form-label">Número de Teléfono</label>
                 <input type="tel" class="form-control" id="phone" placeholder="+1 123 456 7890">
               </div>
-              <button type="submit" class="btn btn-my-primary">Guardar Cambios</button>
+              <button type="submit" class="btn btn-secondary">Guardar Cambios</button>
             </form>
           </div>
         </div>
@@ -45,7 +45,7 @@
                 <label for="confirmPassword" class="form-label">Confirmar Nueva Contraseña</label>
                 <input type="password" class="form-control" id="confirmPassword" placeholder="Confirmar Nueva Contraseña">
               </div>
-              <button type="submit" class="btn btn-my-primary">Actualizar Contraseña</button>
+              <button type="submit" class="btn btn-secondary">Actualizar Contraseña</button>
             </form>
           </div>
         </div>
@@ -62,7 +62,16 @@
                   Recibir notificaciones por correo electrónico
                 </label>
               </div>
-              <button type="submit" class="btn btn-my-primary">Guardar Preferencias</button>
+              <div class="dropdown mb-3">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Tema
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" id="light-theme">Claro</a></li>
+                  <li><a class="dropdown-item" id="dark-theme">Oscuro</a></li>
+                </ul>
+              </div>
+              <button type="submit" class="btn btn-secondary">Guardar Preferencias</button>
             </form>
           </div>
         </div>
