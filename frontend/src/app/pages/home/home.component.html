@@ -2,17 +2,19 @@
     <component-contextbar title="Explorar"></component-contextbar>
     <component-search></component-search>
 </header>
-<main style="margin-top: 120px; margin-bottom: 180px;">
+<main class="adjusted-content">
   <!-- Books -->
   <div class="container my-4 bd-gutter">
     <div class="row">
       @for (book of books; track book.id) {
-        <div class="col-12 col-sm-6" (click)="gotoBookDetails(book.id)">
+        <div class="col-12 col-sm-6">
           <component-book
+            [id]="book.id"
             title="{{ book.title }}" 
             gender="{{ book.gender }}" 
             author="{{ book.author }}"
             [quantity]="book.quantity"
+            [rating]="book.rating"
             [image]="book.image || 'media/default-book-cover.jpg'"
           > 
           </component-book>

@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { BookComponent } from '../../components/book/book.component';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { ContextbarComponent } from '../../components/contextbar/contextbar.component';
@@ -23,6 +22,7 @@ export class HomeComponent {
       gender: 'Gender 1',
       author: 'Author 1',
       quantity: 1,
+      rating: 4.2,
       image: 'https://picsum.photos/200/300',
     },
     {
@@ -31,6 +31,7 @@ export class HomeComponent {
       gender: 'Gender 2',
       author: 'Author 2',
       quantity: 4,
+      rating: 5,
       image: 'https://picsum.photos/200/300',
     },
     {
@@ -39,28 +40,19 @@ export class HomeComponent {
       gender: 'Gender 3',
       author: 'Author 3',
       quantity: 2,
+      rating: 3,
       image: '',
     },
     {
       id: 4,
-      title: 'Book 4',
+      title: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perspiciatis magnam aut voluptatibus eum, mollitia ipsa aliquid.',
       gender: 'Gender 4',
       author: 'Author 4',
       quantity: 4,
+      rating: 3.6,
       image: 'https://picsum.photos/200/300',
     },
   ]
-
-  // This line allows home component to use angular router service.
-  // It just define a private attribute called router of type Router
-  // and inject it in the constructor.
-  constructor(private router: Router) {}
-
-  // This method navigates to the book details page, passing the book's ID as a parameter.
-  // Note that the router service is used to navigate.
-  gotoBookDetails(id: number) {
-    this.router.navigate(['/book', id]);
-  }
 
   // This method is suposed to get the books from the backend (should ask for page number of pagination)
   getBooks() {
