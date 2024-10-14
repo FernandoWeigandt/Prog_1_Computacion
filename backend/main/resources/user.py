@@ -104,7 +104,7 @@ class Users(Resource):
             'page': page            
         })
     
-    # This shouldn't be uncommented
+    # This post method is to create a new user but without 
     # def post(self):
     #     user = UserModel.from_json(request.get_json())
     #     try:
