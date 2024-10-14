@@ -1,9 +1,9 @@
 <component-contextbar title="Cuenta"></component-contextbar>
 <main style="margin-top: 120px; margin-bottom: 120px;">
   <!-- Unregistered user settings -->
-  <div class="container my-4 bd-gutter" id="unregistered">
+  <div *ngIf="!token" class="container my-4 bd-gutter" id="unregistered">
     <div class="user-settings my-3 mx-4">
-      <p class="brown-text">Iniciar sesión</p>
+      <p>Iniciar sesión</p>
     </div>
     <div class="row">
       <!-- Iniciar sesión -->
@@ -12,42 +12,47 @@
       <component-button class="col-md-4" link="register" label="Registrarse" icon="bi bi-person-plus-fill"></component-button>
     </div>
   </div>
-  <!-- Personal Account settings -->
-  <div class="container my-4 bd-gutter">
-    <div class="user-settings my-3 mx-4">
-      <p class="brown-text">Cuenta Personal</p>
+  <!-- Registered user settings -->
+  <div *ngIf="token">
+    <!-- Personal Account settings -->
+    <div class="container my-4 bd-gutter">
+      <div class="my-3 mx-4">
+        <p>Cuenta Personal</p>
+      </div>
+      <div class="row">
+        <!-- settings -->
+        <component-button class="col-md-4" link="settings/my-account" label="Configuración" icon="bi bi-gear-fill"></component-button>
+        <!-- Rent -->
+        <component-button class="col-md-4" link="my-rents" label="Prestamos" icon="bi bi-receipt"></component-button>
+        <!-- Notification -->
+        <component-button class="col-md-4" link="my-notifications" label="Notificaciones" icon="bi bi-bell-fill"></component-button>
+        <!-- Logout -->
+        <component-button (click)="logout()" class="col-md-4" link="home" label="Cerrar Sesion" icon="bi bi-box-arrow-right"></component-button>
+      </div>
     </div>
-    <div class="row">
-      <!-- settings -->
-      <component-button class="col-md-4" link="settings/my-account" label="Configuración" icon="bi bi-gear-fill"></component-button>
-      <!-- Rent -->
-      <component-button class="col-md-4" link="my-rents" label="Prestamos" icon="bi bi-receipt"></component-button>
-      <!-- Notification -->
-      <component-button class="col-md-4" link="my-notifications" label="Notificaciones" icon="bi bi-bell-fill"></component-button>
+    <!-- Librarian settings -->
+    <div class="container my-4 bd-gutter">
+      <div class="my-3 mx-4">
+        <p>Opciones de Bibliotecario</p>
+      </div>
+      <div class="row">
+        <!-- manage & notify users -->
+        <component-button class="col-md-4" link="select-users" label="Gestionar y Notificar" icon="bi bi-exclamation-octagon-fill"></component-button>
+        <!-- Manage Users Rents -->
+        <component-button class="col-md-4" link="manage-rents" label="Gestionar Prestamos" icon="bi bi-calendar-week-fill"></component-button>
+        <!-- Manage Books -->
+        <component-button class="col-md-4" link="home" label="Gestionar Libros" icon="bi bi-book-fill"></component-button>
+      </div>
     </div>
-  </div>
-  <!-- Librarian settings -->
-  <div class="container my-4 bd-gutter">
-    <div class="librarian-settings my-3 mx-4">
-      <p class="brown-text">Opciones de Bibliotecario</p>
-    </div>
-    <div class="row">
-      <!-- manage & notify users -->
-      <component-button class="col-md-4" link="select-users" label="Gestionar y Notificar" icon="bi bi-exclamation-octagon-fill"></component-button>
-      <!-- Manage Users Rents -->
-      <component-button class="col-md-4" link="manage-rents" label="Gestionar Prestamos" icon="bi bi-calendar-week-fill"></component-button>
-      <!-- Manage Books -->
-      <component-button class="col-md-4" link="home" label="Gestionar Libros" icon="bi bi-book-fill"></component-button>
-    </div>
-  </div>
-  <!-- Admin settings -->
-  <div class="container my-4 bd-gutter">
-    <div class="librarian-settings my-3 mx-4">
-      <p class="brown-text">Opciones de Administrador</p>
-    </div>
-    <div class="row">
-      <!-- administrate users -->
-      <component-button class="col-md-4" link="select-users" label="Administrar usuarios" icon="bi bi-person-vcard-fill"></component-button>
+    <!-- Admin settings -->
+    <div class="container my-4 bd-gutter">
+      <div class="my-3 mx-4">
+        <p>Opciones de Administrador</p>
+      </div>
+      <div class="row">
+        <!-- administrate users -->
+        <component-button class="col-md-4" link="select-users" label="Administrar usuarios" icon="bi bi-person-vcard-fill"></component-button>
+      </div>
     </div>
   </div>
 </main>
