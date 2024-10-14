@@ -17,11 +17,16 @@
       <p class=""><i>Cantidad: </i>{{ book.quantity }}</p>
     </div>
   </div>
-
-  <h2 class="my-3"><strong>Comentarios</strong></h2>
+  <div class="row">
+    <h2 class="col my-3"><strong>Comentarios</strong></h2>
+    <i class="col bi bi-chat text-end my-3 mx-4" style="font-size: 24px"> Comentar</i>
+  </div>
   <div class="row justify-content-md-center rounded-4 bg-book pt-3">
     <div class="col px-4 mb-3">
-      <comment></comment>
+      <!-- Must iterate throw the all comments -->
+      @for (comment of book.comments; track comment['user-id']) {
+        <comment [user_id]="comment['user-id']" [rating]="comment.rate" [body]="comment.body"></comment>
+      }
     </div>
   </div>
 </div>

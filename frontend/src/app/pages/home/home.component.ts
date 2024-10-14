@@ -49,7 +49,7 @@ export class HomeComponent {
       gender: 'Gender 4',
       author: 'Author 4',
       quantity: 4,
-      rating: 3.6,
+      rating: 4.6,
       image: 'https://picsum.photos/200/300',
     },
   ]

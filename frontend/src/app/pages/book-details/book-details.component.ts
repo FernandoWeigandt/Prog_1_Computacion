@@ -39,6 +39,7 @@ export class BookDetailsComponent implements OnInit {
         rating: this.book.rating || 0,
         image: this.book.image || 'media/default-book-cover.jpg',
         description: this.book.description || 'No description available',
+        comments: this.book.comments || [],
         error: false
       };
     } else {
@@ -50,6 +51,7 @@ export class BookDetailsComponent implements OnInit {
         rating: 0,
         image: '',
         description: '',
+        comments: [],
         error: true
       };
     }
@@ -70,10 +72,10 @@ export class BookDetailsComponent implements OnInit {
       image: 'https://picsum.photos/200/300',
       description: 'A thrilling adventure that takes the protagonist across vast landscapes in search of a long-lost artifact. Along the way, unexpected friendships are forged, and dangers abound.',
       comments: [
-        { "user-id": 1, "commentary": "Great book, really enjoyed the plot.", "rate": 4.5 },
-        { "user-id": 2, "commentary": "Interesting read but the ending was predictable.", "rate": 4.0 },
-        { "user-id": 3, "commentary": "Loved the characters, well developed.", "rate": 4.8 },
-        { "user-id": 4, "commentary": "Not bad, but could have been shorter.", "rate": 4.0 }
+        { "user-id": 1, "body": "Great book, really enjoyed the plot.", "rate": 5 },
+        { "user-id": 2, "body": "Interesting read but the ending was predictable.", "rate": 4 },
+        { "user-id": 3, "body": "Loved the characters, well developed.", "rate": 4 },
+        { "user-id": 4, "body": "Not bad, but could have been shorter.", "rate": 4 }
       ]
     },
     {
@@ -86,10 +88,10 @@ export class BookDetailsComponent implements OnInit {
       image: 'https://picsum.photos/200/300',
       description: 'In a world where magic and technology collide, a lone hero must confront their past to save their future. The stakes have never been higher in this epic fantasy adventure.',
       comments: [
-        { "user-id": 5, "commentary": "Perfect book, loved every chapter!", "rate": 5.0 },
-        { "user-id": 6, "commentary": "Best book I've read this year!", "rate": 5.0 },
-        { "user-id": 7, "commentary": "A masterpiece, highly recommend it.", "rate": 5.0 },
-        { "user-id": 8, "commentary": "Absolutely flawless writing.", "rate": 5.0 }
+        { "user-id": 5, "body": "Perfect book, loved every chapter!", "rate": 5 },
+        { "user-id": 6, "body": "Best book I've read this year!", "rate": 5 },
+        { "user-id": 7, "body": "A masterpiece, highly recommend it.", "rate": 5 },
+        { "user-id": 8, "body": "Absolutely flawless writing.", "rate": 5 }
       ]
     },
     {
@@ -102,10 +104,10 @@ export class BookDetailsComponent implements OnInit {
       image: '',
       description: 'A small-town detective is faced with an unsolvable mystery that will challenge their beliefs and unravel dark secrets hidden deep within the town’s history.',
       comments: [
-        { "user-id": 9, "commentary": "It was okay, nothing special.", "rate": 3.0 },
-        { "user-id": 10, "commentary": "Some parts were dull, but others were good.", "rate": 3.2 },
-        { "user-id": 11, "commentary": "Couldn’t get into it, too slow for me.", "rate": 2.8 },
-        { "user-id": 12, "commentary": "Not the best, but readable.", "rate": 3.0 }
+        { "user-id": 9, "body": "It was okay, nothing special.", "rate": 3 },
+        { "user-id": 10, "body": "Some parts were dull, but others were good.", "rate": 4 },
+        { "user-id": 11, "body": "Couldn't get into it, too slow for me.", "rate": 2 },
+        { "user-id": 12, "body": "Not the best, but readable.", "rate": 3 }
       ]
     },
     {
@@ -114,14 +116,18 @@ export class BookDetailsComponent implements OnInit {
       gender: 'Gender 4',
       author: 'Author 4',
       quantity: 4,
-      rating: 3.6,
+      rating: 4.6,
       image: 'https://picsum.photos/200/300',
       description: 'A gripping tale of betrayal and redemption where the main character must navigate a web of lies to uncover the truth behind a crime that shakes their world.',
       comments: [
-        { "user-id": 13, "commentary": "Some parts were confusing, but overall good.", "rate": 3.7 },
-        { "user-id": 14, "commentary": "Interesting concept, but too long.", "rate": 3.5 },
-        { "user-id": 15, "commentary": "Good read, but not memorable.", "rate": 3.6 },
-        { "user-id": 16, "commentary": "Mixed feelings about this one.", "rate": 3.4 }
+        { "user-id": 13, "body": "Some parts were confusing, but overall good.", "rate": 3 },
+        { "user-id": 14, "body": "Interesting concept, but too long.", "rate": 3 },
+        { "user-id": 15, "body": "Good read, but not memorable.", "rate": 3 },
+        { "user-id": 16, "body": "Incredible book. Really I think people don't understand it.", "rate": 5 },
+        { "user-id": 17, "body": "Perfect book, loved every chapter!", "rate": 5 },
+        { "user-id": 18, "body": "Best book I've read this year!", "rate": 5 },
+        { "user-id": 19, "body": "A masterpiece, highly recommend it.", "rate": 5 },
+        { "user-id": 20, "body": "Absolutely flawless writing.", "rate": 5 }
       ]
     }
   ]  
