@@ -3,40 +3,38 @@
   <div class="container select-users-section">
   
     <!-- Input to filter users -->
-    <div class="input-group my-3">
-      <input type="text" class="form-control" aria-label="Text input with segmented dropdown button">
-      <button type="button" class="btn">Buscar por nombre o ID</button>
+    <div class="input-group mb-3">
+      <input (input)="search()" [(ngModel)]="searchQuery" type="text" class="form-control" placeholder="Nombre o ID" aria-label="Search">
     </div>
   
     <!-- User list with checkboxes -->
     <div class="list-group user-list">
-      @for (user of users; track user.id) {
-        <div class="list-group-item bg-my-secondary text-my-color d-flex justify-content-between align-items-center">
-          <div>
-            <input type="checkbox" class="form-check-input me-2" id="{{ user.id }}">
-            <label for="{{ user.id }}" class="form-check-label text-{{ state2text(user.state) }}">{{ user.name }} (ID: {{ user.id }})</label>
-          </div>
+      @for (user of filteredUsers; track user.id) {
+        <div class="list-group-item d-flex">
+          <input type="checkbox" class="form-check-input me-2" id="{{ user.id }}">
+          <label class="form-check-label text-{{ state2text(user.state) }}"> ({{ user.id }}) - {{ user.name }} {{ user.lastname }}</label>
         </div>
       }
+    </div>
   
     <!-- Buttons for actions -->
     <div class="d-flex flex-column align-items-center mt-4">
       <!-- Button to confirm selected users -->
-      <button class="btn bg-mdy-secondary text-my-color mb-2 w-100" style="max-width: 420px;" id="notify-selected">
-        <a class="text-my-color" href="notify" style="text-decoration: none;">
+      <button class="btn btn-primary mb-2 w-100" style="max-width: 420px;" id="notify-selected">
+        <a href="notify" style="text-decoration: none; color: inherit;">
           Notificar Seleccionados
         </a>
       </button>
       <!-- Button to notify all users -->
-      <button class="btn btn-secondary bg-my-secondary text-my-color mb-2 w-100" style="max-width: 420px;" id="notify-all">
-        <a class="text-my-color" href="notify" style="text-decoration: none;">
+      <button class="btn btn-secondary mb-2 w-100" style="max-width: 420px;" id="notify-all">
+        <a  href="notify" style="text-decoration: none; color: inherit;">
           Mensaje de Difusión
         </a>
       </button>
       <!-- Button to suspend selected users -->
-      <button class="btn btn-warning bg-my-secondary text-my-color w-100" style="max-width: 420px;" id="notify-all">Suspendeder Seleccionados</button>
+      <button class="btn btn-warning text-my-color w-100" style="max-width: 420px;" id="notify-all">Suspendeder Seleccionados</button>
       <!-- Delete account  -->
-      <button class="btn btn-danger bg-my-secondary text-my-color mt-2 w-100" style="max-width: 420px;" id="notify-all">Borrar Seleccionado</button>
+      <button class="btn btn-danger text-my-color mt-2 w-100" style="max-width: 420px;" id="notify-all">Borrar Seleccionado</button>
     </div>
   </div>
   
@@ -54,7 +52,5 @@
       <strong class="text-danger">Rojo:</strong> Usuarios suspendidos.
     </p>
   </div>
-  <!-- Nota a borrar cuando se aplique typescript -->
-  <p class="text-my-color text-center mt-4">Nota de borrador: La opción de Eliminar usuario aparecerá únicamente si el usuario que accede al panel es administrador. El administrador puede borrar cualquier usuario, incluso bibliotecarios y administradores.</p>
 </div>
 <component-navbar link="settings" [searchActive]="false" [settingsActive]="false" [returnActive]="true"></component-navbar>
