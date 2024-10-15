@@ -22,9 +22,9 @@ fill_database() {
     sleep 8
     
     # Fill users table with auth and mail sender
-    make_post "$USERS_JSON" "$URL_API/auth/register"
+    # make_post "$USERS_JSON" "$URL_API/auth/register"
     # Fill users table with normal post method (now is commented)
-    # make_post "$USERS_JSON" "$URL_API/users"
+    make_post "$USERS_JSON" "$URL_API/users"
     # Fill author table
     make_post "$AUTHORS_JSON" "$URL_API/authors"
     # Fill books table

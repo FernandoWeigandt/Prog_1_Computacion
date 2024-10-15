@@ -1,12 +1,12 @@
 <component-contextbar title="Seleccionar usuarios"></component-contextbar>
 <div style="margin-top: 120px; margin-bottom: 120px;">
   <div class="container select-users-section">
-  
+
     <!-- Input to filter users -->
     <div class="input-group mb-3">
       <input (input)="search()" [(ngModel)]="searchQuery" type="text" class="form-control" placeholder="Nombre o ID" aria-label="Search">
     </div>
-  
+
     <!-- User list with checkboxes -->
     <div class="list-group user-list">
       @for (user of filteredUsers; track user.id) {
@@ -20,7 +20,7 @@
     <div class="d-flex justify-content-center mt-4">
       <component-paginate [page]="page" [pages]="pages" (pageChange)="onPageChange($any($event))"></component-paginate>
     </div>
-  
+
     <!-- Buttons for actions -->
     <div class="d-flex flex-column align-items-center mt-4">
       <!-- Button to confirm selected users -->
@@ -41,7 +41,7 @@
       <button class="btn btn-danger text-my-color mt-2 w-100" style="max-width: 420px;" id="notify-all">Borrar Seleccionado</button>
     </div>
   </div>
-  
+
   <!-- Information -->
   <div class="container mt-4 text-my-color text-center">
     <p class="mb-2"><strong>Información:</strong></p>

@@ -1,6 +1,6 @@
-import { Injectable, Input } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, take } from 'rxjs';
+import { Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +9,7 @@ export class UsersService {
 
   url = '/api';
 
-  constructor(private httpClient: HttpClient) { 
+  constructor(private httpClient: HttpClient) {
     // This service can now make HTTP requests via `this.http`.
   }
 

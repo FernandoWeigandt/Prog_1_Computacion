@@ -1,20 +1,20 @@
-<component-contextbar title="{{ book.title }}"></component-contextbar>
+<component-contextbar title="{{ title }}"></component-contextbar>
 <!-- Make stars of the book based on rating and the main view of the comments (with the pagination and icon of the user) -->
 <div class="container adjusted-content">
   <h2><strong>Vista General</strong></h2>
   <div class="row justify-content-md-center rounded-4 bg-book pt-3">
     <div class="col-md-2 text-center">
-      <img src="{{ book.image }}" class="mb-3 mx-3 img-thumbnail" alt="media/default-book-cover.jpg">
+      <img src="{{ image }}" class="mb-3 mx-3 img-thumbnail" alt="media/default-book-cover.jpg">
       <div class="mb-3">
-        <h6>{{ book.gender }}</h6>
-        <stars [rating]="book.rating"></stars>
+        <h6>{{ gender }}</h6>
+        <stars [rating]="rating"></stars>
       </div>
     </div>
     <div class="col px-4 mb-3">
-      <h4>{{ book.title }}</h4>
-      <h5><i>{{ book.author }}</i></h5> 
-      <p class="lead px-2" style="text-align: justify;">{{ book.description }}</p>
-      <p class=""><i>Cantidad: </i>{{ book.quantity }}</p>
+      <h4>{{ title }}</h4>
+      <h5><i>{{ author }}</i></h5>
+      <p class="lead px-2" style="text-align: justify;">{{ description || 'jajajaj' }}</p>
+      <p class=""><i>Cantidad: </i>{{ quantity }}</p>
     </div>
   </div>
   <div class="row">
@@ -24,7 +24,7 @@
   <div class="row justify-content-md-center rounded-4 bg-book pt-3">
     <div class="col px-4 mb-3">
       <!-- Must iterate throw the all comments -->
-      @for (comment of book.comments; track comment['user-id']) {
+      @for (comment of comments; track comment['user-id']) {
         <comment [user_id]="comment['user-id']" [rating]="comment.rate" [body]="comment.body"></comment>
       }
     </div>

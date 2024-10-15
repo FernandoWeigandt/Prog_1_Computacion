@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { ContextbarComponent } from '../../components/contextbar/contextbar.component';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { UsersService } from '../../services/users.service';
-import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { PaginateComponent } from '../../components/paginate/paginate.component';
 
@@ -23,7 +22,7 @@ export class SelectUsersComponent {
   pages:number = 1;
   filteredUsers:any[] = [];
 
-  constructor(private router: Router, private usersService: UsersService) {}
+  constructor(private usersService: UsersService) {}
 
   ngOnInit(): void {this.onPageChange(1)}
 

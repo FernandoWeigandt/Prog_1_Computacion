@@ -47,3 +47,8 @@ Storing images in a designated server path while saving the path or URL in the d
      ```
 
 This approach is efficient and widely used, but ensure that you consider security and maintenance best practices to avoid potential issues.
+
+# Home Component
+
+In this component the rating must be redone. It just displays a default value. 
+Same happens with book comments. ¿Where to store them? Must redo some stuff in backend.

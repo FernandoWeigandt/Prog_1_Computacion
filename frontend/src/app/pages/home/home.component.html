@@ -10,18 +10,18 @@
         <div class="col-12 g-3 col-sm-6">
           <component-book
             [id]="book.id"
-            title="{{ book.title }}" 
-            gender="{{ book.gender }}" 
+            title="{{ book.title }}"
+            gender="{{ book.gender }}"
             author="{{ book.author }}"
             [quantity]="book.quantity"
-            [rating]="book.rating"
+            [rating]="3"
             [image]="book.image || 'media/default-book-cover.jpg'"
-          > 
+          >
           </component-book>
         </div>
       }
       <div class="d-flex justify-content-center mt-3">
-        <component-paginate></component-paginate>
+        <component-paginate [page]="page" [pages]="pages" (pageChange)="getBooks($any($event))"></component-paginate>
       </div>
     </div>
   </div>

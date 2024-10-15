@@ -105,11 +105,11 @@ class Users(Resource):
         })
     
     # This post method is to create a new user but without 
-    # def post(self):
-    #     user = UserModel.from_json(request.get_json())
-    #     try:
-    #         db.session.add(user)
-    #         db.session.commit()
-    #     except:
-    #         return {'error':'Incorrect data format'}, 400
-    #     return user.to_json(), 201
+    def post(self):
+        user = UserModel.from_json(request.get_json())
+        try:
+            db.session.add(user)
+            db.session.commit()
+        except:
+            return {'error':'Incorrect data format'}, 400
+        return user.to_json(), 201
