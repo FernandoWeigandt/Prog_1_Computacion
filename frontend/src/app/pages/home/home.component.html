@@ -7,7 +7,7 @@
   <div class="container my-4 bd-gutter">
     <div class="row">
       @for (book of books; track book.id) {
-        <div class="col-12 col-sm-6">
+        <div class="col-12 g-3 col-sm-6">
           <component-book
             [id]="book.id"
             title="{{ book.title }}" 
@@ -20,7 +20,9 @@
           </component-book>
         </div>
       }
-      <component-paginate></component-paginate>
+      <div class="d-flex justify-content-center mt-3">
+        <component-paginate></component-paginate>
+      </div>
     </div>
   </div>
 </main>

@@ -1,23 +1,23 @@
 <!-- Navbar -->
-<nav class="container top-rounded-div navbar bg-my-secondary bd-navbar fixed-bottom p-4 shadow-lg">
+<nav class="container top-rounded-div navbar bg-my-secondary bd-navbar fixed-bottom py-2 px-4 shadow-lg">
   <div class="container-sm" style="max-width: 492px;">
     <!-- HOME BTN -->
     <a href="home" id="home_btn" style="color: inherit;">
       <button class="btn btn-my-primary btn-lg" type="button">
-        <i class="bi bi-house-fill" style="font-size: 32px"></i>
+        <i class="bi bi-house-fill" style="font-size: 28px"></i>
       </button>
     </a>
     <!-- SEARCH BTN -->
     @if (searchActive) {
       <button id="search_btn" class="btn btn-my-primary btn-lg" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-        <i class="bi bi-search" style="font-size: 32px"></i>
+        <i class="bi bi-search" style="font-size: 28px"></i>
       </button>
     } 
     <!-- ACCOUNT BTN -->
     @if (settingsActive) {
       <a href="settings" id="account_btn" style="color: inherit;">
         <button class="btn btn-my-primary btn-lg" type="button" href="settings">
-          <i class="bi bi-person-fill" style="font-size: 32px"></i>
+          <i class="bi bi-person-fill" style="font-size: 28px"></i>
         </button>
       </a>
     }
@@ -25,7 +25,7 @@
     @if (returnActive) {
       <a href="{{ returnUrl }}" id="return_btn" style="color: inherit;">
         <button class="btn btn-my-primary btn-lg" type="button">
-          <i class="bi bi-arrow-return-left" style="font-size: 32px"></i>
+          <i class="bi bi-arrow-return-left" style="font-size: 28px"></i>
         </button>
       </a>
     }

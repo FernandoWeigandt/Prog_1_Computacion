@@ -14,6 +14,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { RestorePasswordComponent } from './pages/restore-password/restore-password.component';
 import { BookDetailsComponent } from './pages/book-details/book-details.component';
+import { authsessionGuard } from "./guards/authsession.guard";
 
 export const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -22,7 +23,7 @@ export const routes: Routes = [
     { path: 'settings/my-account', component: MyAccountComponent },
     { path: 'my-rents', component: MyRentsComponent },
     { path: 'my-notifications', component: MyNotificationsComponent },
-    { path: 'select-users', component: SelectUsersComponent },
+    { path: 'select-users', component: SelectUsersComponent, canActivate: [authsessionGuard] },
     { path: 'manage-rents', component: ManageRentsComponent },
     { path: 'notify', component: NotifyComponent },
     { path: 'login', component: LoginComponent},

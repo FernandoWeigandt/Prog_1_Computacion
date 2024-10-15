@@ -1,9 +1,9 @@
-<div class="book-rounded-corner flex-md-row mb-4 shadow-sm h-md-250 position-relative bg-book p-3">
-  <div class="row g-0" (click)="gotoBookDetails()">
-    <div class="col-auto mx-auto d-block text-center">
-      <img src="{{ image }}" class="img-fluid img-thumbnail book-image" alt="Imagen del libro" style="width: 260px;">
+<div class="book-rounded-corner shadow-sm bg-book">
+  <div class="d-md-flex flex-md-row h-md-250 position-relative p-3" (click)="gotoBookDetails()">
+    <div class="col-md-4 d-flex justify-content-center align-items-center">
+      <img src="{{ image }}" class="img-fluid img-thumbnail book-image" alt="Imagen del libro" style="width: 100%;">
     </div>
-    <div class="col p-4 d-flex flex-column position-static">
+    <div class="col-md-8 p-4 d-flex flex-column position-static">
       <strong class="d-inline-block mb-2 text-primary-emphasis">{{ gender }}</strong>
       <h3 class="mb-0 shortened-title">{{ title }}</h3>
       <div class="mb-1 text-body-secondary shortened-title">{{ author }}</div>
@@ -13,7 +13,7 @@
       </div>
     </div>
   </div>
-  <div class="d-flex justify-content-center p-2">
+  <div class="d-flex justify-content-center px-4">
     <button class="btn btn-secondary w-100 w-md-50" id="rent_btn">
       <i class="bi bi-cart-plus-fill" style="font-size: 20px"> Pedir</i>
     </button>

@@ -5,7 +5,7 @@ import { Component, Input } from '@angular/core';
   standalone: true,
   imports: [],
   template: `
-  <div class="container py-4 bg-my-secondary bottom-rounded-div shadow fixed-top d-flex align-items-center" style="height: 104px; z-index: 1030;">
+  <div class="container py-3 bg-my-secondary bottom-rounded-div shadow fixed-top d-flex align-items-center" style="height: 92px; z-index: 1030;">
     <p class="mx-4 h1"><strong>{{ shortenTitle(title, 20) }}</strong></p>
   </div>
   `,

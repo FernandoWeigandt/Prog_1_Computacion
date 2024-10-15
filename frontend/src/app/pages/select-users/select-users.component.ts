@@ -18,22 +18,28 @@ export class SelectUsersComponent {
 
   searchQuery: string = '';
   users:any[] = [];
+  totalUsers:number = 0;
+  page:number = 1;
+  pages:number = 1;
   filteredUsers:any[] = [];
 
-  constructor(private router: Router, private usersService: UsersService) {
-    
-  }
+  constructor(private router: Router, private usersService: UsersService) {}
 
-  ngOnInit(): void {
-    this.usersService.getUsers().subscribe((answer: any) => {
-      console.log(answer);
-      this.users = answer.users || [];
-      this.filteredUsers = [...this.users]
-    })
-  }
+  ngOnInit(): void {this.onPageChange(1)}
 
   search() {
     this.filteredUsers = this.users.filter(user => user.name.toLowerCase().includes(this.searchQuery.toLowerCase()));
+  }
+
+  onPageChange(page: number) {
+    this.usersService.getUsers(page).subscribe((answer: any) => {
+      console.log(answer);
+      this.users = answer.users || [];
+      this.filteredUsers = [...this.users]
+      this.page = answer.page;
+      this.totalUsers = answer.total;
+      this.pages = answer.pages;
+    })
   }
 
   state2text(state: string): string {

@@ -16,6 +16,10 @@
         </div>
       }
     </div>
+
+    <div class="d-flex justify-content-center mt-4">
+      <component-paginate [page]="page" [pages]="pages" (pageChange)="onPageChange($any($event))"></component-paginate>
+    </div>
   
     <!-- Buttons for actions -->
     <div class="d-flex flex-column align-items-center mt-4">
@@ -50,6 +54,9 @@
     </p>
     <p class="mb-0">
       <strong class="text-danger">Rojo:</strong> Usuarios suspendidos.
+    </p>
+    <p class="mb-0">
+      <strong>Cantidad de usuarios:</strong> {{ totalUsers }}
     </p>
   </div>
 </div>
