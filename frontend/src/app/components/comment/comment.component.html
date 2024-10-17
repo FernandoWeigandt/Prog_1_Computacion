@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="col-auto">
+    <img src="{{ getUserImage(user) }}" class="img-fluid rounded-circle" alt="User" style="width: 50px;">
+  </div>
+  <div class="col">
+    <div class="card-body">
+      <h5 class="card-title mb-1 text-truncate" style="max-width: 220px;">{{ user?.name }} {{ user?.lastname }}</h5>
+      <stars [rating]="rating"></stars>
+    </div>
+  </div>
+</div>
+<p>{{ body }}</p>

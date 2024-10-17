@@ -2,26 +2,33 @@
     <component-contextbar title="Explorar"></component-contextbar>
     <component-search></component-search>
 </header>
-<main style="margin-top: 120px; margin-bottom: 180px;">
+<main class="adjusted-content">
   <!-- Books -->
   <div class="container my-4 bd-gutter">
     <div class="row">
       @for (book of books; track book.id) {
-        <component-book class="col-12 col-sm-6"
-          title="{{ book.title }}" 
-          gender="{{ book.gender }}" 
-          author="{{ book.author }}"
-          [quantity]="book.quantity"
-        > 
-        </component-book>
+        <div class="col-12 g-3 col-sm-6">
+          <component-book
+            [id]="book.id"
+            title="{{ book.title }}"
+            gender="{{ book.gender }}"
+            author="{{ book.author }}"
+            [quantity]="book.quantity"
+            [rating]="3"
+            [image]="book.image || 'media/default-book-cover.jpg'"
+          >
+          </component-book>
+        </div>
       }
-      <component-paginate></component-paginate>
+      <div class="d-flex justify-content-center mt-3">
+        <component-paginate [page]="page" [pages]="pages" (pageChange)="getBooks($any($event))"></component-paginate>
+      </div>
     </div>
   </div>
 </main>
 <div class="container fixed-bottom text-end" style="margin-bottom: 120px;" id="add-book">
-  <button class="btn btn-my-primary btn-lg shadow-lg" type="button" style="--bs-btn-bg: #7e5d44;">
-    <i class="bi bi-plus-circle-fill" style="font-size: 32px"></i>
+  <button class="btn bg-my-secondary shadow" type="button">
+    <i class="bi bi-plus-circle-fill" style="font-size: 32px;"></i>
   </button>
 </div>
 <component-navbar></component-navbar>

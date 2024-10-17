@@ -1,21 +1,26 @@
 <header>
-  <div class="container-sm bg-my-secondary py-5 bottom-rounded-div shadow-lg text-center mb-4" style="height: 311px; position: relative;">
+  <div class="container-sm bg-my-secondary py-5 bottom-rounded-div shadow text-center mb-4" style="height: 311px; position: relative;">
     <img src="media/book-thumbnail.jpg" alt="Libros" class="img-fluid rounded-circle shadow-sm" style="height: 280px;">
   </div>
 </header>
 <div>
   <div class="container login-panel-section">
     <div class="row justify-content-center">
-      <div class="col-md-6 col-lg-4">
-
-        <form class="m-3">
+      <div class="col-md-6 col-lg-4">        
+        <div *ngIf="invalid_submit && !invalid_auth" class="alert alert-danger mt-3" role="alert">
+          ¡Los campos de Correo y Contraseña son obligatorios!
+        </div>
+        <div *ngIf="invalid_auth && !invalid_submit" class="alert alert-warning mt-3" role="alert">
+          Correo o contraseña incorrecta
+        </div>
+        <form [formGroup]="loginForm" class="m-3">
           <div class="mb-3 text-my-color">
             <label for="user_email" class="form-label">Correo</label>
-            <input type="email" class="form-control" id="user_email" aria-describedby="emailHelp">
+            <input type="email" class="form-control" formControlName="mail">
           </div>
           <div class="mb-3 text-my-color">
             <label for="user_passwd" class="form-label">Contraseña</label>
-            <input type="password" class="form-control" id="user_passwd">
+            <input type="password" class="form-control" formControlName="passwd">
           </div>
           <div class="mb-3 form-check text-my-color">
             <input type="checkbox" class="form-check-input" id="remember">
@@ -24,7 +29,7 @@
         </form>
         
         <!-- Login button -->
-        <div class="d-flex justify-content-center mx-3">
+        <div class="d-flex justify-content-center mx-3" (click)="submit()">
           <button class="btn btn-secondary bg-my-secondary text-my-color w-100 w-md-50" id="login-btn">Iniciar Sesión</button>
         </div>
   

@@ -1,68 +1,281 @@
 [
     {
         "title": "The Book of Secrets",
+        "author": "Unknown Author",
         "gender": "Mystery",
         "publisher": "Penguin Random House",
+        "status": "available",
+        "quantity": 1,
         "authors": [1]
     },
     {
         "title": "The Unexpected Abigail Adams: A Woman Not Apt to Be Intimidated",
+        "author": "Unknown Author",
         "gender": "Thriller",
         "publisher": "Westholme Publishing",
-        "authors": [1,11]
+        "status": "available",
+        "quantity": 1,
+        "authors": [1, 11]
     },
     {
         "title": "The Lost Key",
+        "author": "Unknown Author",
         "gender": "Thriller",
         "publisher": "HarperCollins",
-        "authors": [2]
+        "status": "available",
+        "quantity": 1,
+        "authors": []
     },
     {
         "title": "Echoes of Silence",
+        "author": "Unknown Author",
         "gender": "Romance",
         "publisher": "Simon & Schuster",
+        "status": "available",
+        "quantity": 1,
         "authors": [3]
     },
     {
         "title": "Shadow of the Past",
+        "author": "Unknown Author",
         "gender": "Mystery",
         "publisher": "Penguin Random House",
+        "status": "available",
+        "quantity": 1,
         "authors": [4]
     },
     {
         "title": "The Last Enigma",
+        "author": "Unknown Author",
         "gender": "Thriller",
         "publisher": "HarperCollins",
+        "status": "available",
+        "quantity": 1,
         "authors": [5]
     },
     {
         "title": "Whispers in the Dark",
+        "author": "Unknown Author",
         "gender": "Horror",
         "publisher": "Simon & Schuster",
+        "status": "available",
+        "quantity": 1,
         "authors": [6]
     },
     {
         "title": "Deadly Whispers",
+        "author": "Unknown Author",
         "gender": "Mystery",
         "publisher": "Penguin Random House",
+        "status": "available",
+        "quantity": 1,
         "authors": [7]
     },
     {
         "title": "Dancing with Shadows",
+        "author": "Unknown Author",
         "gender": "Romance",
         "publisher": "HarperCollins",
-        "authors": [8,7]
+        "status": "available",
+        "quantity": 1,
+        "authors": [8, 7]
     },
     {
         "title": "The Hidden Truth",
+        "author": "Unknown Author",
         "gender": "Thriller",
         "publisher": "Simon & Schuster",
+        "status": "available",
+        "quantity": 1,
         "authors": [8]
     },
     {
         "title": "Echoes of Destiny",
+        "author": "Unknown Author",
         "gender": "Romance",
         "publisher": "Penguin Random House",
-        "authors": [8,9,10]
+        "status": "available",
+        "quantity": 1,
+        "authors": [8, 9, 10]
+    },
+    {
+        "title": "The Secret Heir",
+        "author": "Unknown Author",
+        "gender": "Drama",
+        "publisher": "Penguin Books",
+        "status": "available",
+        "quantity": 1,
+        "authors": [11]
+    },
+    {
+        "title": "Beneath the Surface",
+        "author": "Unknown Author",
+        "gender": "Mystery",
+        "publisher": "HarperCollins",
+        "status": "available",
+        "quantity": 1,
+        "authors": [11]
+    },
+    {
+        "title": "Winds of Change",
+        "author": "Unknown Author",
+        "gender": "Adventure",
+        "publisher": "Vintage Books",
+        "status": "available",
+        "quantity": 1,
+        "authors": [1,4]
+    },
+    {
+        "title": "The Forgotten Path",
+        "author": "Unknown Author",
+        "gender": "Fantasy",
+        "publisher": "Simon & Schuster",
+        "status": "available",
+        "quantity": 1,
+        "authors": [2,5]
+    },
+    {
+        "title": "Veil of Darkness",
+        "author": "Unknown Author",
+        "gender": "Horror",
+        "publisher": "Penguin Random House",
+        "status": "available",
+        "quantity": 1,
+        "authors": [1,6]
+    },
+    {
+        "title": "A Flicker in Time",
+        "author": "Unknown Author",
+        "gender": "Science Fiction",
+        "publisher": "HarperCollins",
+        "status": "available",
+        "quantity": 1,
+        "authors": [4,7]
+    },
+    {
+        "title": "Echoes of the Past",
+        "author": "Unknown Author",
+        "gender": "Historical Fiction",
+        "publisher": "Simon & Schuster",
+        "status": "available",
+        "quantity": 1,
+        "authors": [7,8]
+    },
+    {
+        "title": "The Silent Watcher",
+        "author": "Unknown Author",
+        "gender": "Thriller",
+        "publisher": "Penguin Books",
+        "status": "available",
+        "quantity": 1,
+        "authors": [1,9]
+    },
+    {
+        "title": "Rise of the Phoenix",
+        "author": "Unknown Author",
+        "gender": "Fantasy",
+        "publisher": "HarperCollins",
+        "status": "available",
+        "quantity": 1,
+        "authors": [2,4]
+    },
+    {
+        "title": "Moonlit Serenade",
+        "author": "Unknown Author",
+        "gender": "Romance",
+        "publisher": "Simon & Schuster",
+        "status": "available",
+        "quantity": 1,
+        "authors": [2,1]
+    },
+    {
+        "title": "The Darkened Shore",
+        "author": "Unknown Author",
+        "gender": "Mystery",
+        "publisher": "Vintage Books",
+        "status": "available",
+        "quantity": 1,
+        "authors": [2]
+    },
+    {
+        "title": "Unbroken Silence",
+        "author": "Unknown Author",
+        "gender": "Drama",
+        "publisher": "Penguin Random House",
+        "status": "available",
+        "quantity": 1,
+        "authors": [3]
+    },
+    {
+        "title": "Guardians of the Realm",
+        "author": "Unknown Author",
+        "gender": "Fantasy",
+        "publisher": "HarperCollins",
+        "status": "available",
+        "quantity": 1,
+        "authors": [4]
+    },
+    {
+        "title": "The Forgotten Legend",
+        "author": "Unknown Author",
+        "gender": "Adventure",
+        "publisher": "Simon & Schuster",
+        "status": "available",
+        "quantity": 1,
+        "authors": [5]
+    },
+    {
+        "title": "Shadows of Betrayal",
+        "author": "Unknown Author",
+        "gender": "Thriller",
+        "publisher": "Penguin Books",
+        "status": "available",
+        "quantity": 1,
+        "authors": [6]
+    },
+    {
+        "title": "The Final Frontier",
+        "author": "Unknown Author",
+        "gender": "Science Fiction",
+        "publisher": "HarperCollins",
+        "status": "available",
+        "quantity": 1,
+        "authors": [7]
+    },
+    {
+        "title": "Echoes of War",
+        "author": "Unknown Author",
+        "gender": "Historical Fiction",
+        "publisher": "Simon & Schuster",
+        "status": "available",
+        "quantity": 1,
+        "authors": [2]
+    },
+    {
+        "title": "Heart of the Storm",
+        "author": "Unknown Author",
+        "gender": "Adventure",
+        "publisher": "Penguin Random House",
+        "status": "available",
+        "quantity": 1,
+        "authors": [9]
+    },
+    {
+        "title": "The Last Horizon",
+        "author": "Unknown Author",
+        "gender": "Science Fiction",
+        "publisher": "HarperCollins",
+        "status": "available",
+        "quantity": 1,
+        "authors": [3]
+    },
+    {
+        "title": "Tides of Fate",
+        "author": "Unknown Author",
+        "gender": "Romance",
+        "publisher": "Simon & Schuster",
+        "status": "available",
+        "quantity": 1,
+        "authors": [1]
     }
 ]

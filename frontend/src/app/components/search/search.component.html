@@ -1,20 +1,20 @@
 <!-- Search Bar -->
 <div class="collapse container-sm fixed-top" id="navbarToggleExternalContent" style="padding-left: 0px; padding-right: 0px; z-index: 1050;">
   <div class="container-sm p-4 bg-my-secondary bottom-rounded-div shadow-lg">
-    <div class="input-group my-3">
-      <input type="text" class="form-control" aria-label="Text input with segmented dropdown button">
-      <button type="button" class="btn btn-my-outline">Buscar</button>
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" placeholder="Criterio de busqueda" aria-label="Search" aria-describedby="button-search">
+      <button class="btn btn-light" type="button" id="button-search">Buscar</button>
     </div>
     <div class="container my-4">
-      <p style="color: #d9b591;">Filtrar por:</p>
+      <p>Filtrar por:</p>
       <p class="d-inline-flex gap-1">
-        <button type="button" class="btn btn-my-selectable mt-1" data-bs-toggle="button" aria-pressed="false">Genero</button>
-        <button type="button" class="btn btn-my-selectable mt-1" data-bs-toggle="button" aria-pressed="false">Autor</button>
-        <button type="button" class="btn btn-my-selectable mt-1" data-bs-toggle="button" aria-pressed="false">Título</button>
+        <button type="button" class="btn btn-secondary mt-1" data-bs-toggle="button" aria-pressed="false">Genero</button>
+        <button type="button" class="btn btn-secondary mt-1" data-bs-toggle="button" aria-pressed="false">Autor</button>
+        <button type="button" class="btn btn-secondary mt-1" data-bs-toggle="button" aria-pressed="false">Título</button>
       </p>
       <p class="d-inline-flex gap-1">
-        <button type="button" class="btn btn-my-selectable mt-1" data-bs-toggle="button" aria-pressed="false">Reseñas positivas</button>
-        <button type="button" class="btn btn-my-selectable mt-1" data-bs-toggle="button" aria-pressed="false">Reseñas negativas</button>
+        <button type="button" class="btn btn-secondary mt-1" data-bs-toggle="button" aria-pressed="false">Reseñas positivas</button>
+        <button type="button" class="btn btn-secondary mt-1" data-bs-toggle="button" aria-pressed="false">Reseñas negativas</button>
       </p>
     </div>
   </div>
