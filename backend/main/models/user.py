@@ -11,10 +11,10 @@ class User(db.Model):
     rol = db.Column(db.String(100), nullable = False, server_default='pending')
     alias = db.Column(db.String)
     passwd = db.Column(db.String, nullable = False)
-    # Relation 1:1 (1 user : 1 valoration), User is Parent
-    valoration = db.relationship('Valoration', uselist=False, back_populates='user', cascade='all, delete-orphan')
-    # Relation 1:1 (1 user : 1 rent), User is Parent
-    rent = db.relationship('Rent', uselist=False, back_populates='user', cascade='all, delete-orphan')
+    # Relation 1:N (1 user : N Comments), User is Parent
+    comments = db.relationship('Comment', back_populates='user', cascade='all, delete-orphan')
+    # Relation 1:N (1 user : N rent), User is Parent
+    rent = db.relationship('Rent', back_populates='user', cascade='all, delete-orphan')
     # Relation 1:N (1 user : N notifications), User is parent
     notifications = db.relationship('Notification', back_populates='user', cascade='all, delete-orphan')
 

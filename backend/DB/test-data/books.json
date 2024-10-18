@@ -1,281 +1,359 @@
 [
     {
         "title": "The Book of Secrets",
-        "author": "Unknown Author",
+        "image":"path/to/image",
         "gender": "Mystery",
-        "publisher": "Penguin Random House",
-        "status": "available",
-        "quantity": 1,
+        "description":"A gripping tale of hidden truths and dark secrets, as a detective unravels a web of lies that stretches back generations.",
         "authors": [1]
     },
     {
         "title": "The Unexpected Abigail Adams: A Woman Not Apt to Be Intimidated",
-        "author": "Unknown Author",
+        "image":"path/to/image",
         "gender": "Thriller",
-        "publisher": "Westholme Publishing",
-        "status": "available",
-        "quantity": 1,
+        "description":"Follow the story of Abigail Adams, an extraordinary woman who navigates political intrigue and danger in a world where few expect her to succeed.",
         "authors": [1, 11]
     },
     {
         "title": "The Lost Key",
-        "author": "Unknown Author",
+        "image":"path/to/image",
         "gender": "Thriller",
-        "publisher": "HarperCollins",
-        "status": "available",
-        "quantity": 1,
+        "description":"An ancient artifact holds the key to a deadly secret, and a desperate race against time ensues to uncover the truth.",
         "authors": []
     },
     {
         "title": "Echoes of Silence",
-        "author": "Unknown Author",
+        "image":"path/to/image",
         "gender": "Romance",
-        "publisher": "Simon & Schuster",
-        "status": "available",
-        "quantity": 1,
+        "description":"A heart-wrenching love story set against the backdrop of quiet moments and unspoken emotions.",
         "authors": [3]
     },
     {
         "title": "Shadow of the Past",
-        "author": "Unknown Author",
+        "image":"path/to/image",
         "gender": "Mystery",
-        "publisher": "Penguin Random House",
-        "status": "available",
-        "quantity": 1,
+        "description":"An old case comes back to haunt a detective as he struggles to uncover the truth behind a decades-old disappearance.",
         "authors": [4]
     },
     {
         "title": "The Last Enigma",
-        "author": "Unknown Author",
+        "image":"path/to/image",
         "gender": "Thriller",
-        "publisher": "HarperCollins",
-        "status": "available",
-        "quantity": 1,
+        "description":"A brilliant codebreaker is drawn into a world of espionage and danger as she attempts to solve one final puzzle.",
         "authors": [5]
     },
     {
         "title": "Whispers in the Dark",
-        "author": "Unknown Author",
+        "image":"path/to/image",
         "gender": "Horror",
-        "publisher": "Simon & Schuster",
-        "status": "available",
-        "quantity": 1,
+        "description":"A chilling tale of a haunted house and the dark secrets that lurk within its walls.",
         "authors": [6]
     },
     {
         "title": "Deadly Whispers",
-        "author": "Unknown Author",
+        "image":"path/to/image",
         "gender": "Mystery",
-        "publisher": "Penguin Random House",
-        "status": "available",
-        "quantity": 1,
+        "description":"A series of cryptic clues leads a detective on a dangerous journey to uncover the truth behind a string of murders.",
         "authors": [7]
     },
     {
         "title": "Dancing with Shadows",
-        "author": "Unknown Author",
+        "image":"path/to/image",
         "gender": "Romance",
-        "publisher": "HarperCollins",
-        "status": "available",
-        "quantity": 1,
+        "description":"Two souls find love in the most unexpected places as they learn to embrace their past and dance towards a brighter future.",
         "authors": [8, 7]
     },
     {
         "title": "The Hidden Truth",
-        "author": "Unknown Author",
+        "image":"path/to/image",
         "gender": "Thriller",
-        "publisher": "Simon & Schuster",
-        "status": "available",
-        "quantity": 1,
+        "description":"A journalist stumbles upon a conspiracy that could shake the very foundations of society, but exposing it may cost her everything.",
         "authors": [8]
     },
     {
         "title": "Echoes of Destiny",
-        "author": "Unknown Author",
+        "image":"path/to/image",
         "gender": "Romance",
-        "publisher": "Penguin Random House",
-        "status": "available",
-        "quantity": 1,
+        "description":"A romantic saga spanning decades, where love and fate intertwine in the lives of three generations.",
         "authors": [8, 9, 10]
     },
     {
         "title": "The Secret Heir",
-        "author": "Unknown Author",
+        "image":"path/to/image",
         "gender": "Drama",
-        "publisher": "Penguin Books",
-        "status": "available",
-        "quantity": 1,
+        "description":"A family's hidden past comes to light as a long-lost heir returns to claim his inheritance, threatening to unravel everything.",
         "authors": [11]
     },
     {
         "title": "Beneath the Surface",
-        "author": "Unknown Author",
+        "image":"path/to/image",
         "gender": "Mystery",
-        "publisher": "HarperCollins",
-        "status": "available",
-        "quantity": 1,
+        "description":"As secrets buried beneath the surface start to emerge, a small town is shaken by a shocking revelation.",
         "authors": [11]
     },
     {
         "title": "Winds of Change",
-        "author": "Unknown Author",
+        "image":"path/to/image",
         "gender": "Adventure",
-        "publisher": "Vintage Books",
-        "status": "available",
-        "quantity": 1,
-        "authors": [1,4]
+        "description":"An epic journey across uncharted territories, where a group of explorers face the challenges of nature and themselves.",
+        "authors": [1, 4]
     },
     {
         "title": "The Forgotten Path",
-        "author": "Unknown Author",
+        "image":"path/to/image",
         "gender": "Fantasy",
-        "publisher": "Simon & Schuster",
-        "status": "available",
-        "quantity": 1,
-        "authors": [2,5]
+        "description":"In a land filled with magic, a young hero must rediscover the forgotten path to save his world from a looming darkness.",
+        "authors": [2, 5]
     },
     {
         "title": "Veil of Darkness",
-        "author": "Unknown Author",
+        "image":"path/to/image",
         "gender": "Horror",
-        "publisher": "Penguin Random House",
-        "status": "available",
-        "quantity": 1,
-        "authors": [1,6]
+        "description":"A chilling horror story where a town is enveloped in darkness, and the only way to survive is to face the terrors lurking within.",
+        "authors": [1, 6]
     },
     {
         "title": "A Flicker in Time",
-        "author": "Unknown Author",
+        "image":"path/to/image",
         "gender": "Science Fiction",
-        "publisher": "HarperCollins",
-        "status": "available",
-        "quantity": 1,
-        "authors": [4,7]
+        "description":"A scientist discovers a way to manipulate time, but tampering with the past comes with unexpected and dangerous consequences.",
+        "authors": [4, 7]
     },
     {
         "title": "Echoes of the Past",
-        "author": "Unknown Author",
+        "image":"path/to/image",
         "gender": "Historical Fiction",
-        "publisher": "Simon & Schuster",
-        "status": "available",
-        "quantity": 1,
-        "authors": [7,8]
+        "description":"A historical tale where personal and political struggles intertwine, revealing the echoes of past events that still shape the present.",
+        "authors": [7, 8]
     },
     {
         "title": "The Silent Watcher",
-        "author": "Unknown Author",
+        "image":"path/to/image",
         "gender": "Thriller",
-        "publisher": "Penguin Books",
-        "status": "available",
-        "quantity": 1,
-        "authors": [1,9]
+        "description":"A relentless stalker keeps a city on edge, and a determined detective must catch him before he strikes again.",
+        "authors": [1, 9]
     },
     {
         "title": "Rise of the Phoenix",
-        "author": "Unknown Author",
+        "image":"path/to/image",
         "gender": "Fantasy",
-        "publisher": "HarperCollins",
-        "status": "available",
-        "quantity": 1,
-        "authors": [2,4]
+        "description":"A fantasy epic where a warrior rises from the ashes to lead a rebellion against an oppressive empire.",
+        "authors": [2, 4]
     },
     {
         "title": "Moonlit Serenade",
-        "author": "Unknown Author",
+        "image":"path/to/image",
         "gender": "Romance",
-        "publisher": "Simon & Schuster",
-        "status": "available",
-        "quantity": 1,
-        "authors": [2,1]
+        "description":"A beautiful love story set under the moonlit sky, where two strangers find themselves drawn to each other by fate.",
+        "authors": [2, 1]
     },
     {
         "title": "The Darkened Shore",
-        "author": "Unknown Author",
+        "image":"path/to/image",
         "gender": "Mystery",
-        "publisher": "Vintage Books",
-        "status": "available",
-        "quantity": 1,
+        "description":"A coastal town hides a dark secret, and a detective must solve a mysterious disappearance before it's too late.",
         "authors": [2]
     },
     {
         "title": "Unbroken Silence",
-        "author": "Unknown Author",
+        "image":"path/to/image",
         "gender": "Drama",
-        "publisher": "Penguin Random House",
-        "status": "available",
-        "quantity": 1,
+        "description":"A poignant drama about a family overcoming trauma and learning to communicate their buried emotions.",
         "authors": [3]
     },
     {
         "title": "Guardians of the Realm",
-        "author": "Unknown Author",
+        "image":"path/to/image",
         "gender": "Fantasy",
-        "publisher": "HarperCollins",
-        "status": "available",
-        "quantity": 1,
+        "description":"In a kingdom threatened by darkness, a group of warriors must band together to protect the realm and restore peace.",
         "authors": [4]
     },
     {
         "title": "The Forgotten Legend",
-        "author": "Unknown Author",
+        "image":"path/to/image",
         "gender": "Adventure",
-        "publisher": "Simon & Schuster",
-        "status": "available",
-        "quantity": 1,
+        "description":"A thrilling adventure that follows a treasure hunter's quest to uncover a forgotten legend hidden deep in the jungle.",
         "authors": [5]
     },
     {
         "title": "Shadows of Betrayal",
-        "author": "Unknown Author",
+        "image":"path/to/image",
         "gender": "Thriller",
-        "publisher": "Penguin Books",
-        "status": "available",
-        "quantity": 1,
+        "description":"A fast-paced thriller where trust is a luxury and betrayal lurks around every corner.",
         "authors": [6]
     },
     {
         "title": "The Final Frontier",
-        "author": "Unknown Author",
+        "image":"path/to/image",
         "gender": "Science Fiction",
-        "publisher": "HarperCollins",
-        "status": "available",
-        "quantity": 1,
+        "description":"A daring space expedition ventures into the unknown, uncovering the mysteries of the universe's final frontier.",
         "authors": [7]
     },
     {
         "title": "Echoes of War",
-        "author": "Unknown Author",
+        "image":"path/to/image",
         "gender": "Historical Fiction",
-        "publisher": "Simon & Schuster",
-        "status": "available",
-        "quantity": 1,
+        "description":"Set during a time of conflict, this novel tells the story of individuals whose lives are forever changed by the ravages of war.",
         "authors": [2]
     },
     {
         "title": "Heart of the Storm",
-        "author": "Unknown Author",
+        "image":"path/to/image",
         "gender": "Adventure",
-        "publisher": "Penguin Random House",
-        "status": "available",
-        "quantity": 1,
+        "description":"A gripping tale of survival as a group of sailors must navigate a deadly storm while grappling with their own fears.",
         "authors": [9]
     },
     {
         "title": "The Last Horizon",
-        "author": "Unknown Author",
+        "image":"path/to/image",
         "gender": "Science Fiction",
-        "publisher": "HarperCollins",
-        "status": "available",
-        "quantity": 1,
+        "description":"In a future where Earth is no longer habitable, humanity's last hope lies in finding a new horizon among the stars.",
         "authors": [3]
     },
     {
         "title": "Tides of Fate",
-        "author": "Unknown Author",
+        "image":"path/to/image",
         "gender": "Romance",
-        "publisher": "Simon & Schuster",
-        "status": "available",
-        "quantity": 1,
+        "description":"A love story set against the backdrop of the sea, where the tides of fate bring two souls together in an unforgettable romance.",
         "authors": [1]
+    },
+    {
+        "title": "The Crimson Dawn",
+        "image": "path/to/image",
+        "gender": "Fantasy",
+        "description": "",
+        "authors": [1, 3]
+    },
+    {
+        "title": "The Forgotten Temple",
+        "image": "path/to/image",
+        "gender": "Adventure",
+        "description": "",
+        "authors": [2, 6]
+    },
+    {
+        "title": "Labyrinth of Lies",
+        "image": "path/to/image",
+        "gender": "Thriller",
+        "description": "",
+        "authors": [4]
+    },
+    {
+        "title": "The Phantom's Lament",
+        "image": "path/to/image",
+        "gender": "Horror",
+        "description": "",
+        "authors": [7]
+    },
+    {
+        "title": "Sands of Time",
+        "image": "path/to/image",
+        "gender": "Historical Fiction",
+        "description": "",
+        "authors": [5, 8]
+    },
+    {
+        "title": "The Vanishing Point",
+        "image": "path/to/image",
+        "gender": "Mystery",
+        "description": "",
+        "authors": [3, 10]
+    },
+    {
+        "title": "Winds of Eternity",
+        "image": "path/to/image",
+        "gender": "Fantasy",
+        "description": "",
+        "authors": [4, 11]
+    },
+    {
+        "title": "The Guardian's Oath",
+        "image": "path/to/image",
+        "gender": "Adventure",
+        "description": "",
+        "authors": [9]
+    },
+    {
+        "title": "Nightfall Over the City",
+        "image": "path/to/image",
+        "gender": "Thriller",
+        "description": "",
+        "authors": [6, 12]
+    },
+    {
+        "title": "Embers of Memory",
+        "image": "path/to/image",
+        "gender": "Romance",
+        "description": "",
+        "authors": [2, 8]
+    },
+    {
+        "title": "The Eternal Quest",
+        "image": "path/to/image",
+        "gender": "Fantasy",
+        "description": "",
+        "authors": [1, 7]
+    },
+    {
+        "title": "The Shadow's Grasp",
+        "image": "path/to/image",
+        "gender": "Horror",
+        "description": "",
+        "authors": [4]
+    },
+    {
+        "title": "Beyond the Horizon",
+        "image": "path/to/image",
+        "gender": "Adventure",
+        "description": "",
+        "authors": [3, 5]
+    },
+    {
+        "title": "The Whispering Woods",
+        "image": "path/to/image",
+        "gender": "Mystery",
+        "description": "",
+        "authors": [6]
+    },
+    {
+        "title": "Echoes in the Mist",
+        "image": "path/to/image",
+        "gender": "Historical Fiction",
+        "description": "",
+        "authors": [7, 11]
+    },
+    {
+        "title": "The Keeper's Secret",
+        "image": "path/to/image",
+        "gender": "Mystery",
+        "description": "",
+        "authors": [1]
+    },
+    {
+        "title": "The Darkening Sky",
+        "image": "path/to/image",
+        "gender": "Science Fiction",
+        "description": "",
+        "authors": [10]
+    },
+    {
+        "title": "Shadows of the Forgotten",
+        "image": "path/to/image",
+        "gender": "Fantasy",
+        "description": "",
+        "authors": [2, 9]
+    },
+    {
+        "title": "The Midnight Passage",
+        "image": "path/to/image",
+        "gender": "Thriller",
+        "description": "",
+        "authors": [3, 8]
+    },
+    {
+        "title": "The Veiled City",
+        "image": "path/to/image",
+        "gender": "Fantasy",
+        "description": "",
+        "authors": [4, 7]
     }
 ]

@@ -10,9 +10,11 @@ make_post() {
 
 fill_database() {
     USERS_JSON="./DB/test-data/users.json"
-    BOOKS_JSON="./DB/test-data/books.json"
     AUTHORS_JSON="./DB/test-data/authors.json"
-    VALORATIONS_JSON="./DB/test-data/valorations.json"
+    BOOKS_JSON="./DB/test-data/books.json"
+    COMMENTS_JSON="./DB/test-data/comments.json"
+    BOOK_COPIES_JSON="./DB/test-data/book_copies.json"
+    RENTS_JSON="./DB/test-data/rents.json"
 
     API_PORT=$(head -n 1 .env | awk '{ print $4 }' | sed "s/'//g")
 
@@ -30,7 +32,11 @@ fill_database() {
     # Fill books table
     make_post "$BOOKS_JSON" "$URL_API/books"
     # Fill valorations table
-    make_post "$VALORATIONS_JSON" "$URL_API/valorations"
+    make_post "$COMMENTS_JSON" "$URL_API/comments"
+    # Fill book_copies table
+    make_post "$BOOK_COPIES_JSON" "$URL_API/copies"
+    # Fill rents table
+    make_post "$RENTS_JSON" "$URL_API/rents"
 
 }
 

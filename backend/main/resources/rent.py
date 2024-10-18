@@ -35,7 +35,7 @@ class Rent(Resource):
 class Rents(Resource):
     def get(self):
         rents = db.session.query(RentModel).all()
-        return jsonify([rent.to_json() for rent in rents])
+        return jsonify([rent.to_json_complete() for rent in rents])
     
     def post(self):
         books_id = request.get_json().get('books')
