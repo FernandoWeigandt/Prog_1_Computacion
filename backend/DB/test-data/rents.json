@@ -1,0 +1,86 @@
+[
+    {
+        "user_id": 1,
+        "book_copy_id": 5,
+        "init_date": "2024-10-01",
+        "expiration_date": "2024-10-31"
+    },
+    {
+        "user_id": 2,
+        "book_copy_id": 10,
+        "init_date": "2024-10-03",
+        "expiration_date": "2024-11-02"
+    },
+    {
+        "user_id": 3,
+        "book_copy_id": 15,
+        "init_date": "2024-10-05",
+        "expiration_date": "2024-11-04"
+    },
+    {
+        "user_id": 4,
+        "book_copy_id": 20,
+        "init_date": "2024-10-07",
+        "expiration_date": "2024-11-06"
+    },
+    {
+        "user_id": 5,
+        "book_copy_id": 25,
+        "init_date": "2024-10-10",
+        "expiration_date": "2024-11-09"
+    },
+    {
+        "user_id": 6,
+        "book_copy_id": 30,
+        "init_date": "2024-10-12",
+        "expiration_date": "2024-11-11"
+    },
+    {
+        "user_id": 7,
+        "book_copy_id": 35,
+        "init_date": "2024-10-14",
+        "expiration_date": "2024-11-13"
+    },
+    {
+        "user_id": 8,
+        "book_copy_id": 40,
+        "init_date": "2024-10-15",
+        "expiration_date": "2024-11-14"
+    },
+    {
+        "user_id": 9,
+        "book_copy_id": 45,
+        "init_date": "2024-10-18",
+        "expiration_date": "2024-11-17"
+    },
+    {
+        "user_id": 10,
+        "book_copy_id": 50,
+        "init_date": "2024-10-20",
+        "expiration_date": "2024-11-19"
+    },
+    {
+        "user_id": 11,
+        "book_copy_id": 3,
+        "init_date": "2024-10-21",
+        "expiration_date": "2024-11-20"
+    },
+    {
+        "user_id": 12,
+        "book_copy_id": 8,
+        "init_date": "2024-10-22",
+        "expiration_date": "2024-11-21"
+    },
+    {
+        "user_id": 13,
+        "book_copy_id": 13,
+        "init_date": "2024-10-23",
+        "expiration_date": "2024-11-22"
+    },
+    {
+        "user_id": 14,
+        "book_copy_id": 18,
+        "init_date": "2024-10-24",
+        "expiration_date": "2024-11-23"
+    }
+]

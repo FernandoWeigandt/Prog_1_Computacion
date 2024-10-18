@@ -1,7 +1,6 @@
 from flask_restful import Resource
 from flask import request, jsonify
-from main.models import BookModel, AuthorModel, ValorationModel
-from sqlalchemy import func, desc, asc
+from main.models import BookModel, AuthorModel
 from .. import db
 
 class Book(Resource):
@@ -44,9 +43,8 @@ class Books(Resource):
             per_page = int(request.args.get('per_page'))
 
         # Filters #
-
         if request.args.get('id'):
-            books=books.filter(BookModel.id.like('%'+request.args.get('id')+'%'))
+            books=books.filter(BookModel.id == request.args.get('id'))
 
         if request.args.get('title'):
             books=books.filter(BookModel.title.like('%'+request.args.get('title')+'%'))
@@ -54,30 +52,10 @@ class Books(Resource):
         if request.args.get('gender'):
             books=books.filter(BookModel.gender.like('%'+request.args.get('gender')+'%'))
 
-        if request.args.get('publisher'):
-            books=books.filter(BookModel.publisher.like('%'+request.args.get('publisher')+'%'))
-
-        # Sort by #
-
-        if request.args.get('valorations'):
-            if request.args.get('valorations') == "desc":
-                books=books.outerjoin(BookModel.valorations).group_by(BookModel.id).order_by(func.count(ValorationModel.valoration).desc())
-            else:
-                books=books.outerjoin(BookModel.valorations).group_by(BookModel.id).order_by(func.count(ValorationModel.valoration).asc())
-
-
-        # what does this????
-        if request.args.get('sortby_rents'):
-            if request.args.get('sortby_rents') == "desc":
-                books=books.outerjoin(BookModel.rents).group_by(BookModel.id).order_by(func.count(RentModel.id).desc())
-            else:
-                books=books.outerjoin(BookModel.rents).group_by(BookModel.id).order_by(func.count(RentModel.id).asc())
-
-
         books = books.paginate(page=page, per_page=per_page, error_out=True)
 
         return jsonify({
-            'books': [book.to_json_complete() for book in books],
+            'books': [book.to_json() for book in books],
             'total': books.total,
             'pages': books.pages,
             'page': page            
@@ -92,6 +70,7 @@ class Books(Resource):
         try:
             db.session.add(book)
             db.session.commit()
-        except:
+        except Exception as e:
+            print(str(e))
             return {'error':'Incorrect data format'}, 400
         return book.to_json(), 201

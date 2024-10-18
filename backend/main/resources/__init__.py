@@ -14,5 +14,8 @@ from .author import Authors as AuthorsResources
 
 from .notifications import Notification as NotificationResources
 
-from .valoration import Valoration as ValorationResources
-from .valoration import Valorations as ValorationsResources
+from .comment import Comment as CommentResources
+from .comment import Comments as CommentsResources
+
+from .book_copy import BookCopy as BookCopyResources
+from .book_copy import BookCopies as BookCopiesResources
