@@ -11,6 +11,7 @@ from .author import Author as AuthorResources
 from .author import Authors as AuthorsResources
 
 from .notifications import Notification as NotificationResources
+from .notifications import Notifications as NotificationsResources
 
 from .comment import Comment as CommentResources
 from .comment import Comments as CommentsResources

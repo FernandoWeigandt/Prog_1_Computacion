@@ -38,7 +38,8 @@ def create_app():
     api.add_resource(resources.RentsResources, '/rents')
     api.add_resource(resources.RentResources, '/rent/<id>')
     #Notifications
-    api.add_resource(resources.NotificationResources, '/notifications')
+    api.add_resource(resources.NotificationsResources, '/notifications')
+    api.add_resource(resources.NotificationResources, '/notification/<id>')
     #Comments
     api.add_resource(resources.CommentsResources, '/comments')
     api.add_resource(resources.CommentResources, '/comment/<id>')

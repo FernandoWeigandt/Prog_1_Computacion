@@ -4,7 +4,7 @@ from main.models import NotificationModel, UserModel
 from .. import db
 
 class Notification(Resource):
-    def get(self):
+    def get(self, id):
         notification = db.session.query(NotificationModel).get_or_404(id)
         return notification.to_json()
     
