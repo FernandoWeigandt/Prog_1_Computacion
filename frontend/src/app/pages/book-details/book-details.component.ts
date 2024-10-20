@@ -39,13 +39,13 @@ export class BookDetailsComponent implements OnInit {
     this.bookService.getBook(id).subscribe((answer:any) => {
       console.log(answer)
       this.title = answer.title
-      this.image = 'media/default-book-cover.jpg'
+      this.image = answer.image
       this.gender = answer.gender
-      this.author = answer.authors[0]
+      this.author = answer.author
       this.rating = answer.rating
       this.quantity = answer.quantity
       this.description = answer.description
-      this.comments = this.comments
+      this.comments = answer.comments
     })
   }
 }

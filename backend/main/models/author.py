@@ -1,11 +1,18 @@
 from .. import db
 
+########################################################
+#            Medium table books_authors                #
+########################################################
+
 books_authors = db.Table(
     'books_authors',
-    db.Column('id', db.Integer, primary_key=True, unique=True, autoincrement=True),
     db.Column('book_id',db.Integer,db.ForeignKey('books.id')),
     db.Column('author_id',db.Integer,db.ForeignKey('authors.id'))
 )
+
+########################################################
+#               Author Table definition                #
+########################################################
 
 class Author(db.Model):
     __tablename__ = 'authors'
@@ -15,8 +22,9 @@ class Author(db.Model):
     # Relation N:M (N authors : M books), Medium table books_authors
     books = db.relationship('Book', secondary=books_authors, backref=db.backref('authors', lazy = 'dynamic'))
     
-    def __repr__(self):
-        return '<Author> name:%r lastname:%r' % (self.name, self.lastname)
+    ########################################################
+    #             Methods to convert to JSON               #
+    ########################################################
 
     def to_json(self):
         autor_json = {
@@ -40,14 +48,23 @@ class Author(db.Model):
         autor_json = {'id': self.id}
         return autor_json
 
+    ########################################################
+    #             Methods to convert from JSON             #
+    ########################################################
+
     @staticmethod
     def from_json(autor_json):
-        id = autor_json.get('id')
         name = autor_json.get('name')
         lastname = autor_json.get('lastname')
 
         return Author(
-            id = id,
             name = name,
             lastname = lastname
         )
+
+    ########################################################
+    #                 repr of the author                   #
+    ########################################################
+
+    def __repr__(self):
+        return '<Author> name:%r lastname:%r' % (self.name, self.lastname)

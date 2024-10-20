@@ -1,5 +1,59 @@
 from .. import db
 
+########################################################
+#                Book Table definition                 #
+########################################################
+
+# The book table has the following structure
+#
+#                               BOOK
+#   _________________________________________________________________________
+#  | id | title | gender | image | description | authors | comments | copies |
+#  | PK |  STR  |  STR   |  STR  |    TEXT     |   FK    |    FK    |   FK   |
+#  |____|_______|________|_______|_____________|_________|__________|________|
+#                                                  |          |         |
+#                                                  |          |         |
+#                                                  |          |         |
+#                  BOOKS-AUTHORS  <|---------------┘          |         |
+#               _____________________                         |         |
+#              | book_id | author_id |                        |         |
+#              |   FK    |    FK     |                        |         |
+#              |_________|___________|                        |         |
+#                                                             |         |
+#                                                             |         |
+#                       COMMENTS  <|--------------------------┘         |
+#    _____________________________________________                      |
+#   | id | book_id | user_id | body | rate | date |                     |
+#   | PK |   FK    |   FK    |  STR |  INT |  DAT |                     |
+#   |____|_________|_________|______|______|______|                     |
+#                                                                       |
+#                                                                       |
+#                   BOOKS-COPY   <|-------------------------------------┘
+#              ______________________
+#             | id | book_id | rent |
+#             | PK |   FK    |  FK  |
+#             |____|_________|______|
+#
+#
+#    Then, there are some methods to define dinamic properties that take data
+#    from other tables
+#    The structure of those methods are as follows:
+#    
+#        QUANTITY: Based on the quantity of copies of the book.
+#                  This is because the book itself is a model, then
+#                  it has copies.
+#        STATUS: Based on the availability of the book.
+#                If quantity is 0, then the book is unavailable
+#                If quantity is > 0, then if all copies are unavailable
+#                  then the book is unavailable
+#                If quantity is > 0, then if at least one copy is available
+#                  then the book is available
+#        RATING: Based on the comments of the book.
+#                There must be comments to calculate the rating.
+#                If there are no comments, then the rating is 0
+#                Otherwise, the rating is the sum of all comments divided
+#                by the number of comments
+
 class Book(db.Model):
     __tablename__ = 'books'
     id = db.Column(db.Integer, primary_key=True, unique=True, autoincrement=True)
@@ -10,10 +64,13 @@ class Book(db.Model):
     # Relation 1:N (1 book : N Comments), Book is parent
     comments = db.relationship('Comment', back_populates='book', cascade='all, delete-orphan')
     # Relation 1:N (1 book : N BookCopies)
-    copies = db.relationship('BookCopies', back_populates='book', cascade='all, delete-orphan')
+    copies = db.relationship('BookCopy', back_populates='book', cascade='all, delete-orphan')
     # Relation N:M (N authors : M books), Medium table books_authors
     # No need to define the relation as it was backref in authors
 
+    ########################################################
+    #         Methods to define dinamic properties         #
+    ########################################################
     @property
     def status(self):
         for copy in self.copies:
@@ -32,9 +89,10 @@ class Book(db.Model):
         total_rating = sum(comment.rate for comment in self.comments)
         return total_rating / len(self.comments)
     
-    def __repr__(self):
-        return '<Book> title:%r' % (self.title)
-    
+    ########################################################
+    #             Methods to convert to JSON               #
+    ########################################################
+
     def to_json(self):
         book_json = {
             'id': self.id,
@@ -71,18 +129,37 @@ class Book(db.Model):
         }
         return book_json
 
+    ########################################################
+    #             Methods to convert from JSON             #
+    ########################################################
+
     @staticmethod
     def from_json(book_json):
-        id = book_json.get('id')
         title = book_json.get('title')
         gender = book_json.get('gender')
         image = book_json.get('image')
         description = book_json.get('description')
 
         return Book(
-            id = id,
             title = title,
             gender = gender,
             image = image,
             description = description
         )
+    
+    ########################################################
+    #                   repr of the book                   #
+    ########################################################
+
+    def __repr__(self):
+        book = 'Book:\n'
+        book += f'    id: {self.id}\n'
+        book += f'    title: {self.title}\n'
+        book += f'    gender: {self.gender}\n'
+        book += f'    status: {self.status}\n'
+        book += f'    image: {self.image}\n'
+        book += f'    rating: {self.rating}\n'
+        book += f'    quantity: {self.quantity}\n'
+        book += f'    description: {self.description}\n'
+        book += f'    authors: {self.authors}\n'
+        return book

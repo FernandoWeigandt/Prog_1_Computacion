@@ -104,7 +104,9 @@ class Users(Resource):
             'page': page            
         })
     
-    # This post method is to create a new user but without 
+    # This post method is to create a new user but without any restriction!!!
+    # In production, this method should't be available.
+    # @role_required(roles=['admin']) # Uncomment this to activate restrictions
     def post(self):
         user = UserModel.from_json(request.get_json())
         try:
