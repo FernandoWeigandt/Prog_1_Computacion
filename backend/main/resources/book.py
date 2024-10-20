@@ -14,20 +14,32 @@ class Book(Resource):
             db.session.delete(book)
             db.session.commit()
         except:
-            return {'error':'Incorrect data format'}, 400
-        return book.to_json(), 204
+            return {'error':'Unable to delete the book'}, 400
+        return book.to_json(), 200
     
     def put(self, id):
         book = db.session.query(BookModel).get_or_404(id)
-        data = request.get_json().items()
-        for key, value in data:
-            setattr(book, key, value)
+        data = request.get_json()
+        if data.get('title'):
+            book.title = data.get('title')
+        if data.get('gender'):
+            book.gender = data.get('gender')
+        if data.get('image'):
+            book.image = data.get('image')
+        if data.get('description'):
+            book.description = data.get('description')
+        if "authors" in data:
+            for author in book.authors.all():
+                book.authors.remove(author)
+            for author in data.get("authors"):
+                author = AuthorModel.query.get(author)
+                book.authors.append(author) if author else None
         try:
-            db.session.add(book)
             db.session.commit()
         except:
-            return {'error':'Incorrect data format'}, 400
-        return book.to_json() , 201
+            db.session.rollback()
+            return {'error':'Unable to update the book'}, 400
+        return book.to_json() , 200
     
 class Books(Resource):
     def get(self):

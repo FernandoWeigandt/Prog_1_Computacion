@@ -39,22 +39,13 @@ export class BookDetailsComponent implements OnInit {
     this.bookService.getBook(id).subscribe((answer:any) => {
       console.log(answer)
       this.title = answer.title
-      this.image = 'media/default-book-cover.jpg'
+      this.image = answer.image
       this.gender = answer.gender
       this.author = answer.author
-      this.rating = 3
+      this.rating = answer.rating
       this.quantity = answer.quantity
-      this.description = 'In a world where magic and technology collide, a lone hero must confront their past to save their future. The stakes have never been higher in this epic fantasy adventure.'
-      this.comments = [
-        { "user-id": 13, "body": "Some parts were confusing, but overall good.", "rate": 3 },
-        { "user-id": 14, "body": "Interesting concept, but too long.", "rate": 3 },
-        { "user-id": 15, "body": "Good read, but not memorable.", "rate": 3 },
-        { "user-id": 16, "body": "Incredible book. Really I think people don't understand it.", "rate": 5 },
-        { "user-id": 17, "body": "Perfect book, loved every chapter!", "rate": 5 },
-        { "user-id": 18, "body": "Best book I've read this year!", "rate": 5 },
-        { "user-id": 19, "body": "A masterpiece, highly recommend it.", "rate": 5 },
-        { "user-id": 20, "body": "Absolutely flawless writing.", "rate": 5 }
-      ]
+      this.description = answer.description
+      this.comments = answer.comments
     })
 
     // this.book = this.books.find(book => book.id === this.bookId);
