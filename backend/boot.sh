@@ -15,6 +15,7 @@ fill_database() {
     COMMENTS_JSON="./DB/test-data/comments.json"
     BOOK_COPIES_JSON="./DB/test-data/book_copies.json"
     RENTS_JSON="./DB/test-data/rents.json"
+    NOTIFICATIONS_JSON="./DB/test-data/notifications.json"
 
     API_PORT=$(head -n 1 .env | awk '{ print $4 }' | sed "s/'//g")
 
@@ -37,7 +38,8 @@ fill_database() {
     make_post "$BOOK_COPIES_JSON" "$URL_API/copies"
     # Fill rents table
     make_post "$RENTS_JSON" "$URL_API/rents"
-
+    # Fill notifications table
+    make_post "$NOTIFICATIONS_JSON" "$URL_API/notifications"
 }
 
 yes_no_validate() {

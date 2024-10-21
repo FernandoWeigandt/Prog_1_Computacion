@@ -55,11 +55,11 @@ class Rents(Resource):
         book_copy = db.session.query(BookCopyModel).get(data.get('book_copy_id'))
         if not book_copy:
             return {'error':'Book copy not found'}, 404
-        rent = RentModel.from_json(data)
         try:
+            rent = RentModel.from_json(data)
             db.session.add(rent)
             db.session.commit()
         except:
-            db.rollback()
+            db.session.rollback()
             return {'error':'Incorrect data format'}, 400
         return rent.to_json(), 201

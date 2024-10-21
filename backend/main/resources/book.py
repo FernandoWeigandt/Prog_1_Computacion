@@ -28,13 +28,13 @@ class Book(Resource):
             book.image = data.get('image')
         if data.get('description'):
             book.description = data.get('description')
-        if "authors" in data:
-            for author in book.authors.all():
-                book.authors.remove(author)
-            for author in data.get("authors"):
-                author = AuthorModel.query.get(author)
-                book.authors.append(author) if author else None
         try:
+            if "authors" in data:
+                for author in book.authors.all():
+                    book.authors.remove(author)
+                for author in data.get("authors"):
+                    author = AuthorModel.query.get(author)
+                    book.authors.append(author) if author else None
             db.session.commit()
         except:
             db.session.rollback()
@@ -74,12 +74,12 @@ class Books(Resource):
         })
     
     def post(self):
-        authors_id = request.get_json().get('authors')
-        book = BookModel.from_json(request.get_json())
-        if authors_id:
-            authors = AuthorModel.query.filter(AuthorModel.id.in_(authors_id)).all()
-            book.authors.extend(authors)
         try:
+            book = BookModel.from_json(request.get_json())
+            authors_id = request.get_json().get('authors')
+            if authors_id:
+                authors = AuthorModel.query.filter(AuthorModel.id.in_(authors_id)).all()
+                book.authors.extend(authors)
             db.session.add(book)
             db.session.commit()
         except Exception as e:

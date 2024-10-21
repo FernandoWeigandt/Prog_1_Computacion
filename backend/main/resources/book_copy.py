@@ -11,9 +11,9 @@ class BookCopy(Resource):
     def put(self, id):
         book_copy = db.session.query(BookCopyModel).get_or_404(id)
         data = request.get_json().items()
-        for key, value in data:
-            setattr(book_copy, key, value)
         try:
+            for key, value in data:
+                setattr(book_copy, key, value)
             db.session.add(book_copy)
             db.session.commit()
         except:
@@ -36,11 +36,10 @@ class BookCopies(Resource):
         return jsonify([book.to_json() for book in books])
 
     def post(self):
-        book_copy = BookCopyModel.from_json(request.get_json())
         try:
+            book_copy = BookCopyModel.from_json(request.get_json())
             db.session.add(book_copy)
             db.session.commit()
-        except Exception as ex:
-            print(str(ex))
+        except:
             return {'error':'Incorrect data format'}, 400
         return book_copy.to_json(), 201

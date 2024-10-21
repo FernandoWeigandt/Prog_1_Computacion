@@ -1,3 +1,4 @@
+from datetime import datetime
 from flask_restful import Resource
 from flask import request, jsonify
 from main.models import NotificationModel, UserModel
@@ -19,14 +20,21 @@ class Notification(Resource):
     
     def put(self, id):
         notification = db.session.query(NotificationModel).get_or_404(id)
-        data = request.get_json().items()
-        for key, value in data:
-            setattr(notification, key, value)
+        data = request.get_json()
+        print(notification, data)
+        notification.title = data.get('title')
+        notification.body = data.get('body')
+        notification.note = data.get('note')
+        notification.read = data.get('read', False)
+        notification.category = data.get('category')
+        notification.user_id = data.get('user_id')
+        notification.date = datetime.strptime(data.get('date'), '%Y-%m-%dT%H:%M:%S')
         try:
             db.session.add(notification)
             db.session.commit()
-        except:
-            return {'error':'Incorrect data format'}, 400
+        except Exception as e:
+            db.session.rollback()
+            return {'error':f'{e}'}, 400
         return notification.to_json()
 
 class Notifications(Resource):
@@ -51,11 +59,11 @@ class Notifications(Resource):
         user = db.session.query(UserModel).get(data.get('user_id'))
         if not user:
             return {'error':'User not found'}, 404
-        notification = NotificationModel.from_json(data)
         try:
+            notification = NotificationModel.from_json(data)
             db.session.add(notification)
             db.session.commit()
-        except:
-            db.rollback()
-            return {'error':'Incorrect data format'}, 400
+        except Exception as e:
+            db.session.rollback()
+            return {'error':f'{e}'}, 400
         return notification.to_json(), 201

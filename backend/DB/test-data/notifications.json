@@ -1,0 +1,161 @@
+[
+    {
+        "title": "Rented Book Due Soon",
+        "body": "The book 'Data Structures in C++' you rented is due for return in 3 days. Please return it on time to avoid late fees.",
+        "date": "2024-10-18T10:00:00",
+        "note": "Reminder",
+        "read": false,
+        "category": "warning",
+        "user_id": 1
+    },
+    {
+        "title": "Rented Book Overdue",
+        "body": "The book 'Python Programming for Beginners' is overdue. Please return it as soon as possible.",
+        "date": "2024-10-15T08:30:00",
+        "note": "Urgent",
+        "read": true,
+        "category": "danger",
+        "user_id": 2
+    },
+    {
+        "title": "Library News",
+        "body": "The library has extended its hours. We are now open from 8 AM to 8 PM on weekdays.",
+        "date": "2024-10-12T15:00:00",
+        "category": "info",
+        "user_id": 3
+    },
+    {
+        "title": "Book Reservation Reminder",
+        "body": "You reserved the book 'Introduction to Algorithms'. The reservation will expire in 2 days.",
+        "date": "2024-10-19T14:45:00",
+        "note": "Reservation",
+        "read": false,
+        "category": "warning",
+        "user_id": 4
+    },
+    {
+        "title": "Rented Book Overdue",
+        "body": "Your rented book 'Artificial Intelligence: A Modern Approach' is 5 days overdue. Please return it.",
+        "date": "2024-10-16T12:00:00",
+        "note": "Overdue Notice",
+        "category": "danger",
+        "user_id": 5
+    },
+    {
+        "title": "Library Information",
+        "body": "New arrivals: We have added over 100 new books in the science fiction category. Check them out!",
+        "date": "2024-10-11T09:00:00",
+        "category": "info",
+        "user_id": 6
+    },
+    {
+        "title": "Book Return Reminder",
+        "body": "Your rented book 'Operating Systems Concepts' will be due for return in 1 week.",
+        "date": "2024-10-17T18:30:00",
+        "note": "Reminder",
+        "category": "warning",
+        "user_id": 7
+    },
+    {
+        "title": "Overdue Notice",
+        "body": "You have an overdue book: 'Database System Concepts'. Please return it immediately.",
+        "date": "2024-10-13T07:45:00",
+        "read": true,
+        "category": "danger",
+        "user_id": 8
+    },
+    {
+        "title": "Library News",
+        "body": "The library will be closed for maintenance on 2024-11-01. Please plan your visits accordingly.",
+        "date": "2024-10-10T11:30:00",
+        "category": "info",
+        "user_id": 9
+    },
+    {
+        "title": "Book Due Soon",
+        "body": "The book 'Advanced Calculus' is due for return tomorrow. Avoid late fees by returning it on time.",
+        "date": "2024-10-18T20:15:00",
+        "note": "Reminder",
+        "read": false,
+        "category": "warning",
+        "user_id": 10
+    },
+    {
+        "title": "Library Closure Alert",
+        "body": "Due to maintenance, the library will be closed from 2024-11-01 to 2024-11-03.",
+        "date": "2024-10-14T16:00:00",
+        "category": "info",
+        "user_id": 11
+    },
+    {
+        "title": "Overdue Book Notice",
+        "body": "Your rented book 'Modern Physics' is overdue by 3 days. Return it to avoid additional fines.",
+        "date": "2024-10-18T13:00:00",
+        "note": "Overdue",
+        "read": true,
+        "category": "danger",
+        "user_id": 12
+    },
+    {
+        "title": "Upcoming Event",
+        "body": "Join us for a book signing event with author John Doe on 2024-10-25.",
+        "date": "2024-10-13T19:00:00",
+        "category": "info",
+        "user_id": 13
+    },
+    {
+        "title": "Book Due Reminder",
+        "body": "The book 'Discrete Mathematics' you rented will be due in 5 days.",
+        "date": "2024-10-18T17:00:00",
+        "note": "Due Soon",
+        "read": false,
+        "category": "warning",
+        "user_id": 14
+    },
+    {
+        "title": "Overdue Book Alert",
+        "body": "Your book 'Machine Learning' is overdue. Please return it as soon as possible.",
+        "date": "2024-10-17T08:00:00",
+        "note": "Overdue",
+        "category": "danger",
+        "user_id": 15
+    },
+    {
+        "title": "Library Schedule Update",
+        "body": "The library's weekend schedule has been updated. We are now open from 10 AM to 6 PM.",
+        "date": "2024-10-09T14:00:00",
+        "category": "info",
+        "user_id": 16
+    },
+    {
+        "title": "Rented Book Due Soon",
+        "body": "The book 'Network Security Essentials' is due in 4 days. Please return it on time.",
+        "date": "2024-10-19T10:30:00",
+        "note": "Reminder",
+        "category": "warning",
+        "user_id": 17
+    },
+    {
+        "title": "Book Return Alert",
+        "body": "The book 'Computer Networks' is overdue. Please return it immediately.",
+        "date": "2024-10-12T21:00:00",
+        "note": "Overdue",
+        "read": true,
+        "category": "danger",
+        "user_id": 18
+    },
+    {
+        "title": "New Books Available",
+        "body": "New collections in fantasy and historical fiction are now available. Come check them out!",
+        "date": "2024-10-15T09:30:00",
+        "category": "info",
+        "user_id": 19
+    },
+    {
+        "title": "Book Due Reminder",
+        "body": "The book 'Linear Algebra' will be due in 6 days.",
+        "date": "2024-10-16T12:30:00",
+        "category": "warning",
+        "user_id": 20
+    }
+]

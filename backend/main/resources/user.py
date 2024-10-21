@@ -32,9 +32,9 @@ class User(Resource):
     def put(self, id):
         user = db.session.query(UserModel).get_or_404(id)
         data = request.get_json().items()
-        for key, value in data:
-            setattr(user, key, value)
         try:
+            for key, value in data:
+                setattr(user, key, value)
             db.session.add(user)
             db.session.commit()
         except:
@@ -108,10 +108,11 @@ class Users(Resource):
     # In production, this method should't be available.
     # @role_required(roles=['admin']) # Uncomment this to activate restrictions
     def post(self):
-        user = UserModel.from_json(request.get_json())
         try:
+            user = UserModel.from_json(request.get_json())
             db.session.add(user)
             db.session.commit()
         except:
+            db.session.rollback()
             return {'error':'Incorrect data format'}, 400
         return user.to_json(), 201

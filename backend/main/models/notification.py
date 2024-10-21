@@ -54,18 +54,28 @@ class Notification(db.Model):
     def from_json(notification_json):
         title = notification_json.get('title')
         body = notification_json.get('body')
-        date = datetime.strptime(notification_json.get('date'), '%Y-%m-%d')
+        date_str = notification_json.get('date')
         note = notification_json.get('note')
-        read = notification_json.get('read')
+        read = notification_json.get('read', False)
         category = notification_json.get('category')
         user_id = notification_json.get('user_id')
+        try:
+            if not title or not body or not date_str or not category or not user_id:
+                raise ValueError("Missing required notification fields")
 
-        return Notification(
-            title = title,
-            body = body,
-            date = date,
-            note = note,
-            read = read,
-            category = category,
-            user_id = user_id
-        )
+            date = datetime.strptime(date_str, '%Y-%m-%dT%H:%M:%S')
+
+            if category not in ['warning', 'danger', 'info']:
+                raise ValueError(f"Invalid category: {category}")
+
+            return Notification(
+                title = title,
+                body = body,
+                date = date,
+                note = note,
+                read = read,
+                category = category,
+                user_id = user_id
+            )
+        except Exception as e:
+            raise e
