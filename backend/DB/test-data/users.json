@@ -4,7 +4,7 @@
         "lastname": "Garcia",
         "mail": "juan.garcia@mail.example",
         "phone": 588895040,
-        "rol": "user",
+        "role": "user",
         "passwd": "aB03lmk4"
     },
     {
@@ -12,7 +12,7 @@
         "lastname": "Martinez",
         "mail": "maria.martinez@mail.example",
         "phone": 303428991,
-        "rol": "user",
+        "role": "user",
         "alias": "maria",
         "passwd": "c6PcuPwE"
     },
@@ -21,7 +21,7 @@
         "lastname": "Lopez",
         "mail": "carlos.lopez@mail.example",
         "phone": 829264978,
-        "rol": "user",
+        "role": "user",
         "alias": "carlos",
         "passwd": "D7fni98F"
     },
@@ -30,7 +30,7 @@
         "lastname": "Gonzalez",
         "mail": "laura.gonzalez@mail.example",
         "phone": 517035853,
-        "rol": "user",
+        "role": "user",
         "passwd": "GQozcnMt"
     },
     {
@@ -38,7 +38,7 @@
         "lastname": "Rodriguez",
         "mail": "jose.rodriguez@mail.example",
         "phone": 817919936,
-        "rol": "user",
+        "role": "user",
         "alias": "jose",
         "passwd": "yL2gXZVt"
     },
@@ -47,7 +47,7 @@
         "lastname": "Fernandez",
         "mail": "ana.fernandez@mail.example",
         "phone": 384225796,
-        "rol": "user",
+        "role": "user",
         "alias": "ana",
         "passwd": "J0HC9dgg"
     },
@@ -56,7 +56,7 @@
         "lastname": "Perez",
         "mail": "david.perez@mail.example",
         "phone": 116536419,
-        "rol": "user",
+        "role": "user",
         "alias": "david",
         "passwd": "UiGD4Cyz"
     },
@@ -65,7 +65,7 @@
         "lastname": "Gomez",
         "mail": "sofia.gomez@mail.example",
         "phone": 734224599,
-        "rol": "user",
+        "role": "user",
         "alias": "sofia",
         "passwd": "DoOs1zJe"
     },
@@ -74,7 +74,7 @@
         "lastname": "Diaz",
         "mail": "pablo.diaz@mail.example",
         "phone": 522137169,
-        "rol": "user",
+        "role": "user",
         "alias": "pablo",
         "passwd": "Pve0Fg9L"
     },
@@ -83,7 +83,7 @@
         "lastname": "Hernandez",
         "mail": "elena.hernandez@mail.example",
         "phone": 162195379,
-        "rol": "user",
+        "role": "user",
         "passwd": "AeazruBt"
     },
     {
@@ -91,7 +91,7 @@
         "lastname": "Sanchez",
         "mail": "alejandro.sanchez@mail.example",
         "phone": 960514977,
-        "rol": "user",
+        "role": "user",
         "alias": "alejandro",
         "passwd": "MVnhroZn"
     },
@@ -100,7 +100,7 @@
         "lastname": "Martin",
         "mail": "lucia.martin@mail.example",
         "phone": 685521187,
-        "rol": "user",
+        "role": "user",
         "alias": "lucia",
         "passwd": "VHrUeet5"
     },
@@ -109,7 +109,7 @@
         "lastname": "Lopez",
         "mail": "miguel.lopez@mail.example",
         "phone": 504150502,
-        "rol": "user",
+        "role": "user",
         "alias": "miguel",
         "passwd": "NSgWFkUJ"
     },
@@ -118,7 +118,7 @@
         "lastname": "Garcia",
         "mail": "paula.garcia@mail.example",
         "phone": 574520518,
-        "rol": "user",
+        "role": "user",
         "alias": "paula",
         "passwd": "cE5izkw4"
     },
@@ -127,7 +127,7 @@
         "lastname": "Ruiz",
         "mail": "javier.ruiz@mail.example",
         "phone": 588388939,
-        "rol": "user",
+        "role": "user",
         "alias": "javier",
         "passwd": "2YRb9vo4"
     },
@@ -136,7 +136,7 @@
         "lastname": "Torres",
         "mail": "marina.torres@mail.example",
         "phone": 467349650,
-        "rol": "user",
+        "role": "user",
         "passwd": "HlQDyM1W"
     },
     {
@@ -144,7 +144,7 @@
         "lastname": "Jimenez",
         "mail": "adrian.jimenez@mail.example",
         "phone": 658984844,
-        "rol": "admin",
+        "role": "admin",
         "alias": "adrian",
         "passwd": "jK5x1Cfm"
     },
@@ -153,7 +153,7 @@
         "lastname": "Moreno",
         "mail": "carmen.moreno@mail.example",
         "phone": 762734773,
-        "rol": "user",
+        "role": "user",
         "alias": "carmen",
         "passwd": "MwnBh6Lb"
     },
@@ -162,7 +162,7 @@
         "lastname": "Alvarez",
         "mail": "diego.alvarez@mail.example",
         "phone": 286831997,
-        "rol": "user",
+        "role": "user",
         "passwd": "kEepTCdI"
     },
     {
@@ -170,7 +170,7 @@
         "lastname": "Romero",
         "mail": "isabel.romero@mail.example",
         "phone": 132128588,
-        "rol": "user",
+        "role": "user",
         "alias": "isabel",
         "passwd": "pQdLffFo"
     },
@@ -179,7 +179,7 @@
         "lastname": "Navarro",
         "mail": "jorge.navarro@mail.example",
         "phone": 139786489,
-        "rol": "user",
+        "role": "user",
         "alias": "jorge",
         "passwd": "tt9YyUHB"
     },
@@ -188,7 +188,7 @@
         "lastname": "Ramos",
         "mail": "natalia.ramos@mail.example",
         "phone": 731833585,
-        "rol": "user",
+        "role": "user",
         "alias": "natalia",
         "passwd": "RyYH85kH"
     },
@@ -197,7 +197,7 @@
         "lastname": "Iglesias",
         "mail": "roberto.iglesias@mail.example",
         "phone": 792492789,
-        "rol": "user",
+        "role": "user",
         "alias": "roberto",
         "passwd": "d8eQxFjg"
     },
@@ -206,7 +206,7 @@
         "lastname": "Ortega",
         "mail": "eva.ortega@mail.example",
         "phone": 498932293,
-        "rol": "user",
+        "role": "user",
         "alias": "eva",
         "passwd": "qxqKTzG5"
     },
@@ -215,7 +215,7 @@
         "lastname": "Marin",
         "mail": "ruben.marin@mail.example",
         "phone": 634831570,
-        "rol": "admin",
+        "role": "admin",
         "alias": "ruben",
         "passwd": "NvmT7RW4"
     },
@@ -224,7 +224,7 @@
         "lastname": "Silva",
         "mail": "sara.silva@mail.example",
         "phone": 454169384,
-        "rol": "user",
+        "role": "user",
         "alias": "sara",
         "passwd": "Cddvb0SQ"
     },
@@ -233,7 +233,7 @@
         "lastname": "Medina",
         "mail": "victor.medina@mail.example",
         "phone": 314349364,
-        "rol": "user",
+        "role": "user",
         "alias": "victor",
         "passwd": "Zjd2DVbi"
     },
@@ -242,7 +242,7 @@
         "lastname": "Garrido",
         "mail": "alba.garrido@mail.example",
         "phone": 114202367,
-        "rol": "user",
+        "role": "user",
         "alias": "alba",
         "passwd": "KECJ6Nj5"
     },
@@ -251,7 +251,7 @@
         "lastname": "Vega",
         "mail": "antonio.vega@mail.example",
         "phone": 294849990,
-        "rol": "admin",
+        "role": "admin",
         "alias": "antonio",
         "passwd": "KrkQXjFm"
     },
@@ -260,7 +260,7 @@
         "lastname": "Fuentes",
         "mail": "beatriz.fuentes@mail.example",
         "phone": 578394583,
-        "rol": "user",
+        "role": "user",
         "passwd": "yEHbl8lR"
     },
     {
@@ -268,7 +268,7 @@
         "lastname": "Cruz",
         "mail": "fernando.cruz@mail.example",
         "phone": 292946156,
-        "rol": "user",
+        "role": "user",
         "passwd": "dkzNaRH5"
     },
     {
@@ -276,7 +276,7 @@
         "lastname": "Reyes",
         "mail": "raquel.reyes@mail.example",
         "phone": 432261950,
-        "rol": "user",
+        "role": "user",
         "alias": "raquel",
         "passwd": "eJMBsuGG"
     },
@@ -285,7 +285,7 @@
         "lastname": "Blanco",
         "mail": "gloria.blanco@mail.example",
         "phone": 324782723,
-        "rol": "user",
+        "role": "user",
         "alias": "gloria",
         "passwd": "9V2nyy7d"
     },
@@ -294,7 +294,7 @@
         "lastname": "Morales",
         "mail": "ivan.morales@mail.example",
         "phone": 567379528,
-        "rol": "user",
+        "role": "user",
         "alias": "ivan",
         "passwd": "jb4av7c5"
     },
@@ -303,7 +303,7 @@
         "lastname": "Santos",
         "mail": "silvia.santos@mail.example",
         "phone": 517357277,
-        "rol": "user",
+        "role": "user",
         "alias": "silvia",
         "passwd": "wo6rQwef"
     },
@@ -312,7 +312,7 @@
         "lastname": "Castro",
         "mail": "alicia.castro@mail.example",
         "phone": 387814224,
-        "rol": "user",
+        "role": "user",
         "passwd": "DQECQw6L"
     },
     {
@@ -320,7 +320,7 @@
         "lastname": "Gimenez",
         "mail": "daniel.gimenez@mail.example",
         "phone": 825783849,
-        "rol": "user",
+        "role": "user",
         "passwd": "86Oq7iKQ"
     },
     {
@@ -328,7 +328,7 @@
         "lastname": "Ortiz",
         "mail": "marta.ortiz@mail.example",
         "phone": 401303190,
-        "rol": "user",
+        "role": "user",
         "alias": "marta",
         "passwd": "aU19tHH0"
     },
@@ -337,7 +337,7 @@
         "lastname": "Esteban",
         "mail": "pedro.esteban@mail.example",
         "phone": 669614397,
-        "rol": "user",
+        "role": "user",
         "alias": "pedro",
         "passwd": "qaGXrU2b"
     },
@@ -346,7 +346,7 @@
         "lastname": "Vidal",
         "mail": "rosa.vidal@mail.example",
         "phone": 825087793,
-        "rol": "user",
+        "role": "user",
         "alias": "rosa",
         "passwd": "VHjV9huS"
     },
@@ -355,7 +355,7 @@
         "lastname": "Pascual",
         "mail": "tomas.pascual@mail.example",
         "phone": 835039240,
-        "rol": "user",
+        "role": "user",
         "passwd": "9Z2gdLQJ"
     },
     {
@@ -363,7 +363,7 @@
         "lastname": "Molina",
         "mail": "angela.molina@mail.example",
         "phone": 685453202,
-        "rol": "user",
+        "role": "user",
         "alias": "angela",
         "passwd": "KuvJgyUm"
     },
@@ -372,7 +372,7 @@
         "lastname": "Santiago",
         "mail": "cristian.santiago@mail.example",
         "phone": 723464769,
-        "rol": "user",
+        "role": "user",
         "alias": "cristian",
         "passwd": "IZmTlgMe"
     },
@@ -381,7 +381,7 @@
         "lastname": "Delgado",
         "mail": "luisa.delgado@mail.example",
         "phone": 171302703,
-        "rol": "user",
+        "role": "user",
         "alias": "luisa",
         "passwd": "XfUqESSa"
     },
@@ -390,7 +390,7 @@
         "lastname": "Lorenzo",
         "mail": "mario.lorenzo@mail.example",
         "phone": 631108858,
-        "rol": "user",
+        "role": "user",
         "alias": "mario",
         "passwd": "YskubjUc"
     },
@@ -399,7 +399,7 @@
         "lastname": "Rojas",
         "mail": "olivia.rojas@mail.example",
         "phone": 774570045,
-        "rol": "user",
+        "role": "user",
         "passwd": "XkRCslL5"
     },
     {
@@ -407,7 +407,7 @@
         "lastname": "Herrero",
         "mail": "andres.herrero@mail.example",
         "phone": 429677571,
-        "rol": "user",
+        "role": "user",
         "alias": "andres",
         "passwd": "zpqAaAmz"
     },
@@ -416,7 +416,7 @@
         "lastname": "Cabrera",
         "mail": "claudia.cabrera@mail.example",
         "phone": 548986831,
-        "rol": "admin",
+        "role": "admin",
         "passwd": "r0FIoHKZ"
     },
     {
@@ -424,8 +424,176 @@
         "lastname": "Campos",
         "mail": "francisco.campos@mail.example",
         "phone": 150835497,
-        "rol": "user",
+        "role": "user",
         "alias": "francisco",
         "passwd": "whW7CDkl"
+    },
+    {
+        "name": "Laura",
+        "lastname": "Martinez",
+        "mail": "laura.martinez@mail.example",
+        "phone": 285739201,
+        "role": "user",
+        "passwd": "7nBzRtgW"
+    },
+    {
+        "name": "Carlos",
+        "lastname": "Gomez",
+        "mail": "carlos.gomez@mail.example",
+        "phone": 284671302,
+        "role": "user",
+        "passwd": "pG3ksTxA"
+    },
+    {
+        "name": "Maria",
+        "lastname": "Fernandez",
+        "mail": "maria.fernandez@mail.example",
+        "phone": 283561987,
+        "role": "user",
+        "passwd": "bN8yKrWa"
+    },
+    {
+        "name": "Jose",
+        "lastname": "Perez",
+        "mail": "jose.perez@mail.example",
+        "phone": 287654123,
+        "role": "user",
+        "passwd": "mY6jFtUd"
+    },
+    {
+        "name": "Ana",
+        "lastname": "Lopez",
+        "mail": "ana.lopez@mail.example",
+        "phone": 281234567,
+        "role": "user",
+        "passwd": "hP4vBcUw"
+    },
+    {
+        "name": "Miguel",
+        "lastname": "Garcia",
+        "mail": "miguel.garcia@mail.example",
+        "phone": 289876543,
+        "role": "user",
+        "passwd": "fD2jXkLc"
+    },
+    {
+        "name": "Sandra",
+        "lastname": "Rodriguez",
+        "mail": "sandra.rodriguez@mail.example",
+        "phone": 283490125,
+        "role": "user",
+        "passwd": "qR8nMhTp"
+    },
+    {
+        "name": "David",
+        "lastname": "Diaz",
+        "mail": "david.diaz@mail.example",
+        "phone": 284576980,
+        "role": "user",
+        "passwd": "wF3lZcQs"
+    },
+    {
+        "name": "Lucia",
+        "lastname": "Ruiz",
+        "mail": "lucia.ruiz@mail.example",
+        "phone": 287129345,
+        "role": "user",
+        "passwd": "xB7mJtEr"
+    },
+    {
+        "name": "Francisco",
+        "lastname": "Jimenez",
+        "mail": "francisco.jimenez@mail.example",
+        "phone": 286032198,
+        "role": "user",
+        "passwd": "sP5vLqTf"
+    },
+    {
+        "name": "Isabel",
+        "lastname": "Hernandez",
+        "mail": "isabel.hernandez@mail.example",
+        "phone": 285120973,
+        "role": "user",
+        "passwd": "uG6yWkAe"
+    },
+    {
+        "name": "Antonio",
+        "lastname": "Moreno",
+        "mail": "antonio.moreno@mail.example",
+        "phone": 284798653,
+        "role": "user",
+        "passwd": "dQ4jRpWy"
+    },
+    {
+        "name": "Sofia",
+        "lastname": "Alvarez",
+        "mail": "sofia.alvarez@mail.example",
+        "phone": 289104352,
+        "role": "user",
+        "passwd": "kZ9hNgUm"
+    },
+    {
+        "name": "Juan",
+        "lastname": "Castillo",
+        "mail": "juan.castillo@mail.example",
+        "phone": 287653210,
+        "role": "user",
+        "passwd": "vF7yLcDr"
+    },
+    {
+        "name": "Elena",
+        "lastname": "Vega",
+        "mail": "elena.vega@mail.example",
+        "phone": 283456789,
+        "role": "user",
+        "passwd": "cB6tXpMj"
+    },
+    {
+        "name": "Luis",
+        "lastname": "Cruz",
+        "mail": "luis.cruz@mail.example",
+        "phone": 288765432,
+        "role": "user",
+        "passwd": "nR3qVfZw"
+    },
+    {
+        "name": "Gabriela",
+        "lastname": "Romero",
+        "mail": "gabriela.romero@mail.example",
+        "phone": 289354768,
+        "role": "user",
+        "passwd": "mH4eBpXt"
+    },
+    {
+        "name": "Pablo",
+        "lastname": "Santos",
+        "mail": "pablo.santos@mail.example",
+        "phone": 281234098,
+        "role": "user",
+        "passwd": "jY9kNqWd"
+    },
+    {
+        "name": "Rosa",
+        "lastname": "Iglesias",
+        "mail": "rosa.iglesias@mail.example",
+        "phone": 283098765,
+        "role": "user",
+        "passwd": "gL8yCtMn"
+    },
+    {
+        "name": "Fernando",
+        "lastname": "Ortiz",
+        "mail": "fernando.ortiz@mail.example",
+        "phone": 285671234,
+        "role": "user",
+        "passwd": "aX2vBrQw"
+    },
+    {
+        "name": "Osvaldo",
+        "lastname": "Hernandez",
+        "mail": "osvaldo.hernandez@mail.example",
+        "phone": 285671232,
+        "role": "librarian",
+        "passwd": "sJAS26gx"
     }
 ]

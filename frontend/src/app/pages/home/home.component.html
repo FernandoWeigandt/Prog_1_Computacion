@@ -15,7 +15,7 @@
             author="{{ book.author }}"
             [quantity]="book.quantity"
             [rating]="book.rating"
-            [image]="book.image || 'media/default-book-cover.jpg'"
+            image="{{ book.image || 'media/book_cover/book_cover_1.jpg' }}"
           >
           </component-book>
         </div>

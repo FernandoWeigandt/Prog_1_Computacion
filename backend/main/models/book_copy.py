@@ -66,9 +66,11 @@ class BookCopy(db.Model):
 
     @staticmethod
     def from_json(book_copy_json):
-        id = book_copy_json.get('id')
-        book_id = book_copy_json.get('book_id')
-        return BookCopy(id=id, book_id=book_id)
+        try:
+            book_id = book_copy_json.get('book_id')
+            return BookCopy(book_id=book_id)
+        except:
+            raise Exception('Invalid book id')
     
     ########################################################
     #                   repr of the copy                   #

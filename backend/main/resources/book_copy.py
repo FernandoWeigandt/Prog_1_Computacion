@@ -1,6 +1,6 @@
 from flask import request, jsonify
 from flask_restful import Resource
-from main.models import BookCopyModel
+from main.models import BookCopyModel, BookModel
 from .. import db
 
 class BookCopy(Resource):
@@ -37,7 +37,9 @@ class BookCopies(Resource):
 
     def post(self):
         try:
-            book_copy = BookCopyModel.from_json(request.get_json())
+            data = request.get_json()
+            db.session.query(BookModel).get_or_404(data.get('book_id'))
+            book_copy = BookCopyModel.from_json(data)
             db.session.add(book_copy)
             db.session.commit()
         except:

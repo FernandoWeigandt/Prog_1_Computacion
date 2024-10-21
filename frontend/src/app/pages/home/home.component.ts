@@ -34,13 +34,12 @@ export class HomeComponent {
 
   getBooks(page: Number) {
     this.booksService.getBooks(page).subscribe((answer: any) => {
-      console.log(answer);
       this.books = answer.books || [];
-      this.filteredBooks = [...this.books]
       this.page = answer.page;
       this.stars = answer.rating;
       this.totalBooks = answer.total;
       this.pages = answer.pages;
     })
+    document.documentElement.scrollTo({ top: 0, behavior: 'smooth' });
   }
 }

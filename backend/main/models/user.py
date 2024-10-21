@@ -9,7 +9,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 #
 #                                             USER
 #   ______________________________________________________________________________________________
-#  | id | name | lastname | mail | phone | rol | alias | passwd | comments | rent | notifications |
+#  | id | name | lastname | mail | phone | role | alias | passwd | comments | rent | notifications |
 #  | PK |  STR |   STR    | STR  |  STR  | STR |  STR  |  STR   |    FK    |  FK  |     FK        |
 #  |____|______|__________|______|_______|_____|_______|________|__________|______|_______________|
 #                                                                     |       |          |
@@ -40,10 +40,10 @@ class User(db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key = True, unique=True, autoincrement=True)
     name = db.Column(db.String(100), nullable = False)
-    lastname = db.Column(db.String(100))
+    lastname = db.Column(db.String(100), nullable = False)
     mail = db.Column(db.String(100), nullable = False, unique=True)
     phone = db.Column(db.String(16))
-    rol = db.Column(db.String(100), nullable = False, server_default='pending')
+    role = db.Column(db.String(100), nullable = False, server_default='pending')
     alias = db.Column(db.String)
     passwd = db.Column(db.String, nullable = False)
     # Relation 1:N (1 user : N Comments)
@@ -79,7 +79,7 @@ class User(db.Model):
             'lastname': str(self.lastname),
             'mail': str(self.mail),
             'phone': self.phone,
-            'rol': str(self.rol),
+            'role': str(self.role),
             'alias': str(self.alias)
         }
         return user_json
@@ -103,7 +103,7 @@ class User(db.Model):
             'lastname': str(self.lastname),
             'mail': str(self.mail),
             'phone': self.phone,
-            'rol': str(self.rol),
+            'role': str(self.role),
             'alias': str(self.alias),
             'passwd': str(self.passwd),
             'rent': rents,
@@ -131,19 +131,27 @@ class User(db.Model):
         lastname = user_json.get('lastname')
         mail = user_json.get('mail')
         phone = user_json.get('phone')
-        rol = user_json.get('rol')
+        role = user_json.get('role')
         alias = user_json.get('alias')
         passwd = user_json.get('passwd')
+        try:
+            if not name or not lastname or not mail or not passwd:
+                raise ValueError("Missing required user fields")
+            if role not in ['admin', 'user', 'librarian']:
+                role = 'pending'
+            return User(
+                name = name,
+                lastname = lastname,
+                mail = mail,
+                phone = phone,
+                role = role,
+                alias = alias,
+                plain_passwd = passwd
+            )
+        except ValueError as err:
+            raise err
 
-        return User(
-            name = name,
-            lastname = lastname,
-            mail = mail,
-            phone = phone,
-            rol = rol,
-            alias = alias,
-            plain_passwd = passwd
-        )
+
     
     ########################################################
     #                   repr of the user                   #
@@ -156,7 +164,7 @@ class User(db.Model):
         user += f'    lastname: {self.lastname}\n'
         user += f'    mail: {self.mail}\n'
         user += f'    phone: {self.phone}\n'
-        user += f'    rol: {self.rol}\n'
+        user += f'    role: {self.role}\n'
         user += f'    alias: {self.alias}\n'
         user += f'    comments: {self.comments}\n'
         user += f'    rent: {self.rent}\n'

@@ -10,8 +10,6 @@ class User(Resource):
     @jwt_required(optional=True)
     def get(self, id):
         user = db.session.query(UserModel).get_or_404(id)
-        return user.to_json_complete()
-
         current_identity = get_jwt_identity()
         if current_identity:
             return user.to_json_complete()
@@ -42,7 +40,7 @@ class User(Resource):
         return user.to_json() , 201 
 
 class Users(Resource):
-    @role_required(roles=['admin'])
+    @role_required(roles=('admin', 'librarian'))
     def get(self):
         # Default start page
         page = 1

@@ -8,9 +8,7 @@ import { Observable, take } from 'rxjs';
 export class AuthService {
   url = '/api';
 
-  constructor(private httpClient: HttpClient) { 
-    // This service can now make HTTP requests via `this.http`.
-  }
+  constructor(private httpClient: HttpClient) { }
 
   login(dataLogin: any): Observable<any> {
     return this.httpClient.post(this.url+'/auth/login', dataLogin).pipe(take(1));

@@ -77,5 +77,5 @@ class Notification(db.Model):
                 category = category,
                 user_id = user_id
             )
-        except Exception as e:
-            raise e
+        except Exception as err:
+            raise err
