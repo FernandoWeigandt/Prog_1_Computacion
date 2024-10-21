@@ -15,6 +15,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { RestorePasswordComponent } from './pages/restore-password/restore-password.component';
 import { BookDetailsComponent } from './pages/book-details/book-details.component';
 import { authsessionGuard } from "./guards/authsession.guard";
+import { roleGuard } from "./guards/role.guard";
 
 export const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -23,9 +24,9 @@ export const routes: Routes = [
     { path: 'settings/my-account', component: MyAccountComponent },
     { path: 'my-rents', component: MyRentsComponent },
     { path: 'my-notifications', component: MyNotificationsComponent },
-    { path: 'select-users', component: SelectUsersComponent, canActivate: [authsessionGuard] },
-    { path: 'manage-rents', component: ManageRentsComponent },
-    { path: 'notify', component: NotifyComponent },
+    { path: 'select-users', component: SelectUsersComponent, canActivate: [authsessionGuard, roleGuard] },
+    { path: 'manage-rents', component: ManageRentsComponent, canActivate: [authsessionGuard, roleGuard] },
+    { path: 'notify', component: NotifyComponent, canActivate: [authsessionGuard, roleGuard] },
     { path: 'login', component: LoginComponent},
     { path: 'register', component: RegisterComponent },
     { path: 'restore-password', component: RestorePasswordComponent },

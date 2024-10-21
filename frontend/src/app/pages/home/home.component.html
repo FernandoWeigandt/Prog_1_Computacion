@@ -14,8 +14,8 @@
             gender="{{ book.gender }}"
             author="{{ book.author }}"
             [quantity]="book.quantity"
-            [rating]="3"
-            [image]="book.image || 'media/default-book-cover.jpg'"
+            [rating]="book.rating"
+            image="{{ book.image || 'media/book_cover/book_cover_1.jpg' }}"
           >
           </component-book>
         </div>

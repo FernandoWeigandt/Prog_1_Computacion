@@ -3,7 +3,7 @@ from flask import jsonify
 from flask_jwt_extended import verify_jwt_in_request, get_jwt
 from functools import wraps
 
-#Decorador para restringir el acceso a usuarios/useres por rol
+#Decorador para restringir el acceso a usuarios/useres por role
 def role_required(roles):
     def decorator(fn):
         def wrapper(*args, **kwargs):
@@ -11,12 +11,12 @@ def role_required(roles):
             verify_jwt_in_request()
             #Obtener claims de adentro del JWT
             claims = get_jwt()
-            #Verificar que el rol sea uno de los permitidos por la ruta
-            if claims['rol'] in roles :
+            #Verificar que el role sea uno de los permitidos por la ruta
+            if claims['role'] in roles :
                 #Ejecutar función
                 return fn(*args, **kwargs)
             else:
-                return 'Rol sin permisos de acceso al recurso', 403
+                return 'Role sin permisos de acceso al recurso', 403
         return wrapper
     return decorator
 
@@ -30,7 +30,7 @@ def user_identity_lookup(user):
 @jwt.additional_claims_loader
 def add_claims_to_access_token(user):
     claims = {
-        'rol': user.rol,
+        'role': user.role,
         'id': user.id,
         'mail': user.mail
     }

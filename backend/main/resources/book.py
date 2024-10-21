@@ -1,7 +1,6 @@
 from flask_restful import Resource
 from flask import request, jsonify
-from main.models import BookModel, AuthorModel, ValorationModel
-from sqlalchemy import func, desc, asc
+from main.models import BookModel, AuthorModel
 from .. import db
 
 class Book(Resource):
@@ -15,20 +14,32 @@ class Book(Resource):
             db.session.delete(book)
             db.session.commit()
         except:
-            return {'error':'Incorrect data format'}, 400
-        return book.to_json(), 204
+            return {'error':'Unable to delete the book'}, 400
+        return book.to_json(), 200
     
     def put(self, id):
         book = db.session.query(BookModel).get_or_404(id)
-        data = request.get_json().items()
-        for key, value in data:
-            setattr(book, key, value)
+        data = request.get_json()
+        if data.get('title'):
+            book.title = data.get('title')
+        if data.get('gender'):
+            book.gender = data.get('gender')
+        if data.get('image'):
+            book.image = data.get('image')
+        if data.get('description'):
+            book.description = data.get('description')
         try:
-            db.session.add(book)
+            if "authors" in data:
+                for author in book.authors.all():
+                    book.authors.remove(author)
+                for author in data.get("authors"):
+                    author = AuthorModel.query.get(author)
+                    book.authors.append(author) if author else None
             db.session.commit()
         except:
-            return {'error':'Incorrect data format'}, 400
-        return book.to_json() , 201
+            db.session.rollback()
+            return {'error':'Unable to update the book'}, 400
+        return book.to_json() , 200
     
 class Books(Resource):
     def get(self):
@@ -44,9 +55,8 @@ class Books(Resource):
             per_page = int(request.args.get('per_page'))
 
         # Filters #
-
         if request.args.get('id'):
-            books=books.filter(BookModel.id.like('%'+request.args.get('id')+'%'))
+            books=books.filter(BookModel.id == request.args.get('id'))
 
         if request.args.get('title'):
             books=books.filter(BookModel.title.like('%'+request.args.get('title')+'%'))
@@ -54,44 +64,25 @@ class Books(Resource):
         if request.args.get('gender'):
             books=books.filter(BookModel.gender.like('%'+request.args.get('gender')+'%'))
 
-        if request.args.get('publisher'):
-            books=books.filter(BookModel.publisher.like('%'+request.args.get('publisher')+'%'))
-
-        # Sort by #
-
-        if request.args.get('valorations'):
-            if request.args.get('valorations') == "desc":
-                books=books.outerjoin(BookModel.valorations).group_by(BookModel.id).order_by(func.count(ValorationModel.valoration).desc())
-            else:
-                books=books.outerjoin(BookModel.valorations).group_by(BookModel.id).order_by(func.count(ValorationModel.valoration).asc())
-
-
-        # what does this????
-        if request.args.get('sortby_rents'):
-            if request.args.get('sortby_rents') == "desc":
-                books=books.outerjoin(BookModel.rents).group_by(BookModel.id).order_by(func.count(RentModel.id).desc())
-            else:
-                books=books.outerjoin(BookModel.rents).group_by(BookModel.id).order_by(func.count(RentModel.id).asc())
-
-
         books = books.paginate(page=page, per_page=per_page, error_out=True)
 
         return jsonify({
-            'books': [book.to_json_complete() for book in books],
+            'books': [book.to_json() for book in books],
             'total': books.total,
             'pages': books.pages,
             'page': page            
         })
     
     def post(self):
-        authors_id = request.get_json().get('authors')
-        book = BookModel.from_json(request.get_json())
-        if authors_id:
-            authors = AuthorModel.query.filter(AuthorModel.id.in_(authors_id)).all()
-            book.authors.extend(authors)
         try:
+            book = BookModel.from_json(request.get_json())
+            authors_id = request.get_json().get('authors')
+            if authors_id:
+                authors = AuthorModel.query.filter(AuthorModel.id.in_(authors_id)).all()
+                book.authors.extend(authors)
             db.session.add(book)
             db.session.commit()
-        except:
+        except Exception as e:
+            print(str(e))
             return {'error':'Incorrect data format'}, 400
         return book.to_json(), 201

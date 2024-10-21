@@ -18,14 +18,37 @@
     </div>
   </div>
   <div class="row">
-    <h2 class="col my-3"><strong>Comentarios</strong></h2>
-    <i class="col bi bi-chat text-end my-3 mx-4" style="font-size: 24px"> Comentar</i>
+    <h3 class="col my-3"><strong>Comentarios</strong></h3>
+    <div class="col text-end my-3 mx-4">
+      <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#commentInput">
+        <i class="bi bi-chat" style="font-size: 18px" > Comentar</i>
+      </button>
+    </div>
+  </div>
+  <div class="collapse" id="commentInput">
+    <div class="card card-body mb-3 rounded-4">
+      <div class="input-group">
+        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">{{ comment_rate }}</button>
+        <ul class="stars-selector dropdown-menu">
+          <li><button (click)="setRate(1)" class="dropdown-item">1 estrella</button></li>
+          <li><button (click)="setRate(2)" class="dropdown-item">2 estrellas</button></li>
+          <li><button (click)="setRate(3)" class="dropdown-item">3 estrellas</button></li>
+          <li><button (click)="setRate(4)" class="dropdown-item">4 estrellas</button></li>
+          <li><button (click)="setRate(5)" class="dropdown-item">5 estrellas</button></li>
+        </ul>
+        <textarea [(ngModel)]="comment_body" class="form-control" aria-label="With textarea" placeholder="Escribe un comentario..."></textarea>
+        <button (click)="postComment()" class="btn btn-outline-secondary"><i class="bi bi-send-fill"></i></button>
+      </div>
+    </div>
+
   </div>
   <div class="row justify-content-md-center rounded-4 bg-book pt-3">
     <div class="col px-4 mb-3">
       <!-- Must iterate throw the all comments -->
-      @for (comment of comments; track comment['user-id']) {
-        <comment [user_id]="comment['user-id']" [rating]="comment.rate" [body]="comment.body"></comment>
+      @for (comment of comments; track comment['id']) {
+        <comment [user_id]="comment['user']['id']" [rating]="comment.rate" [body]="comment.body"></comment>
+      } @empty {
+        <p class="mt-3">No hay comentarios</p>
       }
     </div>
   </div>

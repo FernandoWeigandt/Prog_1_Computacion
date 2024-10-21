@@ -25,7 +25,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:25565/users?sortby_name=asc",
+							"raw": "http://127.0.0.1:25565/users",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -75,7 +75,8 @@
 								},
 								{
 									"key": "sortby_name",
-									"value": "asc"
+									"value": "asc",
+									"disabled": true
 								},
 								{
 									"key": "sortby_lastname",
@@ -94,7 +95,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"John\",\n    \"lastname\": \"Doe\",\n    \"mail\": \"j.doe@mail.com\",\n    \"phone\": \"123456789\",\n    \"rol\": \"Librarian\",\n    \"alias\": \"johndoe\",\n    \"passwd\": \"pass-example\"\n}",
+							"raw": "{\n    \"name\": \"Alice\",\n    \"lastname\": \"Johnson\",\n    \"mail\": \"alice.johnson@example.com\",\n    \"phone\": \"123-456-7890\",\n    \"rol\": \"member\",\n    \"alias\": \"ajohnson\",\n    \"passwd\": \"hashed_password_1\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -201,7 +202,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"Lorem\",\n    \"lastname\": \"Ipsum\",\n    \"mail\": \"l.ipsum@mail.com\",\n    \"phone\": \"123456789\",\n    \"rol\": \"user\",\n    \"alias\": \"lipsum\",\n    \"passwd\": \"pass-example2\"\n}",
+							"raw": "{\n    \"name\": \"Bob\",\n    \"lastname\": \"Williams\",\n    \"mail\": \"bob.williams@example.com\",\n    \"phone\": \"987-654-3210\",\n    \"rol\": \"admin\",\n    \"alias\": \"bwilliams\",\n    \"passwd\": \"hashed_password_2\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -329,7 +330,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"author john\",\n    \"lastname\": \"author doe\"\n}",
+							"raw": "{\n    \"name\": \"Jane\",\n    \"lastname\": \"Smith\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -442,7 +443,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:25565/books?valorations=asc",
+							"raw": "http://127.0.0.1:25565/books",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -477,7 +478,8 @@
 								},
 								{
 									"key": "valorations",
-									"value": "asc"
+									"value": "asc",
+									"disabled": true
 								}
 							]
 						}
@@ -491,7 +493,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{   \n    \"title\": \"Book-example\",\n    \"author\": \"Author-example\",\n    \"gender\": \"gender-example\",\n    \"publisher\": \"publisher-example\",\n    \"status\": \"available\",\n    \"quantity\": 1,\n    \"authors\":[1,2]\n}",
+							"raw": "{   \n    \"title\": \"Book-example43\",\n    \"gender\": \"gender-example\",\n    \"image\": \"jaasdasdj\",\n    \"description\": \"buenardoooooooooooo\",\n    \"authors\":[1]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -521,7 +523,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:25565/book/2?valorations=asc",
+							"raw": "http://127.0.0.1:25565/book/2",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -537,7 +539,8 @@
 							"query": [
 								{
 									"key": "valorations",
-									"value": "asc"
+									"value": "asc",
+									"disabled": true
 								}
 							]
 						}
@@ -574,7 +577,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{   \n    \"title\": \"Book-example2\",\n    \"author\": \"Author-example2\",\n    \"gendea\": \"gender-example2\",\n    \"publisher\": \"publisher-example2\",\n    \"status\": \"available\",\n    \"quantity\": 12\n}",
+							"raw": "{   \n    \"title\": \"Book-example43\",\n    \"gender\": \"gender-example\",\n    \"image\": \"jaasdasdj\",\n    \"description\": \"buenardoooooooooooo\",\n    \"authors\":[1]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -633,7 +636,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"init_date\": \"2024-04-25\",\n    \"expiration\": \"2024-05-25\",\n    \"user_id\": 3\n}",
+							"raw": "{\n    \"user_id\": 1,\n    \"book_copy_id\": 1,\n    \"init_date\": \"2024-10-01\",\n    \"expiration_date\": \"2024-10-31\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -738,15 +741,15 @@
 			]
 		},
 		{
-			"name": "Configuration",
+			"name": "Comments",
 			"item": [
 				{
-					"name": "New Request",
+					"name": "Read Comments",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:25565/config",
+							"raw": "http://127.0.0.1:25565/comments",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -756,78 +759,20 @@
 							],
 							"port": "25565",
 							"path": [
-								"config"
+								"comments"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "New Request",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"disposition\":\"updated-disposition\",\n    \"order\":\"updated-order\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://127.0.0.1:25565/config",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "25565",
-							"path": [
-								"config"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Valoration",
-			"item": [
-				{
-					"name": "Read Valorations",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://127.0.0.1:25565/valorations",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "25565",
-							"path": [
-								"valorations"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Add Valoration",
+					"name": "Add Comment",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"comment\": \"Me encantó este libro, muy recomendado.\",\n    \"valoration\": 5,\n    \"date\": \"2024-05-07\",\n    \"user_id\": 1,\n    \"book_id\": 1\n}",
+							"raw": "{\n    \"id\": 1,\n    \"book_id\": 1,\n    \"user_id\": 1,\n    \"body\": \"Amazing book! Couldn't put it down.\",\n    \"rate\": 5,\n    \"date\": \"2024-10-18\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -835,7 +780,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:25565/valorations",
+							"raw": "http://127.0.0.1:25565/comments",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -845,7 +790,7 @@
 							],
 							"port": "25565",
 							"path": [
-								"valorations"
+								"comments"
 							]
 						}
 					},
@@ -857,13 +802,35 @@
 			"name": "Notification",
 			"item": [
 				{
-					"name": "New Request",
+					"name": "Read Notifications",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:25565/notifications",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "25565",
+							"path": [
+								"notifications"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Notification",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n   \"msg\": \"test-msg\",\n   \"date\": \"2023-03-02\"\n}",
+							"raw": "{\n    \"title\": \"Book Due Reminder\",\n    \"body\": \"The book 'Linear Algebra' will be due in 6 days.\",\n    \"date\": \"2024-10-16T12:30:00\",\n    \"category\": \"warning\",\n    \"user_id\": 20\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -882,6 +849,142 @@
 							"port": "25565",
 							"path": [
 								"notifications"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read Notification",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:25565/notification/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "25565",
+							"path": [
+								"notification",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Notification",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:25565/notification/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "25565",
+							"path": [
+								"notification",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Notification Copy",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Book Due Reminder2\",\n    \"body\": \"The book 'Linear Algebra' will be due in 0 days.\",\n    \"date\": \"2024-11-16T12:30:00\",\n    \"category\": \"danger\",\n    \"user_id\": 22\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:25565/notification/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "25565",
+							"path": [
+								"notification",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Book Copies",
+			"item": [
+				{
+					"name": "Read Copies",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:25565/copies",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "25565",
+							"path": [
+								"copies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Copy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"book_id\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:25565/copies",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "25565",
+							"path": [
+								"copies"
 							]
 						}
 					},

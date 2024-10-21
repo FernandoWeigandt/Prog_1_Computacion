@@ -1,281 +1,457 @@
 [
     {
-        "title": "The Book of Secrets",
-        "author": "Unknown Author",
-        "gender": "Mystery",
-        "publisher": "Penguin Random House",
-        "status": "available",
-        "quantity": 1,
+        "title": "El Libro de los Secretos",
+        "image": "media/book_cover/book_cover_4.jpg",
+        "gender": "Misterio",
+        "description": "Un relato cautivador de verdades ocultas y oscuros secretos, mientras un detective desentraña una red de mentiras que se extiende por generaciones.",
         "authors": [1]
     },
     {
-        "title": "The Unexpected Abigail Adams: A Woman Not Apt to Be Intimidated",
-        "author": "Unknown Author",
-        "gender": "Thriller",
-        "publisher": "Westholme Publishing",
-        "status": "available",
-        "quantity": 1,
+        "title": "La Inesperada Abigail Adams: Una Mujer que No Se Deja Intimidar",
+        "image": "media/book_cover/book_cover_2.jpg",
+        "gender": "Suspenso",
+        "description": "Sigue la historia de Abigail Adams, una mujer extraordinaria que navega intrigas políticas y peligros en un mundo donde pocos esperan que tenga éxito.",
         "authors": [1, 11]
     },
     {
-        "title": "The Lost Key",
-        "author": "Unknown Author",
-        "gender": "Thriller",
-        "publisher": "HarperCollins",
-        "status": "available",
-        "quantity": 1,
+        "title": "La Llave Perdida",
+        "image": "media/book_cover/book_cover_5.jpg",
+        "gender": "Suspenso",
+        "description": "Un antiguo artefacto guarda la clave de un secreto mortal, y comienza una desesperada carrera contra el tiempo para descubrir la verdad.",
         "authors": []
     },
     {
-        "title": "Echoes of Silence",
-        "author": "Unknown Author",
+        "title": "Ecos del Silencio",
+        "image": "media/book_cover/book_cover_8.jpg",
         "gender": "Romance",
-        "publisher": "Simon & Schuster",
-        "status": "available",
-        "quantity": 1,
+        "description": "Una historia de amor desgarradora ambientada en momentos tranquilos y emociones no expresadas.",
         "authors": [3]
     },
     {
-        "title": "Shadow of the Past",
-        "author": "Unknown Author",
-        "gender": "Mystery",
-        "publisher": "Penguin Random House",
-        "status": "available",
-        "quantity": 1,
+        "title": "Sombra del Pasado",
+        "image": "media/book_cover/book_cover_3.jpg",
+        "gender": "Misterio",
+        "description": "Un viejo caso vuelve a atormentar a un detective mientras lucha por descubrir la verdad detrás de una desaparición de hace décadas.",
         "authors": [4]
     },
     {
-        "title": "The Last Enigma",
-        "author": "Unknown Author",
-        "gender": "Thriller",
-        "publisher": "HarperCollins",
-        "status": "available",
-        "quantity": 1,
+        "title": "El Último Enigma",
+        "image": "media/book_cover/book_cover_0.jpg",
+        "gender": "Suspenso",
+        "description": "Una brillante descifradora de códigos se ve envuelta en un mundo de espionaje y peligro mientras intenta resolver un último rompecabezas.",
         "authors": [5]
     },
     {
-        "title": "Whispers in the Dark",
-        "author": "Unknown Author",
+        "title": "Susurros en la Oscuridad",
+        "image": "media/book_cover/book_cover_7.jpg",
         "gender": "Horror",
-        "publisher": "Simon & Schuster",
-        "status": "available",
-        "quantity": 1,
+        "description": "Un relato escalofriante de una casa embrujada y los oscuros secretos que acechan dentro de sus paredes.",
         "authors": [6]
     },
     {
-        "title": "Deadly Whispers",
-        "author": "Unknown Author",
-        "gender": "Mystery",
-        "publisher": "Penguin Random House",
-        "status": "available",
-        "quantity": 1,
+        "title": "Susurros Mortales",
+        "image": "media/book_cover/book_cover_1.jpg",
+        "gender": "Misterio",
+        "description": "Una serie de pistas crípticas lleva a un detective en un peligroso viaje para descubrir la verdad detrás de una serie de asesinatos.",
         "authors": [7]
     },
     {
-        "title": "Dancing with Shadows",
-        "author": "Unknown Author",
+        "title": "Bailando con Sombras",
+        "image": "media/book_cover/book_cover_6.jpg",
         "gender": "Romance",
-        "publisher": "HarperCollins",
-        "status": "available",
-        "quantity": 1,
+        "description": "Dos almas encuentran el amor en los lugares más inesperados mientras aprenden a abrazar su pasado y avanzar hacia un futuro más brillante.",
         "authors": [8, 7]
     },
     {
-        "title": "The Hidden Truth",
-        "author": "Unknown Author",
-        "gender": "Thriller",
-        "publisher": "Simon & Schuster",
-        "status": "available",
-        "quantity": 1,
+        "title": "La Verdad Oculta",
+        "image": "media/book_cover/book_cover_9.jpg",
+        "gender": "Suspenso",
+        "description": "Una periodista tropieza con una conspiración que podría sacudir los cimientos de la sociedad, pero exponerla podría costarle todo.",
         "authors": [8]
     },
     {
-        "title": "Echoes of Destiny",
-        "author": "Unknown Author",
+        "title": "Ecos del Destino",
+        "image": "media/book_cover/book_cover_2.jpg",
         "gender": "Romance",
-        "publisher": "Penguin Random House",
-        "status": "available",
-        "quantity": 1,
+        "description": "Una saga romántica que abarca décadas, donde el amor y el destino se entrelazan en la vida de tres generaciones.",
         "authors": [8, 9, 10]
     },
     {
-        "title": "The Secret Heir",
-        "author": "Unknown Author",
+        "title": "El Heredero Secreto",
+        "image": "media/book_cover/book_cover_5.jpg",
         "gender": "Drama",
-        "publisher": "Penguin Books",
-        "status": "available",
-        "quantity": 1,
+        "description": "El pasado oculto de una familia sale a la luz cuando un heredero perdido regresa para reclamar su herencia, amenazando con desentrañar todo.",
         "authors": [11]
     },
     {
-        "title": "Beneath the Surface",
-        "author": "Unknown Author",
-        "gender": "Mystery",
-        "publisher": "HarperCollins",
-        "status": "available",
-        "quantity": 1,
+        "title": "Bajo la Superficie",
+        "image": "media/book_cover/book_cover_8.jpg",
+        "gender": "Misterio",
+        "description": "A medida que emergen secretos enterrados bajo la superficie, un pequeño pueblo se ve sacudido por una revelación impactante.",
         "authors": [11]
     },
     {
-        "title": "Winds of Change",
-        "author": "Unknown Author",
-        "gender": "Adventure",
-        "publisher": "Vintage Books",
-        "status": "available",
-        "quantity": 1,
-        "authors": [1,4]
+        "title": "Vientos de Cambio",
+        "image": "media/book_cover/book_cover_0.jpg",
+        "gender": "Aventura",
+        "description": "Un viaje épico a través de territorios inexplorados, donde un grupo de exploradores enfrenta los desafíos de la naturaleza y de sí mismos.",
+        "authors": [1, 4]
     },
     {
-        "title": "The Forgotten Path",
-        "author": "Unknown Author",
-        "gender": "Fantasy",
-        "publisher": "Simon & Schuster",
-        "status": "available",
-        "quantity": 1,
-        "authors": [2,5]
+        "title": "El Camino Olvidado",
+        "image": "media/book_cover/book_cover_6.jpg",
+        "gender": "Fantasía",
+        "description": "En una tierra llena de magia, un joven héroe debe redescubrir el camino olvidado para salvar su mundo de una oscuridad inminente.",
+        "authors": [2, 5]
     },
     {
-        "title": "Veil of Darkness",
-        "author": "Unknown Author",
+        "title": "Velo de Oscuridad",
+        "image": "media/book_cover/book_cover_4.jpg",
         "gender": "Horror",
-        "publisher": "Penguin Random House",
-        "status": "available",
-        "quantity": 1,
-        "authors": [1,6]
+        "description": "Una historia de horror donde un pueblo es envuelto en la oscuridad, y la única forma de sobrevivir es enfrentar los terrores que acechan.",
+        "authors": [1, 6]
     },
     {
-        "title": "A Flicker in Time",
-        "author": "Unknown Author",
-        "gender": "Science Fiction",
-        "publisher": "HarperCollins",
-        "status": "available",
-        "quantity": 1,
-        "authors": [4,7]
+        "title": "Un Destello en el Tiempo",
+        "image": "media/book_cover/book_cover_3.jpg",
+        "gender": "Ciencia Ficción",
+        "description": "Un científico descubre una forma de manipular el tiempo, pero alterar el pasado conlleva consecuencias inesperadas y peligrosas.",
+        "authors": [4, 7]
     },
     {
-        "title": "Echoes of the Past",
-        "author": "Unknown Author",
-        "gender": "Historical Fiction",
-        "publisher": "Simon & Schuster",
-        "status": "available",
-        "quantity": 1,
-        "authors": [7,8]
+        "title": "Ecos del Pasado",
+        "image": "media/book_cover/book_cover_9.jpg",
+        "gender": "Ficción Histórica",
+        "description": "Una historia histórica donde las luchas personales y políticas se entrelazan, revelando los ecos de eventos pasados que aún moldean el presente.",
+        "authors": [7, 8]
     },
     {
-        "title": "The Silent Watcher",
-        "author": "Unknown Author",
-        "gender": "Thriller",
-        "publisher": "Penguin Books",
-        "status": "available",
-        "quantity": 1,
-        "authors": [1,9]
+        "title": "El Vigilante Silencioso",
+        "image": "media/book_cover/book_cover_2.jpg",
+        "gender": "Suspenso",
+        "description": "Un acosador implacable mantiene a una ciudad en vilo, y un detective decidido debe atraparlo antes de que ataque de nuevo.",
+        "authors": [1, 9]
     },
     {
-        "title": "Rise of the Phoenix",
-        "author": "Unknown Author",
-        "gender": "Fantasy",
-        "publisher": "HarperCollins",
-        "status": "available",
-        "quantity": 1,
-        "authors": [2,4]
+        "title": "El Renacer del Fénix",
+        "image": "media/book_cover/book_cover_5.jpg",
+        "gender": "Fantasía",
+        "description": "Una épica fantasía donde un guerrero resurge de las cenizas para liderar una rebelión contra un imperio opresivo.",
+        "authors": [2, 4]
     },
     {
-        "title": "Moonlit Serenade",
-        "author": "Unknown Author",
+        "title": "Serenata Bajo la Luna",
+        "image": "media/book_cover/book_cover_1.jpg",
         "gender": "Romance",
-        "publisher": "Simon & Schuster",
-        "status": "available",
-        "quantity": 1,
-        "authors": [2,1]
+        "description": "Una hermosa historia de amor ambientada bajo el cielo iluminado por la luna, donde dos desconocidos se encuentran unidos por el destino.",
+        "authors": [2, 1]
     },
     {
-        "title": "The Darkened Shore",
-        "author": "Unknown Author",
-        "gender": "Mystery",
-        "publisher": "Vintage Books",
-        "status": "available",
-        "quantity": 1,
+        "title": "La Orilla Oscurecida",
+        "image": "media/book_cover/book_cover_7.jpg",
+        "gender": "Misterio",
+        "description": "Un pueblo costero esconde un oscuro secreto, y un detective debe resolver una misteriosa desaparición antes de que sea demasiado tarde.",
         "authors": [2]
     },
     {
-        "title": "Unbroken Silence",
-        "author": "Unknown Author",
+        "title": "Silencio Inquebrantable",
+        "image": "media/book_cover/book_cover_3.jpg",
         "gender": "Drama",
-        "publisher": "Penguin Random House",
-        "status": "available",
-        "quantity": 1,
+        "description": "Un conmovedor drama sobre una familia que supera traumas y aprende a comunicar sus emociones reprimidas.",
         "authors": [3]
     },
     {
-        "title": "Guardians of the Realm",
-        "author": "Unknown Author",
-        "gender": "Fantasy",
-        "publisher": "HarperCollins",
-        "status": "available",
-        "quantity": 1,
+        "title": "Guardianes del Reino",
+        "image": "media/book_cover/book_cover_6.jpg",
+        "gender": "Fantasía",
+        "description": "En un reino amenazado por la oscuridad, un grupo de guerreros debe unirse para proteger el reino y restaurar la paz.",
         "authors": [4]
     },
     {
-        "title": "The Forgotten Legend",
-        "author": "Unknown Author",
-        "gender": "Adventure",
-        "publisher": "Simon & Schuster",
-        "status": "available",
-        "quantity": 1,
+        "title": "La Leyenda Olvidada",
+        "image": "media/book_cover/book_cover_4.jpg",
+        "gender": "Aventura",
+        "description": "Una emocionante aventura que sigue la búsqueda de un cazador de tesoros para descubrir una leyenda olvidada oculta en la selva.",
         "authors": [5]
     },
     {
-        "title": "Shadows of Betrayal",
-        "author": "Unknown Author",
-        "gender": "Thriller",
-        "publisher": "Penguin Books",
-        "status": "available",
-        "quantity": 1,
+        "title": "Sombras de Traición",
+        "image": "media/book_cover/book_cover_0.jpg",
+        "gender": "Suspenso",
+        "description": "Un thriller de ritmo rápido donde la confianza es un lujo y la traición acecha en cada esquina.",
         "authors": [6]
     },
     {
-        "title": "The Final Frontier",
-        "author": "Unknown Author",
-        "gender": "Science Fiction",
-        "publisher": "HarperCollins",
-        "status": "available",
-        "quantity": 1,
+        "title": "La Última Frontera",
+        "image": "media/book_cover/book_cover_9.jpg",
+        "gender": "Ciencia Ficción",
+        "description": "Una atrevida expedición espacial se aventura en lo desconocido, desentrañando los misterios de la última frontera.",
         "authors": [7]
     },
     {
-        "title": "Echoes of War",
-        "author": "Unknown Author",
-        "gender": "Historical Fiction",
-        "publisher": "Simon & Schuster",
-        "status": "available",
-        "quantity": 1,
-        "authors": [2]
+        "title": "La Ciudad de las Sombras",
+        "image": "media/book_cover/book_cover_0.jpg",
+        "gender": "Misterio",
+        "description": "En una metrópolis donde nadie es lo que parece, un periodista busca descubrir la verdad detrás de una serie de desapariciones inexplicables.",
+        "authors": [8, 9]
     },
     {
-        "title": "Heart of the Storm",
-        "author": "Unknown Author",
-        "gender": "Adventure",
-        "publisher": "Penguin Random House",
-        "status": "available",
-        "quantity": 1,
-        "authors": [9]
+        "title": "El Susurro del Viento",
+        "image": "media/book_cover/book_cover_1.jpg",
+        "gender": "Fantasía",
+        "description": "Una joven descubre que tiene la habilidad de controlar el viento y debe aprender a usar sus poderes para salvar a su reino de un peligro inminente.",
+        "authors": [2, 6]
     },
     {
-        "title": "The Last Horizon",
-        "author": "Unknown Author",
-        "gender": "Science Fiction",
-        "publisher": "HarperCollins",
-        "status": "available",
-        "quantity": 1,
+        "title": "Cenizas del Pasado",
+        "image": "media/book_cover/book_cover_2.jpg",
+        "gender": "Drama",
+        "description": "Un drama emocional que explora el dolor y la redención mientras una mujer confronta las cicatrices de su pasado.",
+        "authors": [3, 10]
+    },
+    {
+        "title": "El Enigma del Faro",
+        "image": "media/book_cover/book_cover_3.jpg",
+        "gender": "Suspenso",
+        "description": "Un guardián de un faro se enfrenta a un misterio cuando un barco encalla en la costa sin tripulación a bordo.",
+        "authors": [5]
+    },
+    {
+        "title": "En las Profundidades",
+        "image": "media/book_cover/book_cover_4.jpg",
+        "gender": "Aventura",
+        "description": "Un grupo de exploradores se adentra en un vasto sistema de cuevas submarinas en busca de un tesoro perdido.",
+        "authors": [4, 8]
+    },
+    {
+        "title": "Los Ecos del Alma",
+        "image": "media/book_cover/book_cover_5.jpg",
+        "gender": "Romance",
+        "description": "Dos almas gemelas se encuentran en diferentes vidas y deben superar las barreras del tiempo para estar juntas.",
+        "authors": [2, 3]
+    },
+    {
+        "title": "Más Allá del Horizonte",
+        "image": "media/book_cover/book_cover_6.jpg",
+        "gender": "Ciencia Ficción",
+        "description": "En un futuro distante, la humanidad busca un nuevo hogar en planetas lejanos mientras enfrenta peligros desconocidos.",
+        "authors": [7, 9]
+    },
+    {
+        "title": "El Jardín de las Mariposas",
+        "image": "media/book_cover/book_cover_7.jpg",
+        "gender": "Ficción Histórica",
+        "description": "Durante la Segunda Guerra Mundial, una niña encuentra refugio en un jardín mágico que la ayuda a sobrellevar los horrores del conflicto.",
+        "authors": [6]
+    },
+    {
+        "title": "El Guardián del Ocaso",
+        "image": "media/book_cover/book_cover_8.jpg",
+        "gender": "Fantasía",
+        "description": "Un héroe destinado a proteger la puerta entre dos mundos lucha contra fuerzas oscuras que amenazan con desatar el caos.",
+        "authors": [5, 8]
+    },
+    {
+        "title": "La Voz del Silencio",
+        "image": "media/book_cover/book_cover_9.jpg",
+        "gender": "Drama",
+        "description": "Una historia conmovedora sobre una mujer muda que encuentra su voz a través de la música y cambia la vida de quienes la rodean.",
         "authors": [3]
     },
     {
-        "title": "Tides of Fate",
-        "author": "Unknown Author",
+        "title": "El Corazón del Océano",
+        "image": "media/book_cover/book_cover_0.jpg",
+        "gender": "Aventura",
+        "description": "Un grupo de marineros se embarca en una travesía peligrosa en busca de un mítico tesoro escondido en las profundidades del océano.",
+        "authors": [2, 4]
+    },
+    {
+        "title": "Bajo la Luz de la Luna",
+        "image": "media/book_cover/book_cover_1.jpg",
         "gender": "Romance",
-        "publisher": "Simon & Schuster",
-        "status": "available",
-        "quantity": 1,
-        "authors": [1]
+        "description": "Una historia de amor que florece en un pequeño pueblo costero, bajo el brillo mágico de la luna llena.",
+        "authors": [1, 3]
+    },
+    {
+        "title": "El Último Guardián",
+        "image": "media/book_cover/book_cover_2.jpg",
+        "gender": "Fantasía",
+        "description": "Un joven guerrero descubre que es el último protector de un antiguo secreto que podría cambiar el destino del mundo.",
+        "authors": [5, 7]
+    },
+    {
+        "title": "El Susurro del Bosque",
+        "image": "media/book_cover/book_cover_3.jpg",
+        "gender": "Misterio",
+        "description": "En un pequeño pueblo rodeado de bosques, se escuchan voces en la noche que parecen revelar oscuros secretos del pasado.",
+        "authors": [6]
+    },
+    {
+        "title": "La Sombra del Asesino",
+        "image": "media/book_cover/book_cover_4.jpg",
+        "gender": "Suspenso",
+        "description": "Un detective se enfrenta a su caso más difícil cuando un asesino en serie deja pistas que parecen burlarse de él.",
+        "authors": [9]
+    },
+    {
+        "title": "El Espíritu de la Montaña",
+        "image": "media/book_cover/book_cover_5.jpg",
+        "gender": "Aventura",
+        "description": "Un grupo de escaladores se enfrenta a desafíos sobrenaturales mientras intentan conquistar la cima de una montaña mística.",
+        "authors": [2, 8]
+    },
+    {
+        "title": "El Portal del Tiempo",
+        "image": "media/book_cover/book_cover_6.jpg",
+        "gender": "Ciencia Ficción",
+        "description": "Un científico descubre un portal hacia el pasado, pero cambiar la historia puede tener consecuencias desastrosas.",
+        "authors": [4, 10]
+    },
+    {
+        "title": "El Enigma de la Isla",
+        "image": "media/book_cover/book_cover_7.jpg",
+        "gender": "Misterio",
+        "description": "Un grupo de amigos queda atrapado en una isla donde suceden cosas inexplicables y deben resolver el enigma para sobrevivir.",
+        "authors": [3]
+    },
+    {
+        "title": "Alas de Libertad",
+        "image": "media/book_cover/book_cover_8.jpg",
+        "gender": "Ficción Histórica",
+        "description": "Durante la guerra civil, una mujer lucha por la libertad y por un futuro mejor para su familia.",
+        "authors": [7, 11]
+    },
+    {
+        "title": "La Voz de las Sombras",
+        "image": "media/book_cover/book_cover_9.jpg",
+        "gender": "Horror",
+        "description": "Una serie de eventos paranormales aterroriza a los habitantes de un pueblo, y un investigador de lo oculto intenta detenerlos.",
+        "authors": [6, 12]
+    },
+    {
+        "title": "Los Ojos del Abismo",
+        "image": "media/book_cover/book_cover_0.jpg",
+        "gender": "Suspenso",
+        "description": "Un detective privado se ve envuelto en una red de engaños cuando investiga la desaparición de una persona en circunstancias misteriosas.",
+        "authors": [8, 10]
+    },
+    {
+        "title": "El Jardín Escondido",
+        "image": "media/book_cover/book_cover_1.jpg",
+        "gender": "Fantasía",
+        "description": "Un jardín mágico aparece en la ciudad, concediendo deseos a aquellos que logran encontrarlo y pasar sus pruebas.",
+        "authors": [2, 5]
+    },
+    {
+        "title": "El Fin de la Eternidad",
+        "image": "media/book_cover/book_cover_2.jpg",
+        "gender": "Ciencia Ficción",
+        "description": "Un astronauta descubre un secreto que podría significar el fin de la humanidad tal como la conocemos.",
+        "authors": [1, 7]
+    },
+    {
+        "title": "La Dama de los Espíritus",
+        "image": "media/book_cover/book_cover_3.jpg",
+        "gender": "Horror",
+        "description": "Una médium es perseguida por espíritus vengativos mientras intenta resolver el asesinato de una joven.",
+        "authors": [4, 6]
+    },
+    {
+        "title": "El Refugio del Tiempo",
+        "image": "media/book_cover/book_cover_4.jpg",
+        "gender": "Drama",
+        "description": "En un refugio de montaña, un grupo de personas comparte sus historias de vida mientras se enfrentan a una tormenta devastadora.",
+        "authors": [9, 3]
+    },
+    {
+        "title": "Llamas en la Niebla",
+        "image": "media/book_cover/book_cover_5.jpg",
+        "gender": "Ficción Histórica",
+        "description": "Durante un conflicto bélico, un soldado enfrenta el dilema de seguir órdenes o salvar a inocentes atrapados en la línea de fuego.",
+        "authors": [2]
+    },
+    {
+        "title": "El Último Suspiro",
+        "image": "media/book_cover/book_cover_6.jpg",
+        "gender": "Suspenso",
+        "description": "Una periodista investiga una serie de muertes que parecen conectadas a un antiguo manuscrito maldito.",
+        "authors": [11]
+    },
+    {
+        "title": "Cazadores de Estrellas",
+        "image": "media/book_cover/book_cover_7.jpg",
+        "gender": "Aventura",
+        "description": "Un grupo de exploradores espaciales emprende una misión para encontrar un legendario planeta que podría albergar vida.",
+        "authors": [5, 8]
+    },
+    {
+        "title": "La Oscuridad Interior",
+        "image": "media/book_cover/book_cover_8.jpg",
+        "gender": "Drama",
+        "description": "Un hombre lucha contra sus propios demonios mientras intenta reconstruir su vida después de una tragedia personal.",
+        "authors": [6, 10]
+    },
+    {
+        "title": "El Guardián de los Secretos",
+        "image": "media/book_cover/book_cover_9.jpg",
+        "gender": "Misterio",
+        "description": "Un hombre hereda una mansión llena de secretos y debe descifrar sus misterios para descubrir la verdad sobre su pasado.",
+        "authors": [3, 7]
+    },
+    {
+        "title": "Al Filo de la Realidad",
+        "image": "media/book_cover/book_cover_0.jpg",
+        "gender": "Ciencia Ficción",
+        "description": "Un experimento científico sale mal, dejando a un grupo de personas atrapadas entre dos dimensiones paralelas.",
+        "authors": [1, 4]
+    },
+    {
+        "title": "La Flor de la Noche",
+        "image": "media/book_cover/book_cover_1.jpg",
+        "gender": "Romance",
+        "description": "Un encuentro inesperado en una noche estrellada da lugar a una historia de amor que desafía el tiempo y la distancia.",
+        "authors": [2, 9]
+    },
+    {
+        "title": "Sombras en el Alba",
+        "image": "media/book_cover/book_cover_2.jpg",
+        "gender": "Ficción Histórica",
+        "description": "Una novela ambientada en la antigüedad, donde la traición y el honor se entrelazan en la lucha por el poder.",
+        "authors": [7, 11]
+    },
+    {
+        "title": "El Susurro del Abismo",
+        "image": "media/book_cover/book_cover_3.jpg",
+        "gender": "Horror",
+        "description": "Una expedición a una cueva profunda revela un oscuro secreto que nunca debió ser desenterrado.",
+        "authors": [5]
+    },
+    {
+        "title": "El Eco de la Eternidad",
+        "image": "media/book_cover/book_cover_4.jpg",
+        "gender": "Fantasía",
+        "description": "En un mundo mágico, un héroe olvidado lucha por recuperar su memoria y detener una guerra que podría destruirlo todo.",
+        "authors": [6, 8]
+    },
+    {
+        "title": "Bajo el Cielo de Cristal",
+        "image": "media/book_cover/book_cover_5.jpg",
+        "gender": "Ciencia Ficción",
+        "description": "En una ciudad futurista encerrada bajo un domo de cristal, dos jóvenes luchan por la libertad.",
+        "authors": [3, 10]
+    },
+    {
+        "title": "La Profecía de las Sombras",
+        "image": "media/book_cover/book_cover_6.jpg",
+        "gender": "Fantasía",
+        "description": "Una antigua profecía predice el regreso de un mal ancestral, y un grupo de héroes se prepara para la batalla final.",
+        "authors": [2, 7]
+    },
+    {
+        "title": "Cuentos de Medianoche",
+        "image": "media/book_cover/book_cover_7.jpg",
+        "gender": "Misterio",
+        "description": "Una colección de relatos oscuros y misteriosos que exploran los rincones más profundos de la mente humana.",
+        "authors": [4, 9]
     }
 ]

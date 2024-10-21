@@ -11,9 +11,9 @@ class Author(Resource):
     def put(self,id):
         author = db.session.query(AuthorModel).get_or_404(id)
         data = request.get_json().items()
-        for key, value in data:
-            setattr(author, key, value)
         try:
+            for key, value in data:
+                setattr(author, key, value)
             db.session.add(author)
             db.session.commit()
         except:
@@ -34,11 +34,10 @@ class Authors(Resource):
         return jsonify([author.to_json() for author in Authors])
     
     def post(self):
-        author = AuthorModel.from_json(request.get_json())
         try:
+            author = AuthorModel.from_json(request.get_json())
             db.session.add(author)
             db.session.commit()
         except:
             return {'error':'Incorrect data format'}, 400
         return author.to_json(), 201
-        return author.to_json(), 204

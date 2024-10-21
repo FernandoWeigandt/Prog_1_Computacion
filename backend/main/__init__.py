@@ -37,16 +37,19 @@ def create_app():
     #Rent
     api.add_resource(resources.RentsResources, '/rents')
     api.add_resource(resources.RentResources, '/rent/<id>')
-    #Config
-    api.add_resource(resources.ConfigResources, '/config')
     #Notifications
-    api.add_resource(resources.NotificationResources, '/notifications')
-    #Valorations
-    api.add_resource(resources.ValorationsResources, '/valorations')
-    api.add_resource(resources.ValorationResources, '/valoration/<id>')
+    api.add_resource(resources.NotificationsResources, '/notifications')
+    api.add_resource(resources.NotificationResources, '/notification/<id>')
+    #Comments
+    api.add_resource(resources.CommentsResources, '/comments')
+    api.add_resource(resources.CommentResources, '/comment/<id>')
     #Authors
     api.add_resource(resources.AuthorsResources, '/authors')
     api.add_resource(resources.AuthorResources, '/author/<id>')
+    #BookCopy
+    api.add_resource(resources.BookCopiesResources, '/copies')
+    api.add_resource(resources.BookCopyResources, '/copy/<id>')
+
 
     api.init_app(app)
 

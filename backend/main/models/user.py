@@ -1,25 +1,61 @@
 from .. import db
 from werkzeug.security import generate_password_hash, check_password_hash
 
+########################################################
+#                User Table definition                 #
+########################################################
+
+# The user table has the following structure
+#
+#                                             USER
+#   ______________________________________________________________________________________________
+#  | id | name | lastname | mail | phone | role | alias | passwd | comments | rent | notifications |
+#  | PK |  STR |   STR    | STR  |  STR  | STR |  STR  |  STR   |    FK    |  FK  |     FK        |
+#  |____|______|__________|______|_______|_____|_______|________|__________|______|_______________|
+#                                                                     |       |          |
+#                                                                     |       |          |
+#                                                                     |       |          |
+#                      COMMENTS  <|-----------------------------------┘       |          |
+#    _____________________________________________                            |          |
+#   | id | book_id | user_id | body | rate | date |                           |          |
+#   | PK |   FK    |   FK    |  STR |  INT |  DAT |                           |          |
+#   |____|_________|_________|______|______|______|                           |          | 
+#                                                                             |          |
+#                                                                             |          |
+#                             RENT  <|----------------------------------------┘          |
+#     ___________________________________________________________                        |
+#    | id | user_id | book_copy_id | init_date | expiration_date |                       |
+#    | PK |   FK    |     FK       |   DAT     |       DAT       |                       |
+#    |____|_________|______________|___________|_________________|                       |
+#                                                                                        |
+#                                                                                        | 
+#                           NOTIFICATION   <|--------------------------------------------┘
+#    _____________________________________________________________
+#   | id | user_id | title | body | date | note | category | read |
+#   | PK |   FK    |  STR  | TEXT |  DAT | STR  |   STR    | BOOL |
+#   |____|_________|_______|______|______|______|__________|______|
+#
+
 class User(db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key = True, unique=True, autoincrement=True)
     name = db.Column(db.String(100), nullable = False)
-    lastname = db.Column(db.String(100))
+    lastname = db.Column(db.String(100), nullable = False)
     mail = db.Column(db.String(100), nullable = False, unique=True)
     phone = db.Column(db.String(16))
-    rol = db.Column(db.String(100), nullable = False, server_default='pending')
+    role = db.Column(db.String(100), nullable = False, server_default='pending')
     alias = db.Column(db.String)
     passwd = db.Column(db.String, nullable = False)
-    # Relation 1:1 (1 user : 1 valoration), User is Parent
-    valoration = db.relationship('Valoration', uselist=False, back_populates='user', cascade='all, delete-orphan')
-    # Relation 1:1 (1 user : 1 rent), User is Parent
-    rent = db.relationship('Rent', uselist=False, back_populates='user', cascade='all, delete-orphan')
-    # Relation 1:N (1 user : N notifications), User is parent
+    # Relation 1:N (1 user : N Comments)
+    comments = db.relationship('Comment', back_populates='user', cascade='all, delete-orphan')
+    # Relation 1:N (1 user : N rent)
+    rents = db.relationship('Rent', back_populates='user', cascade='all, delete-orphan')
+    # Relation 1:N (1 user : N notifications)
     notifications = db.relationship('Notification', back_populates='user', cascade='all, delete-orphan')
 
-    def __repr__(self):
-        return '<User> id:%r, name:%r, lastname:%r' % (self.id, self.name, self.lastname)
+    ########################################################
+    #               methods to hash the passwd             #
+    ########################################################
 
     @property
     def plain_passwd(self):
@@ -32,6 +68,10 @@ class User(db.Model):
     def validate_passwd(self, passwd):
         return check_password_hash(self.passwd, passwd)
 
+    ########################################################
+    #             Methods to convert to JSON               #
+    ########################################################
+
     def to_json(self):
         user_json = {
             'id': self.id,
@@ -39,22 +79,22 @@ class User(db.Model):
             'lastname': str(self.lastname),
             'mail': str(self.mail),
             'phone': self.phone,
-            'rol': str(self.rol),
+            'role': str(self.role),
             'alias': str(self.alias)
         }
         return user_json
 
     def to_json_complete(self):
         try:
-            rent=self.rent.to_json()
+            rents=self.rent.to_json()
         except:
-            rent=''
+            rents=''
         try:
             valoration=self.valoration.to_json_no_user()
         except:
             valoration=''
         try:
-            notifications=[notifications.to_json() for notification in self.notifications]
+            notifications=[notifications.to_json() for notification in self.notifications]# ????
         except:
             notifications=''
         user_json = {
@@ -63,10 +103,10 @@ class User(db.Model):
             'lastname': str(self.lastname),
             'mail': str(self.mail),
             'phone': self.phone,
-            'rol': str(self.rol),
+            'role': str(self.role),
             'alias': str(self.alias),
             'passwd': str(self.passwd),
-            'rent': rent,
+            'rent': rents,
             'valoration': valoration,
             'notifications': notifications
         }
@@ -79,25 +119,54 @@ class User(db.Model):
             'lastname': str(self.lastname),
         }
         return user_json
+    
+    ########################################################
+    #             Methods to convert from JSON             #
+    ########################################################
+
 
     @staticmethod
     def from_json(user_json):
-        id = user_json.get('id')
         name = user_json.get('name')
         lastname = user_json.get('lastname')
         mail = user_json.get('mail')
         phone = user_json.get('phone')
-        rol = user_json.get('rol')
+        role = user_json.get('role')
         alias = user_json.get('alias')
         passwd = user_json.get('passwd')
+        try:
+            if not name or not lastname or not mail or not passwd:
+                raise ValueError("Missing required user fields")
+            if role not in ['admin', 'user', 'librarian']:
+                role = 'pending'
+            return User(
+                name = name,
+                lastname = lastname,
+                mail = mail,
+                phone = phone,
+                role = role,
+                alias = alias,
+                plain_passwd = passwd
+            )
+        except ValueError as err:
+            raise err
 
-        return User(
-            id = id,
-            name = name,
-            lastname = lastname,
-            mail = mail,
-            phone = phone,
-            rol = rol,
-            alias = alias,
-            plain_passwd = passwd
-        )
+
+    
+    ########################################################
+    #                   repr of the user                   #
+    ########################################################
+
+    def __repr__(self):
+        user = 'User:\n'
+        user += f'    id: {self.id}\n'
+        user += f'    name: {self.name}\n'
+        user += f'    lastname: {self.lastname}\n'
+        user += f'    mail: {self.mail}\n'
+        user += f'    phone: {self.phone}\n'
+        user += f'    role: {self.role}\n'
+        user += f'    alias: {self.alias}\n'
+        user += f'    comments: {self.comments}\n'
+        user += f'    rent: {self.rent}\n'
+        user += f'    notifications: {self.notifications}\n'
+        return user
