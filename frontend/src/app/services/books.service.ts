@@ -14,4 +14,8 @@ export class BooksService {
   getBooks(page: Number): Observable<any> {
     return this.httpClient.get('/api/books?page='+page);
   }
+
+  getBooksBySearchQuery(query: any): Observable<any> {
+    return this.httpClient.get(`/api/books?${query.filter}=${query.pattern}`);
+  }
 }

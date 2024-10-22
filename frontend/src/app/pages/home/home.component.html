@@ -12,7 +12,9 @@
             [id]="book.id"
             title="{{ book.title }}"
             gender="{{ book.gender }}"
-            author="{{ book.author }}"
+            authors="{{ book.authors }}"
+            status="{{ book.status }}"
+            [comments_quantity]="book.comments_quantity"
             [quantity]="book.quantity"
             [rating]="book.rating"
             image="{{ book.image || 'media/book_cover/book_cover_1.jpg' }}"
@@ -26,9 +28,11 @@
     </div>
   </div>
 </main>
-<div class="container fixed-bottom text-end" style="margin-bottom: 120px;" id="add-book">
-  <button class="btn bg-my-secondary shadow" type="button">
-    <i class="bi bi-plus-circle-fill" style="font-size: 32px;"></i>
-  </button>
-</div>
+@if (isAdmin || isLibrarian) {
+  <div class="container fixed-bottom text-end" style="margin-bottom: 120px;" id="add-book">
+    <button class="btn btn-secondary shadow" type="button">
+      <i class="bi bi-plus-circle-fill" style="font-size: 32px;"></i>
+    </button>
+  </div>
+}
 <component-navbar></component-navbar>

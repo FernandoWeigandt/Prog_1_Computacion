@@ -6,6 +6,8 @@ import { ContextbarComponent } from '../../components/contextbar/contextbar.comp
 import { PaginateComponent } from '../../components/paginate/paginate.component';
 import { SearchComponent } from '../../components/search/search.component';
 import { BookDetailsComponent } from '../book-details/book-details.component';
+import { SearchService } from '../../services/search.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -22,17 +24,33 @@ export class HomeComponent {
   page:number = 1
   stars = 0
   pages:number = 1
-  filteredBooks:any[] = []
 
-  search() {
-    this.filteredBooks = this.books.filter(book => book.title.toLowerCase().includes(this.searchQuery.toLowerCase()));
+  constructor(
+    private booksService: BooksService,
+    private searchService: SearchService,
+    private authService: AuthService
+  ) {}
+
+  ngOnInit(): void {
+    const currentPage = sessionStorage.getItem('currentPage');
+    if (currentPage) {
+      this.getBooks(parseInt(currentPage));
+    } else {
+      this.getBooks(1);
+    }
+    this.search();
   }
 
-  constructor(private booksService: BooksService) { }
+  get isAdmin(): boolean {
+    return this.authService.isAdmin();
+  }
 
-  ngOnInit(): void {this.getBooks(1)}
+  get isLibrarian(): boolean {
+    return this.authService.isLibrarian();
+  }
 
-  getBooks(page: Number) {
+  getBooks(page: number) {
+    sessionStorage.setItem('currentPage', String(page));
     this.booksService.getBooks(page).subscribe((answer: any) => {
       this.books = answer.books || [];
       this.page = answer.page;
@@ -40,6 +58,23 @@ export class HomeComponent {
       this.totalBooks = answer.total;
       this.pages = answer.pages;
     })
+    document.documentElement.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  search() {
+    this.searchService.searchQuery$.subscribe((searchQuery) => {
+      this.searchQuery = searchQuery;
+      if (this.searchQuery === 'clean') {
+        sessionStorage.removeItem('currentPage');
+        this.getBooks(1);
+      }
+      this.booksService.getBooksBySearchQuery(searchQuery).subscribe((answer: any) => {
+        this.books = answer.books || [];
+        this.page = answer.page;
+        this.totalBooks = answer.total;
+        this.pages = answer.pages;
+      });
+    });
     document.documentElement.scrollTo({ top: 0, behavior: 'smooth' });
   }
 }
