@@ -44,8 +44,20 @@ class Rent(Resource):
     
 class Rents(Resource):
     def get(self):
-        rents = db.session.query(RentModel).all()
-        return jsonify([rent.to_json_complete() for rent in rents])
+        page = 1
+        per_page = 10
+        rents = db.session.query(RentModel)
+        if request.args.get('page'):
+            page = int(request.args.get('page'))
+        if request.args.get('per_page'):
+            per_page = int(request.args.get('per_page'))
+        rents = rents.paginate(page=page, per_page=per_page, error_out=True)
+        return jsonify({
+            'rents': [rent.to_json_complete() for rent in rents],
+            'total': rents.total,
+            'pages': rents.pages,
+            'page': page    
+        })
     
     def post(self):
         data = request.get_json()
