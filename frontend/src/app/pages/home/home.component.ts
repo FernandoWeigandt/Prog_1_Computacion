@@ -61,6 +61,14 @@ export class HomeComponent {
     document.documentElement.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
+  image(book: any): string {
+    if (book.image === 'None') {
+      return 'media/default-book-cover.jpg'
+    } else {
+      return book.image
+    }
+  }
+
   search() {
     this.searchService.searchQuery$.subscribe((searchQuery) => {
       this.searchQuery = searchQuery;

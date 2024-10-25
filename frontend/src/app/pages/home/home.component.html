@@ -17,7 +17,7 @@
             [comments_quantity]="book.comments_quantity"
             [quantity]="book.quantity"
             [rating]="book.rating"
-            image="{{ book.image || 'media/book_cover/book_cover_1.jpg' }}"
+            image="{{ image(book) }}"
           >
           </component-book>
         </div>
