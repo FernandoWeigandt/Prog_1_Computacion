@@ -17,7 +17,7 @@ fill_database() {
     RENTS_JSON="./DB/test-data/rents.json"
     NOTIFICATIONS_JSON="./DB/test-data/notifications.json"
 
-    API_PORT=$(head -n 1 .env | awk '{ print $4 }' | sed "s/'//g")
+    API_PORT=$(grep " PORT " .env | awk '{ print $4 }' | sed "s/'//g")
 
     URL_API="http://127.0.0.1:$API_PORT"
     
