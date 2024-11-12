@@ -5,14 +5,13 @@ import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { ContextbarComponent } from '../../components/contextbar/contextbar.component';
 import { PaginateComponent } from '../../components/paginate/paginate.component';
 import { SearchComponent } from '../../components/search/search.component';
-import { BookDetailsComponent } from '../book-details/book-details.component';
 import { SearchService } from '../../services/search.service';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [BookComponent, SearchComponent, NavbarComponent, ContextbarComponent, PaginateComponent, BookDetailsComponent],
+  imports: [BookComponent, SearchComponent, NavbarComponent, ContextbarComponent, PaginateComponent],
   templateUrl: './home.component.html',
   styles: ``
 })
