@@ -1,6 +1,26 @@
 <header>
     <component-contextbar title="Explorar"></component-contextbar>
-    <component-search></component-search>
+    <component-search 
+      [filters]="[
+        {
+          text: 'Título', key: 'title'
+        },
+        {
+          text: 'Género', key: 'gender'
+        },
+        {
+          text: 'Autor', key: 'author'
+        },
+        {
+          text: 'Reseñas positivas', key: 'valoration=positive'
+        },
+        {
+          text: 'Reseñas negativas', key: 'valoration=negative'
+        }
+      ]"
+      activeFilter="title"
+    >
+    </component-search>
 </header>
 <main class="adjusted-content">
   <!-- Books -->

@@ -13,8 +13,12 @@ export class UsersService {
     // This service can now make HTTP requests via `this.http`.
   }
 
-  getUsers(page: number): Observable<any> {
-    return this.httpClient.get(this.url+'/users');
+  getUsers(page: number, filters: any = []): Observable<any> {
+    let params = `?page=${page}`;
+    for (let filter of filters) {
+      params += `&${filter.value.filter}=${filter.value.pattern}`;
+    }
+    return this.httpClient.get(this.url+`/users${params}`);
   }
 
   getUserName(id: Number): Observable<any> {

@@ -4,12 +4,14 @@ import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { UsersService } from '../../services/users.service';
 import { FormsModule } from '@angular/forms';
 import { PaginateComponent } from '../../components/paginate/paginate.component';
+import { SearchComponent } from '../../components/search/search.component';
+import { SearchService } from '../../services/search.service';
 
 
 @Component({
   selector: 'app-select-users',
   standalone: true,
-  imports: [ContextbarComponent, NavbarComponent, FormsModule, PaginateComponent],
+  imports: [ContextbarComponent, NavbarComponent, FormsModule, PaginateComponent, SearchComponent],
   templateUrl: './select-users.component.html',
   styles: ``
 })
@@ -20,21 +22,30 @@ export class SelectUsersComponent {
   totalUsers:number = 0;
   page:number = 1;
   pages:number = 1;
-  filteredUsers:any[] = [];
 
-  constructor(private usersService: UsersService) {}
+  constructor(
+    private usersService: UsersService,
+    private searchService: SearchService
+  ) {}
 
-  ngOnInit(): void {this.onPageChange(1)}
+  ngOnInit(): void {this.getUsers(1), this.search()}
 
-  search() {
-    this.filteredUsers = this.users.filter(user => user.name.toLowerCase().includes(this.searchQuery.toLowerCase()));
+  search(): void {
+    this.searchService.searchQuery$.subscribe((searchQuery) => {
+      this.searchQuery = searchQuery;
+      if (this.searchQuery === 'clean') {
+        sessionStorage.removeItem('currentPage');
+        this.getUsers(1);
+      } else {
+        this.getUsers(1, [{key: 'name', value: this.searchQuery}])
+      }
+    });
+    document.documentElement.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  onPageChange(page: number) {
-    this.usersService.getUsers(page).subscribe((answer: any) => {
-      console.log(answer);
+  getUsers(page: number, filters: any = []): void {
+    this.usersService.getUsers(page, filters).subscribe((answer: any) => {
       this.users = answer.users || [];
-      this.filteredUsers = [...this.users]
       this.page = answer.page;
       this.totalUsers = answer.total;
       this.pages = answer.pages;

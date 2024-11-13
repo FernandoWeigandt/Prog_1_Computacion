@@ -8,36 +8,14 @@
       <p>Filtrar por:</p>
       <div class="row g-2">
         <div class="col g-2">
-          <button type="button" 
-                  class="btn btn-secondary m-1" 
-                  [ngClass]="{'active': activeFilter === 'title'}" 
-                  (click)="setActiveFilter('title')">
-            Título
-          </button>
-          <button type="button" 
-                  class="btn btn-secondary m-1" 
-                  [ngClass]="{'active': activeFilter === 'gender'}" 
-                  (click)="setActiveFilter('gender')">
-            Género
-          </button>
-          <button type="button" 
-                  class="btn btn-secondary m-1" 
-                  [ngClass]="{'active': activeFilter === 'author'}" 
-                  (click)="setActiveFilter('author')">
-            Autor
-          </button>
-          <button type="button" 
-                  class="btn btn-secondary m-1" 
-                  [ngClass]="{'active': activeFilter === 'valoration=positive'}" 
-                  (click)="setActiveFilter('valoration=positive')">
-            Reseñas positivas
-          </button>
-          <button type="button" 
-                  class="btn btn-secondary m-1" 
-                  [ngClass]="{'active': activeFilter === 'valoration=negative'}" 
-                  (click)="setActiveFilter('valoration=negative')">
-            Reseñas negativas
-          </button>
+          @for (filter of filters; track filter.key) {
+            <button type="button" 
+                    class="btn btn-secondary m-1" 
+                    [ngClass]="{'active': activeFilter === filter.key}" 
+                    (click)="setActiveFilter(filter.key)">
+              {{ filter.text }}
+            </button>
+          }
         </div>
       </div>
       <button class="btn btn-light mt-2" type="button" (click)="clean()">Limpiar Busqueda</button>

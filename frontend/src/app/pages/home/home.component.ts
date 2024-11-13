@@ -68,9 +68,10 @@ export class HomeComponent {
     }
   }
 
-  search() {
+  search(): void {
     this.searchService.searchQuery$.subscribe((searchQuery) => {
       this.searchQuery = searchQuery;
+      console.log(searchQuery);
       if (this.searchQuery === 'clean') {
         sessionStorage.removeItem('currentPage');
         this.getBooks(1);

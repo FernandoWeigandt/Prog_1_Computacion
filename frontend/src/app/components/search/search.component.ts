@@ -1,8 +1,7 @@
 import { NgClass } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { SearchService } from '../../services/search.service';
-import { filter } from 'rxjs';
 
 @Component({
   selector: 'component-search',
@@ -12,9 +11,11 @@ import { filter } from 'rxjs';
   styles: ``
 })
 export class SearchComponent {
+  @Input() filters: any[] = [];
+  @Input() activeFilter: string = '';
+
   pattern: string = '';
 
-  activeFilter: string = 'title';
 
   constructor(private searchService: SearchService) {}
 
@@ -23,7 +24,6 @@ export class SearchComponent {
   }
 
   clean() {
-    console.log('Clean');
     this.searchService.searchQuery('clean');
   }
 
