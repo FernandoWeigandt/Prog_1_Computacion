@@ -5,6 +5,7 @@ export const tokenInterceptor: HttpInterceptorFn = (req, next) => {
   const token = localStorage.getItem('token');
   if (token) {
     const decoded: any = jwtDecode(token);
+    // console.log(`Interceptor Token: ${token}`)
     if (decoded.exp < Date.now() / 1000) {
       localStorage.removeItem('token');
       return next(req);
