@@ -6,7 +6,7 @@
     <div class="col-md-8 p-4 d-flex flex-column position-static">
       <strong class="d-inline-block mb-2 text-primary-emphasis">{{ gender }}</strong>
       <h3 class="mb-0 shortened-title">{{ title }}</h3>
-      <div class="mb-1 text-body-secondary shortened-title">{{ authors }}</div>
+      <div class="mb-1 text-body-secondary shortened-title">{{ authors || 'Desconocido' }}</div>
       <p class="card-text mb-auto shortened-title">Estado: {{ statusFormatted }}</p>
       <p class="card-text mb-auto">Copias: {{ quantity }}</p>
       <div class="col pt-3">
@@ -15,21 +15,24 @@
       <p class="card-text mb-auto">Comentarios: {{ comments_quantity }} </p>
     </div>
   </div>
-  <div class="d-flex justify-content-center px-4">
-    <button class="btn btn-secondary w-100 w-md-50" id="rent_btn">
-      <i class="bi bi-cart-plus-fill" style="font-size: 20px"> Pedir</i>
-    </button>
-  </div>
-  @if (isAdmin || isLibrarian) {
-    <div class="d-flex justify-content-center p-3">
-      <button class="btn btn-danger btn-lg p-2 mx-1" type="button">
-        <i class="bi bi-trash-fill" style="font-size: 20px"></i>
-      </button>
-      <button class="btn btn-primary btn-lg p-2" type="button">
-        <i class="bi bi-pencil-fill" style="font-size: 20px"></i>
+  @if (isUser) {
+    <div class="d-flex justify-content-center px-4">
+      <button class="btn btn-outline-success w-100 w-md-50 border-2" id="rent_btn" style="font-size: 20px">
+        <i class="bi bi-cart-plus-fill"></i> Pedir
       </button>
     </div>
-  } @else {
     <div class="p-3"></div>
+  }
+  @if (isAdmin || isLibrarian) {
+    <div class="d-flex justify-content-center px-4 pb-2">
+      <button class="btn btn-outline-success w-100 w-md-50 rounded-3" id="rent_btn">
+        <i class="bi bi-pencil-fill" style="font-size: 20px"> Editar</i> 
+      </button>
+    </div>
+    <div class="d-flex justify-content-center px-4 pb-3">
+      <button class="btn btn-outline-danger w-100 w-md-50 rounded-3" id="rent_btn" style="border-color: #dc3545;">
+        <i class="bi bi-trash-fill" style="font-size: 20px"> Eliminar</i>
+      </button>
+    </div>
   }
 </div>

@@ -15,6 +15,10 @@ export class AuthService {
     return this.httpClient.post(this.url+'/auth/login', dataLogin).pipe(take(1));
   }
 
+  register(dataRegister: any): Observable<any> {
+    return this.httpClient.post(this.url+'/auth/register', dataRegister).pipe(take(1));
+  }
+
   isLibrarian(): boolean {
     return this.role === 'librarian';
   }

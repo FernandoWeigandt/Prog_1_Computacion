@@ -57,7 +57,6 @@ export class BookDetailsComponent implements OnInit {
       "date": currentDate
     };
     this.commentService.postComment(comment).subscribe((response) => {
-      console.log(response);
       window.location.reload();
     })
   }
@@ -67,7 +66,6 @@ export class BookDetailsComponent implements OnInit {
   }
 
   parseAuthors(authors: any): string {
-    console.log(authors);
     let result = '';
     for (let i = 0; i < authors.length; i++) {
       result += authors[i].name + ' ' + authors[i].lastname;

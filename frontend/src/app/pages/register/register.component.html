@@ -5,29 +5,35 @@
       <div class="col-md-6 col-lg-4">
 
         <form class="m-3">
-          <div class="my-4 text-my-color">
-            <input type="text" class="form-control" id="user_name" placeholder="Nombre">
+          <div class="my-4">
+            <input type="text" class="form-control is-invalid" id="user_name" placeholder="Nombre" [formControl]="name">
+            <div id="user_nameFeedback" class="invalid-feedback">
+              Nombre no válido
+            </div>
           </div>
-          <div class="mb-4 text-my-color">
-            <input type="text" class="form-control" id="user_lastname" placeholder="Apellido">
+          <div class="mb-4">
+            <input type="text" class="form-control is-valid" id="user_lastname" placeholder="Apellido" [formControl]="lastname">
           </div>
-          <div class="mb-4 text-my-color">
-            <input type="text" class="form-control" id="user_alias" placeholder="Alias">
+          <div class="mb-4">
+            <input type="text" class="form-control" id="user_alias" placeholder="Alias" [formControl]="alias">
           </div>
-          <div class="mb-4 text-my-color">
-            <input type="number" class="form-control" id="user_phone" placeholder="Teléfono">
+          <div class="mb-4">
+            <input type="number" class="form-control" id="user_phone" placeholder="Teléfono" [formControl]="phone">
           </div>
-          <div class="mb-4 text-my-color">
-            <input type="email" class="form-control" id="user_mail" placeholder="Correo">
+          <div class="mb-4">
+            <input type="email" class="form-control" id="user_mail" placeholder="Correo" [formControl]="email">
           </div>
-          <div class="mb-4 text-my-color">
-            <input type="password" class="form-control" id="user_passwd" placeholder="Contraseña">
+          <div class="mb-4">
+            <input type="password" class="form-control" id="user_passwd1" placeholder="Contraseña" [formControl]="password1">
+          </div>
+          <div class="mb-4">
+            <input type="password" class="form-control" id="user_passwd2" placeholder="Repetir Contraseña" [formControl]="password2">
           </div>
         </form>
         
-        <!-- Login button -->
+        <!-- Register button -->
         <div class="d-flex justify-content-center mx-3">
-          <button class="btn btn-secondary bg-my-secondary text-my-color w-100 w-md-50" id="login-btn">Registrarse</button>
+          <button class="btn btn-secondary bg-my-secondary w-100 w-md-50" id="login-btn" (click)="submit()">Registrarse</button>
         </div>
         <div class="text-center mt-3">
           <a href="login" class="text-my-color" style="text-decoration: none;"><strong>Iniciar Sesión</strong></a>

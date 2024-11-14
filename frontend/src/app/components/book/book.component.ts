@@ -35,6 +35,10 @@ export class BookComponent {
     return this.authService.isAdmin();
   }
 
+  get isUser(): boolean {
+    return this.authService.isUser();
+  }
+
   get isLibrarian(): boolean {
     return this.authService.isLibrarian();
   }
