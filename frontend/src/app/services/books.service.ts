@@ -18,4 +18,8 @@ export class BooksService {
   getBooksBySearchQuery(query: any): Observable<any> {
     return this.httpClient.get(`/api/books?${query.filter}=${query.pattern}`);
   }
+
+  createBook(dataBook: any): Observable<any> {
+    return this.httpClient.post('/api/book', dataBook);
+  }
 }

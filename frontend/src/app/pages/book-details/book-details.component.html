@@ -4,7 +4,7 @@
   <h2><strong>Vista General</strong></h2>
   <div class="row justify-content-md-center rounded-4 bg-book pt-3">
     <div class="col-md-2 text-center">
-      <img src="{{ image }}" class="mb-3 mx-3 img-thumbnail" alt="media/default-book-cover.jpg">
+      <img src="media/book_cover/{{ image }}" class="mb-3 mx-3 img-thumbnail" alt="media/book_cover/default-book-cover.jpg">
       <div class="mb-3">
         <h6>{{ gender }}</h6>
         <stars [rating]="rating"></stars>
@@ -13,7 +13,7 @@
     <div class="col px-4 mb-3">
       <h4>{{ title }}</h4>
       <h5><i class="text-muted">{{ authors }}</i></h5>
-      <p class="lead px-2" style="text-align: justify;">{{ description || 'jajajaj' }}</p>
+      <p class="lead px-2" style="text-align: justify;">{{ description || 'No hay una descripción disponible' }}</p>
       <p class=""><i>Cantidad: </i>{{ quantity }}</p>
     </div>
   </div>

@@ -2,6 +2,7 @@ from flask_restful import Resource
 from flask import request, jsonify
 from main.models import AuthorModel
 from .. import db
+from sqlalchemy import or_
 
 class Author(Resource):
     def get(self,id):
@@ -30,8 +31,41 @@ class Author(Resource):
 
 class Authors(Resource):
     def get(self):
-        Authors = db.session.query(AuthorModel).all()
-        return jsonify([author.to_json() for author in Authors])
+        page = 1
+        per_page = 5
+
+        authors = db.session.query(AuthorModel)
+
+        if request.args.get('page'):
+            page = int(request.args.get('page'))
+        if request.args.get('per_page'):
+            per_page = int(request.args.get('per_page'))
+
+        # filters
+        name_filter = request.args.get('name')
+        if name_filter:
+            authors=authors.filter(AuthorModel.name.like('%'+name_filter+'%'))
+        
+        lastname_filter = request.args.get('lastname')
+        if lastname_filter:
+            authors=authors.filter(AuthorModel.lastname.like('%'+lastname_filter+'%'))
+
+        name_or_lastname = request.args.get('name_or_lastname')
+        if name_or_lastname:
+            authors = authors.filter(
+                or_(
+                    AuthorModel.name.like(f'%{name_or_lastname}%'),
+                    AuthorModel.lastname.like(f'%{name_or_lastname}%')
+                )
+            )
+
+        authors = authors.paginate(page=page, per_page=per_page, error_out=True)
+        return jsonify({
+            'authors': [author.to_json() for author in authors],
+            'total': authors.total,
+            'pages': authors.pages,
+            'page': page
+        })
     
     def post(self):
         try:

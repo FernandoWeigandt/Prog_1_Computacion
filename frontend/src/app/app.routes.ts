@@ -7,13 +7,14 @@ import { ErrorComponent } from './pages/error/error.component';
 import { MyAccountComponent } from './pages/my-account/my-account.component';
 import { MyRentsComponent } from './pages/my-rents/my-rents.component';
 import { MyNotificationsComponent } from './pages/my-notifications/my-notifications.component';
-import { SelectUsersComponent } from './pages/select-users/select-users.component';
+import { UsersComponent } from "./pages/users/users.component";
 import { ManageRentsComponent } from './pages/manage-rents/manage-rents.component';
 import { NotifyComponent } from './pages/notify/notify.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { RestorePasswordComponent } from './pages/restore-password/restore-password.component';
 import { BookDetailsComponent } from './pages/book-details/book-details.component';
+import { EditBookComponent } from "./pages/edit-book/edit-book.component";
 import { authsessionGuard } from "./guards/authsession.guard";
 import { roleGuard } from "./guards/role.guard";
 
@@ -24,13 +25,14 @@ export const routes: Routes = [
     { path: 'settings/my-account', component: MyAccountComponent, canActivate: [authsessionGuard] },
     { path: 'my-rents', component: MyRentsComponent, canActivate: [authsessionGuard] },
     { path: 'my-notifications', component: MyNotificationsComponent, canActivate: [authsessionGuard] },
-    { path: 'select-users', component: SelectUsersComponent, canActivate: [authsessionGuard, roleGuard] },
+    { path: 'users', component: UsersComponent, canActivate: [authsessionGuard, roleGuard] },
     { path: 'manage-rents', component: ManageRentsComponent, canActivate: [authsessionGuard, roleGuard] },
     { path: 'notify', component: NotifyComponent, canActivate: [authsessionGuard, roleGuard] },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
     { path: 'restore-password', component: RestorePasswordComponent, canActivate: [authsessionGuard] },
     { path: 'book/:id', component: BookDetailsComponent },
+    { path: 'edit-book/:id', component: EditBookComponent, canActivate: [authsessionGuard, roleGuard] },
     { path: '**', redirectTo: 'error' },
     { path: 'error', component: ErrorComponent },
 ];

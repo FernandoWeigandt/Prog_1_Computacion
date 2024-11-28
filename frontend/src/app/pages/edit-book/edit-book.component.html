@@ -1,0 +1,55 @@
+<component-contextbar title="Editar Libro"></component-contextbar>
+<div class="container adjusted-content">
+  <div class="row justify-content-md-center rounded-4 bg-book pt-3 pb-3">
+    <div class="col-md-2 text-center">
+      <img src="media/book_cover/{{ image }}" class="mb-3 mx-3 img-thumbnail" alt="media/book_cover/default-book-cover.jpg">
+    </div>
+    <div class="col px-4 mb-3">
+      <!-- Titles -->
+      <h4><strong>Título: </strong>{{ title }}</h4>
+      <input class="form-control" type="text" placeholder="Nuevo Título" aria-label="Nuevo Título">
+      <!-- Description -->
+      <p class="px-2" style="text-align: justify;"><strong>Descripción: </strong>{{ description || 'No hay una descripción disponible' }}</p>
+      <div class="form-floating mb-3">
+        <textarea class="form-control" placeholder="Leave a comment here" id="description" style="height: 100px"></textarea>
+        <label for="description">Nueva Descripción</label>
+      </div>
+      <!-- Authors -->
+      <label for="authorInput" class="form-label">Autores:</label>
+      <div class="input-group">
+        <input [formControl]="authorFilter" class="form-control" type="text" list="authorsList" id="authorInput" placeholder="Buscar Autor" (input)="getAuthors($event)">
+        <button class="btn btn-outline-secondary" type="button"><i class="bi bi-check-circle-fill" (click)="addAuthor('string')"></i></button>
+      </div>
+      <datalist id="authorsList">
+        @for (author of authors; track author.id) {
+          <option value="{{ author.name }} {{ author.lastname }}">
+        }
+      </datalist>
+      <p>{{ book_authors || 'Desconocido' }}</p>
+      <!-- Gender -->
+      <div class="input-group mb-2">
+        <label class="input-group-text" for="inputGender">Genero:</label>
+        <select class="form-select" id="inputGender">
+          <option selected></option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+      </div>
+      <div class="mb-2">
+        <p>{{ gender || 'Sin genero' }}</p>
+      </div>
+    </div>
+    <div class="input-group px-4">
+      <input type="file" class="form-control" aria-label="Upload">
+      <button class="btn btn-outline-secondary" type="button">Subir</button>
+    </div>
+    <div class="text-center px-5 pt-3">
+      <button class="btn btn-outline-success w-100 w-md-50 rounded-3" id="rent_btn">
+        <!-- save btn -->
+        <i class="bi bi-floppy-fill" style="font-size: 20px"> Guardar</i> 
+      </button>
+    </div>
+  </div>
+</div>
+<component-navbar returnUrl="home" [searchActive]="false" [settingsActive]="false" [returnActive]="true"></component-navbar>

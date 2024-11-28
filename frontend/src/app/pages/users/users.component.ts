@@ -12,10 +12,10 @@ import { SearchService } from '../../services/search.service';
   selector: 'app-select-users',
   standalone: true,
   imports: [ContextbarComponent, NavbarComponent, FormsModule, PaginateComponent, SearchComponent],
-  templateUrl: './select-users.component.html',
+  templateUrl: './users.component.html',
   styles: ``
 })
-export class SelectUsersComponent {
+export class UsersComponent {
 
   searchQuery: string = '';
   users:any[] = [];
