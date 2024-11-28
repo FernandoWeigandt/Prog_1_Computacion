@@ -11,7 +11,11 @@ export class AuthorsService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getAuthors(filter: string): Observable<any> {
+  getAuthors_by_name_or_lastname(filter: string): Observable<any> {
     return this.httpClient.get('/api/authors?name_or_lastname='+filter);
+  }
+
+  getAuthor_by_fullname(name: string, lastname: string): Observable<any> {
+    return this.httpClient.get('/api/authors?name='+name+'&lastname='+lastname);
   }
 }

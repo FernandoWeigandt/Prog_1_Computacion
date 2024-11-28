@@ -8,12 +8,11 @@ import { BookService } from '../../services/book.service';
 import { FormsModule } from '@angular/forms';
 import { CommentService } from '../../services/comment.service';
 import { AuthService } from '../../services/auth.service';
-import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-book-details',
   standalone: true,
-  imports: [NavbarComponent, ContextbarComponent, StarsComponent, CommentComponent, FormsModule, NgIf],
+  imports: [NavbarComponent, ContextbarComponent, StarsComponent, CommentComponent, FormsModule],
   templateUrl: './book-details.component.html',
   styles: ``
 })

@@ -4,21 +4,21 @@
     <div class="col-md-2 text-center">
       <img src="media/book_cover/{{ image }}" class="mb-3 mx-3 img-thumbnail" alt="media/book_cover/default-book-cover.jpg">
     </div>
-    <div class="col px-4 mb-3">
+    <div class="col px-4 mb-3" [formGroup]="editBookForm">
       <!-- Titles -->
       <h4><strong>Título: </strong>{{ title }}</h4>
-      <input class="form-control" type="text" placeholder="Nuevo Título" aria-label="Nuevo Título">
+      <input for="titleInput" class="form-control" type="text" placeholder="Nuevo Título" aria-label="Nuevo Título">
       <!-- Description -->
       <p class="px-2" style="text-align: justify;"><strong>Descripción: </strong>{{ description || 'No hay una descripción disponible' }}</p>
       <div class="form-floating mb-3">
-        <textarea class="form-control" placeholder="Leave a comment here" id="description" style="height: 100px"></textarea>
+        <textarea for="descriptionInput" class="form-control" placeholder="Leave a comment here" id="description" style="height: 100px"></textarea>
         <label for="description">Nueva Descripción</label>
       </div>
       <!-- Authors -->
       <label for="authorInput" class="form-label">Autores:</label>
       <div class="input-group">
-        <input [formControl]="authorFilter" class="form-control" type="text" list="authorsList" id="authorInput" placeholder="Buscar Autor" (input)="getAuthors($event)">
-        <button class="btn btn-outline-secondary" type="button"><i class="bi bi-check-circle-fill" (click)="addAuthor('string')"></i></button>
+        <input formControlName="authorFilter" id="authorInput" class="form-control" type="text" list="authorsList" placeholder="Buscar Autor" (input)="getAuthors()">
+        <button class="btn btn-outline-success" type="button"  (click)="addAuthor()"><i class="bi bi-check-circle-fill"></i></button>
       </div>
       <datalist id="authorsList">
         @for (author of authors; track author.id) {
@@ -28,12 +28,15 @@
       <p>{{ book_authors || 'Desconocido' }}</p>
       <!-- Gender -->
       <div class="input-group mb-2">
-        <label class="input-group-text" for="inputGender">Genero:</label>
-        <select class="form-select" id="inputGender">
-          <option selected></option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
+        <label class="input-group-text" for="selectGender">Genero:</label>
+        <select class="form-select" id="selectGender" formControlName="genderInput">
+          <option selected>{{ gender || 'Otro' }}</option>
+          <option value="1">Narrativo</option>
+          <option value="2">Lírico</option>
+          <option value="3">Dramático</option>
+          <option value="4">Didáctico</option>
+          <option value="5">Poético</option>
+          <option value="5">Otro</option>
         </select>
       </div>
       <div class="mb-2">
@@ -41,11 +44,14 @@
       </div>
     </div>
     <div class="input-group px-4">
-      <input type="file" class="form-control" aria-label="Upload">
+      <input type="file" class="form-control" aria-label="Upload" (change)="uploadImage($event)">
       <button class="btn btn-outline-secondary" type="button">Subir</button>
     </div>
+    <p class="px-4 text-muted">
+      Seleccionar una nueva imagen sobreescribe la actual.
+    </p>
     <div class="text-center px-5 pt-3">
-      <button class="btn btn-outline-success w-100 w-md-50 rounded-3" id="rent_btn">
+      <button class="btn btn-outline-success w-100 w-md-50 rounded-3" id="rent_btn" (click)="save()">
         <!-- save btn -->
         <i class="bi bi-floppy-fill" style="font-size: 20px"> Guardar</i> 
       </button>

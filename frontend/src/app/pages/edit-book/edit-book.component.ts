@@ -4,7 +4,7 @@ import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { BookService } from '../../services/book.service';
 import { ActivatedRoute } from '@angular/router';
 import { AuthorsService } from '../../services/authors.service';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
@@ -22,9 +22,15 @@ export class EditBookComponent {
   book_authors: string = '';
   authors: any[] = [];
   description: string = '';
+  new_authors: any[] = [];
 
   // Reactive Forms
-  authorFilter = new FormControl('');
+  editBookForm = new FormGroup({
+    titleInput: new FormControl(''),
+    descriptionInput: new FormControl(''),
+    authorFilter: new FormControl(''),
+    genderInput: new FormControl(''),
+  })
 
   constructor(
     private route: ActivatedRoute, 
@@ -48,25 +54,46 @@ export class EditBookComponent {
     return result;
   }
 
-  getAuthors(query: any) {
-    try {
-      query = query.data
-    } catch (error) {
-      console.error('Query not an string');
-    }
+  getAuthors() {
+    const query = this.editBookForm.controls['authorFilter'].value
     if (typeof query === 'string') {
-      this.authorsService.getAuthors(query).subscribe((answer:any) => {
-        this.authors = answer.authors
-        console.log(this.authors)
+      this.authorsService.getAuthors_by_name_or_lastname(query).subscribe((answer:any) => {
+        this.authors = answer.authors;
       })
     } else {
-      this.authorsService.getAuthors('').subscribe((answer:any) => {
+      this.authorsService.getAuthors_by_name_or_lastname('').subscribe((answer:any) => {
+        this.authors = answer.authors;
       })
     }
   }
 
-  addAuthor(author: any) {
-    this.authors.push(author)
+  repeatedAuthor(test_id: number): boolean {
+    for (let id of this.new_authors) {
+      if (id == test_id) {
+        return true
+      }
+    }
+    return false
+  }
+
+  addAuthor() {
+    console.log(this.new_authors);
+    const input = this.editBookForm.controls['authorFilter'].value;
+    const name: string = input?.split(' ')[0] || '';
+    const lastname: string = input?.split(' ')[1] || '';
+    if (!name || !lastname) {
+      return;
+    } else {
+      this.authorsService.getAuthor_by_fullname(name, lastname).subscribe((answer:any) => {
+        const id = answer.authors[0].id;
+        if (id && !(this.repeatedAuthor(id))) {
+          this.new_authors.push(id);
+          this.book_authors += ', ' + answer.authors[0].name + ' ' + answer.authors[0].lastname;
+          this.editBookForm.controls['authorFilter'].setValue('');
+          console.log(this.new_authors);
+        }
+      })      
+    }
   }
 
   getBook(id: Number) {
@@ -74,8 +101,21 @@ export class EditBookComponent {
       this.title = answer.title
       this.image = answer.image
       this.gender = answer.gender
-      this.book_authors = this.parseAuthors(answer.authors)
       this.description = answer.description
+      if (answer.authors.length > 0) {
+        this.book_authors = this.parseAuthors(answer.authors)
+        for (let author of answer.authors) {
+          this.new_authors.push(author.id);
+        }
+      }
     })
+  }
+
+  uploadImage(event: any) {
+    console.log(event);
+  }
+
+  save() {
+    console.log(this.editBookForm.value);
   }
 }
