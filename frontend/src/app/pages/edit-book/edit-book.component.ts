@@ -14,6 +14,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   templateUrl: './edit-book.component.html',
   styles: ``
 })
+
 export class EditBookComponent {
   bookId: number | null = null; // Number or null
   title: string = '';
