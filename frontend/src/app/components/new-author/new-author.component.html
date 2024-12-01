@@ -1,0 +1,33 @@
+<!-- Button trigger new author modal -->
+<div class="my-3">
+  <button type="button" class="btn btn-secondary w-100 w-md-50 rounded-3" data-bs-toggle="modal" data-bs-target="#newAuthorModal">
+    Nuevo Autor
+  </button>
+</div>
+<!-- New Author Modal -->
+<div class="modal fade" id="newAuthorModal" tabindex="-1" aria-labelledby="newAuthorModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="newAuthorModalLabel">Nuevo Autor</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="newAuthorForm" (ngSubmit)="createAuthor()">
+          <div class="form-group">
+            <label for="name">Nombre:</label>
+            <input for="authorName" type="text" formControlName="name" class="form-control" id="name" placeholder="Nombre del autor">
+          </div>
+          <div class="form-group">
+            <label for="lastname">Lastname:</label>
+            <input type="text" formControlName="lastname" class="form-control" id="lastname" placeholder="Apellido del autor">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-primary" [disabled]="!newAuthorForm.valid">Crear</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

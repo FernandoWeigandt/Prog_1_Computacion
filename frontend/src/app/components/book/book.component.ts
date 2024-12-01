@@ -1,7 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { StarsComponent } from '../stars/stars.component';
 import { AuthService } from '../../services/auth.service';
+import { BookService } from '../../services/book.service';
 
 @Component({
   selector: 'component-book',
@@ -24,12 +25,18 @@ export class BookComponent {
   @Input() comments_quantity:number = 0;
   @Input() rating: number = 0;
   @Input() authors: string = 'Desconocido';
-  @Input() image:string = 'media/default-book-cover.jpg';
+  @Input() image:string = 'default-book-cover.jpg';
+
+  @Output() bookDeleted = new EventEmitter();
 
   // This line allows book component to use angular router service.
   // It just define a private attribute called router of type Router
   // and inject it in the constructor.
-  constructor(private router: Router, private authService: AuthService) {}
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    private bookService: BookService
+  ) {}
 
   get isAdmin(): boolean {
     return this.authService.isAdmin();
@@ -55,5 +62,11 @@ export class BookComponent {
   // Note that the router service is used to navigate.
   gotoBookDetails() {
     this.router.navigate(['/book', this.id]);
+  }
+
+  deleteBookbtn() {
+    this.bookService.deleteBook(this.id).subscribe(() => {
+      this.bookDeleted.emit('Book deleted! (event)');      
+    });
   }
 }

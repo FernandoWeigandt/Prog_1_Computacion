@@ -62,7 +62,7 @@ export class HomeComponent {
 
   image(book: any): string {
     if (book.image === 'None') {
-      return 'media/default-book-cover.jpg'
+      return 'default-book-cover.jpg'
     } else {
       return book.image
     }
@@ -71,7 +71,6 @@ export class HomeComponent {
   search(): void {
     this.searchService.searchQuery$.subscribe((searchQuery) => {
       this.searchQuery = searchQuery;
-      console.log(searchQuery);
       if (this.searchQuery === 'clean') {
         sessionStorage.removeItem('currentPage');
         this.getBooks(1);
@@ -85,4 +84,10 @@ export class HomeComponent {
     });
     document.documentElement.scrollTo({ top: 0, behavior: 'smooth' });
   }
+
+  // catch event from book component
+  onBookDeleted(event: any) {
+    this.getBooks(this.page);
+  }
+
 }

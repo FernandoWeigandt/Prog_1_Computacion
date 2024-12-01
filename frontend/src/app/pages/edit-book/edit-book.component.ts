@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ContextbarComponent } from '../../components/contextbar/contextbar.component';
+import { NewAuthorComponent } from '../../components/new-author/new-author.component';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { BookService } from '../../services/book.service';
 import { ActivatedRoute } from '@angular/router';
@@ -10,7 +11,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 @Component({
   selector: 'app-edit-book',
   standalone: true,
-  imports: [ContextbarComponent, NavbarComponent, ReactiveFormsModule],
+  imports: [ContextbarComponent, NavbarComponent, NewAuthorComponent, ReactiveFormsModule],
   templateUrl: './edit-book.component.html',
   styles: ``
 })
@@ -20,7 +21,7 @@ export class EditBookComponent {
   title: string = '';
   image: string = '';
   gender: string = '';
-  book_authors: string = '';
+  book_authors: any = [];
   authors: any[] = [];
   description: string = '';
   new_authors: any[] = [];
@@ -44,13 +45,10 @@ export class EditBookComponent {
     this.getBook(this.bookId);
   }
 
-  parseAuthors(authors: any): string {
-    let result = '';
+  parseAuthors(authors: any): string[] {
+    let result: string[] = [];
     for (let i = 0; i < authors.length; i++) {
-      result += authors[i].name + ' ' + authors[i].lastname;
-      if (i < authors.length - 1) {
-        result += ', ';
-      }
+      result.push(authors[i].name + ' ' + authors[i].lastname);
     }
     return result;
   }
@@ -78,7 +76,6 @@ export class EditBookComponent {
   }
 
   addAuthor() {
-    console.log(this.new_authors);
     const input = this.editBookForm.controls['authorFilter'].value;
     const name: string = input?.split(' ')[0] || '';
     const lastname: string = input?.split(' ')[1] || '';
@@ -89,11 +86,23 @@ export class EditBookComponent {
         const id = answer.authors[0].id;
         if (id && !(this.repeatedAuthor(id))) {
           this.new_authors.push(id);
-          this.book_authors += ', ' + answer.authors[0].name + ' ' + answer.authors[0].lastname;
+          this.book_authors.push(answer.authors[0]);
           this.editBookForm.controls['authorFilter'].setValue('');
-          console.log(this.new_authors);
         }
       })      
+    }
+  }
+
+  deleteAuthor(id: number) {
+    for (let i = 0; i < this.new_authors.length; i++) {
+      if (this.new_authors[i] == id) {
+        this.new_authors.splice(i, 1);
+      }
+    }
+    for (let i = 0; i < this.book_authors.length; i++) {
+      if (this.book_authors[i].id == id) {
+        this.book_authors.splice(i, 1);
+      }
     }
   }
 
@@ -104,7 +113,7 @@ export class EditBookComponent {
       this.gender = answer.gender
       this.description = answer.description
       if (answer.authors.length > 0) {
-        this.book_authors = this.parseAuthors(answer.authors)
+        this.book_authors = answer.authors
         for (let author of answer.authors) {
           this.new_authors.push(author.id);
         }

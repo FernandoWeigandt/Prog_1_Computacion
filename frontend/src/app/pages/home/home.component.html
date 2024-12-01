@@ -38,6 +38,7 @@
             [quantity]="book.quantity"
             [rating]="book.rating"
             image="{{ image(book) }}"
+            (bookDeleted)="onBookDeleted($event)"
           >
           </component-book>
         </div>

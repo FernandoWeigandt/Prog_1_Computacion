@@ -23,9 +23,19 @@
       <datalist id="authorsList">
         @for (author of authors; track author.id) {
           <option value="{{ author.name }} {{ author.lastname }}">
-        }
+          }
       </datalist>
-      <p>{{ book_authors || 'Desconocido' }}</p>
+      <ul class="list-group list-group-flush">
+        @for (book_author of book_authors; track book_author) {
+          <li class="list-group-item d-flex justify-content-between">
+            {{ book_author.name }} {{ book_author.lastname }}
+            <button class="btn btn-outline-danger" id="delete-author-{{ book_author.id }}" style="border-color: #dc3545;" (click)="deleteAuthor(book_author.id)">
+              <i class="bi bi-trash-fill"></i>
+            </button>
+          </li>
+        }
+      </ul>
+      <app-new-author></app-new-author>
       <!-- Gender -->
       <div class="input-group mb-2">
         <label class="input-group-text" for="selectGender">Genero:</label>

@@ -18,4 +18,8 @@ export class AuthorsService {
   getAuthor_by_fullname(name: string, lastname: string): Observable<any> {
     return this.httpClient.get('/api/authors?name='+name+'&lastname='+lastname);
   }
+
+  addAuthor(author: any): Observable<any> {
+    return this.httpClient.post('/api/authors', author);
+  }
 }
