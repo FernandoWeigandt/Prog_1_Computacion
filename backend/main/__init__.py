@@ -9,7 +9,6 @@ import os
 
 api = Api()
 db = SQLAlchemy()
-api = Api()
 migrate = Migrate()
 jwt = JWTManager()
 mailsender = Mail()
@@ -21,6 +20,7 @@ def create_app():
     if not os.path.exists(os.getenv("DATABASE_PATH")+os.getenv("DATABASE_NAME")):
         os.mknod(os.getenv("DATABASE_PATH")+os.getenv("DATABASE_NAME"))
 
+    upload_folder = os.getenv("UPLOAD_FOLDER")
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////'+os.getenv('DATABASE_PATH')+os.getenv('DATABASE_NAME')
     db.init_app(app)
