@@ -2,7 +2,7 @@ from flask_restful import Resource
 from flask import request, jsonify
 from main.models import AuthorModel
 from .. import db
-from sqlalchemy import or_
+from sqlalchemy import or_, and_
 
 class Author(Resource):
     def get(self,id):
@@ -56,6 +56,18 @@ class Authors(Resource):
                 or_(
                     AuthorModel.name.like(f'%{name_or_lastname}%'),
                     AuthorModel.lastname.like(f'%{name_or_lastname}%')
+                )
+            )
+            
+        fullname = request.args.get('fullname')
+        if fullname:
+            name=fullname.split(' ')[0]
+            lastname=fullname.split(' ')[1]
+            print(fullname, name, lastname)
+            authors=authors.filter(
+                and_(
+                  AuthorModel.name == name,
+                  AuthorModel.lastname == lastname
                 )
             )
 
