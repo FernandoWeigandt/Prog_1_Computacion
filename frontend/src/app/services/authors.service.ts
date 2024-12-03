@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +16,21 @@ export class AuthorsService {
   }
 
   getAuthor_by_fullname(name: string, lastname: string): Observable<any> {
-    return this.httpClient.get('/api/authors?name='+name+'&lastname='+lastname);
+    return this.httpClient.get(`/api/authors?fullname=${name}%20${lastname}`);
+  }
+
+  authorExists(name: string, lastname: string): Observable<boolean> {
+    if (!name.trim() || !lastname.trim()) {
+      return of(false);
+    }
+    this.getAuthor_by_fullname(name, lastname).subscribe((answer: any) => {
+      if (answer.authors.length > 0) {
+        return of(true)
+      } else {
+        return of(false)
+      }
+    })
+    return of(false)
   }
 
   addAuthor(author: any): Observable<any> {

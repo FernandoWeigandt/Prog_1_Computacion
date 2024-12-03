@@ -13,18 +13,62 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form [formGroup]="newAuthorForm" (ngSubmit)="createAuthor()">
+        <form [formGroup]="authorForm" (ngSubmit)="onSubmit()">
           <div class="form-group">
             <label for="name">Nombre:</label>
-            <input for="authorName" type="text" formControlName="name" class="form-control" id="name" placeholder="Nombre del autor">
+            <input 
+              for="authorName" 
+              type="text" 
+              formControlName="name" 
+              class="form-control" 
+              id="name" 
+              placeholder="Nombre del autor"
+              [class.is-invalid]="nameInvalid"
+            >
+            @if (nameInvalid) {
+              @if (authorForm.controls.name.errors?.['required']) {
+                <div class="invalid-feedback">
+                  Este campo es obligatorio.
+                </div>   
+              }
+              @if (authorForm.controls.name.errors?.['minlength']) {
+                <div class="invalid-feedback">
+                  El nombre debe contener al menos 4 caracteres.
+                </div>   
+              }
+            }         
           </div>
           <div class="form-group">
-            <label for="lastname">Lastname:</label>
-            <input type="text" formControlName="lastname" class="form-control" id="lastname" placeholder="Apellido del autor">
+            <label for="lastname">Apellido:</label>
+            <input
+              type="text"
+              formControlName="lastname" 
+              class="form-control"
+              id="lastname"
+              placeholder="Apellido del autor"
+              [class.is-invalid]="lastnameInvalid"
+            >
+            @if (lastnameInvalid) {
+              @if (authorForm.controls.lastname.errors?.['required']) {
+                <div class="invalid-feedback">
+                  Este campo es obligatorio.
+                </div>   
+              }
+              @if (authorForm.controls.lastname.errors?.['minlength']) {
+                <div class="invalid-feedback">
+                  El apellido debe contener al menos 4 caracteres.
+                </div>   
+              }
+            }    
           </div>
           <div class="modal-footer">
+            @if (authorForm.errors?.['authorExists']) {
+              <div class="alert alert-danger" role="alert">
+                El autor ya existe.
+              </div>
+            }
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-            <button type="submit" class="btn btn-primary" [disabled]="!newAuthorForm.valid">Crear</button>
+            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" [disabled]="!authorForm.valid" (click)="authorExists">Crear</button>
           </div>
         </form>
       </div>
