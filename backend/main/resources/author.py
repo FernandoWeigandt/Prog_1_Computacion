@@ -63,7 +63,6 @@ class Authors(Resource):
         if fullname:
             name=fullname.split(' ')[0]
             lastname=fullname.split(' ')[1]
-            print(fullname, name, lastname)
             authors=authors.filter(
                 and_(
                   AuthorModel.name == name,
