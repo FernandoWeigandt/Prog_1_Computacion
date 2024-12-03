@@ -4,14 +4,15 @@
     <div class="col-md-2 text-center">
       <img src="media/book_cover/{{ image }}" class="mb-3 mx-3 img-thumbnail" alt="media/book_cover/default-book-cover.jpg">
     </div>
-    <div class="col px-4 mb-3" [formGroup]="editBookForm">
+
+    <form class="col px-4 mb-3" [formGroup]="editBookForm" (ngSubmit)="save()">
       <!-- Titles -->
       <h4><strong>Título: </strong>{{ title }}</h4>
-      <input for="titleInput" class="form-control" type="text" placeholder="Nuevo Título" aria-label="Nuevo Título">
+      <input formControlName="titleInput" class="form-control" type="text" placeholder="Nuevo Título" aria-label="Nuevo Título">
       <!-- Description -->
       <p class="px-2" style="text-align: justify;"><strong>Descripción: </strong>{{ description || 'No hay una descripción disponible' }}</p>
       <div class="form-floating mb-3">
-        <textarea for="descriptionInput" class="form-control" placeholder="Leave a comment here" id="description" style="height: 100px"></textarea>
+        <textarea formControlName="descriptionInput" class="form-control" placeholder="Leave a comment here" id="description" style="height: 100px"></textarea>
         <label for="description">Nueva Descripción</label>
       </div>
       <!-- Authors -->
@@ -29,7 +30,7 @@
         @for (book_author of book_authors; track book_author) {
           <li class="list-group-item d-flex justify-content-between">
             {{ book_author.name }} {{ book_author.lastname }}
-            <button class="btn btn-outline-danger" id="delete-author-{{ book_author.id }}" style="border-color: #dc3545;" (click)="deleteAuthor(book_author.id)">
+            <button class="btn btn-outline-danger" id="delete-author-{{ book_author.id }}" style="border-color: #dc3545;" type="button" (click)="deleteAuthor(book_author.id)">
               <i class="bi bi-trash-fill"></i>
             </button>
           </li>
@@ -38,34 +39,33 @@
       <app-new-author></app-new-author>
       <!-- Gender -->
       <div class="input-group mb-2">
-        <label class="input-group-text" for="selectGender">Genero:</label>
+        <label class="input-group-text" for="selectGender">Género:</label>
         <select class="form-select" id="selectGender" formControlName="genderInput">
-          <option selected>{{ gender || 'Otro' }}</option>
-          <option value="1">Narrativo</option>
-          <option value="2">Lírico</option>
-          <option value="3">Dramático</option>
-          <option value="4">Didáctico</option>
-          <option value="5">Poético</option>
-          <option value="5">Otro</option>
+          <option value="">{{ gender }}</option>
+          <option value="Narrativo">Narrativo</option>
+          <option value="Lírico">Lírico</option>
+          <option value="Dramático">Dramático</option>
+          <option value="Didáctico">Didáctico</option>
+          <option value="Poético">Poético</option>
+          <option value="Otro">Otro</option>
         </select>
       </div>
-      <div class="mb-2">
-        <p>{{ gender || 'Sin genero' }}</p>
+      
+      <div class="input-group">
+        <input type="file" class="form-control" accept=".jpg" aria-label="Upload" (change)="uploadImage($event)">
+        <button class="btn btn-outline-secondary" type="button">Subir</button>
       </div>
-    </div>
-    <div class="input-group px-4">
-      <input type="file" class="form-control" accept=".jpg" aria-label="Upload" (change)="uploadImage($event)">
-      <button class="btn btn-outline-secondary" type="button">Subir</button>
-    </div>
-    <p class="px-4 text-muted">
-      Seleccionar una nueva imagen sobreescribe la actual.
-    </p>
-    <div class="text-center px-5 pt-3">
-      <button class="btn btn-outline-success w-100 w-md-50 rounded-3" id="rent_btn" (click)="uploadImage($event)">
-        <!-- save btn -->
-        <i class="bi bi-floppy-fill" style="font-size: 20px"> Guardar</i> 
-      </button>
-    </div>
+      <p class="px-4 text-muted">
+        Seleccionar una nueva imagen sobreescribe la actual.
+      </p>
+      
+      <div class="text-center px-5 pt-3">
+        <button class="btn btn-outline-success w-100 w-md-50 rounded-3" id="save-btn" type="submit">
+          <i class="bi bi-floppy-fill" style="font-size: 20px"> Guardar</i> 
+        </button>
+      </div>
+
+    </form>
   </div>
 </div>
 <component-navbar returnUrl="home" [searchActive]="false" [settingsActive]="false" [returnActive]="true"></component-navbar>

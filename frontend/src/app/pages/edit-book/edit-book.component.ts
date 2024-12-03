@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ContextbarComponent } from '../../components/contextbar/contextbar.component';
 import { NewAuthorComponent } from '../../components/new-author/new-author.component';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { BookService } from '../../services/book.service';
 import { ActivatedRoute } from '@angular/router';
 import { AuthorsService } from '../../services/authors.service';
-import { FormControl, FormGroup } from '@angular/forms';
+import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
@@ -17,28 +17,36 @@ import { ReactiveFormsModule } from '@angular/forms';
 })
 
 export class EditBookComponent {
-  bookId: number | null = null; // Number or null
+  bookId: number = 0;
   title: string = '';
+  description: string = '';
   image: string = '';
   gender: string = '';
   book_authors: any = [];
   authors: any[] = [];
-  description: string = '';
   new_authors: any[] = [];
-
-  // Reactive Forms
-  editBookForm = new FormGroup({
-    titleInput: new FormControl(''),
-    descriptionInput: new FormControl(''),
-    authorFilter: new FormControl(''),
-    genderInput: new FormControl(''),
-  })
 
   constructor(
     private route: ActivatedRoute, 
     private bookService: BookService,
     private authorsService: AuthorsService
   ) {}
+
+  private fb = inject(NonNullableFormBuilder)
+
+  editBookForm = this.fb.group(
+    {
+      titleInput: [this.title, [
+        Validators.maxLength(40)
+      ]],
+      descriptionInput: [this.description, [
+        Validators.maxLength(2000)
+      ]],
+      genderInput: [this.gender, [
+        Validators.required
+      ]],
+      authorFilter: ['']
+  })
 
   ngOnInit() {
     this.bookId = Number(this.route.snapshot.paramMap.get('id'));
@@ -126,6 +134,22 @@ export class EditBookComponent {
   }
 
   save() {
-    console.log(this.editBookForm.value);
+    let title: string = this.editBookForm.controls.titleInput.value;
+    let description: string = this.editBookForm.controls.descriptionInput.value;
+    if (!title.trim()) {
+      title = this.title;
+    }
+    if (!description.trim()) {
+      description = this.description;
+    }
+    let data = {
+      'title': title,
+      'description': description,
+      'authors': this.new_authors,
+      'gender': this.editBookForm.controls.genderInput.value || this.gender
+    }
+    this.bookService.updateBook(this.bookId, data).subscribe((answer:any) => {
+      console.log(answer);
+    })
   }
 }
