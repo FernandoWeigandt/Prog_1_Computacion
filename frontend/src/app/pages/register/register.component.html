@@ -1,44 +1,92 @@
 <thumbnail-bar></thumbnail-bar>
-<div>
-  <div class="container login-panel-section">
-    <div class="row justify-content-center">
-      <div class="col-md-6 col-lg-4">
-
-        <form class="m-3">
-          <div class="my-4">
-            <input type="text" class="form-control is-invalid" id="user_name" placeholder="Nombre" [formControl]="name">
-            <div id="user_nameFeedback" class="invalid-feedback">
-              Nombre no válido
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+      <h3 class="text-center mb-4">Registro de Usuario</h3>
+      <form [formGroup]="registerForm" (ngSubmit)="submit()">
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" [class.is-invalid]="nameInvalid" [class.is-valid]="!nameInvalid && registerForm.controls.name.valid" id="user-name" placeholder="name" formControlName="name">
+          <label for="user-name">Ingresa tu nombre</label>
+          @if (nameInvalid) {
+            <div class="invalid-feedback">
+              {{ displayError('name') }}
+            </div>
+          }
+        </div>
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" [class.is-invalid]="lastnameInvalid" [class.is-valid]="!lastnameInvalid && registerForm.controls.lastname.valid" id="user-lastname" placeholder="lastname" formControlName="lastname">
+          <label for="user-lastname">Ingresa tu apellido</label>
+          @if (lastnameInvalid) {
+            <div class="invalid-feedback">
+              {{ displayError('lastname') }}
+            </div>
+          }
+        </div>
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" [class.is-invalid]="aliasInvalid" [class.is-valid]="!aliasInvalid && registerForm.controls.alias.dirty" id="user-alias" placeholder="alias" formControlName="alias">
+          <label for="user-alias">Ingresa un alias</label>
+          @if (aliasInvalid) {
+            <div class="invalid-feedback">
+              {{ displayError('alias') }}
+            </div>
+          }
+        </div>
+        <div class="form-floating mb-3">
+          <input type="tel" class="form-control" [class.is-invalid]="phoneInvalid" [class.is-valid]="!phoneInvalid && registerForm.controls.phone.valid" id="user-phone" placeholder="phone" formControlName="phone">
+          <label for="user-phone">Ingresa tu número de teléfono</label>
+          @if (phoneInvalid) {
+            <div class="invalid-feedback">
+              {{ displayError('phone') }}
+            </div>
+          }
+        </div>
+        <div class="form-floating mb-3">
+          <input type="email" class="form-control" [class.is-invalid]="emailInvalid" [class.is-valid]="!emailInvalid && registerForm.controls.email.valid" id="user-mail" placeholder="email" formControlName="email">
+          <label for="user-mail">Ingresa tu correo</label>
+          @if (emailInvalid) {
+            <div class="invalid-feedback">
+              {{ displayError('email') }}
+            </div>
+          }
+        </div>
+        <div class="mb-3">
+          <div formGroupName="password" [class.is-invalid]="password1Invalid || password2Invalid && passwordInvalid">
+            <div class="input-group mb-3">
+              <div class="form-floating">
+                <input type="password" class="form-control" id="user-password1" [class.is-invalid]="password1Invalid && passwordInvalid" [class.is-valid]="!password1Invalid" placeholder="password" formControlName="password1">
+                <label for="user-password1">Ingresa tu contraseña</label>
+              </div>
+              <button class="input-group-text" type="button" (click)="togglePasswordVisibility('user-password1')">
+                <i class="bi bi-eye"></i>
+              </button>
+            </div>
+            <div class="input-group mb-1">
+              <div class="form-floating">
+                <input type="password" class="form-control" id="user-password2" [class.is-invalid]="password2Invalid && passwordInvalid" [class.is-valid]="!password2Invalid && !passwordInvalid" placeholder="password" formControlName="password2">
+                <label for="user-password2">Repite tu contraseña</label>
+              </div>
+              <button class="input-group-text" type="button" (click)="togglePasswordVisibility('user-password2')">
+                <i class="bi bi-eye"></i>
+              </button>
             </div>
           </div>
-          <div class="mb-4">
-            <input type="text" class="form-control is-valid" id="user_lastname" placeholder="Apellido" [formControl]="lastname">
-          </div>
-          <div class="mb-4">
-            <input type="text" class="form-control" id="user_alias" placeholder="Alias" [formControl]="alias">
-          </div>
-          <div class="mb-4">
-            <input type="number" class="form-control" id="user_phone" placeholder="Teléfono" [formControl]="phone">
-          </div>
-          <div class="mb-4">
-            <input type="email" class="form-control" id="user_mail" placeholder="Correo" [formControl]="email">
-          </div>
-          <div class="mb-4">
-            <input type="password" class="form-control" id="user_passwd1" placeholder="Contraseña" [formControl]="password1">
-          </div>
-          <div class="mb-4">
-            <input type="password" class="form-control" id="user_passwd2" placeholder="Repetir Contraseña" [formControl]="password2">
-          </div>
-        </form>
-        
-        <!-- Register button -->
-        <div class="d-flex justify-content-center mx-3">
-          <button class="btn btn-secondary bg-my-secondary w-100 w-md-50" id="login-btn" (click)="submit()">Registrarse</button>
+          @if (password1Invalid) {
+            <div class="invalid-feedback">
+              {{ displayError('password1', true) }}
+            </div>
+          } @else if (passwordInvalid) {
+            <div class="invalid-feedback">
+              {{ displayError('password') }}
+            </div>
+          }
         </div>
-        <div class="text-center mt-3">
-          <a href="login" class="text-my-color" style="text-decoration: none;"><strong>Iniciar Sesión</strong></a>
+        <div class="d-grid">
+          <button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid">Registrarse</button>
         </div>
+      </form> 
+      <div class="text-center mt-3">
+        <a href="login" class="text-my-color" style="text-decoration: none;"><strong>Iniciar Sesión</strong></a>
       </div>
     </div>
-  </div>    
+  </div>
 </div>
