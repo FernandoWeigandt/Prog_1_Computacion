@@ -117,6 +117,7 @@ class User(db.Model):
             'id': self.id,
             'name': str(self.name),
             'lastname': str(self.lastname),
+            'email': str(self.mail),
         }
         return user_json
     

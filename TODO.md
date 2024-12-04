@@ -1,54 +1,69 @@
-# Image Handling
+# Frontend
 
-Storing images in a designated server path while saving the path or URL in the database offers several advantages, along with some considerations. Here’s a detailed overview of this approach:
 
-### Advantages:
-1. **Simplicity**:
-   - Easy to implement, as you only need to save the image in a server folder and store the path in the database.
-   - Accessing the image is straightforward since the front-end can directly use the path from the database.
+## Book
 
-2. **Separation of Responsibilities**:
-   - The server manages file storage, while the database only stores paths, optimizing performance.
-   - Keeps the database lightweight by avoiding large binary data.
+### Edit Books
 
-3. **Ease of Maintenance**:
-   - Images can be organized in folders based on categories, dates, or users, providing logical order.
+Missing:
+- validate data extracted in the form
+- parse data to send the put correctly
 
-### Considerations:
-1. **Security**:
-   - Ensure filenames are validated and sanitized to avoid security risks.
-   - Set proper access permissions to prevent unauthorized image access.
-   - If images contain sensitive information, consider protecting them with authentication to avoid public access.
+Done:
+- Form to get user data.
 
-2. **Relative vs. Absolute Paths**:
-   - Store image paths as either relative or absolute, depending on your application structure.
-   - For example, if the image is stored in `/images/users/`, the path stored in the database could be `/images/users/filename.jpg`, and the front-end will construct the full URL as needed.
+### Delete Book 
 
-3. **Updating and Cleanup**:
-   - When a user updates their profile picture, ensure the previous image is removed from the server to prevent orphaned files.
-   - Implement periodic cleanup to remove unused images.
+Missing:
+- Manage the click event to generate a delete request
 
-4. **Scalability**:
-   - As the application scales, you may need to migrate image storage to a cloud service (e.g., AWS S3, Google Cloud Storage).
-   - In that case, the process of saving the path in the database remains the same, but the physical storage location changes.
+Done:
+- Delete request
 
-### Example Workflow:
-1. **Image Upload**:
-   - When the user uploads an image, save it in a designated server folder (e.g., `/images/users/`).
-   - Generate a unique filename (e.g., using a user ID or timestamp) to avoid conflicts.
+### Add Book
 
-2. **Store Path in Database**:
-   - Save the generated image path in the database for the user, such as `image_path = '/images/users/user_image.jpg'`.
+Missing:
+- all
 
-3. **Display Image in Angular**:
-   - Retrieve the path from the database and use it in the `<img>` tag to display the image:
-     ```html
-     <img [src]="userProfileImagePath" alt="Profile Image">
-     ```
+## Users (librarian)
 
-This approach is efficient and widely used, but ensure that you consider security and maintenance best practices to avoid potential issues.
+### Interface
 
-# Home Component
+- Review all the interface to be a little bit better
+- Implement notify in a modal view
+- Manage the buttons of the page.
 
-In this component the rating must be redone. It just displays a default value. 
-Same happens with book comments. ¿Where to store them? Must redo some stuff in backend.
+## Rents
+
+- Manage buttons (to extend or mark as returned).
+- Out of date notify.
+- Interface review
+- filtering
+
+## Users (user)
+
+### Personal account settings
+
+- Make a form to get new data.
+- PUT request to update the user.
+
+### User rents
+
+- all
+
+### User notifications
+
+- all
+
+### Register
+
+- assign pending role
+- all other things
+
+### Books (home)
+
+- Request books 
+
+## Users(admin)
+
+Idk what is missing or done in this role. (the librarian shouln'd be able to delete books, instead should archive them)

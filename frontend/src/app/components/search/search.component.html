@@ -1,21 +1,24 @@
 <!-- Search Bar -->
-<div class="collapse container-sm fixed-top" id="navbarToggleExternalContent" style="padding-left: 0px; padding-right: 0px; z-index: 1050;">
+<div class="collapse container-sm fixed-top" id="navbarToggleExternalContent" style="padding: 0; z-index: 1050;">
   <div class="container-sm p-4 bg-my-secondary bottom-rounded-div shadow-lg">
     <div class="input-group mb-3">
-      <input type="text" class="form-control" placeholder="Criterio de busqueda" aria-label="Search" aria-describedby="button-search">
-      <button class="btn btn-light" type="button" id="button-search">Buscar</button>
+      <input [(ngModel)]="pattern" (input)="search()" id="searchInput" type="text" class="form-control" placeholder="Criterio de búsqueda" aria-label="Buscar">
     </div>
-    <div class="container my-4">
+    <div class="container my-3">
       <p>Filtrar por:</p>
-      <p class="d-inline-flex gap-1">
-        <button type="button" class="btn btn-secondary mt-1" data-bs-toggle="button" aria-pressed="false">Genero</button>
-        <button type="button" class="btn btn-secondary mt-1" data-bs-toggle="button" aria-pressed="false">Autor</button>
-        <button type="button" class="btn btn-secondary mt-1" data-bs-toggle="button" aria-pressed="false">Título</button>
-      </p>
-      <p class="d-inline-flex gap-1">
-        <button type="button" class="btn btn-secondary mt-1" data-bs-toggle="button" aria-pressed="false">Reseñas positivas</button>
-        <button type="button" class="btn btn-secondary mt-1" data-bs-toggle="button" aria-pressed="false">Reseñas negativas</button>
-      </p>
+      <div class="row g-2">
+        <div class="col g-2">
+          @for (filter of filters; track filter.key) {
+            <button type="button" 
+                    class="btn btn-secondary m-1" 
+                    [ngClass]="{'active': activeFilter === filter.key}" 
+                    (click)="setActiveFilter(filter.key)">
+              {{ filter.text }}
+            </button>
+          }
+        </div>
+      </div>
+      <button class="btn btn-light mt-2" type="button" (click)="clean()">Limpiar Busqueda</button>
     </div>
   </div>
 </div>

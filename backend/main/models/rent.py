@@ -43,6 +43,21 @@ class Rent(db.Model):
     )
 
     ########################################################
+    #         Methods to define dinamic properties         #
+    ########################################################
+
+    @property
+    def status(self):
+        if self.expiration_date == datetime.now():
+            return 'pending'
+        elif self.expiration_date > datetime.now():
+            print(self.expiration_date, datetime.now())
+            print(self.expiration_date > datetime.now())
+            return 'active'
+        else:
+            return 'expired'
+
+    ########################################################
     #             Methods to convert to JSON               #
     ########################################################
 
@@ -51,7 +66,8 @@ class Rent(db.Model):
         rent_json = {
             'id': self.id,
             'init_date': str(self.init_date.strftime('%Y-%m-%d')),
-            'expiration_date': str(self.expiration_date.strftime('%Y-%m-%d'))
+            'expiration_date': str(self.expiration_date.strftime('%Y-%m-%d')),
+            'status': str(self.status)
         }
         return rent_json
 
@@ -62,7 +78,8 @@ class Rent(db.Model):
             'init_date': str(self.init_date.strftime('%Y-%m-%d')),
             'expiration_date': str(self.expiration_date.strftime('%Y-%m-%d')),
             'user': self.user.to_json_short(),
-            'book': self.book_copy.to_json_short()
+            'copy': self.book_copy.to_json_short(),
+            'status': str(self.status)
         }
         return rent_json
 

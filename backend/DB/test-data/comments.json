@@ -831,5 +831,12 @@
         "date": "2024-02-18",
         "user_id": 8,
         "book_id": 20
+    },
+    {
+        "body": "Todo era felicidad hasta que comentó Jorge Navarro.",
+        "rate": 5,
+        "date": "2024-02-19",
+        "user_id": 70,
+        "book_id": 10
     }
 ]

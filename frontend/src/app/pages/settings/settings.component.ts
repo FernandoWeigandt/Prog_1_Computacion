@@ -3,7 +3,7 @@ import { ButtonComponent } from '../../components/button/button.component';
 import { ContextbarComponent } from '../../components/contextbar/contextbar.component';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { NgIf } from '@angular/common';
-import { jwtDecode } from 'jwt-decode';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-settings',
@@ -14,21 +14,18 @@ import { jwtDecode } from 'jwt-decode';
 })
 export class SettingsComponent {
 
-  isLibrarian() {
-    return this.role === 'librarian';
-  }
-
-  isAdmin() {
-    return this.role === 'admin';
-  }
+  constructor(private authService: AuthService) { }
 
   get token(): any {
-    return localStorage.getItem('token');
+    return this.authService.token;
   }
 
-  get role() {
-    const decoded: any = jwtDecode(this.token);
-    return decoded.role;
+  isAdmin(): boolean {
+    return this.authService.isAdmin();
+  }
+
+  isLibrarian(): boolean {
+    return this.authService.isLibrarian();
   }
 
   logout() {

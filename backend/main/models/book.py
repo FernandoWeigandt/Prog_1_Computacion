@@ -53,6 +53,8 @@ from .. import db
 #                If there are no comments, then the rating is 0
 #                Otherwise, the rating is the sum of all comments divided
 #                by the number of comments
+#        COMMENTS_QUANTITY: Based on the len of the comments array.
+#
 
 class Book(db.Model):
     __tablename__ = 'books'
@@ -87,7 +89,20 @@ class Book(db.Model):
         if not self.comments:
             return 0
         total_rating = sum(comment.rate for comment in self.comments)
-        return total_rating / len(self.comments)
+        return round(total_rating / len(self.comments),1)
+    
+    @property
+    def comments_quantity(self):
+        return len(self.comments)
+    
+    @property
+    def authors_name(self):
+        authors = self.authors.all()
+        all_authors = ''
+        for i, author in enumerate(authors):
+            comma = ', ' if i < len(authors) - 1 else ''
+            all_authors +=  f'{author.name} {author.lastname}{comma}'
+        return all_authors
     
     ########################################################
     #             Methods to convert to JSON               #
@@ -101,7 +116,9 @@ class Book(db.Model):
             'status': self.status,
             'image': str(self.image),
             'rating': self.rating,
-            'quantity': self.quantity
+            'authors': self.authors_name,
+            'quantity': self.quantity,
+            'comments_quantity': self.comments_quantity
         }
         return book_json
 

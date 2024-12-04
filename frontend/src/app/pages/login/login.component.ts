@@ -7,7 +7,7 @@ import { NgIf } from '@angular/common';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [HomeComponent, ReactiveFormsModule, NgIf],
+  imports: [ReactiveFormsModule, NgIf],
   templateUrl: './login.component.html',
   styles: ``
 })

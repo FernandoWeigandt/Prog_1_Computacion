@@ -1,29 +1,39 @@
 <div class="book-rounded-corner shadow-sm bg-book">
   <div class="d-md-flex flex-md-row h-md-250 position-relative p-3" (click)="gotoBookDetails()">
     <div class="col-md-4 d-flex justify-content-center align-items-center">
-      <img src="{{ image }}" class="img-fluid img-thumbnail book-image" alt="Imagen del libro" style="width: 100%;">
+      <img src="media/book_cover/{{ image }}" class="img-fluid img-thumbnail book-image" alt="Imagen del libro" style="width: 100%;">
     </div>
     <div class="col-md-8 p-4 d-flex flex-column position-static">
       <strong class="d-inline-block mb-2 text-primary-emphasis">{{ gender }}</strong>
       <h3 class="mb-0 shortened-title">{{ title }}</h3>
-      <div class="mb-1 text-body-secondary shortened-title">{{ author }}</div>
-      <p class="card-text mb-auto">Cantidad: {{ quantity }}</p>
+      <div class="mb-1 text-body-secondary shortened-title">{{ authors || 'Desconocido' }}</div>
+      <p class="card-text mb-auto shortened-title">Estado: {{ statusFormatted }}</p>
+      <p class="card-text mb-auto">Copias: {{ quantity }}</p>
       <div class="col pt-3">
         <stars [rating]="rating"></stars>
       </div>
+      <p class="card-text mb-auto">Comentarios: {{ comments_quantity }} </p>
     </div>
   </div>
-  <div class="d-flex justify-content-center px-4">
-    <button class="btn btn-secondary w-100 w-md-50" id="rent_btn">
-      <i class="bi bi-cart-plus-fill" style="font-size: 20px"> Pedir</i>
-    </button>
-  </div>
-  <div class="d-flex justify-content-center p-3" id="manage_book">
-    <button class="btn btn-danger btn-lg p-2 mx-1" type="button">
-      <i class="bi bi-trash-fill" style="font-size: 20px"></i>
-    </button>
-    <button class="btn btn-primary btn-lg p-2" type="button">
-      <i class="bi bi-pencil-fill" style="font-size: 20px"></i>
-    </button>
-  </div>
+  @if (isUser) {
+    <div class="d-flex justify-content-center px-4">
+      <button class="btn btn-outline-success w-100 w-md-50 border-2" id="rent_btn" style="font-size: 20px">
+        <i class="bi bi-cart-plus-fill"></i> Pedir
+      </button>
+    </div>
+    <div class="p-3"></div>
+  }
+  @if (isAdmin || isLibrarian) {
+    <a href="edit-book/{{ id }}" class="d-flex justify-content-center px-4 pb-2" style="text-decoration: none;">
+      <button class="btn btn-outline-success w-100 w-md-50 rounded-3" id="rent_btn">
+        <i class="bi bi-pencil-fill" style="font-size: 20px"> Editar</i> 
+      </button>
+    </a>
+    <div class="d-flex justify-content-center px-4 pb-3">
+      <!-- <a href="delete-book/{{ id }}"></a> -->
+      <button class="btn btn-outline-danger w-100 w-md-50 rounded-3" id="rent_btn" style="border-color: #dc3545;" (click)="deleteBookbtn()">
+        <i class="bi bi-trash-fill" style="font-size: 20px"> Eliminar</i>
+      </button>
+    </div>
+  }
 </div>

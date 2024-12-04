@@ -5,9 +5,9 @@ import { ContextbarComponent } from '../../components/contextbar/contextbar.comp
 import { StarsComponent } from '../../components/stars/stars.component';
 import { CommentComponent } from '../../components/comment/comment.component';
 import { BookService } from '../../services/book.service';
-import { jwtDecode } from 'jwt-decode';
 import { FormsModule } from '@angular/forms';
 import { CommentService } from '../../services/comment.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-book-details',
@@ -21,7 +21,7 @@ export class BookDetailsComponent implements OnInit {
   title: string = '';
   image: string = '';
   gender: string = '';
-  author: string = '';
+  authors: string = '';
   rating: number = 0;
   quantity: number = 0;
   description: string = '';
@@ -33,7 +33,8 @@ export class BookDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute, 
     private bookService: BookService,
-    private commentService: CommentService
+    private commentService: CommentService,
+    private authService: AuthService
   ) {}
 
   ngOnInit() {
@@ -49,23 +50,29 @@ export class BookDetailsComponent implements OnInit {
     const currentDate = new Date().toISOString().split('T')[0];
     const comment = {
       "book_id": this.bookId,
-      "user_id": this.userId,
+      "user_id": this.authService.userId,
       "body": this.comment_body,
       "rate": this.comment_rate,
       "date": currentDate
     };
     this.commentService.postComment(comment).subscribe((response) => {
-      console.log(response);
+      window.location.reload();
     })
   }
 
-  get token(): any {
-    return localStorage.getItem('token');
+  get isLoggedIn(): boolean {
+    return this.authService.isLoggedIn();
   }
 
-  get userId(): any {
-    const decoded: any = jwtDecode(this.token);
-    return decoded.id;
+  parseAuthors(authors: any): string {
+    let result = '';
+    for (let i = 0; i < authors.length; i++) {
+      result += authors[i].name + ' ' + authors[i].lastname;
+      if (i < authors.length - 1) {
+        result += ', ';
+      }
+    }
+    return result;
   }
 
   getBook(id: Number) {
@@ -73,7 +80,7 @@ export class BookDetailsComponent implements OnInit {
       this.title = answer.title
       this.image = answer.image
       this.gender = answer.gender
-      this.author = answer.author
+      this.authors = this.parseAuthors(answer.authors)
       this.rating = answer.rating
       this.quantity = answer.quantity
       this.description = answer.description

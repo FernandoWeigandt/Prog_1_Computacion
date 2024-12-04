@@ -11,7 +11,15 @@ export class BooksService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getBooks(page: Number): Observable<any> {
+  getBooks(page: number): Observable<any> {
     return this.httpClient.get('/api/books?page='+page);
+  }
+
+  getBooksBySearchQuery(query: any): Observable<any> {
+    return this.httpClient.get(`/api/books?${query.filter}=${query.pattern}`);
+  }
+
+  createBook(dataBook: any): Observable<any> {
+    return this.httpClient.post('/api/book', dataBook);
   }
 }
