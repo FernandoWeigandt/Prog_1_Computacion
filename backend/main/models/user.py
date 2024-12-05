@@ -39,11 +39,11 @@ from werkzeug.security import generate_password_hash, check_password_hash
 class User(db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key = True, unique=True, autoincrement=True)
-    name = db.Column(db.String(100), nullable = False)
-    lastname = db.Column(db.String(100), nullable = False)
-    mail = db.Column(db.String(100), nullable = False, unique=True)
+    name = db.Column(db.String(30), nullable = False)
+    lastname = db.Column(db.String(30), nullable = False)
+    mail = db.Column(db.String(50), nullable = False, unique=True)
     phone = db.Column(db.String(16))
-    role = db.Column(db.String(100), nullable = False, server_default='pending')
+    role = db.Column(db.String(10), nullable = False, server_default='pending')
     alias = db.Column(db.String)
     passwd = db.Column(db.String, nullable = False)
     # Relation 1:N (1 user : N Comments)
@@ -125,7 +125,6 @@ class User(db.Model):
     #             Methods to convert from JSON             #
     ########################################################
 
-
     @staticmethod
     def from_json(user_json):
         name = user_json.get('name')
@@ -151,8 +150,6 @@ class User(db.Model):
             )
         except ValueError as err:
             raise err
-
-
     
     ########################################################
     #                   repr of the user                   #

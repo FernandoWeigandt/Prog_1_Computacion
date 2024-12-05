@@ -51,7 +51,8 @@ export class RegisterComponent {
     ]],
     email: ['', [
       Validators.required,
-      Validators.email
+      Validators.email,
+      Validators.maxLength(50)
     ]],
     password: this.fb.group({
       password1: ['', [

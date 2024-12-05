@@ -7,11 +7,12 @@ from flask_jwt_extended import jwt_required, get_jwt_identity
 from main.auth.decorators import role_required
 
 class User(Resource):
-    @jwt_required(optional=True)
+    @jwt_required()
     def get(self, id):
         user = db.session.query(UserModel).get_or_404(id)
         current_identity = get_jwt_identity()
-        if current_identity:
+        print(current_identity)
+        if current_identity == user.id:
             return user.to_json_complete()
         else:
             return user.to_json_short()
@@ -40,6 +41,7 @@ class User(Resource):
         return user.to_json() , 201 
 
 class Users(Resource):
+    @jwt_required()
     @role_required(roles=('admin', 'librarian'))
     def get(self):
         # Default start page
@@ -54,7 +56,6 @@ class Users(Resource):
             per_page = int(request.args.get('per_page'))
 
         # Filters #
-
         if request.args.get('id'):
             users=users.filter(UserModel.id == request.args.get('id'))
 
