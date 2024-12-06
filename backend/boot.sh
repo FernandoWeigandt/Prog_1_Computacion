@@ -26,7 +26,7 @@ fill_database() {
     
     # Fill users table with auth and mail sender
     # make_post "$USERS_JSON" "$URL_API/auth/register"
-    # Fill users table with normal post method (now is commented)
+    # Fill users table with normal post method
     make_post "$USERS_JSON" "$URL_API/users"
     # Fill author table
     make_post "$AUTHORS_JSON" "$URL_API/authors"
@@ -77,11 +77,11 @@ start_app() {
 echo "[+] Iniciando..."
 database=$(find . -type f -name database.db | grep .)
 if [ $? -eq "0" ] ; then
-    echo "[+] Se ha encontrado una base de datos en \"$database\" - ¿Desea llenarla con datos de prueba?"
+    echo "[+] Se ha encontrado una base de datos en \"$database\" continuando..."
 else
-    echo "[+] No se ha encontrado base de datos ¿Desea crear una y llenarla con datos de prueba?"
+    echo "[+] No se ha encontrado base de datos, creando una nueva..."
 fi
-if [ $(yes_no_validate "[!] Cuidado, va a cargar datos falsos en la base de datos! [S/n]: " "s") == "s" ]; then
+if [ $(yes_no_validate "[!] ¿Desea crear una y llenarla con datos de prueba? [s/N]: " "n") == "s" ]; then
     echo "[+] Iniciando la app y llenando la base de datos..."
     (fill_database) &
     start_app
