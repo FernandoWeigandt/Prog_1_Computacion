@@ -7,6 +7,7 @@ backend/env*
 *test.py
 
 # Test data to fill database
+*/test-data/*
 */DB/test-data/*.json
 
 # See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.

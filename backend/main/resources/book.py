@@ -33,6 +33,7 @@ class Book(Resource):
             db.session.delete(book)
             db.session.commit()
         except:
+            db.session.rollback()
             return {'error':'Unable to delete the book'}, 400
         return book.to_json(), 200
     
@@ -135,10 +136,11 @@ class Books(Resource):
         Returns a JSON object with the new book data and a 201 status code.
         If there is an error, it returns a JSON object with an error message and a 400 status code.
         """
+        book = BookModel.from_json(request.get_json())
         try:
-            book = BookModel.from_json(request.get_json())
             db.session.add(book)
             db.session.commit()
         except:
+            db.session.rollback()
             return {'error':'Incorrect data format'}, 400
         return book.to_json(), 201
