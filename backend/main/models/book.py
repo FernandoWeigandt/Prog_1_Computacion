@@ -1,4 +1,5 @@
 from .. import db
+from main.models import AuthorModel, books_authors
 
 ########################################################
 #                Book Table definition                 #
@@ -68,7 +69,7 @@ class Book(db.Model):
     # Relation 1:N (1 book : N BookCopies)
     copies = db.relationship('BookCopy', back_populates='book', cascade='all, delete-orphan')
     # Relation N:M (N authors : M books), Medium table books_authors
-    # No need to define the relation as it was backref in authors
+    authors = db.relationship('Author', secondary=books_authors, back_populates='books', lazy='subquery')
 
     ########################################################
     #         Methods to define dinamic properties         #
@@ -97,10 +98,10 @@ class Book(db.Model):
     
     @property
     def authors_name(self):
-        authors = self.authors.all()
+        authors_count = len(self.authors)
         all_authors = ''
-        for i, author in enumerate(authors):
-            comma = ', ' if i < len(authors) - 1 else ''
+        for i, author in enumerate(self.authors):
+            comma = ', ' if i < authors_count - 1 else ''
             all_authors +=  f'{author.name} {author.lastname}{comma}'
         return all_authors
     
@@ -156,13 +157,19 @@ class Book(db.Model):
         gender = book_json.get('gender')
         image = book_json.get('image')
         description = book_json.get('description')
+        authors_id = book_json.get('authors')
 
-        return Book(
-            title = title,
-            gender = gender,
-            image = image,
-            description = description
+        new_book = Book(
+            title=title,
+            gender=gender,
+            image=image,
+            description=description,
         )
+        if authors_id:
+            authors = AuthorModel.query.filter(AuthorModel.id.in_(authors_id)).all()
+            new_book.authors = authors
+
+        return new_book
     
     ########################################################
     #                   repr of the book                   #

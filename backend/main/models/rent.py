@@ -29,13 +29,13 @@ class Rent(db.Model):
     id = db.Column(db.Integer, primary_key=True, unique=True, autoincrement=True)
     # Relation 1:N (1 user : N rent)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    user = db.relationship('User', back_populates='rents', uselist=False, single_parent=True)
+    user = db.relationship('User', back_populates='rents', uselist=False, single_parent=True, lazy='joined')
     # Relation 1:1 (1 book_copy : 1 rents)
     book_copy_id = db.Column(db.Integer, db.ForeignKey('book_copy.id'), unique=True, nullable=False)
-    book_copy = db.relationship('BookCopy', back_populates='rent', uselist=False, single_parent=True)
+    book_copy = db.relationship('BookCopy', back_populates='rent', uselist=False, single_parent=True, lazy='joined')
     # Dates
-    init_date = db.Column(db.DateTime, nullable=False)
-    expiration_date = db.Column(db.DateTime, nullable=False)
+    init_date = db.Column(db.Date, nullable=False)
+    expiration_date = db.Column(db.Date, nullable=False)
 
     # Unique book_copy_id and user_id
     __table_args__ = (
@@ -48,11 +48,12 @@ class Rent(db.Model):
 
     @property
     def status(self):
-        if self.expiration_date == datetime.now():
+        today = datetime.now().date()
+        if self.expiration_date == today:
             return 'pending'
-        elif self.expiration_date > datetime.now():
-            print(self.expiration_date, datetime.now())
-            print(self.expiration_date > datetime.now())
+        elif self.expiration_date > today:
+            print(self.expiration_date, today)
+            print(self.expiration_date > today)
             return 'active'
         else:
             return 'expired'
