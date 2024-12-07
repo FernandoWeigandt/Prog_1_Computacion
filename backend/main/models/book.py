@@ -125,7 +125,7 @@ class Book(db.Model):
 
     def to_json_complete(self):
         authors = [author.to_json() for author in self.authors]
-        comments = [comment.to_json() for comment in self.comments]
+        comments = [comment.to_json_book() for comment in self.comments]
         book_json = {
             'id': self.id,
             'title': str(self.title),

@@ -37,6 +37,17 @@ class Comment(db.Model):
         }
         return comment_json
     
+    def to_json_book(self):
+        self.user = db.session.query(UserModel).get_or_404(self.user_id)
+        comment_json = {
+            'id': self.id,
+            'body': str(self.body),
+            'rate': self.rate,
+            'date': str(self.date.strftime('%Y-%m-%d')),
+            'user': self.user.to_json_short()
+        }
+        return comment_json
+    
     def to_json_short(self):
         comment_json = {
             'id': self.id,
