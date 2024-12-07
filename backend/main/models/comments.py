@@ -14,7 +14,7 @@ class Comment(db.Model):
     # Comment structure
     body = db.Column(db.Text, nullable=False)
     rate = db.Column(db.Integer, nullable=False)
-    date = db.Column(db.DateTime, nullable = False)
+    date = db.Column(db.Date, nullable = False)
 
     # Unique book_id and user_id combinations
     __table_args__ = (
@@ -36,12 +36,21 @@ class Comment(db.Model):
             'book':self.book.to_json()
         }
         return comment_json
+    
+    def to_json_short(self):
+        comment_json = {
+            'id': self.id,
+            'body': str(self.body),
+            'rate': self.rate,
+            'date': str(self.date.strftime('%Y-%m-%d')),
+        }
+        return comment_json
 
     @staticmethod
     def from_json(comment_json):
         body = comment_json['body']
         rate = comment_json['rate']
-        date = datetime.strptime(comment_json['date'], '%Y-%m-%d')
+        date = datetime.strptime(comment_json['date'], '%Y-%m-%d').date()
         user_id = comment_json['user_id']
         book_id = comment_json['book_id']
         user = db.session.query(UserModel).get_or_404(user_id)

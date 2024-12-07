@@ -18,15 +18,15 @@ from datetime import datetime
 class Notification(db.Model):
     __tablename__ = 'notifications'
     id = db.Column(db.Integer, primary_key=True, unique=True, autoincrement=True)
-    title = db.Column(db.String(100), nullable=False)
+    title = db.Column(db.String(40), nullable=False)
     body = db.Column(db.String(250), nullable=False)
-    date = db.Column(db.DateTime, nullable=False)
+    date = db.Column(db.Date, nullable=False)
     note = db.Column(db.String(100))
     read = db.Column(db.Boolean, default=False, nullable=False)
-    category = db.Column(db.String(100), nullable=False)
+    category = db.Column(db.String(40), nullable=False)
     # Relation 1:N (1 user : N notifications), User is parent
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    user = db.relationship('User', back_populates='notifications', uselist=False, single_parent=True)
+    user = db.relationship('User', back_populates='notifications', uselist=False, single_parent=True, lazy='joined')
 
     ########################################################
     #             Methods to convert to JSON               #
@@ -37,8 +37,8 @@ class Notification(db.Model):
         notification_json = {
             'id': self.id,
             'title': self.title,
-            'body': str(self.body),
-            'date': str(self.date.strftime('%Y-%m-%d')),
+            'body': self.body,
+            'date': self.date.strftime('%Y-%m-%d'),
             'note': self.note,
             'read': self.read,
             'category': self.category,
@@ -47,7 +47,14 @@ class Notification(db.Model):
         return notification_json
 
     def to_json_short(self):
-        notification_json = {'id': self.id}
+        notification_json = {
+            'id': self.id,
+            'title': self.title,
+            'body': self.body,
+            'date': self.date.strftime('%Y-%m-%d'),
+            'read': self.read,
+            'category': self.category
+        }
         return notification_json
 
     @staticmethod
@@ -63,7 +70,7 @@ class Notification(db.Model):
             if not title or not body or not date_str or not category or not user_id:
                 raise ValueError("Missing required notification fields")
 
-            date = datetime.strptime(date_str, '%Y-%m-%dT%H:%M:%S')
+            date = datetime.strptime(date_str, '%Y-%m-%d').date()
 
             if category not in ['warning', 'danger', 'info']:
                 raise ValueError(f"Invalid category: {category}")

@@ -86,15 +86,15 @@ class User(db.Model):
 
     def to_json_complete(self):
         try:
-            rents=self.rent.to_json()
+            rents=[rent.to_json() for rent in self.rents] 
         except:
             rents=''
         try:
-            valoration=self.valoration.to_json_no_user()
+            comments=self.comments.to_json_no_user()
         except:
-            valoration=''
+            comments=''
         try:
-            notifications=[notifications.to_json() for notification in self.notifications]# ????
+            notifications=self.notifications.to_json()
         except:
             notifications=''
         user_json = {
@@ -107,7 +107,7 @@ class User(db.Model):
             'alias': str(self.alias),
             'passwd': str(self.passwd),
             'rent': rents,
-            'valoration': valoration,
+            'comments': comments,
             'notifications': notifications
         }
         return user_json
