@@ -14,7 +14,7 @@ class Comment(db.Model):
     # Comment structure
     body = db.Column(db.Text, nullable=False)
     rate = db.Column(db.Integer, nullable=False)
-    date = db.Column(db.Date, nullable = False)
+    date = db.Column(db.Date, nullable = False, default=datetime.now().date())
 
     # Unique book_id and user_id combinations
     __table_args__ = (
