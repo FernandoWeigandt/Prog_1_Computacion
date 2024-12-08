@@ -15,7 +15,7 @@
         <p class="text-muted mb-2" style="font-size: 0.75rem;">Publicado el {{ date }}</p>
         <p class="mt-2 mb-0 text-muted" style="white-space: pre-wrap;">{{ body }}</p>
       </div>
-      @if (self_comment) {
+      @if (self_comment && !isAdmin) {
         <div class="mt-2 mt-md-0 ms-md-3 d-flex flex-md-column">
           <button 
             class="btn btn-outline-success btn-sm me-2 me-md-0 mb-md-2" 
@@ -23,10 +23,17 @@
             type="button" 
             data-bs-toggle="modal" 
             data-bs-target="#editComment">
-            <i class="bi bi-pencil"></i>
+            <i class="bi bi-pencil-fill"></i>
           </button>
-          <button class="btn btn-outline-danger btn-sm" title="Eliminar">
-            <i class="bi bi-trash"></i>
+          <button class="btn btn-outline-danger btn-sm" title="Eliminar" (click)="deleteComment()">
+            <i class="bi bi-trash-fill"></i>
+          </button>
+        </div>
+      }
+      @if (isAdmin) {
+        <div class="mt-2 mt-md-0 ms-md-3 d-flex flex-md-column">
+          <button class="btn btn-outline-danger btn-sm me-2 me-md-0 mb-md-2" title="Eliminar" (click)="deleteComment()">
+            <i class="bi bi-trash-fill"></i>
           </button>
         </div>
       }

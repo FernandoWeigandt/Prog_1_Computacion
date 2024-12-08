@@ -1,114 +1,118 @@
 <component-contextbar title="{{ title }}"></component-contextbar>
+<div class="adjusted-content">
 
-<div class="container my-4">
-  <div class="card shadow-sm mb-5 rounded-4">
-    <div class="card-header bg-light-purple text-white rounded-top-4">
-      <h2 class="mb-0 text-center text-md-start"><strong>Vista General</strong></h2>
-    </div>
-    <div class="card-body bg-light rounded-bottom-4">
-      <div class="row justify-content-center align-items-center">
-        <div class="col-12 col-md-3 text-center mb-4 mb-md-0">
-          <img 
-            src="media/book_cover/{{ image }}" 
-            alt="Imagen del libro" 
-            class="img-fluid img-thumbnail" 
-            style="max-width: 200px; height: auto;">
-          <div class="mt-3">
-            <h6 class="text-muted">{{ gender }}</h6>
-            <stars [rating]="rating"></stars>
+  <div class="container my-4">
+    <div class="card shadow-sm mb-5 rounded-4">
+      <div class="card-header bg-light-purple text-white rounded-top-4">
+        <h2 class="mb-0 text-center text-md-start"><strong>Vista General</strong></h2>
+      </div>
+      <div class="card-body bg-light rounded-bottom-4">
+        <div class="row justify-content-center align-items-center">
+          <div class="col-12 col-md-3 text-center mb-4 mb-md-0">
+            <img 
+              src="media/book_cover/{{ image }}" 
+              alt="Imagen del libro" 
+              class="img-fluid img-thumbnail" 
+              style="max-width: 200px; height: auto;">
+            <div class="mt-3">
+              <h6 class="text-muted">{{ gender }}</h6>
+              <stars [rating]="rating"></stars>
+            </div>
+          </div>
+          <div class="col-12 col-md-9">
+            <h4 class="fw-bold">{{ title }}</h4>
+            <h5 class="text-muted"><i>{{ authors }}</i></h5>
+            <p class="lead mt-3">
+              {{ description || 'No hay una descripción disponible' }}
+            </p>
+            <p class="mt-3">
+              <i><strong>Cantidad disponible:</strong></i> {{ quantity }}
+            </p>
           </div>
         </div>
-        <div class="col-12 col-md-9">
-          <h4 class="fw-bold">{{ title }}</h4>
-          <h5 class="text-muted"><i>{{ authors }}</i></h5>
-          <p class="lead mt-3">
-            {{ description || 'No hay una descripción disponible' }}
-          </p>
-          <p class="mt-3">
-            <i><strong>Cantidad disponible:</strong></i> {{ quantity }}
-          </p>
-        </div>
       </div>
     </div>
-  </div>
-  <div class="mb-4">
-    <div class="row align-items-center mb-3">
-      <div class="col">
-        <h3><strong>Comentarios</strong></h3>
+    <div class="mb-4">
+      <div class="row align-items-center mb-3">
+        <div class="col">
+          <h3><strong>Comentarios</strong></h3>
+        </div>
+        <div class="col-auto text-end">
+          @if (isLoggedIn && isUser) {
+            <button class="btn btn-primary mx-3" type="button" data-bs-toggle="collapse" data-bs-target="#commentInput">
+              <i class="bi bi-chat-right-text-fill" style="font-size: 18px;"></i>
+            </button>
+          }
+        </div>
       </div>
-      <div class="col-auto text-end">
-        @if (isLoggedIn && isUser) {
-          <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#commentInput">
-            <i class="bi bi-chat" style="font-size: 18px;"></i> Comentar
-          </button>
+      @if (isLoggedIn && isUser) {
+        <div class="collapse" id="commentInput">
+          <form class="card card-body mb-3 rounded-4" [formGroup]="commentForm" (ngSubmit)="submitComment()">
+            @if (alertMessage) {
+              <div class="alert alert-dismissible" [ngClass]="'alert-' + alertType" role="alert">
+                {{ alertMessage }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" (click)="closeAlert()"></button>
+              </div>
+            }
+            <div class="mb-2 mx-3">
+              <label for="starsRange" class="form-label">Califica con estrellas</label>
+              <input 
+                type="range" 
+                class="form-range" 
+                min="1" max="5" step="1" 
+                id="starsRange" 
+                aria-label="Calificación de 1 a 5 estrellas" 
+                formControlName="rate">
+              <div class="d-flex justify-content-between mt-1">
+                <span>1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>4</span>
+                <span>5</span>
+              </div>
+            </div>
+            <div 
+              class="p-3 rounded-3 shadow-sm position-relative" 
+              style="background-color: #f8f9fa; border: 1px solid #dee2e6;">
+              <textarea 
+                class="form-control border-0 rounded-3" 
+                placeholder="Escribe tu comentario aquí..." 
+                rows="3" 
+                style="resize: none; padding-bottom: 50px; background-color: transparent;"
+                formControlName="body"></textarea>
+              <button 
+                class="btn btn-primary position-absolute bottom-0 end-0 m-2 rounded-circle" 
+                type="submit"
+                [disabled]="commentForm.invalid">
+                <i class="bi bi-send-fill"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+      }
+      <div class="comments-section">
+        @if (self_comment) {
+          <comment 
+            [id]="self_comment.id"
+            [user]="self_comment.user" 
+            [date]="self_comment.date" 
+            [rating]="self_comment.rate" 
+            [body]="self_comment.body" 
+            [self_comment]="true">
+          </comment>
+        }
+        @for (comment of comments; track comment['id']) {
+          <comment 
+            [id]="comment.id"
+            [user]="comment.user" 
+            [date]="comment.date" 
+            [rating]="comment.rate" 
+            [body]="comment.body">
+          </comment>
+        } @empty {
+          <p class="mt-3 text-muted">No hay comentarios</p>
         }
       </div>
-    </div>
-    @if (isLoggedIn && isUser) {
-      <div class="collapse" id="commentInput">
-        <form class="card card-body mb-3 rounded-4" [formGroup]="commentForm" (ngSubmit)="submitComment()">
-          @if (alertMessage) {
-            <div class="alert alert-dismissible" [ngClass]="'alert-' + alertType" role="alert">
-              {{ alertMessage }}
-              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" (click)="closeAlert()"></button>
-            </div>
-          }
-          <div class="mb-2 mx-3">
-            <label for="starsRange" class="form-label">Califica con estrellas</label>
-            <input 
-              type="range" 
-              class="form-range" 
-              min="1" max="5" step="1" 
-              id="starsRange" 
-              aria-label="Calificación de 1 a 5 estrellas" 
-              formControlName="rate">
-            <div class="d-flex justify-content-between mt-1">
-              <span>1</span>
-              <span>2</span>
-              <span>3</span>
-              <span>4</span>
-              <span>5</span>
-            </div>
-          </div>
-          <div 
-            class="p-3 rounded-3 shadow-sm position-relative" 
-            style="background-color: #f8f9fa; border: 1px solid #dee2e6;">
-            <textarea 
-              class="form-control border-0 rounded-3" 
-              placeholder="Escribe tu comentario aquí..." 
-              rows="3" 
-              style="resize: none; padding-bottom: 50px; background-color: transparent;"
-              formControlName="body"></textarea>
-            <button 
-              class="btn btn-primary position-absolute bottom-0 end-0 m-2 rounded-circle" 
-              type="submit"
-              [disabled]="commentForm.invalid">
-              <i class="bi bi-send-fill"></i>
-            </button>
-          </div>
-        </form>
-      </div>
-    }
-    <div class="comments-section">
-      @if (self_comment) {
-        <comment 
-          [user]="self_comment.user" 
-          [date]="self_comment.date" 
-          [rating]="self_comment.rate" 
-          [body]="self_comment.body" 
-          [self_comment]="true">
-        </comment>
-      }
-      @for (comment of comments; track comment['id']) {
-        <comment 
-          [user]="comment.user" 
-          [date]="comment.date" 
-          [rating]="comment.rate" 
-          [body]="comment.body">
-        </comment>
-      } @empty {
-        <p class="mt-3 text-muted">No hay comentarios</p>
-      }
     </div>
   </div>
 </div>

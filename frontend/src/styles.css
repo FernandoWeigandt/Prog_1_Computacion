@@ -28,8 +28,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--custom-background-color);
-  padding-top: 92px; /* Height of component-contextbar */
-  padding-bottom: 72px; /* Height of component-footer */
 }
 
 .bg-my-primary {
@@ -64,7 +62,7 @@ body {
   border-radius: 19px;
 }
 .adjusted-content {
-  margin-top: 120px;
+  margin-top: 100px;
   margin-bottom: 180px;
 }
 .shortened-title {

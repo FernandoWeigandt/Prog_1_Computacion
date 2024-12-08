@@ -33,7 +33,8 @@ class Comment(Resource):
         comment = db.session.query(CommentModel).get_or_404(id)
         user = db.session.query(UserModel).get_or_404(comment.user_id)
         current_identity = get_jwt_identity()
-        if current_identity != user.id and user.role != 'admin':
+        role = db.session.query(UserModel).get_or_404(current_identity).role
+        if current_identity != user.id and role != 'admin':
             return {'error':'Unauthorized'}, 401
         book = db.session.query(BookModel).get_or_404(comment.book_id)
         if book.id != comment.book_id:

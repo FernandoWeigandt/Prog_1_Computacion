@@ -53,7 +53,14 @@
           <div formGroupName="password" [class.is-invalid]="password1Invalid || password2Invalid && passwordInvalid">
             <div class="input-group mb-3">
               <div class="form-floating">
-                <input type="password" class="form-control" id="user-password1" [class.is-invalid]="password1Invalid && passwordInvalid" [class.is-valid]="!password1Invalid" placeholder="password" formControlName="password1">
+                <input 
+                  type="password" 
+                  class="form-control" 
+                  id="user-password1" 
+                  [class.is-invalid]="password1Invalid && passwordInvalid" 
+                  [class.is-valid]="!password1Invalid && (this.registerForm.controls.password.touched || this.registerForm.controls.password.dirty)" 
+                  placeholder="password" 
+                  formControlName="password1">
                 <label for="user-password1">Ingresa tu contraseña</label>
               </div>
               <button class="input-group-text" type="button" (click)="togglePasswordVisibility('user-password1')">
@@ -62,7 +69,13 @@
             </div>
             <div class="input-group mb-1">
               <div class="form-floating">
-                <input type="password" class="form-control" id="user-password2" [class.is-invalid]="password2Invalid && passwordInvalid" [class.is-valid]="!password2Invalid && !passwordInvalid" placeholder="password" formControlName="password2">
+                <input 
+                  type="password" 
+                  class="form-control" 
+                  id="user-password2" 
+                  [class.is-invalid]="password2Invalid && passwordInvalid" 
+                  [class.is-valid]="!password2Invalid && !passwordInvalid && (this.registerForm.controls.password.touched || this.registerForm.controls.password.dirty)" 
+                  placeholder="password" formControlName="password2">
                 <label for="user-password2">Repite tu contraseña</label>
               </div>
               <button class="input-group-text" type="button" (click)="togglePasswordVisibility('user-password2')">
