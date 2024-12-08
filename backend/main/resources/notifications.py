@@ -48,7 +48,6 @@ class Notification(Resource):
     def put(self, id):
         notification = db.session.query(NotificationModel).get_or_404(id)
         data = request.get_json()
-        print(notification, data)
         notification.title = data.get('title')
         notification.body = data.get('body')
         notification.note = data.get('note')

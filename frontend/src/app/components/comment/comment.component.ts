@@ -9,23 +9,16 @@ import { UsersService } from '../../services/users.service';
   templateUrl: './comment.component.html',
   styles: ``
 })
-export class CommentComponent implements OnInit {
-  @Input() user_id: number = 0;
+export class CommentComponent {
+  @Input() user: any = {};
+  @Input() date: string = '';
   @Input() rating: number = 0;
   @Input() body: string = '';
-  user: any = null;
-
-  constructor(private usersService: UsersService) {}
-
-  ngOnInit(): void {this.getUser(this.user_id)}
-
-  getUser(user_id: number): void {
-    this.usersService.getUserName(user_id).subscribe((answer: any) => this.user = answer)
-  }
+  @Input() self_comment: boolean = false;
 
   getUserImage(user: any) {
     if (!user?.image || user?.image === '') {
-      return `https://via.placeholder.com/150?text= `;
+      return `https://via.placeholder.com/150?text=${user?.name[0]}${user?.lastname[0]}`;
     }
     return user?.image;
   }

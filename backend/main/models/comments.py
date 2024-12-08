@@ -59,12 +59,24 @@ class Comment(db.Model):
 
     @staticmethod
     def from_json(comment_json):
-        body = comment_json['body']
-        rate = comment_json['rate']
-        date = datetime.strptime(comment_json['date'], '%Y-%m-%d').date()
-        user_id = comment_json['user_id']
-        book_id = comment_json['book_id']
+        body, rate, date, user_id, book_id = None, None, None, None, None
+        if comment_json.get('body'):
+            body = comment_json.get('body')
+        if comment_json.get('rate'):
+            rate = comment_json.get('rate')
+        if comment_json.get('date'):
+            date = datetime.strptime(comment_json.get('date'), '%Y-%m-%d').date()
+        if comment_json.get('user_id'):
+            user_id = comment_json.get('user_id')
+        if comment_json.get('book_id'):
+            book_id = comment_json.get('book_id')
         user = db.session.query(UserModel).get_or_404(user_id)
         book = db.session.query(BookModel).get_or_404(book_id)
-        comment = Comment(body=body, rate=rate, date=date, user=user, book=book)
+        comment = Comment(
+            body=body if body else None,
+            rate=rate if rate else None,
+            date=date if date else None,
+            user=user if user else None,
+            book=book if book else None
+        )
         return comment

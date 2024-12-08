@@ -3,7 +3,7 @@
   --custom-background-color: var(--bs-gray-300);
   --text-color: #222222;
   --custom-primary-color: var(--bs-light);
-  --custom-secondary-color: var(--bs-secondary);
+  --custom-secondary-color: #625B71;
 }
 
 [data-theme="light"] {
@@ -28,6 +28,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--custom-background-color);
+  padding-top: 92px; /* Height of component-contextbar */
+  padding-bottom: 72px; /* Height of component-footer */
 }
 
 .bg-my-primary {
@@ -37,6 +39,9 @@ body {
   background-color: var(--custom-secondary-color);
   text-decoration: none;
   color: var(--custom-primary-color);
+}
+.bg-light-purple {
+  background-color: #7D5260;
 }
 .bg-book {
   background-color: var(--custom-primary-color);

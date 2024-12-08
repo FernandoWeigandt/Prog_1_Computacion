@@ -1,8 +1,8 @@
 from flask_restful import Resource
 from flask import request, jsonify
-from main.models import BookModel, AuthorModel
+from main.models import BookModel, AuthorModel, CommentModel
 from main.auth.decorators import role_required
-from flask_jwt_extended import jwt_required
+from flask_jwt_extended import jwt_required, verify_jwt_in_request
 from .. import db
 
 class Book(Resource):
@@ -14,8 +14,26 @@ class Book(Resource):
         the book is converted to JSON format and returned in a JSON response.
         If not found, a 404 status code is returned.
         """
+        current_identity = None
+        jwt_payload = verify_jwt_in_request(optional=True)
+        if jwt_payload:
+            try:
+                current_identity = jwt_payload[1].get('id')
+            except:
+                current_identity = None
         book = db.session.query(BookModel).get_or_404(id)
-        return book.to_json_complete()
+        book_data = book.to_json_complete()
+        book_data["self_comment"] = None
+        if current_identity:
+            self_comment = db.session.query(CommentModel).filter_by(book_id=book.id, user_id=current_identity).first()
+            if self_comment:
+                book_data["self_comment"] = self_comment.to_json_book()
+        if book_data["self_comment"]:
+            book_data["comments"] = [
+                comment for comment in book_data["comments"]
+                if comment["id"] != book_data["self_comment"]["id"]
+            ]
+        return book_data
     
     @jwt_required()
     @role_required(roles=['admin', 'librarian'])
