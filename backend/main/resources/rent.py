@@ -136,7 +136,7 @@ class Rents(Resource):
         
         rents = rents.paginate(page=page, per_page=per_page, error_out=True)
         return jsonify({
-            'rents': [rent.to_json() for rent in rents],
+            'rents': [rent.to_json_complete() for rent in rents],
             'total': rents.total,
             'pages': rents.pages,
             'page': page    
@@ -161,11 +161,11 @@ class Rents(Resource):
         data = request.get_json()
         db.session.query(UserModel).get_or_404(data.get('user_id'))
         db.session.query(BookCopyModel).get_or_404(data.get('book_copy_id'))
-        rent = RentModel.from_json(data)
         try:
+            rent = RentModel.from_json(data)
             db.session.add(rent)
             db.session.commit()
-        except:
+        except Exception as e:
             db.session.rollback()
-            return {'error':'Incorrect data format'}, 400
+            return {'error':'Incorrect data format', 'details': str(e)}, 400
         return rent.to_json(), 201

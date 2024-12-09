@@ -103,10 +103,13 @@ class Rent(db.Model):
 
     @staticmethod
     def from_json(rent_json):
-        init_date = datetime.strptime(rent_json.get('init_date'), '%Y-%m-%d')
-        expiration_date = datetime.strptime(rent_json.get('expiration_date'), '%Y-%m-%d')
-        user_id = rent_json.get('user_id')
+        init_date = datetime.strptime(rent_json.get('init_date'), '%Y-%m-%d').date() if rent_json.get('init_date') else datetime.now().date()
+        expiration_date = datetime.strptime(rent_json.get('expiration_date'), '%Y-%m-%d').date() if rent_json.get('expiration_date') else datetime.now().date()
+        user_id = rent_json.get('user_id') 
         book_copy_id = rent_json.get('book_copy_id')
+
+        if init_date > expiration_date:
+            raise ValueError('init_date must be before expiration_date')
 
         return Rent(
             init_date = init_date,

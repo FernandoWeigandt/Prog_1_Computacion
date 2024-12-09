@@ -104,10 +104,10 @@ def fill_database():
     if os.path.exists(comment_path):
         with open(comment_path, 'r') as comments:
             comments = json.load(comments)
+        try:
             for comment in comments:
                 db.session.add(CommentModel.from_json(comment))
-        try:
-            db.session.commit()
+                db.session.commit()
             print("    [!] Comentarios cargados")
         except:
             db.session.rollback()
