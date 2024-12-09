@@ -1,0 +1,20 @@
+<div class="card rent-tile shadow-sm">
+  <div class="card-header">
+    <h5 class="card-title text-my-secondary pt-2"><strong>Libro: </strong>{{ rent.copy.title }}</h5>
+  </div>
+  <div class="card-body">
+    <p class="card-text mb-2"><strong>Usuario: </strong>{{ rent.user.email }}</p>
+    <p class="card-text mb-2"><strong>Copia: </strong>{{ rent.copy.id }}</p>
+    <p class="card-text mb-2"><strong>Estado: </strong> 
+      <span class="badge bg-{{ statusColor }} text-bg-{{ statusColor }}">{{ status }}</span>
+    </p>
+    <p class="card-text mb-2"><strong>Fecha de inicio: </strong>{{  rent.init_date }}</p>
+    <div class="d-flex justify-content-between">
+      <button class="btn btn-outline-primary btn-sm">Extender</button>
+      <button class="btn btn-outline-success btn-sm">Entregado</button>
+    </div>
+  </div>
+  <div class="card-footer text-bg-{{ statusColor }}">
+    <p class="card-text text-bg-{{ statusColor }}"><strong>Fecha de entrega: </strong>{{ rent.expiration_date }}</p>
+  </div>
+</div>

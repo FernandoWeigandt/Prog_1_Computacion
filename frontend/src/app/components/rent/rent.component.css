@@ -1,0 +1,14 @@
+.loan-tile {
+    border: 1px solid #e0e0e0;
+  }
+  
+  .loan-tile .card-title {
+    font-weight: bold;
+  }
+  
+  .loan-tile .badge {
+    font-size: 0.9rem;
+    padding: 5px 10px;
+    border-radius: 5px;
+  }
+  

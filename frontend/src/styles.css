@@ -41,6 +41,12 @@ body {
 .bg-light-purple {
   background-color: #7D5260;
 }
+.text-my-primary {
+  color: var(--custom-primary-color);
+}
+.text-my-secondary {
+  color: var(--custom-secondary-color);
+}
 .bg-book {
   background-color: var(--custom-primary-color);
 }

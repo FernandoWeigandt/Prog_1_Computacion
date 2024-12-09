@@ -1,18 +1,21 @@
-<component-contextbar title="Mis Prestamos"></component-contextbar>
+<component-contextbar title="Mis Préstamos"></component-contextbar>
+
 <div style="margin-top: 120px; margin-bottom: 120px;">
   <div class="container rents-section">
-    <div class="row">
-      <!-- Loan 1 -->
-      <component-loan class="col-md-6" title="Título 1" state="Atrasado"></component-loan>
-  
-      <!-- Loan 2 -->
-      <component-loan class="col-md-6" title="Título 2" state="A tiempo"></component-loan>
-  
-      <!-- Loan 3 -->
-      <component-loan class="col-md-6" title="Título 2" state="A tiempo"></component-loan>
-  
-    <!-- Pagination -->
-    <component-paginate></component-paginate>
+    <div class="row gy-4">
+      <!-- Rents -->
+      @for (rent of rents; track rent.id) {
+        <app-rent class="col-md-6"
+          [rent]="rent"
+        ></app-rent>
+      }
+    </div>
+
+    <!-- Paginación -->
+    <div class="d-flex justify-content-center mt-3">
+      <component-paginate></component-paginate>
+    </div>
   </div>
 </div>
+
 <component-navbar link="settings" [searchActive]="false" [settingsActive]="false" [returnActive]="true"></component-navbar>
