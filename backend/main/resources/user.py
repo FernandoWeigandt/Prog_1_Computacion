@@ -37,7 +37,8 @@ class User(Resource):
         """
         user = db.session.query(UserModel).get_or_404(id)
         current_identity = get_jwt_identity()
-        if current_identity != user.id and user.role != 'admin':
+        role = db.session.query(UserModel).get_or_404(current_identity).role
+        if current_identity != user.id and role != 'admin':
             return {'error':'Unauthorized'}, 401
         try:
             db.session.delete(user)
@@ -45,7 +46,7 @@ class User(Resource):
         except:
             db.session.rollback()
             return {'error':'Incorrect data format'}, 400
-        return user.to_json(), 204
+        return user.to_json(), 201
     
     @jwt_required()
     def put(self, id):
@@ -61,10 +62,11 @@ class User(Resource):
         """
         user = db.session.query(UserModel).get_or_404(id)
         data = request.get_json().items()
+        role = db.session.query(UserModel).get_or_404(get_jwt_identity()).role
         if user.id != get_jwt_identity():
             return {'error':'Unauthorized'}, 401
         for key, value in data:
-            if key == 'role' and user.role != 'admin':
+            if key == 'role' and role != 'admin':
                 continue
             setattr(user, key, value)
         try:

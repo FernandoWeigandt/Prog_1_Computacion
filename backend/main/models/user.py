@@ -165,6 +165,6 @@ class User(db.Model):
         user += f'    role: {self.role}\n'
         user += f'    alias: {self.alias}\n'
         user += f'    comments: {self.comments}\n'
-        user += f'    rent: {self.rent}\n'
+        user += f'    rent: {self.rents}\n'
         user += f'    notifications: {self.notifications}\n'
         return user
