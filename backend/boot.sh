@@ -23,8 +23,12 @@ yes_no_validate() {
 }
 
 start_app() {
+    filldb="$1"
     source $(find . -type f -name activate | grep .)
     if [ $? -eq "0" ] ; then
+        if [[ $filldb == "fill" ]]; then
+            python3 -m DB.fill_database
+        fi
         python3 app.py
     else
         echo '[!] No se ha encontrado un entorno virtual!'
@@ -41,8 +45,7 @@ else
 fi
 if [ $(yes_no_validate "[!] ¿Desea crear una y llenarla con datos de prueba? [s/N]: " "n") == "s" ]; then
     echo "[+] Iniciando la app y llenando la base de datos..."
-    python3 -m DB.fill_database
-    start_app
+    start_app fill
 else
     echo "[+] Iniciando la app..."
     start_app

@@ -1,5 +1,7 @@
 from dotenv import load_dotenv
 from faker import Faker
+from datetime import datetime, date
+from dateutil.relativedelta import relativedelta
 import random, json, os
 
 def generate_test_data(
@@ -32,8 +34,8 @@ def generate_test_data(
         raise ValueError("El número de comentarios solicitados excede el número máximo de combinaciones únicas posibles.")
 
     load_dotenv()
-    start_date = "-5y"
-    end_date = "-1d"
+    start_date = datetime.strptime('2020-01-01', '%Y-%m-%d').date()
+    today_date = date.today()
     test_path = os.getenv('DATABASE_PATH') + "/test-data/"
 
     if not os.path.exists(test_path):
@@ -101,7 +103,7 @@ def generate_test_data(
             comment = {
                 "body": fake.text(max_nb_chars=200),
                 "rate": random.randint(1, 5),
-                "date": str(fake.date_between_dates(start_date, end_date)),
+                "date": str(fake.date_between_dates(start_date, today_date)),
                 "book_id": book_id,
                 "user_id": user_id,
             }
@@ -118,7 +120,7 @@ def generate_test_data(
         notification = {
             "title": fake.sentence(nb_words=4),
             "body": fake.text(max_nb_chars=200),
-            "date": str(fake.date_between_dates(start_date, end_date)),
+            "date": str(fake.date_between_dates(start_date, today_date)),
             "category": random.choice(['warning', 'danger', 'info', 'info', 'info']),
             "user_id": random.randint(1, user_count),
             "note": fake.text(max_nb_chars=15),
@@ -137,11 +139,13 @@ def generate_test_data(
     random.shuffle(available_book_copy_ids)
     for _ in range(rent_count):
         book_copy_id = available_book_copy_ids.pop()
+        init_date = fake.date_between_dates(start_date, today_date)
+        expiration_date = fake.date_between_dates(init_date, today_date + relativedelta(days=100))
         rent = {
             "user_id": random.randint(1, user_count),
             "book_copy_id": book_copy_id,
-            "init_date": str(fake.date_between_dates(start_date, end_date)),
-            "expiration_date": str(fake.date_between_dates(start_date, end_date)),
+            "init_date": str(init_date),
+            "expiration_date": str(expiration_date),
         }
         rents.append(rent)
     with open(f"{test_path}/rents.json", "w", encoding="utf-8") as json_file:
