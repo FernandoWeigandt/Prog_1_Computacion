@@ -94,7 +94,7 @@ class User(db.Model):
         except:
             comments=''
         try:
-            notifications=self.notifications.to_json()
+            notifications = [notification.to_json() for notification in self.notifications]
         except:
             notifications=''
         user_json = {

@@ -110,7 +110,7 @@ class Notifications(Resource):
         })
 
     @jwt_required()
-    @role_required(roles=['admin', 'librarian'])
+    @role_required(roles=['admin', 'librarian', 'user'])
     def post(self):
         """
         Handles POST requests to create a new notification.
@@ -124,6 +124,29 @@ class Notifications(Resource):
         400 status code.
         """
         data = request.get_json()
+        current_identity = get_jwt_identity()
+        role = db.session.query(UserModel).get_or_404(current_identity).role
+        if role == 'user':
+            librarians = db.session.query(UserModel).filter(UserModel.role == 'librarian').all()
+            if librarians:
+                user_notification = {
+                    'title': data.get('title'),
+                    'body': data.get('body'),
+                    'note': data.get('note'),
+                    'category': data.get('category'),
+                }
+                for librarian in librarians:
+                    user_notification['user_id'] = librarian.id
+                    notification = NotificationModel.from_json(user_notification)
+                    notification.user_id = librarian.id
+                    try:
+                        db.session.add(notification)
+                        db.session.commit()
+                    except:
+                        db.session.rollback()
+                return {'message':'Broadcast notifications to all librarians'}, 201
+            else:
+                return {'error':'No librarians found'}, 400
         db.session.query(UserModel).get_or_404(data.get('user_id'))
         notification = NotificationModel.from_json(data)
         try:
