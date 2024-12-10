@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { NotifyService } from '../../services/notify.service';
 import { AuthService } from '../../services/auth.service';
 
@@ -12,6 +12,7 @@ import { AuthService } from '../../services/auth.service';
 export class RentComponent {
   @Input() rent: any = {};
   @Input() manageRents: boolean = false;
+  @Output() renewClicked = new EventEmitter<string>();
 
   constructor(
     private notificationService: NotifyService,
@@ -55,10 +56,10 @@ export class RentComponent {
     }
     this.notificationService.postNotification(data).subscribe({
       next: (response) => {
-        console.log('Renovar solicitud enviada (broadcast): ', response);
+        this.renewClicked.emit('Solicitud de renovación enviada a todos los bibliotecarios.');
       },
       error: (error) => {
-        console.error('Error al enviar la solicitud de renovación del préstamo:', error);
+        this.renewClicked.emit('Error al enviar la solicitud de renovación.');
       }
     });
   }

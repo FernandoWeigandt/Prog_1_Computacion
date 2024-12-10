@@ -2,18 +2,14 @@
 
 <div style="margin-top: 120px; margin-bottom: 120px;">
   <div class="container rents-section">
+    <div id="liveAlertPlaceholder"></div>
     <div class="row gy-4">
-      <!-- Rents -->
       @for (rent of rents; track rent.id) {
         <app-rent class="col-md-6"
           [rent]="rent"
+          (renewClicked)="onRenewClicked($event)"
         ></app-rent>
       }
-    </div>
-
-    <!-- Paginación -->
-    <div class="d-flex justify-content-center mt-3">
-      <component-paginate></component-paginate>
     </div>
   </div>
 </div>
