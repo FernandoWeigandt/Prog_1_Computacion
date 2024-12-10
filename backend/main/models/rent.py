@@ -1,5 +1,6 @@
 from .. import db
 from . import UserModel
+from . import BookCopyModel
 from datetime import datetime
 
 ########################################################
@@ -68,6 +69,17 @@ class Rent(db.Model):
             'id': self.id,
             'init_date': str(self.init_date.strftime('%Y-%m-%d')),
             'expiration_date': str(self.expiration_date.strftime('%Y-%m-%d')),
+            'status': str(self.status)
+        }
+        return rent_json
+    
+    def to_json_user(self):
+        self.book_copy = db.session.query(BookCopyModel).get_or_404(self.book_copy_id)
+        rent_json = {
+            'id': self.id,
+            'init_date': str(self.init_date.strftime('%Y-%m-%d')),
+            'expiration_date': str(self.expiration_date.strftime('%Y-%m-%d')),
+            'copy': self.book_copy.to_json_short(),
             'status': str(self.status)
         }
         return rent_json

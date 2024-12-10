@@ -6,10 +6,10 @@
       @for (notification of notifications; track notification.id) {
         <notification-tile 
           [title]="notification.title" 
-          [message]="notification.message"
+          [body]="notification.body"
           [notification_date]="notification.date"
           [note]="notification.note" 
-          [type]="notification.type">
+          [type]="notification.category">
         </notification-tile>
       }
     </div>

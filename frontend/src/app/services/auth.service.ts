@@ -55,7 +55,7 @@ export class AuthService {
     }
   }
 
-  get userId(): any {
+  get userId(): string {
     try {
       const token = this.token;
       if (!token) {
@@ -77,6 +77,20 @@ export class AuthService {
     try {
       const decoded: any = jwtDecode(token);
       return decoded.role;
+    } catch (e) {
+      console.error('Invalid token format', e);
+      return '';
+    }
+  }
+
+  get email(): string {
+    const token = this.token;
+    if (!token) {
+      return '';
+    }
+    try {
+      const decoded: any = jwtDecode(token);
+      return decoded.mail;
     } catch (e) {
       console.error('Invalid token format', e);
       return '';

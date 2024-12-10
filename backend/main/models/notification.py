@@ -52,6 +52,7 @@ class Notification(db.Model):
             'title': self.title,
             'body': self.body,
             'date': self.date.strftime('%Y-%m-%d'),
+            'note': self.note,
             'read': self.read,
             'category': self.category
         }

@@ -91,10 +91,7 @@ class Notifications(Resource):
         notifications = notifications.order_by(desc(NotificationModel.id))
 
         current_identity = get_jwt_identity()
-        role = db.session.query(UserModel).get_or_404(current_identity).role
-
-        if role == 'user':
-            notifications = notifications.filter(NotificationModel.user_id == current_identity)
+        notifications = notifications.filter(NotificationModel.user_id == current_identity)
 
         if request.args.get('page'):
             page = int(request.args.get('page'))

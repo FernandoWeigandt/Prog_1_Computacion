@@ -21,7 +21,7 @@ export class UsersService {
     return this.httpClient.get(this.url+`/users${params}`);
   }
 
-  getUserName(id: Number): Observable<any> {
+  getUser(id: Number): Observable<any> {
     return this.httpClient.get(this.url+`/user/${id}`);
   }
 }

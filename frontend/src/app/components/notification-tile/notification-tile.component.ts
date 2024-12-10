@@ -10,7 +10,7 @@ import { Component, Input } from '@angular/core';
 export class NotificationTileComponent {
   @Input() title:string = 'Default title';
   @Input() notification_date:Date = new Date();
-  @Input() message:string = 'Default message';
+  @Input() body:string = 'Default message';
   @Input() note:string = 'Default note';
   @Input() type:string = 'warning'; // warning, info, success
 

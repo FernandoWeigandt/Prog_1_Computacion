@@ -141,7 +141,7 @@ class Users(Resource):
         users = users.paginate(page=page, per_page=per_page, error_out=True)
 
         return jsonify({
-            'users': [user.to_json_complete() for user in users],
+            'users': [user.to_json() for user in users],
             'total': users.total,
             'pages': users.pages,
             'page': page            
