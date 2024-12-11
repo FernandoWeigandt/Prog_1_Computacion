@@ -50,6 +50,11 @@
           <option value="Otro">Otro</option>
         </select>
       </div>
+
+      <app-manage-copies
+        [id]="bookId"
+        [copies]="this.copies"
+      ></app-manage-copies>
       
       <div class="input-group">
         <input type="file" class="form-control" accept=".jpg" aria-label="Upload" (change)="uploadImage($event)">

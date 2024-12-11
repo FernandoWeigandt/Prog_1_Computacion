@@ -7,11 +7,12 @@ import { ActivatedRoute } from '@angular/router';
 import { AuthorsService } from '../../services/authors.service';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ManageCopiesComponent } from '../../components/manage-copies/manage-copies.component';
 
 @Component({
   selector: 'app-edit-book',
   standalone: true,
-  imports: [ContextbarComponent, NavbarComponent, NewAuthorComponent, ReactiveFormsModule],
+  imports: [ContextbarComponent, NavbarComponent, NewAuthorComponent, ReactiveFormsModule, ManageCopiesComponent],
   templateUrl: './edit-book.component.html',
   styles: ``
 })
@@ -22,6 +23,7 @@ export class EditBookComponent {
   description: string = '';
   image: string = '';
   gender: string = '';
+  copies: any[] = [];
   book_authors: any = [];
   authors: any[] = [];
   new_authors: any[] = [];
@@ -119,6 +121,7 @@ export class EditBookComponent {
       this.title = answer.title
       this.image = answer.image
       this.gender = answer.gender
+      this.copies = answer.copies
       this.description = answer.description
       if (answer.authors.length > 0) {
         this.book_authors = answer.authors
@@ -149,7 +152,8 @@ export class EditBookComponent {
       'gender': this.editBookForm.controls.genderInput.value || this.gender
     }
     this.bookService.updateBook(this.bookId, data).subscribe((answer:any) => {
-      console.log(answer);
+      this.getBook(this.bookId);
+      this.editBookForm.reset();
     })
   }
 }
