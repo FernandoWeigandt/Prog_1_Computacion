@@ -66,6 +66,14 @@ export class BookDetailsComponent implements OnInit {
       Validators.required,
     ]]
   })
+
+  get validImage(): string {
+    if (this.image === 'None') {
+      return 'default-book-cover.jpg';
+    } else {
+      return this.image;
+    }
+  }
   
   get isLoggedIn(): boolean {
     return this.authService.isLoggedIn();

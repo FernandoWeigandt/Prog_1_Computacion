@@ -28,6 +28,7 @@ export class BookComponent {
   @Input() image:string = 'default-book-cover.jpg';
 
   @Output() bookDeleted = new EventEmitter();
+  @Output() errorBookDeleted = new EventEmitter();
 
   // This line allows book component to use angular router service.
   // It just define a private attribute called router of type Router
@@ -66,7 +67,9 @@ export class BookComponent {
 
   deleteBookbtn() {
     this.bookService.deleteBook(this.id).subscribe(() => {
-      this.bookDeleted.emit('Book deleted! (event)');      
+      this.bookDeleted.emit('Libro Eliminado - Identificador:' + this.id);      
+    }, (error) => {
+      this.errorBookDeleted.emit('Error al eliminar el libro. Recuerda que solo puedes eliminar libros sin prestamos.');
     });
   }
 }

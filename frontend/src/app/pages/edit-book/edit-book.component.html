@@ -1,8 +1,9 @@
 <component-contextbar title="Editar Libro"></component-contextbar>
 <div class="container adjusted-content">
+  <div class="container pt-3" id="editAlertPlaceholder"></div>
   <div class="row justify-content-md-center rounded-4 bg-book pt-3 pb-3">
     <div class="col-md-2 text-center">
-      <img src="media/book_cover/{{ image }}" class="mb-3 mx-3 img-thumbnail" alt="media/book_cover/default-book-cover.jpg">
+      <img src="media/book_cover/{{ validImage }}" class="mb-3 mx-3 img-thumbnail" alt="media/book_cover/default-book-cover.jpg">
     </div>
 
     <form class="col px-4 mb-3" [formGroup]="editBookForm" (ngSubmit)="save()">

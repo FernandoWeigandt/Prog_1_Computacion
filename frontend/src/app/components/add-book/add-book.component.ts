@@ -1,37 +1,31 @@
-import { Component, inject } from '@angular/core';
-import { ContextbarComponent } from '../../components/contextbar/contextbar.component';
-import { NewAuthorComponent } from '../../components/new-author/new-author.component';
-import { NavbarComponent } from '../../components/navbar/navbar.component';
-import { BookService } from '../../services/book.service';
-import { ActivatedRoute } from '@angular/router';
+import { Component, EventEmitter, inject, Output } from '@angular/core';
+import { NewAuthorComponent } from '../new-author/new-author.component';
+import { NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthorsService } from '../../services/authors.service';
-import { NonNullableFormBuilder, Validators } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
-import { ManageCopiesComponent } from '../../components/manage-copies/manage-copies.component';
+import { NgClass } from '@angular/common';
+import { BooksService } from '../../services/books.service';
 
 @Component({
-  selector: 'app-edit-book',
+  selector: 'app-add-book',
   standalone: true,
-  imports: [ContextbarComponent, NavbarComponent, NewAuthorComponent, ReactiveFormsModule, ManageCopiesComponent],
-  templateUrl: './edit-book.component.html',
+  imports: [ReactiveFormsModule, NewAuthorComponent, NgClass],
+  templateUrl: './add-book.component.html',
   styles: ``
 })
-
-export class EditBookComponent {
-  bookId: number = 0;
+export class AddBookComponent {
+  @Output() bookCreated = new EventEmitter();
+  @Output() errorBookCreated = new EventEmitter();
   title: string = '';
   description: string = '';
   image: string = '';
-  gender: string = '';
-  copies: any[] = [];
+  gender: string = 'Otro';
   book_authors: any = [];
   authors: any[] = [];
   new_authors: any[] = [];
 
   constructor(
-    private route: ActivatedRoute, 
-    private bookService: BookService,
-    private authorsService: AuthorsService
+    private authorsService: AuthorsService,
+    private booksService: BooksService
   ) {}
 
   private fb = inject(NonNullableFormBuilder)
@@ -39,9 +33,13 @@ export class EditBookComponent {
   editBookForm = this.fb.group(
     {
       titleInput: [this.title, [
-        Validators.maxLength(40)
+        Validators.required,
+        Validators.minLength(4),
+        Validators.maxLength(200)
       ]],
       descriptionInput: [this.description, [
+        Validators.required,
+        Validators.minLength(100),
         Validators.maxLength(2000)
       ]],
       genderInput: [this.gender, [
@@ -49,18 +47,6 @@ export class EditBookComponent {
       ]],
       authorFilter: ['']
   })
-
-  ngOnInit() {
-    this.bookId = Number(this.route.snapshot.paramMap.get('id'));
-    this.getBook(this.bookId);
-  }
-
-  get validImage(): string {
-    if (this.image === 'None') {
-      return 'default-book-cover.jpg';
-    }
-    return this.image;
-  }
 
   parseAuthors(authors: any): string[] {
     let result: string[] = [];
@@ -123,40 +109,17 @@ export class EditBookComponent {
     }
   }
 
-  getBook(id: Number) {
-    this.bookService.getBook(id).subscribe((answer:any) => {
-      this.title = answer.title
-      this.image = answer.image
-      this.gender = answer.gender
-      this.copies = answer.copies
-      this.description = answer.description
-      if (answer.authors.length > 0) {
-        this.book_authors = answer.authors
-        for (let author of answer.authors) {
-          this.new_authors.push(author.id);
-        }
-      }
-    })
+  displayError(controlName:string): string | null {
+    let control: any;
+    control = this.editBookForm.get(controlName);
+    if (control?.hasError('required')) return 'Este campo es obligatorio';
+    if (control?.hasError('minlength')) return `Este campo debe tener al menos ${control.errors?.['minlength'].requiredLength} caracteres`;
+    if (control?.hasError('maxlength')) return `Este campo no debe superar los ${control.errors?.['maxlength'].requiredLength} caracteres`;
+    return null;
   }
 
   uploadImage(event: any) {
     console.log(event);
-  }
-
-  showAlert(message: string) {
-    const alertPlaceholder = document.getElementById('editAlertPlaceholder')
-    const wrapper = document.createElement('div')
-    let type = 'success'
-    if (message === 'Ocurrio un error al actualizar el libro.') {
-      type = 'danger'
-    }
-    wrapper.innerHTML = [
-      `<div class="alert alert-${type} alert-dismissible" role="alert">`,
-      `   <div>${message}</div>`,
-      '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
-      '</div>'
-    ].join('')
-    alertPlaceholder?.append(wrapper)
   }
 
   save() {
@@ -174,14 +137,19 @@ export class EditBookComponent {
       'authors': this.new_authors,
       'gender': this.editBookForm.controls.genderInput.value || this.gender
     }
-    this.bookService.updateBook(this.bookId, data).subscribe((answer:any) => {
-      this.getBook(this.bookId);
+    this.booksService.createBook(data).subscribe((answer) => {
       this.editBookForm.reset();
-      this.showAlert('Libro Actualizado');
-      document.documentElement.scrollTo({ top: 0, behavior: 'smooth' });
+      this.bookCreated.emit(`Libro Creado, identificador: ${answer.id}`);
     }, (error) => {
-      this.showAlert('Ocurrio un error al actualizar el libro.');
-      document.documentElement.scrollTo({ top: 0, behavior: 'smooth' });
+      this.errorBookCreated.emit('Error al crear libro.');
     })
+  }
+
+  get invalidTitleInput() {
+    return this.editBookForm.controls.titleInput.invalid && (this.editBookForm.controls.titleInput.touched || this.editBookForm.controls.titleInput.dirty)
+  }
+
+  get invalidDescriptionInput() {
+    return this.editBookForm.controls.descriptionInput.invalid && (this.editBookForm.controls.descriptionInput.touched || this.editBookForm.controls.descriptionInput.dirty)
   }
 }

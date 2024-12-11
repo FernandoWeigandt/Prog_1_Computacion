@@ -1,0 +1,100 @@
+<!-- Modal -->
+<div class="modal fade" id="createBook" data-bs-backdrop="static" tabindex="-1" aria-labelledby="newBook" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-light-purple" data-bs-theme="dark">
+        <h1 class="modal-title fs-5 text-white bg-light-purple" id="newBook">Nuevo Libro</h1>
+        <button type="button" class="btn-close text-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form class="col px-3" [formGroup]="editBookForm" (ngSubmit)="save()">
+          <!-- Titles -->
+          <input 
+            formControlName="titleInput"
+            class="form-control mb-2"
+            [ngClass]="{'is-invalid': invalidTitleInput}"
+            type="text" placeholder="Nuevo Título" 
+            aria-label="Nuevo Título"
+          >
+          <div class="invalid-feedback">
+            {{ displayError('titleInput') }}
+          </div>
+          <!-- Description -->
+          <div class="form-floating mb-3">
+            <textarea
+              formControlName="descriptionInput" 
+              class="form-control" 
+              [ngClass]="{'is-invalid': invalidDescriptionInput}"
+              placeholder="Leave a comment here" 
+              id="description" 
+              style="height: 100px">
+            </textarea>
+            <label for="description">Nueva Descripción</label>
+            <div class="invalid-feedback">
+              {{ displayError('descriptionInput') }}
+            </div>
+          </div>
+          <!-- Authors -->
+          <label for="authorInput" class="form-label">Autores:</label>
+          <div class="input-group">
+            <input formControlName="authorFilter" id="authorInput" class="form-control" type="text" list="authorsList" placeholder="Buscar Autor" (input)="getAuthors()">
+            <button class="btn btn-outline-success" type="button"  (click)="addAuthor()"><i class="bi bi-check-circle-fill"></i></button>
+          </div>
+          <datalist id="authorsList">
+            @for (author of authors; track author.id) {
+              <option value="{{ author.name }} {{ author.lastname }}">
+              }
+          </datalist>
+          <ul class="list-group list-group-flush">
+            @for (book_author of book_authors; track book_author) {
+              <li class="list-group-item d-flex justify-content-between">
+                {{ book_author.name }} {{ book_author.lastname }}
+                <button class="btn btn-outline-danger" id="delete-author-{{ book_author.id }}" style="border-color: #dc3545;" type="button" (click)="deleteAuthor(book_author.id)">
+                  <i class="bi bi-trash-fill"></i>
+                </button>
+              </li>
+            }
+          </ul>
+          <div class="my-3">
+            <button type="button" class="btn btn-secondary w-100 w-md-50 rounded-3 bg-light-purple" data-bs-toggle="modal" data-bs-target="#newAuthorModal">
+              <i class="bi bi-person-plus"></i> Nuevo Autor
+            </button>
+          </div>
+          <!-- Gender -->
+          <div class="input-group mb-2">
+            <label class="input-group-text" for="selectGender">Género:</label>
+            <select class="form-select" id="selectGender" formControlName="genderInput">
+              <option value="">Seleccionar Genero...</option>
+              <option value="Narrativo">Narrativo</option>
+              <option value="Lírico">Lírico</option>
+              <option value="Dramático">Dramático</option>
+              <option value="Didáctico">Didáctico</option>
+              <option value="Poético">Poético</option>
+              <option value="Otro">Otro</option>
+            </select>
+          </div>
+          
+          <div class="input-group">
+            <input type="file" class="form-control" accept=".jpg" aria-label="Upload" (change)="uploadImage($event)">
+            <button class="btn btn-outline-secondary" type="button">Subir</button>
+          </div>
+          
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button class="btn btn-success rounded-3" data-bs-dismiss="modal" id="create-btn" type="submit" [disabled]="!editBookForm.valid">
+              <i class="bi bi-floppy-fill"> Crear</i> 
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<app-new-author [createBook]="true"></app-new-author>
+
+<!-- Button trigger modal -->
+<div class="container fixed-bottom text-end" style="margin-bottom: 120px;" id="add-book">
+  <button type="button" class="btn btn-secondary bg-light-purple shadow rounded-4" data-bs-toggle="modal" data-bs-target="#createBook">
+    <i class="bi bi-plus-circle-fill" style="font-size: 32px;"></i>
+  </button>
+</div>

@@ -26,6 +26,7 @@
   <!-- Books -->
   <div class="container my-4 bd-gutter">
     <div class="row">
+      <div class="container pt-3" id="newBooksAlertPlaceholder"></div>
       @for (book of books; track book.id) {
         <div class="col-12 g-3 col-sm-6">
           <component-book
@@ -39,6 +40,7 @@
             [rating]="book.rating"
             image="{{ image(book) }}"
             (bookDeleted)="onBookDeleted($event)"
+            (errorBookDeleted)="onErrorBookDeleted($event)"
           >
           </component-book>
         </div>
@@ -50,10 +52,9 @@
   </div>
 </main>
 @if (isAdmin || isLibrarian) {
-  <div class="container fixed-bottom text-end" style="margin-bottom: 120px;" id="add-book">
-    <button class="btn btn-secondary shadow" type="button">
-      <i class="bi bi-plus-circle-fill" style="font-size: 32px;"></i>
-    </button>
-  </div>
+  <app-add-book
+  (bookCreated)="bookCreated($event)"
+  (errorBookCreated)="errorBookCreated($event)"
+  ></app-add-book>
 }
 <component-navbar></component-navbar>

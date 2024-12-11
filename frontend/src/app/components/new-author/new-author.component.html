@@ -1,16 +1,20 @@
 <!-- Button trigger new author modal -->
-<div class="my-3">
-  <button type="button" class="btn btn-secondary w-100 w-md-50 rounded-3 bg-light-purple" data-bs-toggle="modal" data-bs-target="#newAuthorModal">
-    <i class="bi bi-person-plus"></i> Nuevo Autor
-  </button>
-</div>
+@if (!createBook) {
+  <div class="my-3">
+    <button type="button" class="btn btn-secondary w-100 w-md-50 rounded-3 bg-light-purple" data-bs-toggle="modal" data-bs-target="#newAuthorModal">
+      <i class="bi bi-person-plus"></i> Nuevo Autor
+    </button>
+  </div>
+}
 <!-- New Author Modal -->
 <div class="modal fade" id="newAuthorModal" tabindex="-1" aria-labelledby="newAuthorModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="newAuthorModalLabel">Nuevo Autor</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div class="modal-header bg-light-purple">
+        <h1 class="modal-title fs-5 text-white bg-light-purple" id="newAuthorModalLabel">Nuevo Autor</h1>
+        @if (!createBook) {
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        }
       </div>
       <div class="modal-body">
         <form [formGroup]="authorForm" (ngSubmit)="onSubmit()">
@@ -67,8 +71,13 @@
                 El autor ya existe.
               </div>
             }
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" [disabled]="!authorForm.valid" (click)="authorExists">Crear</button>
+            @if (createBook) {
+              <button type="button" class="btn btn-secondary" data-bs-target="#createBook" data-bs-toggle="modal">Volver</button>
+              <button type="submit" class="btn btn-primary" data-bs-target="#createBook" data-bs-toggle="modal" [disabled]="!authorForm.valid">Crear</button>
+            } @else {
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+              <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" [disabled]="!authorForm.valid">Crear</button>
+            }
           </div>
         </form>
       </div>

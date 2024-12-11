@@ -17,7 +17,7 @@ export class ManageCopiesComponent {
     private bookCopyService: BookCopyService,
   ) {}
 
-  addQuantity = new FormControl(0, [
+  addQuantity = new FormControl(1, [
     Validators.pattern(/^[0-9]*$/),
     Validators.maxLength(2)
   ]);
