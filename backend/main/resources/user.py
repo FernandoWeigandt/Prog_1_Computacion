@@ -110,6 +110,11 @@ class Users(Resource):
         if request.args.get('per_page'):
             per_page = int(request.args.get('per_page'))
 
+        current_identity = get_jwt_identity()
+        role = db.session.query(UserModel).get_or_404(current_identity).role
+        if role == 'librarian':
+            users=users.filter(UserModel.role.in_(['user', 'pending']))
+
         if request.args.get('id'):
             users=users.filter(UserModel.id == request.args.get('id'))
         if request.args.get('name'):
@@ -120,12 +125,12 @@ class Users(Resource):
             users=users.filter(UserModel.mail.like('%'+request.args.get('mail')+'%'))
         if request.args.get('phone'):
             users=users.filter(UserModel.phone.like('%'+request.args.get('phone')+'%'))
-        if request.args.get('rol'):
-            users=users.filter(UserModel.rol.like('%'+request.args.get('rol')+'%'))
+        if request.args.get('role'):
+            users=users.filter(UserModel.role.like('%'+request.args.get('role')+'%'))
         if request.args.get('alias'):
             users=users.filter(UserModel.alias.like('%'+request.args.get('alias')+'%'))
-        if request.args.get('rent'):
-            users=users.filter(UserModel.rent.like('%'+request.args.get('rent')+'%'))
+        if request.args.get('rents'):
+            users=users.filter(UserModel.rents.like('%'+request.args.get('rents')+'%'))
         
         if request.args.get('sortby_name'):
             if request.args.get('sortby_name') == "desc":

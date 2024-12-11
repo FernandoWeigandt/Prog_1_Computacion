@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { PaginateComponent } from '../../components/paginate/paginate.component';
 import { ContextbarComponent } from "../../components/contextbar/contextbar.component";
 import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { RentComponent } from '../../components/rent/rent.component';
@@ -9,7 +8,7 @@ import { AuthService } from '../../services/auth.service';
 @Component({
   selector: 'app-my-rents',
   standalone: true,
-  imports: [RentComponent, PaginateComponent, ContextbarComponent, NavbarComponent],
+  imports: [RentComponent, ContextbarComponent, NavbarComponent],
   templateUrl: './my-rents.component.html',
   styles: ``
 })

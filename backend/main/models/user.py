@@ -67,6 +67,20 @@ class User(db.Model):
 
     def validate_passwd(self, passwd):
         return check_password_hash(self.passwd, passwd)
+    
+    ########################################################
+    #                  dynamic properties                  #
+    ########################################################
+
+    @property
+    def state(self):
+        if self.rents:
+            for rent in self.rents:
+                if rent.status == 'expired':
+                    return 'debtor'
+            return 'active'
+        else:
+            return 'inactive'
 
     ########################################################
     #             Methods to convert to JSON               #
@@ -80,7 +94,9 @@ class User(db.Model):
             'mail': str(self.mail),
             'phone': self.phone,
             'role': str(self.role),
-            'alias': str(self.alias)
+            'alias': str(self.alias),
+            'state': self.state,
+            'rents': [rent.to_json_user() for rent in self.rents],
         }
         return user_json
 

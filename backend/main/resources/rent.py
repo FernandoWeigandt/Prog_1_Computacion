@@ -159,8 +159,10 @@ class Rents(Resource):
         The response will contain a JSON representation of the newly created rent with a 201 status code.
         """
         data = request.get_json()
-        db.session.query(UserModel).get_or_404(data.get('user_id'))
         db.session.query(BookCopyModel).get_or_404(data.get('book_copy_id'))
+        user = db.session.query(UserModel).get_or_404(data.get('user_id'))
+        if len(user.rents) >= 6:
+            return {'error': 'User has reached the maximum number of rents'}, 400
         try:
             rent = RentModel.from_json(data)
             db.session.add(rent)
