@@ -94,4 +94,26 @@ export class UsersComponent {
         return ''
     }
   }
+
+  updateRole(message: string) {
+    this.getUsers(this.page, []);
+    this.showAlert(message, 'success');
+    document.documentElement.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  updateErrorRole(message: string) {
+    this.showAlert(message, 'danger');
+  }
+
+  showAlert(message: string, type: 'danger' | 'success') {
+    const alertPlaceholder = document.getElementById('usersAlertPlaceholder')
+    const wrapper = document.createElement('div')
+    wrapper.innerHTML = [
+      `<div class="alert alert-${type} alert-dismissible" role="alert">`,
+      `   <div>${message}</div>`,
+      '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+      '</div>'
+    ].join('')
+    alertPlaceholder?.append(wrapper)
+  }
 }

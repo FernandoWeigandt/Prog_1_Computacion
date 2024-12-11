@@ -61,14 +61,25 @@ class User(Resource):
         an error message is returned with a 400 status code.
         """
         user = db.session.query(UserModel).get_or_404(id)
-        data = request.get_json().items()
+        data = request.get_json()
         role = db.session.query(UserModel).get_or_404(get_jwt_identity()).role
-        if user.id != get_jwt_identity():
+        if user.id != get_jwt_identity() and (role != 'admin' and role != 'librarian'):
             return {'error':'Unauthorized'}, 401
-        for key, value in data:
-            if key == 'role' and role != 'admin':
-                continue
-            setattr(user, key, value)
+        if user.id == get_jwt_identity():
+            if data.get('name'):
+                user.name = data.get('name')
+            if data.get('lastname'):
+                user.lastname = data.get('lastname')
+            if data.get('mail'):
+                user.mail = data.get('mail')
+            if data.get('phone'):
+                user.phone = data.get('phone')
+            if data.get('alias'):
+                user.alias = data.get('alias')
+            if data.get('password'):
+                user.plain_passwd = data.get('password')
+        if data.get('role') and role == 'admin' or role == 'librarian':
+            user.role = data.get('role')
         try:
             db.session.add(user)
             db.session.commit()
