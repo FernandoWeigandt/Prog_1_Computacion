@@ -52,6 +52,11 @@ class BookCopy(db.Model):
             'book_id': self.book_id,
             'title': self.book.title
         }
+    
+    def to_json_book(self):
+        return {
+            'id': self.id,
+        }
 
     def to_json(self):
         return {

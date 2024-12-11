@@ -30,6 +30,8 @@ class BookCopy(Resource):
         an error message is returned with a 400 status code.
         """
         book_copy = db.session.query(BookCopyModel).get_or_404(id)
+        if book_copy.rent:
+            return {'error':'Book copy is currently rented'}, 400
         try:
             db.session.delete(book_copy)
             db.session.commit()
@@ -107,4 +109,4 @@ class BookCopies(Resource):
         except:
             db.session.rollback()
             return {'error': 'Incorrect data format'}, 400
-        return {'message': f'{quantity} copies created successfully.'}, 201
+        return {'message': f'{quantity} copies created successfully.', 'book_copies': [book_copy.to_json_book() for book_copy in book_copies]}, 201
