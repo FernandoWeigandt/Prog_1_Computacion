@@ -28,4 +28,8 @@ export class UsersService {
   updateUser(id: Number, dataUser: any): Observable<any> {
     return this.httpClient.put(this.url+`/user/${id}`, dataUser).pipe(take(1));
   }
+
+  deleteUser(id: number): Observable<any> {
+    return this.httpClient.delete(this.url + `/user/${id}`)
+  }
 }

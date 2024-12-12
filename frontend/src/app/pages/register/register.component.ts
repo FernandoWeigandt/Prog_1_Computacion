@@ -134,7 +134,6 @@ export class RegisterComponent {
       'mail': this.registerForm.controls.email.value,
       'passwd': this.registerForm.controls.password.controls.password1.value
     } 
-    console.log(data);
     this.authService.register(data).subscribe();
   }
 }

@@ -3,86 +3,113 @@
   <div class="container my-5">
     <div class="row justify-content-center">
       <div class="col-md-8">
-        <!-- Información Personal -->
-        <div class="card mb-4">
-          <div class="card-header bg-my-secondary text-my-color">
-            Información Personal
+        <form [formGroup]="updateUserForm" (ngSubmit)="submit()">
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" [class.is-invalid]="nameInvalid" [class.is-valid]="!nameInvalid && updateUserForm.controls.name.valid" id="user-name" placeholder="name" formControlName="name">
+            <label for="user-name">Nombre: {{ user?.name }}</label>
+            @if (nameInvalid) {
+              <div class="invalid-feedback">
+                {{ displayError('name') }}
+              </div>
+            }
           </div>
-          <div class="card-body bg-book">
-            <form>
-              <div class="mb-3">
-                <label for="username" class="form-label">Nombre de usuario</label>
-                <input type="text" class="form-control" id="username" placeholder="Nombre de usuario">
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" [class.is-invalid]="lastnameInvalid" [class.is-valid]="!lastnameInvalid && updateUserForm.controls.lastname.valid" id="user-lastname" placeholder="lastname" formControlName="lastname">
+            <label for="user-lastname">Apellido: {{ user?.lastname }}</label>
+            @if (lastnameInvalid) {
+              <div class="invalid-feedback">
+                {{ displayError('lastname') }}
               </div>
-              <div class="mb-3">
-                <label for="email" class="form-label">Correo Electrónico</label>
-                <input type="email" class="form-control" id="email" placeholder="correo@ejemplo.com">
-              </div>
-              <div class="mb-3">
-                <label for="phone" class="form-label">Número de Teléfono</label>
-                <input type="tel" class="form-control" id="phone" placeholder="+1 123 456 7890">
-              </div>
-              <button type="submit" class="btn btn-secondary">Guardar Cambios</button>
-            </form>
+            }
           </div>
-        </div>
-        <!-- Seguridad -->
-        <div class="card mb-4">
-          <div class="card-header bg-my-secondary text-my-color">
-            Seguridad
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" [class.is-invalid]="aliasInvalid" [class.is-valid]="!aliasInvalid && updateUserForm.controls.alias.dirty" id="user-alias" placeholder="alias" formControlName="alias">
+            <label for="user-alias">Alias: {{ user?.alias }}</label>
+            @if (aliasInvalid) {
+              <div class="invalid-feedback">
+                {{ displayError('alias') }}
+              </div>
+            }
           </div>
-          <div class="card-body bg-book">
-            <form>
-              <div class="mb-3">
-                <label for="password" class="form-label">Contraseña Actual</label>
-                <input type="password" class="form-control" id="password" placeholder="Contraseña Actual">
+          <div class="form-floating mb-3">
+            <input type="tel" class="form-control" [class.is-invalid]="phoneInvalid" [class.is-valid]="!phoneInvalid && updateUserForm.controls.phone.valid" id="user-phone" placeholder="phone" formControlName="phone">
+            <label for="user-phone">Teléfono: {{ user?.phone }}</label>
+            @if (phoneInvalid) {
+              <div class="invalid-feedback">
+                {{ displayError('phone') }}
               </div>
-              <div class="mb-3">
-                <label for="newPassword" class="form-label">Nueva Contraseña</label>
-                <input type="password" class="form-control" id="newPassword" placeholder="Nueva Contraseña">
-              </div>
-              <div class="mb-3">
-                <label for="confirmPassword" class="form-label">Confirmar Nueva Contraseña</label>
-                <input type="password" class="form-control" id="confirmPassword" placeholder="Confirmar Nueva Contraseña">
-              </div>
-              <button type="submit" class="btn btn-secondary">Actualizar Contraseña</button>
-            </form>
+            }
           </div>
-        </div>
-        <!-- Preferencias -->
-        <div class="card mb-4">
-          <div class="card-header bg-my-secondary text-my-color">
-            Preferencias
-          </div>
-          <div class="card-body bg-book">
-            <form>
-              <div class="form-check mb-3">
-                <input class="form-check-input" type="checkbox" id="notifications">
-                <label class="form-check-label" for="notifications">
-                  Recibir notificaciones por correo electrónico
-                </label>
+          <div class="form-floating mb-3">
+            <input type="email" class="form-control" [class.is-invalid]="emailInvalid" [class.is-valid]="!emailInvalid && updateUserForm.controls.email.valid" id="user-mail" placeholder="email" formControlName="email">
+            <label for="user-mail">Correo: {{ user?.mail }}</label>
+            @if (emailInvalid) {
+              <div class="invalid-feedback">
+                {{ displayError('email') }}
               </div>
-              <div class="dropdown mb-3">
-                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Tema
+            }
+          </div>
+          <div class="mb-3">
+            <div formGroupName="password" [class.is-invalid]="password1Invalid || password2Invalid && passwordInvalid">
+              <div class="input-group mb-3">
+                <div class="form-floating">
+                  <input 
+                    type="password" 
+                    class="form-control" 
+                    id="user-password1" 
+                    [class.is-invalid]="password1Invalid && passwordInvalid" 
+                    [class.is-valid]="!password1Invalid && (this.updateUserForm.controls.password.touched || this.updateUserForm.controls.password.dirty)" 
+                    placeholder="password" 
+                    formControlName="password1">
+                  <label for="user-password1">Cambiar Contraseña</label>
+                </div>
+                <button class="input-group-text" type="button" (click)="togglePasswordVisibility('user-password1')">
+                  <i class="bi bi-eye"></i>
                 </button>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" id="light-theme">Claro</a></li>
-                  <li><a class="dropdown-item" id="dark-theme">Oscuro</a></li>
-                </ul>
               </div>
-              <button type="submit" class="btn btn-secondary">Guardar Preferencias</button>
-            </form>
+              <div class="input-group mb-1">
+                <div class="form-floating">
+                  <input 
+                    type="password" 
+                    class="form-control" 
+                    id="user-password2" 
+                    [class.is-invalid]="password2Invalid && passwordInvalid" 
+                    [class.is-valid]="!password2Invalid && !passwordInvalid && (this.updateUserForm.controls.password.touched || this.updateUserForm.controls.password.dirty)" 
+                    placeholder="password" formControlName="password2">
+                  <label for="user-password2">Repite tu contraseña</label>
+                </div>
+                <button class="input-group-text" type="button" (click)="togglePasswordVisibility('user-password2')">
+                  <i class="bi bi-eye"></i>
+                </button>
+              </div>
+            </div>
+            @if (password1Invalid) {
+              <div class="invalid-feedback">
+                {{ displayError('password1', true) }}
+              </div>
+            } @else if (passwordInvalid) {
+              <div class="invalid-feedback">
+                {{ displayError('password') }}
+              </div>
+            }
           </div>
-        </div>
+          <div class="d-grid">
+            <button type="submit" class="btn btn-primary" [disabled]="updateUserForm.invalid">
+              <i class="bi bi-floppy-fill"></i> Guardar
+            </button>
+          </div>
+        </form> 
+  
         <!-- Account Deletion Section -->
-        <div class="card mb-4">
+        <div class="card my-4">
           <div class="card-body bg-book">
             <h5 class="card-title text-danger">Eliminar Cuenta</h5>
             <p class="text-muted">Una vez eliminada, toda su información será borrada permanentemente. Esta acción no podrá deshacerse.</p>
             <form>
               <div class="form-group">
-                <button type="button" class="btn btn-danger">Eliminar Cuenta</button>
+                <button type="button" class="btn btn-danger" (click)="deleteUser()">
+                  Eliminar Cuenta
+                </button>
               </div>
             </form>
           </div>
