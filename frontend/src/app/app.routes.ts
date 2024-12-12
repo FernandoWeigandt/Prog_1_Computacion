@@ -28,7 +28,7 @@ export const routes: Routes = [
     { path: 'my-notifications', component: MyNotificationsComponent, canActivate: [authsessionGuard] },
     { path: 'users', component: UsersComponent, canActivate: [authsessionGuard, roleGuard] },
     { path: 'manage-rents', component: ManageRentsComponent, canActivate: [authsessionGuard, roleGuard] },
-    { path: 'notify', component: NotifyComponent, canActivate: [authsessionGuard, roleGuard] },
+    { path: 'notify/:id', component: NotifyComponent, canActivate: [authsessionGuard, roleGuard] },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
     { path: 'restore-password', component: RestorePasswordComponent, canActivate: [authsessionGuard] },

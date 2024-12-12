@@ -1,12 +1,11 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { UsersService } from '../../services/users.service';
 
 @Component({
   selector: 'app-user',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [],
   templateUrl: './user.component.html',
   styles: ``
 })
@@ -20,8 +19,6 @@ export class UserComponent {
     private usersService: UsersService
   ) {}
   
-  rolSelectForm = new FormControl(this.user.role);
-
   get isAdmin() {
     return this.authService.isAdmin();
   }
@@ -82,8 +79,9 @@ export class UserComponent {
     }
   }
 
-  get newRole() {
-    switch (this.rolSelectForm.value) {
+  newRole(role: string) {
+
+    switch (role) {
       case 'user':
         return 'Usuario';
       case 'admin':
@@ -95,9 +93,9 @@ export class UserComponent {
     }
   }
 
-  saveRole() {
-    this.usersService.updateUser(this.user.id, { role: this.rolSelectForm.value }).subscribe(() => {
-      this.roleUpdated.emit(`Usuario ${this.user.mail} actualizado con rol ${this.newRole}.`);
+  saveRole(role: string) {
+    this.usersService.updateUser(this.user.id, { role: role }).subscribe(() => {
+      this.roleUpdated.emit(`Usuario ${this.user.mail} actualizado con rol ${this.newRole(role)}.`);
     }, (error) => {
       this.errorRoleUpdate.emit(`Error al actualizar el rol de ${this.user.mail}.`);
     });
