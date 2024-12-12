@@ -27,7 +27,7 @@ class Notification(Resource):
         return notification.to_json()
     
     @jwt_required()
-    @role_required(roles=['admin', 'librarian'])
+    @role_required(roles=['admin', 'librarian', 'user'])
     def delete(self, id):
         """
         Handles DELETE requests to remove a notification by id.
@@ -38,6 +38,10 @@ class Notification(Resource):
         the transaction is rolled back and an error message is returned with a 400 status code.
         """
         notification = db.session.query(NotificationModel).get_or_404(id)
+        current_identity = get_jwt_identity()
+        role = db.session.query(UserModel).get_or_404(current_identity).role
+        if current_identity != notification.user_id and role != 'admin':
+            return {'error':'Unauthorized'}, 401
         try:
             db.session.delete(notification)
             db.session.commit()

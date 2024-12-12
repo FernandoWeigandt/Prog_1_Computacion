@@ -1,21 +1,26 @@
 <component-contextbar title="Notificaciones"></component-contextbar>
 <div style="margin-top: 120px; margin-bottom: 120px;">
   <div class="container notification-section">
-  
-    <div class="list-group">
+    <div class="pt-3" id="notificationAlertPlaceholder"></div>
+    <div class="list-group row g-3 mb-3">
       @for (notification of notifications; track notification.id) {
-        <notification-tile 
+        <notification-tile class="col"
+          [id]="notification.id"
           [title]="notification.title" 
           [body]="notification.body"
           [notification_date]="notification.date"
           [note]="notification.note" 
-          [type]="notification.category">
+          [type]="notification.category"
+          (notificationDeleted)="deleteNotification($event)">
         </notification-tile>
       }
     </div>
-  
     <!-- Pagination -->
-    <component-paginate></component-paginate>
+    @if (totalNotifications > 10) {
+      <div class="d-flex justify-content-center mt-3">
+        <component-paginate [page]="page" [pages]="pages" (pageChange)="getNotifications($any($event))"></component-paginate>
+      </div>
+    }
   </div>
 </div>
 <component-navbar link="settings" [searchActive]="false" [settingsActive]="false" [returnActive]="true"></component-navbar>

@@ -45,9 +45,11 @@
           </component-book>
         </div>
       }
-      <div class="d-flex justify-content-center mt-3">
-        <component-paginate [page]="page" [pages]="pages" (pageChange)="getBooks($any($event))"></component-paginate>
-      </div>
+      @if (totalBooks > 10) {
+        <div class="d-flex justify-content-center mt-3">
+          <component-paginate [page]="page" [pages]="pages" (pageChange)="getBooks($any($event))"></component-paginate>
+        </div>
+      }
     </div>
   </div>
 </main>

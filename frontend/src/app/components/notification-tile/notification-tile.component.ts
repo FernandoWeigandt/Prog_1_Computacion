@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { NotifyService } from '../../services/notify.service';
 
 @Component({
   selector: 'notification-tile',
@@ -8,11 +9,18 @@ import { Component, Input } from '@angular/core';
   styles: ``
 })
 export class NotificationTileComponent {
+  @Input() id:number = 0;
   @Input() title:string = 'Default title';
   @Input() notification_date:Date = new Date();
   @Input() body:string = 'Default message';
   @Input() note:string = 'Default note';
-  @Input() type:string = 'warning'; // warning, info, success
+  @Input() type:string = 'warning';
+
+  @Output() notificationDeleted = new EventEmitter();
+
+  constructor(
+    private notificationService: NotifyService
+  ) {}
 
   getDateDifference(date: Date): string {
     const currentDate = new Date();
@@ -35,5 +43,9 @@ export class NotificationTileComponent {
       const diffInYears = Math.floor(diffInDays / 365);
       return `hace ${diffInYears} ${diffInYears === 1 ? 'año' : 'años'}`;
     }
+  }
+
+  markAsRead() {
+    this.notificationDeleted.emit(this.id);
   }
 }
