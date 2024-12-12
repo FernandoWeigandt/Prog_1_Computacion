@@ -83,7 +83,7 @@ export class BookComponent {
   rentBook() {
     this.notificationService.postNotification({
       title: 'Solicitud de prestamo',
-      body: `El usuario ${this.authService.email} desea adquirir el libro ${this.title}`,
+      body: `El usuario ${this.authService.email} (Legajo: ${this.authService.userId}) desea adquirir el libro ${this.title}`,
       note: `Identificador único del libro: ${this.id}`,
       category: 'warning',
     }).subscribe({next: (response) => {

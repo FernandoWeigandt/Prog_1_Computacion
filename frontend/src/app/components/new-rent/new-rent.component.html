@@ -1,0 +1,65 @@
+<button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#newRentModal">
+  <i class="bi bi-plus-circle"></i> Crear Prestamo
+</button>
+
+<div class="modal fade" id="newRentModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Crear Prestamo</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="rentForm" (ngSubmit)="createRent()">
+          <div class="form-floating mb-3">
+            <input 
+              type="text" 
+              class="form-control"
+              [class.is-invalid]="userIdInvalid" 
+              id="user_id" 
+              placeholder="Legajo de usuario" 
+              formControlName="user_id">
+            <label for="user_id">Legajo de usuario</label>
+            <div class="invalid-feedback">
+              {{ displayError('user_id') }}
+            </div>
+          </div>
+          <div class="form-floating mb-3">
+            <input 
+              type="text" 
+              class="form-control" 
+              [class.is-invalid]="bookCopyIdInvalid"
+              id="book_id" 
+              placeholder="Identificador de Libro" 
+              formControlName="book_copy_id">
+            <label for="book_id">Identificador de Libro</label>
+            <div class="invalid-feedback">
+              {{ displayError('book_copy_id') }}
+            </div>
+          </div>
+          <div class="form-floating mb-3">
+            <input 
+              type="date" 
+              class="form-control" 
+              [class.is-invalid]="expirationDateInvalid"
+              id="floatingPassword" 
+              placeholder="Fecha de expiración" 
+              formControlName="expiration_date">
+            <label for="floatingPassword">Fecha de expiración</label>
+            <div class="invalid-feedback">
+              {{ displayError('expiration_date') }}
+            </div>
+          </div>
+          <div class="d-flex justify-content-between">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+              <i class="bi bi-x-lg"></i> Cerrar
+            </button>
+            <button type="submit" class="btn btn-success">
+              <i class="bi bi-check-lg"></i> Crear
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
