@@ -39,6 +39,7 @@
             [quantity]="book.quantity"
             [rating]="book.rating"
             image="{{ image(book) }}"
+            [available_copies]="book.available_copies"
             (bookDeleted)="onBookDeleted($event)"
             (errorBookDeleted)="onErrorBookDeleted($event)"
             (rented)="rented($event)"

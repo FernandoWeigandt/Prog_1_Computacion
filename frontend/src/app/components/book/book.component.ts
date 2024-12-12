@@ -27,6 +27,7 @@ export class BookComponent {
   @Input() rating: number = 0;
   @Input() authors: string = 'Desconocido';
   @Input() image:string = 'default-book-cover.jpg';
+  @Input() available_copies:any[] = [];
 
   @Output() bookDeleted = new EventEmitter();
   @Output() errorBookDeleted = new EventEmitter();
@@ -80,11 +81,21 @@ export class BookComponent {
     return this.status !== 'available';
   }
 
+  get parseAvailable(): string {
+    let result: string = '';
+    let comma: string = '';
+    for (let copy of this.available_copies) {
+      result += comma + copy.id;
+      comma = ', ';
+    }
+    return result
+  }
+
   rentBook() {
     this.notificationService.postNotification({
       title: 'Solicitud de prestamo',
-      body: `El usuario ${this.authService.email} (Legajo: ${this.authService.userId}) desea adquirir el libro ${this.title}`,
-      note: `Identificador único del libro: ${this.id}`,
+      body: `El usuario ${this.authService.email} (Legajo: ${this.authService.userId}) desea adquirir el libro ${this.title} (Identificador único del libro: ${this.id}).`,
+      note: `Identificadores de copias disponibles: ${this.parseAvailable}.`,
       category: 'warning',
     }).subscribe({next: (response) => {
         this.rented.emit('Solicitud de prestamo enviada a todos los bibliotecarios.');

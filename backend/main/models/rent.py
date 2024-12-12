@@ -53,8 +53,6 @@ class Rent(db.Model):
         if self.expiration_date == today:
             return 'pending'
         elif self.expiration_date > today:
-            print(self.expiration_date, today)
-            print(self.expiration_date > today)
             return 'active'
         else:
             return 'expired'

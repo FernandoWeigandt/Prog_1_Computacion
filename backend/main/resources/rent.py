@@ -121,6 +121,8 @@ class Rents(Resource):
 
         # filters for admin and librarian roles
         if role == 'admin' or role == 'librarian':
+            if request.args.get('rent_id'):
+                rents=rents.filter(RentModel.id == request.args.get('rent_id'))
             if request.args.get('user_id'):
                 rents=rents.filter(RentModel.user_id == request.args.get('user_id'))
             if request.args.get('user_name'):

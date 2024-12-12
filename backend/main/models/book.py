@@ -105,6 +105,10 @@ class Book(db.Model):
             all_authors +=  f'{author.name} {author.lastname}{comma}'
         return all_authors
     
+    @property
+    def available_copies(self):
+        return [copy.to_json_book() for copy in self.copies if copy.status == 'available']
+    
     ########################################################
     #             Methods to convert to JSON               #
     ########################################################
@@ -119,7 +123,8 @@ class Book(db.Model):
             'rating': self.rating,
             'authors': self.authors_name,
             'quantity': self.quantity,
-            'comments_quantity': self.comments_quantity
+            'comments_quantity': self.comments_quantity,
+            'available_copies': self.available_copies
         }
         return book_json
 
