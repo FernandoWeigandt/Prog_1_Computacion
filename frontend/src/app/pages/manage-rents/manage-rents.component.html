@@ -9,7 +9,7 @@
     <div class="card mb-4 rounded-3 shadow-sm">
       <h4 class="card-header bg-light-purple text-white rounded-top-3">Filtros</h4>
       <div class="card-body">
-        <form class="row g-3" [formGroup]="filterQueryForm" (ngSubmit)="getfilteredRents()">
+        <form class="row g-3" [formGroup]="filterQueryForm" (ngSubmit)="getfilteredRents(1)">
           <div class="col-md-3">
             <div class="form-floating">
               <input type="text" class="form-control" id="floatingInput" placeholder="Nombre" formControlName="rent_id">
@@ -18,8 +18,8 @@
           </div>
           <div class="col-md-3">
             <div class="form-floating">
-              <input type="text" class="form-control" id="floatingInput" placeholder="Apellido" formControlName="user_mail">
-              <label for="floatingInput">Correo de Usuario</label>
+              <input type="text" class="form-control" id="floatingInput" placeholder="Apellido" formControlName="user_name">
+              <label for="floatingInput">Nombre de Usuario</label>
             </div>
           </div>
           <div class="col-md-3">
@@ -55,12 +55,14 @@
         <app-rent class="col-md-6"
           [manageRents]="true"
           [rent]="rent"
+          (renewClicked)="onRenewClicked($event)"
+          (updatedRent)="updatedRent($event)"
         ></app-rent>
       }
     </div>
 
     <div class="d-flex justify-content-center mt-3">
-      <component-paginate [page]="page" [pages]="pages" (pageChange)="getRents($any($event), [])"></component-paginate>
+      <component-paginate [page]="page" [pages]="pages" (pageChange)="getfilteredRents($any($event))"></component-paginate>
     </div>
   </div>
 </div>

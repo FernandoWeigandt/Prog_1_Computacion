@@ -10,6 +10,7 @@
     <p class="card-text mb-2"><strong>Estado: </strong> 
       <span class="badge bg-{{ statusColor }} text-bg-{{ statusColor }}">{{ status }}</span>
     </p>
+    <p class="card-text mb-2"><strong>Identificador: </strong>{{ rent.id }}</p>
     @if (daysLeft >= 0) {
       <p class="card-text mb-2"><strong>Días restantes: </strong>{{ daysLeft }}</p>
     } @else {
@@ -18,8 +19,8 @@
     <p class="card-text mb-2"><strong>Fecha de inicio: </strong>{{  rent.init_date }}</p>
     @if (manageRents) {
         <div class="d-flex justify-content-between">
-          <button class="btn btn-outline-primary btn-sm">Extender</button>
-          <button class="btn btn-outline-success btn-sm">Entregado</button>
+          <button class="btn btn-outline-primary btn-sm" (click)="updateRent()">Extender</button>
+          <button class="btn btn-outline-success btn-sm" (click)="deleteRent()">Entregado</button>
         </div>
       } @else {
         <button class="btn btn-outline-secondary w-100" (click)="sendRenewalRequest()">

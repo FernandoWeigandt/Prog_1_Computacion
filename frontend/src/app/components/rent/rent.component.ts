@@ -1,11 +1,13 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { NotifyService } from '../../services/notify.service';
 import { AuthService } from '../../services/auth.service';
+import { RentsService } from '../../services/rents.service';
+import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-rent',
   standalone: true,
-  imports: [],
+  imports: [ReactiveFormsModule],
   templateUrl: './rent.component.html',
   styleUrl: './rent.component.css'
 })
@@ -13,10 +15,12 @@ export class RentComponent {
   @Input() rent: any = {};
   @Input() manageRents: boolean = false;
   @Output() renewClicked = new EventEmitter<string>();
+  @Output() updatedRent = new EventEmitter
 
   constructor(
     private notificationService: NotifyService,
-    private authService: AuthService
+    private authService: AuthService,
+    private rentService: RentsService
   ) {}
 
   get status(): string {
@@ -31,7 +35,7 @@ export class RentComponent {
 
   get daysLeft(): number {
     const today = new Date();
-    const expirationDate = new Date(this.rent.expiration_date);
+    const expirationDate = new Date(this.rent.init_date);
     const timeDiff = expirationDate.getTime() - today.getTime();
     const daysLeft = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
     return daysLeft;
@@ -45,6 +49,27 @@ export class RentComponent {
     } else {
       return 'danger';
     }
+  }
+
+  updateRent() {
+    const today = new Date();
+    const tenDaysLater = new Date(today.getTime() + 10 * 24 * 60 * 60 * 1000);
+    const data = {
+      "expiration_date": tenDaysLater.toISOString().slice(0, 10)
+    }
+    this.rentService.editRent(this.rent.id, data).subscribe(() => {
+      this.updatedRent.emit('Se han añadido 10 días a partir de hoy.');
+    }, () => {
+      this.updatedRent.emit('Error al actualizar el prestamo.');
+    });
+  }
+
+  deleteRent() {
+    this.rentService.deleteRent(this.rent.id).subscribe(() => {
+      this.updatedRent.emit('Prestamo Eliminado - Identificador:' + this.rent.id);
+    }, () => {
+      this.updatedRent.emit('Error al eliminar el prestamo.');
+    });
   }
 
   sendRenewalRequest() {

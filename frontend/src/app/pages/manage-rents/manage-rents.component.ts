@@ -33,7 +33,7 @@ export class ManageRentsComponent {
 
   filterQueryForm = this.fb.group({
     rent_id: [''],
-    user_mail: [''],
+    user_name: [''],
     book_copy_id: [''],
     expiration_date: ['']
   })
@@ -53,8 +53,21 @@ export class ManageRentsComponent {
     })
   }
 
-  getfilteredRents() {
-    this.getRents(1, this.filterQueryForm.value)
+  getfilteredRents(page: number) {
+    let query = ''
+    if (this.filterQueryForm.controls.rent_id.value) {
+      query += `rent_id=${this.filterQueryForm.value.rent_id}&`
+    }
+    if (this.filterQueryForm.controls.user_name.value) {
+      query += `user_name=${this.filterQueryForm.value.user_name}&`
+    }
+    if (this.filterQueryForm.controls.book_copy_id.value) {
+      query += `book_copy_id=${this.filterQueryForm.value.book_copy_id}&`
+    }
+    if (this.filterQueryForm.controls.expiration_date.value) {
+      query += `expiration_date=${this.filterQueryForm.value.expiration_date}&`
+    }
+    this.getRents(page, query)
   }
 
   showAlert(message: string, type: 'danger' | 'success') {
@@ -78,5 +91,24 @@ export class ManageRentsComponent {
   errorRentCreated() {
     this.showAlert('Error al crear el prestamo.', 'danger')
     document.documentElement.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  updatedRent(message: string) {
+    if (message[0] !== 'E'){
+      this.showAlert(message, 'success')
+      this.getRents(this.page, [])
+      document.documentElement.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      this.showAlert(message, 'danger')
+      document.documentElement.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }
+
+  onRenewClicked(message: string) {
+    if (message === 'Solicitud de renovación enviada a todos los bibliotecarios.') {
+      this.showAlert('Solicitud de renovación enviada a todos los bibliotecarios.', 'success')
+    } else {
+      this.showAlert(message, 'danger')
+    }
   }
 }
