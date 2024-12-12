@@ -1,50 +1,59 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PaginateComponent } from '../../components/paginate/paginate.component';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { ContextbarComponent } from '../../components/contextbar/contextbar.component';
 import { NotificationTileComponent } from "../../components/notification-tile/notification-tile.component";
+import { NotifyService } from '../../services/notify.service';
 
 @Component({
   selector: 'app-my-notifications',
   standalone: true,
-  imports: [CommonModule,PaginateComponent, NavbarComponent, ContextbarComponent, MyNotificationsComponent, NotificationTileComponent],
+  imports: [CommonModule,PaginateComponent, NavbarComponent, ContextbarComponent, NotificationTileComponent],
   templateUrl: './my-notifications.component.html',
   styles: ``
 })
-export class MyNotificationsComponent {
-  notifications = [
-    {
-      id : 4,
-      title: 'Notificación de Atraso',
-      date: new Date(2024, 8, 10),
-      message: 'El prestamo de "Título 1" está atrasado. Por favor devuelva el libro o renueve su prestamo lo más pronto posible.',
-      note: 'Fecha de entrega: 10-09-2024',
-      type: 'warning'
-    },
-    {
-      id : 3,
-      title: 'Extensión de prestamo aprobada',
-      date: new Date(2024, 8, 8),
-      message: 'El prestamo de "Título 2" fue extendido 7 días. La nueva fecha de entrega es 25-09-2024.',
-      note: 'Renovación de fecha de expiración.',
-      type: 'good'
-    },
-    {
-      id : 2,
-      title: '¡Nuevas entregas en la Biblioteca!',
-      date: new Date(2024, 4, 3),
-      message: 'Tenemos nuevos libros disponibles en las secciones de Ficción y Ciencia. ¡Visite la biblioteca para ver los últimos títulos!',
-      note: '¡No te los pierdas!',
-      type: 'info'
-    },
-    {
-      id : 1,
-      title: 'Noticia de Renovación de la Biblioteca',
-      date: new Date(2023, 10, 4),
-      message: 'Se llevarán a cabo renovaciones en la plataforma de la Biblioteca desde el 1 de Octubre hasta el 15 de Octubre. Los servicios pueden verse limitados durante ese periodo.',
-      note: 'Le pedimos disculpas por el inconveniente.',
-      type: 'info'
-    }
-  ]
+export class MyNotificationsComponent implements OnInit {
+
+  notifications: any[] = [];
+  page: number = 1;
+  pages: number = 1;
+  totalNotifications: number = 0;
+
+  constructor(
+    private notificationService: NotifyService
+  ) {}
+
+  ngOnInit(): void {
+    this.getNotifications(1);
+  }
+
+  getNotifications(page: number) {
+    this.notificationService.getNotifications(page).subscribe((answer: any) => {
+      this.page = answer.page;
+      this.pages = answer.pages;
+      this.totalNotifications = answer.total;
+      this.notifications = answer.notifications;
+    })
+  }
+
+  deleteNotification(id: number) {
+    this.notificationService.deleteNotification(id).subscribe((answer: any) => {
+      this.getNotifications(1);
+    }, error => {
+      this.showAlert('Ocurrio un error al eliminar la notificación.', 'danger')
+    })
+  }
+
+  showAlert(message: string, type: 'danger' | 'success') {
+    const alertPlaceholder = document.getElementById('notificationAlertPlaceholder')
+    const wrapper = document.createElement('div')
+    wrapper.innerHTML = [
+      `<div class="alert alert-${type} alert-dismissible" role="alert">`,
+      `   <div>${message}</div>`,
+      '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+      '</div>'
+    ].join('')
+    alertPlaceholder?.append(wrapper)
+  }
 }

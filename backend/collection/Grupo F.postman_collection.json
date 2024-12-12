@@ -17,7 +17,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcxNzY3NTAwOCwianRpIjoiYTc3YTMyMGYtODBhYy00ZTE2LWI0YmYtNDYzZDQ1MDI0YWVkIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MTcsIm5iZiI6MTcxNzY3NTAwOCwiY3NyZiI6IjY3YTM5ZDA3LWM2N2YtNDZiOC1iZGYzLTU2ZDg3MGFjMmFhNSIsInJvbCI6ImFkbWluIiwiaWQiOjE3LCJtYWlsIjoiYWRyaWFuLmppbWVuZXpAbWFpbC5leGFtcGxlIn0.A2nMyVTdniRThRClEnSoLdrQ-pu8RUe_3dPnUyViZr8",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczMjkyMDYyOSwianRpIjoiOGQ5MmRmNGItNGU0Ni00NzQzLWFjNmQtZGUyMTM2ODQzNjIzIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MTcsIm5iZiI6MTczMjkyMDYyOSwiY3NyZiI6IjJkOTllZDU3LTQzNWItNDNmNy1iZmIwLWE1ZTAyODEzNGIyYiIsImV4cCI6MTczMjkyNDIyOSwicm9sZSI6ImFkbWluIiwiaWQiOjE3LCJtYWlsIjoiYWRyaWFuLmppbWVuZXpAbWFpbC5leGFtcGxlIn0.kyIP_RuBMG4f0u2X9_A_evx0KCy2AjkIJpmhx2cxeRY",
 									"type": "string"
 								}
 							]
@@ -127,7 +127,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcxNzY3NDgyNCwianRpIjoiZDdiYjNhN2MtNTg1MC00ZTZiLTgzOTQtZjcwNTBjMmJjODEyIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNzE3Njc0ODI0LCJjc3JmIjoiZDAwMjBhOWUtN2NiMC00NjRlLTk1ODMtZWQxYTJkODExZGUyIiwicm9sIjoidXNlciIsImlkIjoxLCJtYWlsIjoianVhbi5nYXJjaWFAbWFpbC5leGFtcGxlIn0.DzCiaW7prOIgBrBL7eZBUEgHggButvE4yqa5p7rbz6o",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczMzQzMzA2MSwianRpIjoiZjFhMTUzYmYtNjZhNS00YWI4LTkzOWQtODFlMGFmYjY0NjcyIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNzMzNDMzMDYxLCJjc3JmIjoiNjZkYTM3MWYtOTQ5Ni00Mzk2LTgzMWYtYTc0Y2RjMzExZjZkIiwiZXhwIjoxNzMzNDM2NjYxLCJyb2xlIjoidXNlciIsImlkIjoxLCJtYWlsIjoianVhbi5nYXJjaWFAbWFpbC5leGFtcGxlIn0.FAFCnZz54zAYjFP7fTkweX0lWdH-vOaA0H4KtMU4mJI",
 									"type": "string"
 								}
 							]
@@ -135,7 +135,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:25565/user/2",
+							"raw": "http://127.0.0.1:25565/user/1",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -146,7 +146,7 @@
 							"port": "25565",
 							"path": [
 								"user",
-								"2"
+								"1"
 							]
 						}
 					},
@@ -265,13 +265,109 @@
 					"response": []
 				},
 				{
-					"name": "Login",
+					"name": "Login (admin)",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n    \"mail\": \"adrian.jimenez@mail.example\",\n    \"passwd\": \"jK5x1Cfm\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:25565/auth/login",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "25565",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login (librarian)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"mail\": \"osvaldo.hernandez@mail.example\",\n    \"passwd\": \"sJAS26gx\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:25565/auth/login",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "25565",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login (user)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"mail\": \"juan.garcia@mail.example\",\n    \"passwd\": \"aB03lmk4\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:25565/auth/login",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "25565",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login (pending)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"mail\": \"hernesto.guevara@mail.example\",\n    \"passwd\": \"tX2vBrQw\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -318,6 +414,28 @@
 							"port": "25565",
 							"path": [
 								"authors"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "lastname",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "name_or_lastname",
+									"value": "Daniel Jones",
+									"disabled": true
+								},
+								{
+									"key": "fullname",
+									"value": "Olivia Mille",
+									"disabled": true
+								}
 							]
 						}
 					},
@@ -326,6 +444,16 @@
 				{
 					"name": "Add Author",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczMzU0MDAwMSwianRpIjoiNzQ3YWEwOTgtMDIzMC00YTY2LTk4ZDItMWQ0MjdhODM1ODg0IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MywibmJmIjoxNzMzNTQwMDAxLCJjc3JmIjoiYTA0NmU5OTgtMDJhZS00OTRjLThkYzktMDZiODhiZjQ2MTk0IiwiZXhwIjoxNzMzNTQzNjAxLCJyb2xlIjoiYWRtaW4iLCJpZCI6MywibWFpbCI6ImFkcmlhbi5qaW1lbmV6QG1haWwuZXhhbXBsZSJ9.GcGiUddSGlKQmP63fCLuq3ZGST4eh-kFWhCmaVmIOv0",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -380,10 +508,20 @@
 				{
 					"name": "Delete Author",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczMzU0MDAwMSwianRpIjoiNzQ3YWEwOTgtMDIzMC00YTY2LTk4ZDItMWQ0MjdhODM1ODg0IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MywibmJmIjoxNzMzNTQwMDAxLCJjc3JmIjoiYTA0NmU5OTgtMDJhZS00OTRjLThkYzktMDZiODhiZjQ2MTk0IiwiZXhwIjoxNzMzNTQzNjAxLCJyb2xlIjoiYWRtaW4iLCJpZCI6MywibWFpbCI6ImFkcmlhbi5qaW1lbmV6QG1haWwuZXhhbXBsZSJ9.GcGiUddSGlKQmP63fCLuq3ZGST4eh-kFWhCmaVmIOv0",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:25565/author/1",
+							"raw": "http://127.0.0.1:25565/author/6",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -394,7 +532,7 @@
 							"port": "25565",
 							"path": [
 								"author",
-								"1"
+								"6"
 							]
 						}
 					},
@@ -403,11 +541,21 @@
 				{
 					"name": "Update Author",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczMzU0MDAwMSwianRpIjoiNzQ3YWEwOTgtMDIzMC00YTY2LTk4ZDItMWQ0MjdhODM1ODg0IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MywibmJmIjoxNzMzNTQwMDAxLCJjc3JmIjoiYTA0NmU5OTgtMDJhZS00OTRjLThkYzktMDZiODhiZjQ2MTk0IiwiZXhwIjoxNzMzNTQzNjAxLCJyb2xlIjoiYWRtaW4iLCJpZCI6MywibWFpbCI6ImFkcmlhbi5qaW1lbmV6QG1haWwuZXhhbXBsZSJ9.GcGiUddSGlKQmP63fCLuq3ZGST4eh-kFWhCmaVmIOv0",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"Lorem\",\n    \"lastname\": \"Ipsum\"\n}",
+							"raw": "{\n    \"name\": \"Lorem test\",\n    \"lastname\": \"Ipsum\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -415,7 +563,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:25565/author/1",
+							"raw": "http://127.0.0.1:25565/author/10",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -426,7 +574,7 @@
 							"port": "25565",
 							"path": [
 								"author",
-								"1"
+								"10"
 							]
 						}
 					},
@@ -443,7 +591,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:25565/books",
+							"raw": "http://127.0.0.1:25565/books?page=1",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -458,13 +606,7 @@
 							"query": [
 								{
 									"key": "page",
-									"value": "2",
-									"disabled": true
-								},
-								{
-									"key": "title",
-									"value": "The Book of Secrets",
-									"disabled": true
+									"value": "1"
 								},
 								{
 									"key": "gender",
@@ -480,6 +622,11 @@
 									"key": "valorations",
 									"value": "asc",
 									"disabled": true
+								},
+								{
+									"key": "title",
+									"value": "secr",
+									"disabled": true
 								}
 							]
 						}
@@ -489,11 +636,21 @@
 				{
 					"name": "Add Book",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczMzUyODQzMSwianRpIjoiYTMxODRmODgtZjIyOS00ODQ1LWIzNDYtNjViZTAzNjg2ZWJkIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MywibmJmIjoxNzMzNTI4NDMxLCJjc3JmIjoiOGM3ZDcxNWEtMjlmMS00YWUxLTg4NDYtZGY1ZjJkNDdkNDFhIiwiZXhwIjoxNzMzNTMyMDMxLCJyb2xlIjoiYWRtaW4iLCJpZCI6MywibWFpbCI6ImFkcmlhbi5qaW1lbmV6QG1haWwuZXhhbXBsZSJ9.OxqJc_h-76o-zFUfCzYJdJkGoQvfoKXBsokI8xTcxk8",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{   \n    \"title\": \"Book-example43\",\n    \"gender\": \"gender-example\",\n    \"image\": \"jaasdasdj\",\n    \"description\": \"buenardoooooooooooo\",\n    \"authors\":[1]\n}",
+							"raw": "{\n    \"title\": \"Libro de prueba 1\",\n    \"gender\": \"Suspenso\",\n    \"description\": \"Descripción de prueba 1\",\n    \"authors\": [1,3]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -523,7 +680,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:25565/book/2",
+							"raw": "http://127.0.0.1:25565/book/53",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -534,7 +691,7 @@
 							"port": "25565",
 							"path": [
 								"book",
-								"2"
+								"53"
 							],
 							"query": [
 								{
@@ -550,10 +707,20 @@
 				{
 					"name": "Delete Book",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczMzUyODQzMSwianRpIjoiYTMxODRmODgtZjIyOS00ODQ1LWIzNDYtNjViZTAzNjg2ZWJkIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MywibmJmIjoxNzMzNTI4NDMxLCJjc3JmIjoiOGM3ZDcxNWEtMjlmMS00YWUxLTg4NDYtZGY1ZjJkNDdkNDFhIiwiZXhwIjoxNzMzNTMyMDMxLCJyb2xlIjoiYWRtaW4iLCJpZCI6MywibWFpbCI6ImFkcmlhbi5qaW1lbmV6QG1haWwuZXhhbXBsZSJ9.OxqJc_h-76o-zFUfCzYJdJkGoQvfoKXBsokI8xTcxk8",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:25565/book/1",
+							"raw": "http://127.0.0.1:25565/book/72",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -564,7 +731,7 @@
 							"port": "25565",
 							"path": [
 								"book",
-								"1"
+								"72"
 							]
 						}
 					},
@@ -573,11 +740,21 @@
 				{
 					"name": "Update Book",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczMzUyODQzMSwianRpIjoiYTMxODRmODgtZjIyOS00ODQ1LWIzNDYtNjViZTAzNjg2ZWJkIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MywibmJmIjoxNzMzNTI4NDMxLCJjc3JmIjoiOGM3ZDcxNWEtMjlmMS00YWUxLTg4NDYtZGY1ZjJkNDdkNDFhIiwiZXhwIjoxNzMzNTMyMDMxLCJyb2xlIjoiYWRtaW4iLCJpZCI6MywibWFpbCI6ImFkcmlhbi5qaW1lbmV6QG1haWwuZXhhbXBsZSJ9.OxqJc_h-76o-zFUfCzYJdJkGoQvfoKXBsokI8xTcxk8",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{   \n    \"title\": \"Book-example43\",\n    \"gender\": \"gender-example\",\n    \"image\": \"jaasdasdj\",\n    \"description\": \"buenardoooooooooooo\",\n    \"authors\":[1]\n}",
+							"raw": "{   \n    \"title\": \"Book-example\",\n    \"gender\": \"gender-example\",\n    \"image\": \"test/path\",\n    \"description\": \"test-description\",\n    \"authors\":[4,6]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -585,7 +762,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:25565/book/1",
+							"raw": "http://127.0.0.1:25565/book/10",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -596,7 +773,157 @@
 							"port": "25565",
 							"path": [
 								"book",
+								"10"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Book Copies",
+			"item": [
+				{
+					"name": "Read Copy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczMzUzNTU4NCwianRpIjoiZDQ0Y2ZiY2YtMTdlYy00MWFkLWEwM2UtOGVmMzRmYTAyOGI4IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MywibmJmIjoxNzMzNTM1NTg0LCJjc3JmIjoiYmZhNGMxMDItYTU3ZC00YWY2LTk1ODctZjM5ZDljMjM0MTk3IiwiZXhwIjoxNzMzNTM5MTg0LCJyb2xlIjoiYWRtaW4iLCJpZCI6MywibWFpbCI6ImFkcmlhbi5qaW1lbmV6QG1haWwuZXhhbXBsZSJ9.r-nUnmkyiXzk1OP1qoGxsJkwzuIRHy-EHeku65EPf0c",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:25565/copy/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
 								"1"
+							],
+							"port": "25565",
+							"path": [
+								"copy",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Copy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczMzU0MDAwMSwianRpIjoiNzQ3YWEwOTgtMDIzMC00YTY2LTk4ZDItMWQ0MjdhODM1ODg0IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MywibmJmIjoxNzMzNTQwMDAxLCJjc3JmIjoiYTA0NmU5OTgtMDJhZS00OTRjLThkYzktMDZiODhiZjQ2MTk0IiwiZXhwIjoxNzMzNTQzNjAxLCJyb2xlIjoiYWRtaW4iLCJpZCI6MywibWFpbCI6ImFkcmlhbi5qaW1lbmV6QG1haWwuZXhhbXBsZSJ9.GcGiUddSGlKQmP63fCLuq3ZGST4eh-kFWhCmaVmIOv0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:25565/copy/120",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "25565",
+							"path": [
+								"copy",
+								"120"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read Copies",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczMzU0MDAwMSwianRpIjoiNzQ3YWEwOTgtMDIzMC00YTY2LTk4ZDItMWQ0MjdhODM1ODg0IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MywibmJmIjoxNzMzNTQwMDAxLCJjc3JmIjoiYTA0NmU5OTgtMDJhZS00OTRjLThkYzktMDZiODhiZjQ2MTk0IiwiZXhwIjoxNzMzNTQzNjAxLCJyb2xlIjoiYWRtaW4iLCJpZCI6MywibWFpbCI6ImFkcmlhbi5qaW1lbmV6QG1haWwuZXhhbXBsZSJ9.GcGiUddSGlKQmP63fCLuq3ZGST4eh-kFWhCmaVmIOv0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:25565/copies?book_id=53",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "25565",
+							"path": [
+								"copies"
+							],
+							"query": [
+								{
+									"key": "book_id",
+									"value": "53"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Copy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczMzU0MDAwMSwianRpIjoiNzQ3YWEwOTgtMDIzMC00YTY2LTk4ZDItMWQ0MjdhODM1ODg0IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MywibmJmIjoxNzMzNTQwMDAxLCJjc3JmIjoiYTA0NmU5OTgtMDJhZS00OTRjLThkYzktMDZiODhiZjQ2MTk0IiwiZXhwIjoxNzMzNTQzNjAxLCJyb2xlIjoiYWRtaW4iLCJpZCI6MywibWFpbCI6ImFkcmlhbi5qaW1lbmV6QG1haWwuZXhhbXBsZSJ9.GcGiUddSGlKQmP63fCLuq3ZGST4eh-kFWhCmaVmIOv0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"book_id\": 53,\n    \"quantity\": 3\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:25565/copies",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "25565",
+							"path": [
+								"copies"
 							]
 						}
 					},
@@ -610,6 +937,16 @@
 				{
 					"name": "Read Rents",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczMzU0MzY5MCwianRpIjoiNGE3Mjg0MTktNDA2Yy00YjU5LWFkMzktM2ExZjgzYTNmMzEzIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MywibmJmIjoxNzMzNTQzNjkwLCJjc3JmIjoiZmJlNjM3NDgtMmExZS00Y2RkLThmODYtYmMyMmYyMzc1OGU1IiwiZXhwIjoxNzMzNTQ3MjkwLCJyb2xlIjoiYWRtaW4iLCJpZCI6MywibWFpbCI6ImFkcmlhbi5qaW1lbmV6QG1haWwuZXhhbXBsZSJ9.JZA1SaX2JSQ3a-0TWyCxOqHAqASQTCj1blO_fGHXoBQ",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -632,6 +969,16 @@
 				{
 					"name": "Add Rent",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczMzU0MzY5MCwianRpIjoiNGE3Mjg0MTktNDA2Yy00YjU5LWFkMzktM2ExZjgzYTNmMzEzIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MywibmJmIjoxNzMzNTQzNjkwLCJjc3JmIjoiZmJlNjM3NDgtMmExZS00Y2RkLThmODYtYmMyMmYyMzc1OGU1IiwiZXhwIjoxNzMzNTQ3MjkwLCJyb2xlIjoiYWRtaW4iLCJpZCI6MywibWFpbCI6ImFkcmlhbi5qaW1lbmV6QG1haWwuZXhhbXBsZSJ9.JZA1SaX2JSQ3a-0TWyCxOqHAqASQTCj1blO_fGHXoBQ",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -663,6 +1010,16 @@
 				{
 					"name": "Read Rent",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczMzU0MzY5MCwianRpIjoiNGE3Mjg0MTktNDA2Yy00YjU5LWFkMzktM2ExZjgzYTNmMzEzIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MywibmJmIjoxNzMzNTQzNjkwLCJjc3JmIjoiZmJlNjM3NDgtMmExZS00Y2RkLThmODYtYmMyMmYyMzc1OGU1IiwiZXhwIjoxNzMzNTQ3MjkwLCJyb2xlIjoiYWRtaW4iLCJpZCI6MywibWFpbCI6ImFkcmlhbi5qaW1lbmV6QG1haWwuZXhhbXBsZSJ9.JZA1SaX2JSQ3a-0TWyCxOqHAqASQTCj1blO_fGHXoBQ",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -686,10 +1043,20 @@
 				{
 					"name": "Delete Rent",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczMzU0MzY5MCwianRpIjoiNGE3Mjg0MTktNDA2Yy00YjU5LWFkMzktM2ExZjgzYTNmMzEzIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MywibmJmIjoxNzMzNTQzNjkwLCJjc3JmIjoiZmJlNjM3NDgtMmExZS00Y2RkLThmODYtYmMyMmYyMzc1OGU1IiwiZXhwIjoxNzMzNTQ3MjkwLCJyb2xlIjoiYWRtaW4iLCJpZCI6MywibWFpbCI6ImFkcmlhbi5qaW1lbmV6QG1haWwuZXhhbXBsZSJ9.JZA1SaX2JSQ3a-0TWyCxOqHAqASQTCj1blO_fGHXoBQ",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:25565/rent/1",
+							"raw": "http://127.0.0.1:25565/rent/2",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -700,7 +1067,7 @@
 							"port": "25565",
 							"path": [
 								"rent",
-								"1"
+								"2"
 							]
 						}
 					},
@@ -709,11 +1076,21 @@
 				{
 					"name": "Update Rent",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczMzU0MzY5MCwianRpIjoiNGE3Mjg0MTktNDA2Yy00YjU5LWFkMzktM2ExZjgzYTNmMzEzIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MywibmJmIjoxNzMzNTQzNjkwLCJjc3JmIjoiZmJlNjM3NDgtMmExZS00Y2RkLThmODYtYmMyMmYyMzc1OGU1IiwiZXhwIjoxNzMzNTQ3MjkwLCJyb2xlIjoiYWRtaW4iLCJpZCI6MywibWFpbCI6ImFkcmlhbi5qaW1lbmV6QG1haWwuZXhhbXBsZSJ9.JZA1SaX2JSQ3a-0TWyCxOqHAqASQTCj1blO_fGHXoBQ",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"init_date\": \"2024-04-05\",\n    \"expiration\": \"2024-05-27\"\n}",
+							"raw": "{\n    \"init_date\": \"2024-10-05\",\n    \"expiration_date\": \"2024-12-27\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -721,7 +1098,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:25565/rent/1",
+							"raw": "http://127.0.0.1:25565/rent/3",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -732,7 +1109,7 @@
 							"port": "25565",
 							"path": [
 								"rent",
-								"1"
+								"3"
 							]
 						}
 					},
@@ -744,12 +1121,12 @@
 			"name": "Comments",
 			"item": [
 				{
-					"name": "Read Comments",
+					"name": "Read Comment",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:25565/comments",
+							"raw": "http://127.0.0.1:25565/comment/1",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -759,7 +1136,83 @@
 							],
 							"port": "25565",
 							"path": [
-								"comments"
+								"comment",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Comment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczMzU0MTg1OSwianRpIjoiNTZjNDg4YzQtZDkxZC00NjVjLWI1OTQtNDYxNGU1M2Q4ZTgyIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNzMzNTQxODU5LCJjc3JmIjoiNGQ0OTQwMjUtOGIxZi00MzUxLWIxNjItNDFlOTc5NjY5NGI4IiwiZXhwIjoxNzMzNTQ1NDU5LCJyb2xlIjoidXNlciIsImlkIjoxLCJtYWlsIjoianVhbi5nYXJjaWFAbWFpbC5leGFtcGxlIn0.ynMfqpN1JV4qn7sdWLa0xchXCUZSDVh_OxeAPV38kFU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"body\": \"Amazing book! Couldn't put it down. (edited)a\",\n    \"rate\": 4,\n    \"date\": \"2024-10-19\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:25565/comment/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "25565",
+							"path": [
+								"comment",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Comment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczMzU0MTg1OSwianRpIjoiNTZjNDg4YzQtZDkxZC00NjVjLWI1OTQtNDYxNGU1M2Q4ZTgyIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNzMzNTQxODU5LCJjc3JmIjoiNGQ0OTQwMjUtOGIxZi00MzUxLWIxNjItNDFlOTc5NjY5NGI4IiwiZXhwIjoxNzMzNTQ1NDU5LCJyb2xlIjoidXNlciIsImlkIjoxLCJtYWlsIjoianVhbi5nYXJjaWFAbWFpbC5leGFtcGxlIn0.ynMfqpN1JV4qn7sdWLa0xchXCUZSDVh_OxeAPV38kFU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:25565/comment/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "25565",
+							"path": [
+								"comment",
+								"1"
 							]
 						}
 					},
@@ -768,11 +1221,21 @@
 				{
 					"name": "Add Comment",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczMzU0MTg1OSwianRpIjoiNTZjNDg4YzQtZDkxZC00NjVjLWI1OTQtNDYxNGU1M2Q4ZTgyIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNzMzNTQxODU5LCJjc3JmIjoiNGQ0OTQwMjUtOGIxZi00MzUxLWIxNjItNDFlOTc5NjY5NGI4IiwiZXhwIjoxNzMzNTQ1NDU5LCJyb2xlIjoidXNlciIsImlkIjoxLCJtYWlsIjoianVhbi5nYXJjaWFAbWFpbC5leGFtcGxlIn0.ynMfqpN1JV4qn7sdWLa0xchXCUZSDVh_OxeAPV38kFU",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"id\": 1,\n    \"book_id\": 1,\n    \"user_id\": 1,\n    \"body\": \"Amazing book! Couldn't put it down.\",\n    \"rate\": 5,\n    \"date\": \"2024-10-18\"\n}",
+							"raw": "{\n    \"book_id\": 1,\n    \"user_id\": 1,\n    \"body\": \"Amazing book! Couldn't put it down.\",\n    \"rate\": 5,\n    \"date\": \"2024-10-18\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -804,6 +1267,16 @@
 				{
 					"name": "Read Notifications",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczMzU0MDAwMSwianRpIjoiNzQ3YWEwOTgtMDIzMC00YTY2LTk4ZDItMWQ0MjdhODM1ODg0IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MywibmJmIjoxNzMzNTQwMDAxLCJjc3JmIjoiYTA0NmU5OTgtMDJhZS00OTRjLThkYzktMDZiODhiZjQ2MTk0IiwiZXhwIjoxNzMzNTQzNjAxLCJyb2xlIjoiYWRtaW4iLCJpZCI6MywibWFpbCI6ImFkcmlhbi5qaW1lbmV6QG1haWwuZXhhbXBsZSJ9.GcGiUddSGlKQmP63fCLuq3ZGST4eh-kFWhCmaVmIOv0",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -826,11 +1299,21 @@
 				{
 					"name": "Add Notification",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczMzU0MzY5MCwianRpIjoiNGE3Mjg0MTktNDA2Yy00YjU5LWFkMzktM2ExZjgzYTNmMzEzIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MywibmJmIjoxNzMzNTQzNjkwLCJjc3JmIjoiZmJlNjM3NDgtMmExZS00Y2RkLThmODYtYmMyMmYyMzc1OGU1IiwiZXhwIjoxNzMzNTQ3MjkwLCJyb2xlIjoiYWRtaW4iLCJpZCI6MywibWFpbCI6ImFkcmlhbi5qaW1lbmV6QG1haWwuZXhhbXBsZSJ9.JZA1SaX2JSQ3a-0TWyCxOqHAqASQTCj1blO_fGHXoBQ",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"title\": \"Book Due Reminder\",\n    \"body\": \"The book 'Linear Algebra' will be due in 6 days.\",\n    \"date\": \"2024-10-16T12:30:00\",\n    \"category\": \"warning\",\n    \"user_id\": 20\n}",
+							"raw": "{\n    \"title\": \"Book Due Reminder\",\n    \"body\": \"The book 'Linear Algebra' will be due in 3 days.\",\n    \"date\": \"2024-10-16\",\n    \"category\": \"warning\",\n    \"user_id\": 20\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -857,6 +1340,16 @@
 				{
 					"name": "Read Notification",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczMzU0MzY5MCwianRpIjoiNGE3Mjg0MTktNDA2Yy00YjU5LWFkMzktM2ExZjgzYTNmMzEzIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MywibmJmIjoxNzMzNTQzNjkwLCJjc3JmIjoiZmJlNjM3NDgtMmExZS00Y2RkLThmODYtYmMyMmYyMzc1OGU1IiwiZXhwIjoxNzMzNTQ3MjkwLCJyb2xlIjoiYWRtaW4iLCJpZCI6MywibWFpbCI6ImFkcmlhbi5qaW1lbmV6QG1haWwuZXhhbXBsZSJ9.JZA1SaX2JSQ3a-0TWyCxOqHAqASQTCj1blO_fGHXoBQ",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -880,6 +1373,16 @@
 				{
 					"name": "Delete Notification",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczMzU0MzY5MCwianRpIjoiNGE3Mjg0MTktNDA2Yy00YjU5LWFkMzktM2ExZjgzYTNmMzEzIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MywibmJmIjoxNzMzNTQzNjkwLCJjc3JmIjoiZmJlNjM3NDgtMmExZS00Y2RkLThmODYtYmMyMmYyMzc1OGU1IiwiZXhwIjoxNzMzNTQ3MjkwLCJyb2xlIjoiYWRtaW4iLCJpZCI6MywibWFpbCI6ImFkcmlhbi5qaW1lbmV6QG1haWwuZXhhbXBsZSJ9.JZA1SaX2JSQ3a-0TWyCxOqHAqASQTCj1blO_fGHXoBQ",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [],
 						"url": {
@@ -901,13 +1404,13 @@
 					"response": []
 				},
 				{
-					"name": "Add Notification Copy",
+					"name": "Edit Notification",
 					"request": {
 						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"title\": \"Book Due Reminder2\",\n    \"body\": \"The book 'Linear Algebra' will be due in 0 days.\",\n    \"date\": \"2024-11-16T12:30:00\",\n    \"category\": \"danger\",\n    \"user_id\": 22\n}",
+							"raw": "{\n    \"title\": \"Book Due Reminder\",\n    \"body\": \"The book 'Linear Algebra' will be due in 1 days.\",\n    \"date\": \"2024-11-16\",\n    \"category\": \"danger\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -915,7 +1418,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:25565/notification/1",
+							"raw": "http://127.0.0.1:25565/notification/2",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -926,65 +1429,7 @@
 							"port": "25565",
 							"path": [
 								"notification",
-								"1"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Book Copies",
-			"item": [
-				{
-					"name": "Read Copies",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://127.0.0.1:25565/copies",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "25565",
-							"path": [
-								"copies"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Add Copy",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"book_id\": 2\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://127.0.0.1:25565/copies",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "25565",
-							"path": [
-								"copies"
+								"2"
 							]
 						}
 					},

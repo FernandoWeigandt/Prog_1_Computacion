@@ -17,7 +17,12 @@
   </div>
   @if (isUser) {
     <div class="d-flex justify-content-center px-4">
-      <button class="btn btn-outline-success w-100 w-md-50 border-2" id="rent_btn" style="font-size: 20px">
+      <button 
+        class="btn btn-outline-success w-100 w-md-50 border-2" 
+        [class.disabled]="isRented"
+        id="rent_btn" 
+        style="font-size: 20px" 
+        (click)="rentBook()">
         <i class="bi bi-cart-plus-fill"></i> Pedir
       </button>
     </div>

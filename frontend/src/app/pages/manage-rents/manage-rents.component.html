@@ -1,57 +1,68 @@
 <component-contextbar title="Gestionar Prestamos"></component-contextbar>
 
 <div style="margin-top: 120px; margin-bottom: 120px;">
+
+
   <!-- Pantalla de Gestión de Préstamos -->
   <div class="container my-5">
-
-    <!-- Barra de búsqueda de usuarios -->
-    <div class="input-group my-3">
-      <input type="text" class="form-control" id="searchUser" placeholder="Buscar usuario por nombre o ID">
-      <button class="btn btn-my-primary btn-block" onclick="searchLoans()">Buscar</button>
+    <div class="pt-3" id="rentAlertPlaceholder"></div>
+    <div class="card mb-4 rounded-3 shadow-sm">
+      <h4 class="card-header bg-light-purple text-white rounded-top-3">Filtros</h4>
+      <div class="card-body">
+        <form class="row g-3" [formGroup]="filterQueryForm" (ngSubmit)="getfilteredRents(1)">
+          <div class="col-md-3">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="floatingInput" placeholder="Nombre" formControlName="rent_id">
+              <label for="floatingInput">Identificador de Prestamo</label>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="floatingInput" placeholder="Apellido" formControlName="user_name">
+              <label for="floatingInput">Nombre de Usuario</label>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="floatingInput" placeholder="Correo" formControlName="book_copy_id">
+              <label for="floatingInput">Identificador de Copia</label>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-floating">
+              <input type="date" class="form-control" id="floatingInput" placeholder="Correo" formControlName="expiration_date">
+              <label for="floatingInput">Fecha de expiración</label>
+            </div>
+          </div>
+          <div class="d-flex justify-content-between">
+            <button type="reset" class="btn btn-outline-secondary" (click)="getRents(1,[])">
+              <i class="bi bi-x-circle"></i> Limpiar
+            </button>
+            <app-new-rent
+              (rentCreated)="rentCreated()"
+              (errorRentCreated)="errorRentCreated()" 
+            ></app-new-rent>
+            <button type="submit" class="btn btn-outline-primary me-2">
+              <i class="bi bi-search"></i> Buscar
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
 
-    <!-- Tabla de Préstamos -->
-    <div class="table-responsive">
-      <table class="table table-bordered table-striped">
-        <thead class="bg-my-secondary text-my-color">
-          <tr>
-            <th>ID Préstamo</th>
-            <th>Usuario</th>
-            <th>Libro</th>
-            <th>Fecha Préstamo</th>
-            <th>Fecha Devolución</th>
-            <th>Estado</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody id="loansTable">
-          <!-- Aquí irían las filas de préstamos -->
-          @for (rent of rents; track rent.id) {
-            <tr>
-              <td>{{ rent.id }}</td>
-              <td>{{ rent.user.name + ' ' + rent.user.lastname }}</td>
-              <td>{{ rent.copy.title }}</td>
-              <td>{{ rent.init_date }}</td>
-              <td>{{ rent.expiration_date }}</td>
-              <td><span class="badge bg-warning text-dark">Pendiente</span></td>
-              <td>
-                <div class="btn-group-vertical">
-                  <button class="btn btn-success rounded btn-sm m-2">Devuelto</button>
-                  <button class="btn btn-warning rounded btn-sm m-2">Extender</button>
-                </div>
-              </td>
-            </tr>
-          }
-        </tbody>
-      </table>
+    <div class="row gy-4">
+      @for (rent of rents; track rent.id) {
+        <app-rent class="col-md-6"
+          [manageRents]="true"
+          [rent]="rent"
+          (renewClicked)="onRenewClicked($event)"
+          (updatedRent)="updatedRent($event)"
+        ></app-rent>
+      }
     </div>
+
     <div class="d-flex justify-content-center mt-3">
-      <component-paginate [page]="page" [pages]="pages" (pageChange)="getRents($any($event))"></component-paginate>
-    </div>
-
-    <!-- Información adicional -->
-    <div class="alert alert-info mt-4">
-      Los préstamos pendientes deben ser devueltos a tiempo. Usa "Extender préstamo" para cambiar la fecha de devolución.
+      <component-paginate [page]="page" [pages]="pages" (pageChange)="getfilteredRents($any($event))"></component-paginate>
     </div>
   </div>
 </div>

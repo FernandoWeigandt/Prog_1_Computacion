@@ -67,3 +67,11 @@ Missing:
 ## Users(admin)
 
 Idk what is missing or done in this role. (the librarian shouln'd be able to delete books, instead should archive them)
+
+# Feature fix
+
+Librarians and admins wouldn't be able to comment. 
+
+# Backend
+
+Medium table (book-authors) doesn't fill!!!

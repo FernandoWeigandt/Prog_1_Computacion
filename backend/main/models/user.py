@@ -67,6 +67,20 @@ class User(db.Model):
 
     def validate_passwd(self, passwd):
         return check_password_hash(self.passwd, passwd)
+    
+    ########################################################
+    #                  dynamic properties                  #
+    ########################################################
+
+    @property
+    def state(self):
+        if self.rents:
+            for rent in self.rents:
+                if rent.status == 'expired':
+                    return 'debtor'
+            return 'active'
+        else:
+            return 'inactive'
 
     ########################################################
     #             Methods to convert to JSON               #
@@ -80,21 +94,23 @@ class User(db.Model):
             'mail': str(self.mail),
             'phone': self.phone,
             'role': str(self.role),
-            'alias': str(self.alias)
+            'alias': str(self.alias),
+            'state': self.state,
+            'rents': [rent.to_json_user() for rent in self.rents],
         }
         return user_json
 
     def to_json_complete(self):
         try:
-            rents=self.rent.to_json()
+            rents=[rent.to_json_user() for rent in self.rents] 
         except:
             rents=''
         try:
-            valoration=self.valoration.to_json_no_user()
+            comments = [comment.to_json_user() for comment in self.comments]
         except:
-            valoration=''
+            comments=''
         try:
-            notifications=[notifications.to_json() for notification in self.notifications]# ????
+            notifications = [notification.to_json_short() for notification in self.notifications]
         except:
             notifications=''
         user_json = {
@@ -105,9 +121,8 @@ class User(db.Model):
             'phone': self.phone,
             'role': str(self.role),
             'alias': str(self.alias),
-            'passwd': str(self.passwd),
-            'rent': rents,
-            'valoration': valoration,
+            'rents': rents,
+            'comments': comments,
             'notifications': notifications
         }
         return user_json
@@ -165,6 +180,6 @@ class User(db.Model):
         user += f'    role: {self.role}\n'
         user += f'    alias: {self.alias}\n'
         user += f'    comments: {self.comments}\n'
-        user += f'    rent: {self.rent}\n'
+        user += f'    rent: {self.rents}\n'
         user += f'    notifications: {self.notifications}\n'
         return user

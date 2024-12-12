@@ -20,6 +20,6 @@ export class BooksService {
   }
 
   createBook(dataBook: any): Observable<any> {
-    return this.httpClient.post('/api/book', dataBook);
+    return this.httpClient.post('/api/books', dataBook);
   }
 }

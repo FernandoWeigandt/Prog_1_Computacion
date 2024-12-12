@@ -1,12 +1,62 @@
-<div class="row">
-  <div class="col-auto">
-    <img src="{{ getUserImage(user) }}" class="img-fluid rounded-circle" alt="User" style="width: 50px;">
-  </div>
-  <div class="col">
-    <div class="card-body">
-      <h5 class="card-title mb-1 text-truncate" style="max-width: 220px;">{{ user?.name }} {{ user?.lastname }}</h5>
-      <stars [rating]="rating"></stars>
+<div class="card mb-3 shadow-sm">
+  <div class="card-body p-3">
+    <div class="d-flex flex-column flex-md-row align-items-start">
+      <img 
+        src="{{ getUserImage(user) }}" 
+        class="rounded-circle me-3 mb-2 mb-md-0" 
+        alt="User" 
+        style="width: 50px; height: 50px; object-fit: cover;">
+      <div class="flex-grow-1">
+        <div>
+          <h5 class="mb-1 text-truncate" style="max-width: 220px;">{{ user?.name }} {{ user?.lastname }}</h5>
+          <p class="mb-1 text-muted" style="font-size: 0.875rem;">{{ user?.email }}</p>
+          <stars [rating]="rating"></stars>
+        </div>
+        <p class="text-muted mb-2" style="font-size: 0.75rem;">Publicado el {{ date }}</p>
+        <p class="mt-2 mb-0 text-muted" style="white-space: pre-wrap;">{{ body }}</p>
+      </div>
+      @if (self_comment && !isAdmin) {
+        <div class="mt-2 mt-md-0 ms-md-3 d-flex flex-md-column">
+          <button 
+            class="btn btn-outline-success btn-sm me-2 me-md-0 mb-md-2" 
+            title="Editar" 
+            type="button" 
+            data-bs-toggle="modal" 
+            data-bs-target="#editComment">
+            <i class="bi bi-pencil-fill"></i>
+          </button>
+          <button class="btn btn-outline-danger btn-sm" title="Eliminar" (click)="deleteComment()">
+            <i class="bi bi-trash-fill"></i>
+          </button>
+        </div>
+      }
+      @if (isAdmin) {
+        <div class="mt-2 mt-md-0 ms-md-3 d-flex flex-md-column">
+          <button class="btn btn-outline-danger btn-sm me-2 me-md-0 mb-md-2" title="Eliminar" (click)="deleteComment()">
+            <i class="bi bi-trash-fill"></i>
+          </button>
+        </div>
+      }
     </div>
   </div>
 </div>
-<p>{{ body }}</p>
+@if (self_comment) {
+<!-- Modal -->
+<div class="modal fade" id="editComment" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Understood</button>
+      </div>
+    </div>
+  </div>
+</div> 
+}

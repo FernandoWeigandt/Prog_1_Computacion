@@ -3,7 +3,7 @@
   --custom-background-color: var(--bs-gray-300);
   --text-color: #222222;
   --custom-primary-color: var(--bs-light);
-  --custom-secondary-color: var(--bs-secondary);
+  --custom-secondary-color: #625B71;
 }
 
 [data-theme="light"] {
@@ -38,6 +38,15 @@ body {
   text-decoration: none;
   color: var(--custom-primary-color);
 }
+.bg-light-purple {
+  background-color: #7D5260;
+}
+.text-my-primary {
+  color: var(--custom-primary-color);
+}
+.text-my-secondary {
+  color: var(--custom-secondary-color);
+}
 .bg-book {
   background-color: var(--custom-primary-color);
 }
@@ -59,7 +68,7 @@ body {
   border-radius: 19px;
 }
 .adjusted-content {
-  margin-top: 120px;
+  margin-top: 100px;
   margin-bottom: 180px;
 }
 .shortened-title {

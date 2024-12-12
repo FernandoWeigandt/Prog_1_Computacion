@@ -28,25 +28,25 @@ def create_app():
 
     import main.resources as resources
 
-    #User
+    # User
     api.add_resource(resources.UsersResources, '/users')
     api.add_resource(resources.UserResources, '/user/<id>')
-    #Book
+    # Book
     api.add_resource(resources.BooksResources, '/books')
     api.add_resource(resources.BookResources, '/book/<id>')
-    #Rent
+    # Rent
     api.add_resource(resources.RentsResources, '/rents')
     api.add_resource(resources.RentResources, '/rent/<id>')
-    #Notifications
+    # Notifications
     api.add_resource(resources.NotificationsResources, '/notifications')
     api.add_resource(resources.NotificationResources, '/notification/<id>')
-    #Comments
+    # Comments
     api.add_resource(resources.CommentsResources, '/comments')
     api.add_resource(resources.CommentResources, '/comment/<id>')
-    #Authors
+    # Authors
     api.add_resource(resources.AuthorsResources, '/authors')
     api.add_resource(resources.AuthorResources, '/author/<id>')
-    #BookCopy
+    # BookCopy
     api.add_resource(resources.BookCopiesResources, '/copies')
     api.add_resource(resources.BookCopyResources, '/copy/<id>')
 

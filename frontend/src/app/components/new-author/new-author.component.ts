@@ -1,7 +1,8 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthorsService } from '../../services/authors.service';
 import { uniqueAuthorValidator } from './uniqueAuthor.validator';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-new-author',
@@ -12,6 +13,7 @@ import { uniqueAuthorValidator } from './uniqueAuthor.validator';
 })
 
 export class NewAuthorComponent {
+  @Input() createBook = false;
 
   constructor (
     private authorService: AuthorsService,
@@ -38,22 +40,12 @@ export class NewAuthorComponent {
       // updateOn: 'blur'
     }
   );
-  
 
-  get authorExists() {
+  async authorExists(): Promise<boolean> {
     const name = this.authorForm.controls.name.value;
     const lastname = this.authorForm.controls.lastname.value;
-    if (!name.trim() || !lastname.trim()) {
-      return this.authorForm.hasError('required');
-    } else {
-      this.authorService.getAuthor_by_fullname(name, lastname).subscribe((answer: any) => {
-        if (answer.authors.length > 0) {
-          console.log(answer);
-          this.authorForm.setErrors({ 'authorExists': true });
-        }
-      })
-    }
-    return null;
+    const answer = await this.authorService.getAuthor_by_fullname(name, lastname).toPromise();
+    return answer.authors.length > 0;
   }
 
   get nameInvalid(): boolean {
@@ -64,50 +56,11 @@ export class NewAuthorComponent {
     return this.authorForm.controls.lastname.invalid && (this.authorForm.controls.lastname.touched || this.authorForm.controls.lastname.dirty)
   }
 
-  onSubmit() {
-    if (!this.authorExists) {
-      console.log(`Author dont exist, adding: ${this.authorForm.value}`);
+  async onSubmit() {
+    if (!(await this.authorExists())) {
+      this.authorService.addAuthor(this.authorForm.value).subscribe();
+    } else {
+      window.alert('El autor ya existe');
     }
-    // this.authorService.addAuthor(this.authorForm.value).subscribe();
   }
 }
-
-
-  // authorForm: FormGroup = new FormGroup({
-  //   name: new FormControl('', [
-  //     Validators.required, 
-  //     Validators.minLength(4),
-  //     lettersOnlyValidator
-  //   ]),
-  //   lastname: new FormControl('', [
-  //     Validators.required,
-  //     Validators.minLength(4),
-  //     lettersOnlyValidator
-  //   ]),
-  // });
-
-  // constructor(
-  //   private fb: FormBuilder,
-  //   private authorService: AuthorsService,
-  //   private customValidators: CustomValidators
-  // ) {}
-
-  // authorForm = this.fb.group({
-  //   name: '',
-  //   lastname: '',
-  // })
-
-  // authorExists(control: FormControl) {
-  //   const author = control.value.name + ' ' + control.value.lastname
-  //   this.authorService.getAuthors_by_name_or_lastname(author).subscribe((answer: any) => {
-  //     if (answer.authors.length > 0) {
-  //       control.setErrors({ 'authorExists': true });
-  //     } else {
-  //       control.setErrors(null);
-  //     }
-  //   })
-  // }
-
-  // createAuthor() {
-  //   this.authorService.addAuthor(this.authorForm.value).subscribe();
-  // }

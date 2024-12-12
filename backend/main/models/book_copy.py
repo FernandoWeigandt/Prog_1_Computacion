@@ -27,9 +27,9 @@ class BookCopy(db.Model):
     id = db.Column(db.Integer, primary_key=True, unique=True, autoincrement=True)
     # 1:N (1 Book: N BookCopies)
     book_id = db.Column(db.Integer, db.ForeignKey('books.id'), nullable=False)
-    book = db.relationship('Book', back_populates='copies')
+    book = db.relationship('Book', back_populates='copies', lazy='joined')
     # 1:1 (1 BookCopy: 1 rent)
-    rent = db.relationship('Rent', back_populates='book_copy', uselist=False, cascade='all, delete-orphan')
+    rent = db.relationship('Rent', back_populates='book_copy')
 
     ########################################################
     #         Methods to define dinamic properties         #
@@ -52,11 +52,24 @@ class BookCopy(db.Model):
             'book_id': self.book_id,
             'title': self.book.title
         }
+    
+    def to_json_book(self):
+        return {
+            'id': self.id,
+        }
 
     def to_json(self):
         return {
             'id': self.id,
             'book': self.book.to_json_short(),
+            'status': self.status
+        }
+    
+    def to_json_complete(self):
+        return {
+            'id': self.id,
+            'book': self.book.to_json(),
+            'rent': self.rent.to_json_short() if self.rent else None,
             'status': self.status
         }
 

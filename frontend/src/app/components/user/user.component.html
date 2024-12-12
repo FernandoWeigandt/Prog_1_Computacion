@@ -1,0 +1,49 @@
+<div class="card rent-tile shadow-sm">
+  <div class="card-header">
+    <h5 class="card-title text-my-secondary pt-2"><strong>Usuario: </strong>{{ user?.mail }}</h5>
+  </div>
+  <div class="card-body">
+    <p class="card-text mb-2"><strong>Nombre: </strong>{{ user?.name }} {{ user?.lastname }}</p>
+    <p class="card-text mb-2"><strong>Legajo: </strong>{{ user?.id }}</p>
+    <p class="card-text mb-2"><strong>Teléfono: </strong>{{ user?.phone }}</p>
+    <p class="card-text mb-2"><strong>Rol: </strong> 
+      <span class="badge bg-{{ roleColor }} text-bg-{{ roleColor }}">{{ role }}</span>
+    </p>
+    <div class="d-flex justify-content-between">
+      <a href="notify/{{ user?.id }}" id="notify_btn" style="color: inherit;">
+        <button class="btn btn-outline-primary btn-sm">
+          <i class="bi bi-envelope-arrow-up-fill"></i> Notificar
+        </button>
+      </a>
+      <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+        <div class="btn-group" role="group">
+          <button type="button" class="btn btn-sm btn-outline-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-person-fill-check"></i> Modificar Rol
+          </button>
+          <ul class="dropdown-menu">
+            <li (click)="saveRole('pending')"><option class="dropdown-item" value="pending">Pending</option></li>
+            <li (click)="saveRole('user')"><option class="dropdown-item" value="user">User</option></li>
+            @if (isAdmin) {
+              <li (click)="saveRole('librarian')"><option class="dropdown-item" value="librarian">Bibliotecario</option></li>
+              <li (click)="saveRole('admin')"><option class="dropdown-item" value="admin">Admin</option></li>
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  @if (user?.role == 'user') {
+    <div class="card-footer text-bg-{{ stateColor }}">
+      <p class="card-text text-bg-{{ stateColor }}"><i class="bi bi-building-fill"></i><strong> Estado: </strong>{{ state }}</p>
+    </div>
+  } @else if (user?.role == 'pending') {
+    <div class="card-footer border-warning">
+      <p class="card-text text-bg-"><i class="bi bi-building-fill-exclamation"></i><strong> Suspendido </strong></p>
+    </div>
+  } @else {
+    <div class="card-footer  border-success">
+      <p class="card-text"><i class="bi bi-building-fill-gear"></i><strong> Empleado </strong></p>
+    </div>
+  }
+</div>

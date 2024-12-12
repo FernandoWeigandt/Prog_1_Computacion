@@ -1,8 +1,19 @@
-<div class="p-3 book-rounded-corner bg-my-secondary text-my-color mb-3">
-  <div class="d-flex w-100 justify-content-between">
-    <h5 class="mb-1"><strong>{{ title }}</strong></h5>
-    <small class="text-{{ type }}">{{ getDateDifference(notification_date) }}</small>
+<div class="card rounded-4">
+  <div class="card-header d-flex justify-content-between pt-3">
+    <h5>{{title}}</h5>
+    <div>
+      <span class="badge rounded-pill text-bg-{{ type }}">{{ getDateDifference(notification_date) }}</span>
+    </div>
   </div>
-  <p class="mb-1">{{ message }}</p>
-  <small class="text-{{ type }}">{{ note }}</small>
+  <div class="card-body">
+    <p class="card-text">{{ body }}</p>
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-outline-secondary" (click)="markAsRead()">
+        Marcar como Leido
+      </button>
+    </div>
+  </div>
+  <div class="card-footer rounded-bottom-4 text-bg-{{ type }} text-body-secondary">
+    <p class="card-text text-bg-{{ type }}">{{ note || 'Sin nota'}}</p>
+  </div>
 </div>

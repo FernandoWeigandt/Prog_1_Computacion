@@ -26,6 +26,7 @@
   <!-- Books -->
   <div class="container my-4 bd-gutter">
     <div class="row">
+      <div class="container pt-3" id="newBooksAlertPlaceholder"></div>
       @for (book of books; track book.id) {
         <div class="col-12 g-3 col-sm-6">
           <component-book
@@ -38,22 +39,26 @@
             [quantity]="book.quantity"
             [rating]="book.rating"
             image="{{ image(book) }}"
+            [available_copies]="book.available_copies"
             (bookDeleted)="onBookDeleted($event)"
+            (errorBookDeleted)="onErrorBookDeleted($event)"
+            (rented)="rented($event)"
           >
           </component-book>
         </div>
       }
-      <div class="d-flex justify-content-center mt-3">
-        <component-paginate [page]="page" [pages]="pages" (pageChange)="getBooks($any($event))"></component-paginate>
-      </div>
+      @if (totalBooks > 10) {
+        <div class="d-flex justify-content-center mt-3">
+          <component-paginate [page]="page" [pages]="pages" (pageChange)="getBooks($any($event))"></component-paginate>
+        </div>
+      }
     </div>
   </div>
 </main>
 @if (isAdmin || isLibrarian) {
-  <div class="container fixed-bottom text-end" style="margin-bottom: 120px;" id="add-book">
-    <button class="btn btn-secondary shadow" type="button">
-      <i class="bi bi-plus-circle-fill" style="font-size: 32px;"></i>
-    </button>
-  </div>
+  <app-add-book
+  (bookCreated)="bookCreated($event)"
+  (errorBookCreated)="errorBookCreated($event)"
+  ></app-add-book>
 }
 <component-navbar></component-navbar>

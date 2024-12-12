@@ -1,6 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { StarsComponent } from '../stars/stars.component';
-import { UsersService } from '../../services/users.service';
+import { AuthService } from '../../services/auth.service';
+import { CommentService } from '../../services/comment.service';
 
 @Component({
   selector: 'comment',
@@ -9,23 +10,37 @@ import { UsersService } from '../../services/users.service';
   templateUrl: './comment.component.html',
   styles: ``
 })
-export class CommentComponent implements OnInit {
-  @Input() user_id: number = 0;
+export class CommentComponent {
+  @Input() id: number = 0;
+  @Input() user: any = {};
+  @Input() date: string = '';
   @Input() rating: number = 0;
   @Input() body: string = '';
-  user: any = null;
+  @Input() self_comment: boolean = false;
 
-  constructor(private usersService: UsersService) {}
+  constructor(
+    private authService: AuthService,
+    private commentService: CommentService
+  ) {}
 
-  ngOnInit(): void {this.getUser(this.user_id)}
+  get isAdmin(): boolean {
+    return this.authService.isAdmin();
+  }
 
-  getUser(user_id: number): void {
-    this.usersService.getUserName(user_id).subscribe((answer: any) => this.user = answer)
+  deleteComment() {
+    this.commentService.deleteComment(this.id).subscribe({
+      next: () => {
+        window.location.reload();
+      },
+      error: (err) => {
+        console.error(err);
+      }
+    })
   }
 
   getUserImage(user: any) {
     if (!user?.image || user?.image === '') {
-      return `https://via.placeholder.com/150?text= `;
+      return `https://via.placeholder.com/150?text=${user?.name[0]}${user?.lastname[0]}`;
     }
     return user?.image;
   }

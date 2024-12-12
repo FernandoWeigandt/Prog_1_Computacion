@@ -17,17 +17,18 @@ import { BookDetailsComponent } from './pages/book-details/book-details.componen
 import { EditBookComponent } from "./pages/edit-book/edit-book.component";
 import { authsessionGuard } from "./guards/authsession.guard";
 import { roleGuard } from "./guards/role.guard";
+import { userRoleGuard } from "./guards/user-role.guard";
 
 export const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'home', component: HomeComponent },
     { path: 'settings', component: SettingsComponent },
     { path: 'settings/my-account', component: MyAccountComponent, canActivate: [authsessionGuard] },
-    { path: 'my-rents', component: MyRentsComponent, canActivate: [authsessionGuard] },
+    { path: 'my-rents', component: MyRentsComponent, canActivate: [authsessionGuard, userRoleGuard] },
     { path: 'my-notifications', component: MyNotificationsComponent, canActivate: [authsessionGuard] },
     { path: 'users', component: UsersComponent, canActivate: [authsessionGuard, roleGuard] },
     { path: 'manage-rents', component: ManageRentsComponent, canActivate: [authsessionGuard, roleGuard] },
-    { path: 'notify', component: NotifyComponent, canActivate: [authsessionGuard, roleGuard] },
+    { path: 'notify/:id', component: NotifyComponent, canActivate: [authsessionGuard, roleGuard] },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
     { path: 'restore-password', component: RestorePasswordComponent, canActivate: [authsessionGuard] },

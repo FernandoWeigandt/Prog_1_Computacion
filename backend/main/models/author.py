@@ -20,7 +20,7 @@ class Author(db.Model):
     name = db.Column(db.String(100), nullable=False)
     lastname = db.Column(db.String(100), nullable=False)
     # Relation N:M (N authors : M books), Medium table books_authors
-    books = db.relationship('Book', secondary=books_authors, backref=db.backref('authors', lazy = 'dynamic'))
+    books = db.relationship('Book', secondary=books_authors, back_populates='authors', lazy='subquery')
     
     ########################################################
     #             Methods to convert to JSON               #

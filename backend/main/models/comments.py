@@ -14,7 +14,7 @@ class Comment(db.Model):
     # Comment structure
     body = db.Column(db.Text, nullable=False)
     rate = db.Column(db.Integer, nullable=False)
-    date = db.Column(db.DateTime, nullable = False)
+    date = db.Column(db.Date, nullable = False, default=datetime.now().date())
 
     # Unique book_id and user_id combinations
     __table_args__ = (
@@ -36,15 +36,58 @@ class Comment(db.Model):
             'book':self.book.to_json()
         }
         return comment_json
+    
+    def to_json_user(self):
+        self.book = db.session.query(BookModel).get_or_404(self.book_id)
+        comment_json = {
+            'id': self.id,
+            'body': str(self.body),
+            'rate': self.rate,
+            'date': str(self.date.strftime('%Y-%m-%d')),
+            'book':self.book.to_json_short()
+        }
+        return comment_json
+    
+    def to_json_book(self):
+        self.user = db.session.query(UserModel).get_or_404(self.user_id)
+        comment_json = {
+            'id': self.id,
+            'body': str(self.body),
+            'rate': self.rate,
+            'date': str(self.date.strftime('%Y-%m-%d')),
+            'user': self.user.to_json_short()
+        }
+        return comment_json
+    
+    def to_json_short(self):
+        comment_json = {
+            'id': self.id,
+            'body': str(self.body),
+            'rate': self.rate,
+            'date': str(self.date.strftime('%Y-%m-%d')),
+        }
+        return comment_json
 
     @staticmethod
     def from_json(comment_json):
-        body = comment_json['body']
-        rate = comment_json['rate']
-        date = datetime.strptime(comment_json['date'], '%Y-%m-%d')
-        user_id = comment_json['user_id']
-        book_id = comment_json['book_id']
+        body, rate, date, user_id, book_id = None, None, None, None, None
+        if comment_json.get('body'):
+            body = comment_json.get('body')
+        if comment_json.get('rate'):
+            rate = comment_json.get('rate')
+        if comment_json.get('date'):
+            date = datetime.strptime(comment_json.get('date'), '%Y-%m-%d').date()
+        if comment_json.get('user_id'):
+            user_id = comment_json.get('user_id')
+        if comment_json.get('book_id'):
+            book_id = comment_json.get('book_id')
         user = db.session.query(UserModel).get_or_404(user_id)
         book = db.session.query(BookModel).get_or_404(book_id)
-        comment = Comment(body=body, rate=rate, date=date, user=user, book=book)
+        comment = Comment(
+            body=body if body else None,
+            rate=rate if rate else None,
+            date=date if date else None,
+            user=user if user else None,
+            book=book if book else None
+        )
         return comment
