@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { StarsComponent } from '../stars/stars.component';
 import { AuthService } from '../../services/auth.service';
 import { BookService } from '../../services/book.service';
+import { NotifyService } from '../../services/notify.service';
 
 @Component({
   selector: 'component-book',
@@ -29,6 +30,7 @@ export class BookComponent {
 
   @Output() bookDeleted = new EventEmitter();
   @Output() errorBookDeleted = new EventEmitter();
+  @Output() rented = new EventEmitter();
 
   // This line allows book component to use angular router service.
   // It just define a private attribute called router of type Router
@@ -36,7 +38,8 @@ export class BookComponent {
   constructor(
     private router: Router,
     private authService: AuthService,
-    private bookService: BookService
+    private bookService: BookService,
+    private notificationService: NotifyService
   ) {}
 
   get isAdmin(): boolean {
@@ -70,6 +73,24 @@ export class BookComponent {
       this.bookDeleted.emit('Libro Eliminado - Identificador:' + this.id);      
     }, (error) => {
       this.errorBookDeleted.emit('Error al eliminar el libro. Recuerda que solo puedes eliminar libros sin prestamos.');
+    });
+  }
+  
+  get isRented(): boolean {
+    return this.status !== 'available';
+  }
+
+  rentBook() {
+    this.notificationService.postNotification({
+      title: 'Solicitud de prestamo',
+      body: `El usuario ${this.authService.email} desea adquirir el libro ${this.title}`,
+      note: `Identificador único del libro: ${this.id}`,
+      category: 'warning',
+    }).subscribe({next: (response) => {
+        this.rented.emit('Solicitud de prestamo enviada a todos los bibliotecarios.');
+      },error: (error) => {
+        this.rented.emit('Error al enviar la solicitud de prestamo.');
+      }
     });
   }
 }

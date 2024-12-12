@@ -117,4 +117,12 @@ export class HomeComponent {
     this.showAlert(message, 'danger');
   }
 
+  rented(message: string) {
+    if (message === 'Error al enviar la solicitud de prestamo.') {
+      this.showAlert(message, 'danger');
+    } else {
+      this.showAlert(message, 'success');
+    }
+  }
+
 }

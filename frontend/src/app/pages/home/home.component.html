@@ -41,6 +41,7 @@
             image="{{ image(book) }}"
             (bookDeleted)="onBookDeleted($event)"
             (errorBookDeleted)="onErrorBookDeleted($event)"
+            (rented)="rented($event)"
           >
           </component-book>
         </div>
