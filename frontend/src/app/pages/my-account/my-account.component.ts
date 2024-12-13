@@ -5,6 +5,7 @@ import { NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angula
 import { AuthService } from '../../services/auth.service';
 import { passwordMatchValidator } from '../register/register.component';
 import { UsersService } from '../../services/users.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-my-account',
@@ -34,7 +35,8 @@ export class MyAccountComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private userService: UsersService
+    private userService: UsersService,
+    private router: Router
   ) {}
 
   private fb = inject(NonNullableFormBuilder);
@@ -147,5 +149,7 @@ export class MyAccountComponent implements OnInit {
 
   deleteUser() {
     this.userService.deleteUser(Number(this.authService.userId))
+    localStorage.removeItem('token')
+    this.router.navigate(['/home']);
   }
 }
