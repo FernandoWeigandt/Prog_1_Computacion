@@ -18,3 +18,5 @@ from .comment import Comments as CommentsResources
 
 from .book_copy import BookCopy as BookCopyResources
 from .book_copy import BookCopies as BookCopiesResources
+
+from .upload import UploadImage as UploadImageResource  

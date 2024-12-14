@@ -5,6 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_jwt_extended import JWTManager
 from flask_mail import Mail
+from flask_cors import CORS
 import os
 
 api = Api()
@@ -15,12 +16,16 @@ mailsender = Mail()
 
 def create_app():
     app=Flask(__name__)
+    CORS(app)
     load_dotenv()
+    
+    upload_folder = os.getenv("UPLOAD_FOLDER")
+    app.config['UPLOAD_FOLDER'] = upload_folder
+    os.makedirs(upload_folder, exist_ok=True)
 
     if not os.path.exists(os.getenv("DATABASE_PATH")+os.getenv("DATABASE_NAME")):
         os.mknod(os.getenv("DATABASE_PATH")+os.getenv("DATABASE_NAME"))
 
-    upload_folder = os.getenv("UPLOAD_FOLDER")
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////'+os.getenv('DATABASE_PATH')+os.getenv('DATABASE_NAME')
     db.init_app(app)
@@ -49,6 +54,8 @@ def create_app():
     # BookCopy
     api.add_resource(resources.BookCopiesResources, '/copies')
     api.add_resource(resources.BookCopyResources, '/copy/<id>')
+    # Upload
+    api.add_resource(resources.UploadImageResource, '/upload')
 
 
     api.init_app(app)
