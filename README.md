@@ -1,20 +1,20 @@
-# Library Web Page
+# 📖 Library Web Page
 
-## About this proyect
+## ℹ️ About this proyect
 
 This proyect is a fork of the real Library Web proyect for a signature of the university. I decided to continue expanding the functionality outside the main proyect to have a deep understanding on the protocols used inside the proyect itself.
 
-This proyect consist on two parts:
+🧩 This proyect consist on two parts:
 - Backend
 - Frontend
 
-The backend is an API-RESTful implemented in python using flask and the fronted is written using Angular. The libraries used and deep description of the proyect is in the wiki section. The main idea of the proyect was to make a complete system for a library. In this library wouldn't be digital copies of books, instead, just physical copies, and users can login, make request for getting books and see all the library catalog. Then, it should contain also librarians and administrators to manage the library itself.
+The backend is an API-RESTful implemented in python using [flask](https://flask.palletsprojects.com/en/stable/) and the fronted is written using Angular. The libraries used and deep description of the proyect is in the wiki section. The main idea of the proyect was to make a complete system for a library. In this library wouldn't be digital copies of books, instead, just physical copies, and users can login, make request for getting books and see all the library catalog. Then, it should contain also librarians and administrators to manage the library itself.
 
 The API (located at backend directory) will be responsible of comunicating the frontend of the App with the database following REST principles. 
 
 In the other hand, the frontend was made using Angular with bootstrap trying to follow all responsive design principles.
 
-## Instalation and execution
+## 📥 Instalation and execution
 
 ### Instalation
 
